@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
+   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2007ApJ...671.1523H">
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#NAME_CHANDRA_DEEP_FIELD-NORTH"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#NAME_CHANDRA_DEEP_FIELD-NORTH">
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Region ~', 'refcode': '2007ApJ...671.1523H', 'ra': '189.20', '_raw': 'NAME CHANDRA DEEP FIELD-NORTH|189.20|+62.22|Region ~|~,~,~|~,~,~', 'dec': '+62.22', 'id': 'NAME CHANDRA DEEP FIELD-NORTH'}</adsbase:hasMetadataString>
+    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+  </rdf:Description>
+</rdf:RDF>

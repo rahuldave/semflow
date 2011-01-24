@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
+   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#M_15">
+    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+    <adsbase:hasMetadataString>{'mtype': 'F3,D,~', 'otype': 'GlCl ~', 'refcode': '2007ApJ...660.1246S', 'ra': '322.49325', '_raw': 'M  15|322.49325|+12.16683|GlCl ~|F3,D,~|~,~,~', 'dec': '+12.16683', 'id': 'M  15'}</adsbase:hasMetadataString>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2007ApJ...660.1246S">
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#M_15"/>
+  </rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
+   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#%5BMSM98%5D_Knot_B">
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Radio ~', 'refcode': '2003A&amp;A...410..833K', 'ra': 'No Coord.', '_raw': '[MSM98] Knot B|No Coord.|Radio ~|~,~,~|~,~,~', 'dec': 'No Coord.', 'id': '[MSM98] Knot B'}</adsbase:hasMetadataString>
+    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2003A&amp;A...410..833K">
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#%5BMSM98%5D_Knot_B"/>
+  </rdf:Description>
+</rdf:RDF>

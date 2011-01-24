@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
+   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2009ApJ...704.1195W">
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#NGC_7212"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#NGC_7212">
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Seyfert_2 ~', 'refcode': '2009ApJ...704.1195W', 'ra': '331.758300', '_raw': 'NGC  7212|331.758300|+10.233469|Seyfert_2 ~|~,~,~|S,D,~', 'dec': '+10.233469', 'id': 'NGC  7212'}</adsbase:hasMetadataString>
+  </rdf:Description>
+</rdf:RDF>

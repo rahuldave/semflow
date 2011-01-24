@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+<head> 
+  <title>Search</title> 
+  <link rel="stylesheet" type="text/css" href="css/reuters.css" media="screen" /> 
+  <!--script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script-->
+<script type="text/javascript" src="ext/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="js/semflow-search.js"></script> 
+  <script type="text/javascript" src="ajax-solr/core/Core.js"></script>
+  <script type="text/javascript" src="ajax-solr/core/AbstractManager.js"></script>
+  <script type="text/javascript" src="ajax-solr/managers/Manager.jquery.js"></script>
+  <script type="text/javascript" src="ajax-solr/core/Parameter.js"></script>
+  <script type="text/javascript" src="ajax-solr/core/ParameterStore.js"></script>
+  <script type="text/javascript" src="ajax-solr/core/AbstractWidget.js"></script> 
+  <script type="text/javascript" src="widgets/ResultWidget.2.0.js"></script> 
+  <script type="text/javascript" src="js/reuters.theme.js"></script>
+  <script type="text/javascript" src="ajax-solr/widgets/jquery/PagerWidget.js"></script>
+  <script type="text/javascript" src="ajax-solr/core/AbstractFacetWidget.js"></script>
+  <script type="text/javascript" src="widgets/TagcloudWidget.js"></script>
+  <script type="text/javascript" src="widgets/CurrentSearchWidget.js"></script>
+  <!--script type="text/javascript" src="widgets/TextWidget.js"></script-->
+
+  <!--script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script-->
+<script type="text/javascript" src="ext/jquery-ui-1.8.1.custom.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="ext/smoothness/jquery-ui.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="ext/jquery.autocomplete.css" media="screen" />
+  <script type="text/javascript" src="ext/jquery.autocomplete.js"></script>
+  <script type="text/javascript" src="widgets/AutocompleteWidget.js"></script>
+  <script type="text/javascript" src="widgets/YearWidgetTwo.js"></script>
+  <script type="text/javascript" src="widgets/DualSlider.js"></script>
+  <script type="text/javascript" src="js/date.js"></script>
+    <script type="text/javascript" src="js/time.js"></script>
+  <script type="text/javascript" src="widgets/DateRanger.js"></script>
+  <!--link rel="stylesheet" type="text/css" href="ext/colorbox.css" media="screen" /> 
+  <script type="text/javascript" src="ext/jquery.colorbox.js"></script-->
+<script type="text/javascript" src="ext/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" href="ext/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+  <!--script type="text/javascript" src="../../Projects/ajax-solr/helpers/jquery/ajaxsolr.theme.js"></script-->
+
+</head> 
+<body> 
+  <div id="wrap"> 
+    <div id="header"> 
+    	<table width="100%"> 
+      	    <tr><td> 
+                <div id="logos"> 
+                <table width="100%"> 
+                <tr><td> 
+                <a href="http://labs.adsabs.harvard.edu"> 
+                        <img src="images/adslogo_labs.jpg" height="84" width="174" alt="[The NASA Astrophysics Data System]" /> 
+                </a> 
+                </td><td> 
+                <h1 id="pagetitle">Prototype ADSLabs/VAO Semantic Browser</h1><br/>
+                <div>
+                    <span class="tab"><a href="search.html">Search</a></span>
+                    <span class="tab"><a href="publications.html">Publications</a></span>
+                    <span class="tab"><a href="objects.html">Objects</a></span>
+                    <span class="tab"><a href="datasets.html">Datasets</a></span>
+                    <span class="tab"><a href="proposals.html">Proposals</a></span>
+					<span class="tab chosen"><a href="mystuff.html">My Stuff</a></span>
+                </div>
+      		<!--h2>With RDF, Faceting, Objects, Data, and SOLR, Oh My!</h2--> 
+                </td><td> 
+                <a href="http://www.nasa.gov/"> 
+                        <img src="images/[NASA].png" alt="[NASA]" /> 
+                </a> 
+                </td></tr> 
+                </table> 
+                </div> 
+            </td></tr> 
+        </table> 
+      <!--h1>ADS Semantic Search</h1> 
+      <h2>With RDF, Faceting, Objects, Data, and SOLR, Oh My!</h2-->
+    </div> 
+   
+    <div class="full"> 
+    <div class="searchbox">
+      <h1>Search My Stuff: MOCKUP</h1> 
+      <span id="search_help_big">(press ESC to close suggestions)</span> 
+      <ul id="searchbig"> 
+        <input type="text" id="querybig" name="query"/> 
+      </ul> 
+    </div>
+      <br/>
+    </div> 
+    <div class="full"> 
+      <div id="result"> 
+        <div id="navigation"> 
+          <ul id="pager"></ul> 
+          <div id="pager-header"></div> 
+        </div> 
+        <div id="docs"></div> 
+      </div> 
+    </div> 
+    <div class="clear"></div> 
+  </div> 
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";  
+  feedback_widget_options.company = "ads";
+  feedback_widget_options.placement = "left";
+  feedback_widget_options.color = "#222";
+  feedback_widget_options.style = "idea";
+
+
+
+
+
+
+
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script> 
+</body> 
+</html> 

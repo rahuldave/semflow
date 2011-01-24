@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
+   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#%5BBGE2002%5D_BIMA_2">
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'YSO ~', 'refcode': '2008ApJ...677..401P', 'ra': '325.17650', '_raw': '[BGE2002] BIMA 2|325.17650|+58.26936|YSO ~|~,~,~|~,~,~', 'dec': '+58.26936', 'id': '[BGE2002] BIMA 2'}</adsbase:hasMetadataString>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2008ApJ...677..401P">
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#%5BBGE2002%5D_BIMA_2"/>
+  </rdf:Description>
+</rdf:RDF>

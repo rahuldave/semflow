@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
+   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#%5BABB2003%5D_CDFN_463">
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Galaxy ~', 'refcode': '2005ApJ...621..587C', 'ra': '189.43712', '_raw': '[ABB2003] CDFN 463|189.43712|+62.12208|Galaxy ~|~,~,~|~,~,~', 'dec': '+62.12208', 'id': '[ABB2003] CDFN 463'}</adsbase:hasMetadataString>
+    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2005ApJ...621..587C">
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#%5BABB2003%5D_CDFN_463"/>
+  </rdf:Description>
+</rdf:RDF>

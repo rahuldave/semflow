@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
+   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#PSR_J2124-3358">
+    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Pulsar ~', 'refcode': '2010ApJ...709..241B', 'ra': '321.18272292', '_raw': 'PSR J2124-3358|321.18272292|-33.97907444|Pulsar ~|~,~,~|~,~,~', 'dec': '-33.97907444', 'id': 'PSR J2124-3358'}</adsbase:hasMetadataString>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2010ApJ...709..241B">
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#PSR_J2124-3358"/>
+  </rdf:Description>
+</rdf:RDF>

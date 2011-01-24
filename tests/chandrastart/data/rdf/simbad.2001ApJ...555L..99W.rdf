@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
+   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#NGC_4631">
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'IG ~', 'refcode': '2001ApJ...555L..99W', 'ra': '190.533371', '_raw': 'NGC  4631|190.533371|+32.541511|IG ~|~,~,~|Sc,D,~', 'dec': '+32.541511', 'id': 'NGC  4631'}</adsbase:hasMetadataString>
+    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2001ApJ...555L..99W">
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#NGC_4631"/>
+  </rdf:Description>
+</rdf:RDF>
