@@ -11,27 +11,44 @@ class MyNamespace(object):
     def __getitem__(self, item):
         return self.namespace[item]
 
+class ADSNamespace(MyNamespace):
 
+    def __init__(self, fname):
+        MyNamespace.__init__(self,
+                             "https://github.com/rahuldave/ontoads/raw/master/owl/{0}#".format(fname)
+                             )
+
+rdf=MyNamespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+rdfs=MyNamespace("http://www.w3.org/2000/01/rdf-schema#")
+
+xsd=MyNamespace("http://www.w3.org/2001/XMLSchema#")
+
+skos=MyNamespace("http://www.w3.org/2004/02/skos/core#")
+
+dc=MyNamespace("http://purl.org/dc/elements/1.1/")
+dcterms=MyNamespace("http://purl.org/dc/terms/")
+
+foaf=MyNamespace("http://xmlns.com/foaf/0.1/")
 
 cito=MyNamespace("http://purl.org/spar/cito/")
 fabio=MyNamespace("http://purl.org/spar/fabio/")
-rdf=MyNamespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
-rdfs=MyNamespace("http://www.w3.org/2000/01/rdf-schema#")
-dc=MyNamespace("http://purl.org/dc/elements/1.1/")
-foaf=MyNamespace("http://xmlns.com/foaf/0.1/")
-dcterms=MyNamespace("http://purl.org/dc/terms/")
-xsd=MyNamespace("http://www.w3.org/2001/XMLSchema#")
-adsbase=MyNamespace("http://github.com/rahuldave/ontoads/owl/adsbase.owl#")
+
 agent=MyNamespace("http://swan.mindinformatics.org/ontologies/1.2/agents/")
 pav=MyNamespace("http://swan.mindinformatics.org/ontologies/1.2/pav/")
-adsbib=MyNamespace("http://github.com/rahuldave/ontoads/owl/adsbib.owl#")
-adsobsv=MyNamespace("http://github.com/rahuldave/ontoads/owl/adsobsv.owl#")
-skos=MyNamespace("http://www.w3.org/2004/02/skos/core#")
-aakeys=MyNamespace("http://github.com/rahuldave/ontoads/owl/AAKeys.rdf#")
-ajkeys=MyNamespace("http://github.com/rahuldave/ontoads/owl/AJKeys.rdf#")
-normalizedkeys=MyNamespace("http://github.com/rahuldave/ontoads/owl/NormalizedKeys.rdf#")
-arxivkeys=MyNamespace("http://github.com/rahuldave/ontoads/owl/ArxivKeys.rdf#")
-pacs=MyNamespace("http://github.com/rahuldave/ontoads/owl/pacs.rdf#")
+
+adsbase=ADSNamespace("ADS-Base.owl")
+adsbib=ADSNamespace("ADS-bibo.owl")
+adsobsv=ADSNamespace("ADS-obsv.owl")
+
+aakeys=ADSNamespace("AAKeys.rdf")
+
+# The following do not currently exist:
+#
+# ajkeys=ADSNamespace("AJKeys.rdf")
+# normalizedkeys=ADSNamespace("NormalizedKeys.rdf")
+# arxivkeys=ADSNamespace("ArxivKeys.rdf")
+# pacs=ADSNamespace("pacs.rdf")
+
 #get basic configuration instances from below
 
 ads_baseurl="http://ads.harvard.edu/sem"
@@ -68,10 +85,12 @@ adsbib=adsbib.namespace,
 adsobsv=adsobsv.namespace,
 skos=skos.namespace,
 aakeys=aakeys.namespace,
-pacs=pacs.namespace,
-normalizedkeys=normalizedkeys.namespace,
-arxivkeys=arxivkeys.namespace,
-ajkeys=ajkeys.namespace,
+
+# pacs=pacs.namespace,
+# normalizedkeys=normalizedkeys.namespace,
+# arxivkeys=arxivkeys.namespace,
+# ajkeys=ajkeys.namespace,
+
 uri_context=uri_context.namespace,
 uri_base=uri_base.namespace,
 uri_meta=uri_meta.namespace,
