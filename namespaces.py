@@ -15,7 +15,7 @@ class ADSNamespace(MyNamespace):
 
     def __init__(self, fname):
         MyNamespace.__init__(self,
-                             "https://github.com/rahuldave/ontoads/raw/master/owl/{0}#".format(fname)
+                             "https://github.com/rahuldave/ontoads/raw/master/owl/" + fname + "#"
                              )
 
 rdf=MyNamespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
