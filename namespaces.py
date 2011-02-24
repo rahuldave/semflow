@@ -1,4 +1,11 @@
+"""
+Namespaces and related routines for ADS project.
+"""
+
 from rdflib import URIRef, Namespace, Literal, BNode
+from rdflib.namespace import XSD
+
+import datetime
 
 class MyNamespace(object):
 
@@ -141,3 +148,28 @@ def gdbnadd(g, s, p, tlist):
 def n3encode(theitem):
     namespace, endurl=theitem.split(':')
     return "<"+str(namespace_dict[namespace])+endurl+">"
+
+def asInt(lit):
+    "Create a literal node assuming integer input (i.e. store int(lit))"
+    return Literal(int(lit))
+
+def asFloat(lit):
+    "Create a literal node assuming floating-point input (i.e. store float(lit))."
+    return Literal(float(lit))
+
+"""
+def asDate(lit):
+    "Create a literal node using the XSD.date datatype"
+parse as date
+    return Literal(lit, datatype=XSD.date)
+"""
+
+def asDateTime(lit):
+    """Create a literal node using the XSD.dateTime datatype.
+
+    At present assumes a format of '1999-02-17 22:01:09' which
+    may need to be extended.
+    """
+
+    dt = datetime.datetime.strptime(lit, '%Y-%m-%d %H:%M:%S')
+    return Literal(dt)
