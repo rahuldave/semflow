@@ -410,21 +410,47 @@ def addObsCoreRow(row):
 
     return graph
 
-def getObsCoreFile(fname):
+def writeObsCoreGraph(graph, fname, format="n3"):
+    "Write the graph to the given file."
+
+    output = graph.serialize(format=_fmts[format])
+
+    fd = open(fname, "w")
+    fd.write(output)
+    fd.close()
+    print "Created: " + fname
+
+def makeGraph():
+    "Returns a new graph."
+
+    graph = ConjunctiveGraph(identifier=URIRef(ads_baseurl))
+    bindgraph(graph)
+    return graph
+
+def getObsCoreFile(fname, ohead, nsplit=10000, format="n3"):
     """Convert the given obscore file from MAST (in psv format) into
     RDF.
 
     Rows that can not be converted are ignored (an error message is
     displayed on STDERR in this case).
-    """
 
-    graph = ConjunctiveGraph(identifier=URIRef(ads_baseurl))
-    bindgraph(graph)
+    Since the input file is large we now split apart the output every
+    nsplit rows. The output is written to
+    
+        ohead.<i>.<format>
+
+    where i is a counter, starting at 1
+    """
 
     fh = open(fname, "r")
     rdr = csv.reader(fh, dialect="psv")
+
     rnum = 0
     rpass = 0
+
+    idx = 1
+    graph = makeGraph()
+
     for row in rdr:
         rnum += 1
         try:
@@ -438,9 +464,20 @@ def getObsCoreFile(fname):
         if rnum % 100 == 0:
             print "Processed row: " + str(rnum)
 
+        if rnum % nsplit == 0:
+            # TODO: do we want to catch IO errors here?
+            writeObsCoreGraph(graph, ohead + "." + str(idx) + "." + format,
+                              format=format)
+            idx += 1
+            graph = makeGraph()
+            
     fh.close()
-    print("Finished processing file.")
-    return (graph, rnum, rpass)
+
+    if rsucc == 0:
+        raise IOError("No rows were converted!")
+    
+    if rnum != rsucc:
+        print "NOTE: " + str(rnum-rsucc) + " rows were not included!"
 
 _fmts = { "n3": "n3", "rdf": "xml" }
 
@@ -458,192 +495,11 @@ if __name__=="__main__":
             raise ValueError("Invalid format '" + fmt + "'")
         
         bname=os.path.basename(fname)
-        ofname="tests/mast/"+bname+"." + fmt
-        (g, rnum, rsucc) = getObsCoreFile(fname)
+        ohead = "tests/mast/" + bname
+        getObsCoreFile(fname, ohead, format=fmt)
 
-        if rsucc == 0:
-            raise IOError("No rows were converted!")
-
-        output = g.serialize(format=_fmts[fmt])
-
-        fd=open(ofname, "w")
-        fd.write(output)
-        fd.close()
-        print "Created: " + ofname + " containing " + str(rsucc) + " rows."
-        if rnum != rsucc:
-            print "NOTE: " + str(rnum-rsucc) + " rows were not included!"
-            
     else:
         print "Wrong usage", sys.argv
         sys.exit(-1)
 
 
-"""
-OLD CODE BELOW
-
-def getObsFile(fname):
-    g = ConjunctiveGraph(identifier=URIRef(ads_baseurl))
-    bindgraph(g)
-    recordstree=ElementTree.parse(fname)
-    rootnode=recordstree.getroot()
-    xobj=XMLObj(recordstree)
-    trec={}
-    trec['obsname']=rootnode.attrib['name']
-    trec['obsid']=rootnode.attrib['obsid']
-    trec['instrument_name']=xobj.elementAttribute('instrument', 'name')
-    trec['obsvtype']=xobj.type
-    trec['time']=xobj.observed_time
-    trec['date']=xobj.start_date
-    trec['ra']=xobj.ra
-    trec['dec']=xobj.dec
-    trec['proposal_id']=xobj.elementAttribute('proposal', 'id')
-    #print trec
-    obsuri=uri_obs['CHANDRA_'+trec['obsid']]
-    daturi=uri_dat['CHANDRA_'+trec['obsid']]
-    gadd(g, daturi, a, adsobsv.Datum)
-    gadd(g, obsuri, a, adsobsv.SimpleObservation)
-    gdadd(g, obsuri, [
-            adsobsv.observationId, Literal(trec['obsid']),
-            adsobsv.observationType, Literal(trec['obsvtype']),
-            adsbase.atTime, Literal(trec['date']),
-            adsobsv.observedTime, Literal(trec['time']),
-            adsbase.atObservatory, uri_conf['OBSERVATORY_CHANDRA'],
-            adsobsv.atTelescope,   uri_conf['TELESCOPE_CHANDRA'],
-            adsbase.usingInstrument, uri_conf['INSTRUMENT_CHANDRA_'+trec['instrument_name']],
-            adsobsv.hasDatum, daturi,
-            adsbase.asAResultOfProposal, uri_prop['CHANDRA_'+trec['proposal_id']]
-        ]
-    )
-    gdadd(g, daturi, [
-            adsobsv.dataProductId, Literal(trec['obsid']),
-            adsobsv.forSimpleObservation, obsuri
-        ]
-    )
-    gdbnadd(g, obsuri, adsobsv.associatedPosition, [
-            a, adsobsv.Pointing,
-            adsobsv.ra, Literal(trec['ra']),
-            adsobsv.dec, Literal(trec['dec'])
-        ]
-    )
-    serializedstuff=g.serialize(format='xml')
-    return serializedstuff
-    
-def getPubFile(fname):
-    g = ConjunctiveGraph(identifier=URIRef(ads_baseurl))
-    bindgraph(g)
-    recordstree=ElementTree.parse(fname)
-    rootnode=recordstree.getroot()
-    xobj=XMLObj(recordstree)
-    trec={}
-    trec['bibcode']=xobj.bibcode
-    trec['classified_by']=xobj.classified_by
-    #this above coild also be figured by bibgroup
-    #shouldnt this be a curated statement. But what is the curation. Not a source curation
-    #later.
-    trec['paper_type']=xobj.paper_type
-    #trec['obsids']=[e.text for e in xobj.rec.findall('data')[0].findall('obsid')]
-    boolobsids=False
-    if len(xobj.rec.findall('data'))> 0:
-        if len(xobj.rec.findall('data')[0].findall('obsid'))> 0:
-            print "1"
-            trec['obsids']=[e.text for e in xobj.rec.findall('data')[0].findall('obsid')]
-            boolobsids=True
-    else:
-        print "2"
-        trec['obsids']=[]
-    #print trec
-    bibcode_uri = uri_bib[trec['bibcode']]
-    print bibcode_uri
-    for obsid in trec['obsids']:
-        obsuri=uri_obs['CHANDRA_'+obsid]
-        daturi=uri_dat['CHANDRA_'+obsid]
-        gadd(g, bibcode_uri, adsbase.aboutScienceProcess, obsuri)
-        gadd(g, bibcode_uri, adsbase.aboutScienceProduct, daturi)
-        gadd(g, bibcode_uri, adsobsv.datum_p, Literal(str(boolobsids).lower()))
-        #This is temporary. must map papertype to scienceprocesses and use those ones exactly
-        gadd(g, bibcode_uri, adsbib.paperType, Literal(trec['paper_type']))
-        
-    serializedstuff=g.serialize(format='xml')
-    return serializedstuff
-
-def getObsIdsForPubs(fname):
-    recordstree=ElementTree.parse(fname)
-    rootnode=recordstree.getroot()
-    xobj=XMLObj(recordstree)
-    trec={}
-    trec['bibcode']=xobj.bibcode
-    #print trec['bibcode']
-    
-    if len(xobj.rec.findall('data'))> 0:
-        if len(xobj.rec.findall('data')[0].findall('obsid'))> 0:
-            trec['obsids']=[e.text for e in xobj.rec.findall('data')[0].findall('obsid')]
-            for ele in trec['obsids']:
-                print trec['bibcode'], ele
-    else:
-        print trec['bibcode'], "NOTHING"
-    
-def getPropFile(fname):
-    g = ConjunctiveGraph(identifier=URIRef(ads_baseurl))
-    bindgraph(g)
-    recordstree=ElementTree.parse(fname)
-    rootnode=recordstree.getroot()
-    xobj=XMLObj(recordstree)
-    trec={}
-    trec['propname']=rootnode.attrib['name']
-    trec['propid']=rootnode.attrib['id']
-    trec['title']=xobj.title
-    trec['category']=xobj.category
-    #we used a proposalType here, as this is somewhat different from justscienceprocess. add to ontology
-    trec['abstract']=xobj.abstract
-    trec['pi']=[xobj.elementAttribute('pi', 'last'),xobj.elementAttribute('pi', 'first')]
-    #print trec
-    propuri=uri_prop['CHANDRA_'+trec['propid']]
-    #This is FALSE. TODO..fix to ads normed name or lookitup How? Blanknode? WOW.
-    qplabel=trec['pi'][0]+'_'+trec['pi'][1]
-    auth_uri = uri_agents[qplabel]
-    gadd(g, propuri, a, adsbase.ObservationProposal)
-    gdadd(g, propuri, [
-            adsobsv.observationProposalId, Literal(trec['propid']),
-            adsobsv.observationProposalType, Literal("CHANDRA/"+trec['category']),
-            adsbase.principalInvestigator, auth_uri,
-            adsbase.title, Literal(trec['title'])
-        ]
-    )
-    serializedstuff=g.serialize(format='xml')
-    return serializedstuff
-
-def getPropIdsForObs(fname):
-    recordstree=ElementTree.parse(fname)
-    rootnode=recordstree.getroot()
-    xobj=XMLObj(recordstree)
-    trec={}
-    trec['obsid']=rootnode.attrib['obsid']
-    trec['proposal_id']=xobj.elementAttribute('proposal', 'id')
-    print trec['obsid'],trec['proposal_id']
-    
-dafunc={
-'obsv':getObsFile,
-'pub':getPubFile,
-'prop':getPropFile,
-'obsids':getObsIdsForPubs,
-'propids':getPropIdsForObs
-}    
-if __name__=="__main__":
-    if len(sys.argv)==3 and sys.argv[2] in dafunc.keys():
-        #getObsFile(sys.argv[1])
-        import os.path
-        fname=sys.argv[1]
-        bname=os.path.basename(fname)
-        style=sys.argv[2]
-        ofname="tests/chandrastart/"+style+"/"+bname+".rdf"
-        output=dafunc[style](fname)
-        #getPubFile(sys.argv[1])
-        if style in ['obsv', 'pub', 'prop']:
-            fd=open(ofname, "w")
-            fd.write(output)
-            fd.close()
-    else:
-        print "Worong usage", sys.argv
-        sys.exit(-1)
-
-"""
