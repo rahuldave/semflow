@@ -1,0 +1,363 @@
+
+Notes and questions on converting the MAST obscore table to use the
+ADS ontologies.
+
+*) Input row:
+
+dataproduct_type     : Spectrum.1D
+spectralsi           : 1.0E-10 L
+fluxsi               : 1.0E+7 ML-1T-3
+equinox              : 2000
+s_ra                 : 350.46190000000001
+em_max               : 8.9544800000000001E-8
+target_name          : HD 220172
+spec_bw              : 237.06
+obs_publisher_did    : ivo://orfeus.mast/befs1001_spc1
+spec_fil             : 1
+creation_date        : 1999-09-15 22:41:38
+max_error            : 3.8441099999999999E-12
+fluxcal              : ABSOLUTE
+s_ra_max             : 350.46467777800001
+min_error            : 0
+max_flux             : 9.5153800000000002E-12
+t_max                : 49244.371967589999
+access_estsize       : 276
+em_domain            : Extreme-UV
+telescope_name       : ORFEUS
+dec_targ             : -9.7613900000000005
+t_min                : 49244.349965280002
+t_resolution         : 1397
+spectralaxisname     : WAVE
+specsys              : HELIOCEN
+dssource             : POINTED
+fluxaxisname         : FLUX
+fluxmax2             : 3.6475099999999997E-12
+obs_id               : befs1001_spc1
+instrument           : BEFS
+s_region             : Circle J2000 350.4619 -9.76139 0.00277777777778
+version              : 1.0
+fluxucd              : phot.flux.density;em.wl
+vover                : 1.0
+aperture             : 20
+spec_val             : 776.91800000000001
+preview              : 
+s_dec_max            : -9.75861222222
+filesize             : 275.625
+o_fluxucd            : phot.flux
+fluxavg              : 6.4075399999999996E-13
+vodate               : 2008-02-29 00:00:00
+em_res_power         : 10000
+access_format        : fits
+tmid                 : 49244.360966439999
+coord_obs            : 350.46190     -9.76139
+radecsys             : FK5
+calib_level          : 2
+s_dec_min            : -9.7641677777799991
+s_resolution         : 20
+representative       : 
+t_span               : 2.2002309997333214E-2
+obs_collection       : ORFEUS/BEFS
+ra_targ              : 350.46190000000001
+s_ra_min             : 350.45912222200002
+timesys              : UTC
+min_flux             : -2.2243300000000001E-12
+date_obs             : 1993-09-14 08:23:57
+t_exptime            : 1397
+s_fov                : 5.5555555555600001E-3
+title                : befs1001_spc1, HD 220172
+der_snr              : 0.52000000000000002
+spectralunit         : angstrom
+coord_targ           : 350.46190000  -9.76139000
+project              : 
+datalen              : 22000
+s_dec                : -9.7613900000000005
+fluxunit             : erg/cm**2/s/angstrom
+em_min               : 6.5838800000000001E-8
+access_url           : http://archive.stsci.edu/pub/vospectra/befs2/befs1001_spc1_vo.fits
+obs_creator_name     : BEFS project
+
+*) Output N3:
+
+@prefix adsbase: <https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#> .
+@prefix adsobsv: <https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#> .
+@prefix agent: <http://swan.mindinformatics.org/ontologies/1.2/agents/> .
+@prefix uri_conf: <http://ads.harvard.edu/sem/conf#> .
+@prefix uri_dat: <http://ads.harvard.edu/sem/obsv/dat#> .
+@prefix uri_obs: <http://ads.harvard.edu/sem/obsv/obs#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+uri_dat:MAST_befs1001_spc1 a adsobsv:Datum;
+    adsbase:dataType "Spectrum.1D";
+    adsobsv:calibLevel 2;
+    adsobsv:createdOn "1999-09-15T22:41:38"^^xsd:dateTime;
+    adsobsv:dataProductId "befs1001_spc1";
+    adsobsv:dataURL "http://archive.stsci.edu/pub/vospectra/befs2/befs1001_spc1_vo.fits";
+    adsobsv:forObservation uri_obs:MAST_befs1001_spc1;
+    adsobsv:fromDataCollection [ a adsobsv:DataCollection;
+            adsbase:title "ORFEUS/BEFS" ];
+    adsobsv:wavelengthEnd 8.95448e-08;
+    adsobsv:wavelengthStart 6.58388e-08 .
+
+uri_obs:MAST_befs1001_spc1 a adsobsv:Observation;
+    adsbase:atTime "1993-09-14T08:23:57"^^xsd:dateTime;
+    adsbase:usingInstrument uri_conf:INSTRUMENT_MAST_BEFS;
+    adsobsv:associatedFootprint [ a adsobsv:RegionOfSky;
+            adsobsv:fov "Circle J2000 350.4619 -9.76139 0.00277777777778";
+            adsobsv:resolution 20.0 ];
+    adsobsv:associatedPosition [ a adsobsv:Pointing;
+            adsobsv:dec -9.76139;
+            adsobsv:ra 350.4619 ];
+    adsobsv:atTelescope uri_conf:TELESCOPE_MAST_ORFEUS;
+    adsobsv:hasDataProduct uri_dat:MAST_befs1001_spc1;
+    adsobsv:observationId "befs1001_spc1";
+    adsobsv:observationMadeBy [ a agent:PersonName;
+            agent:fullName "BEFS project" ];
+    adsobsv:observedTime 1397.0;
+    adsobsv:tExptime 1397.0;
+    adsobsv:target [ a adsobsv:AstronomicalSource;
+            adsbase:title "HD 220172" ] .
+
+*) Questions and comments
+
+**) Positions
+
+Which cells to use? From one row we have:
+
+  s_ra                 : 350.46190000000001
+  s_dec                : -9.7613900000000005
+  s_ra_min             : 350.45912222200002
+  s_ra_max             : 350.46467777800001
+  s_dec_min            : -9.7641677777799991
+  s_dec_max            : -9.75861222222
+
+as well as
+
+  ra_targ              : 350.46190000000001
+  dec_targ             : -9.7613900000000005
+  coord_targ           : 350.46190000  -9.76139000
+  coord_obs            : 350.46190     -9.76139
+
+I selected s_ra and s_dec for adsobsv.ra/dec. Do we want to encode
+any of the other values? The s_ra/dec_min/max values should probably
+be saved, but I am not sure if the other values are worth keeping.
+For this example they are essentially the same. and it's not clear whether
+it is useful to store them if they are different (unless we want to associate
+the target coordinates to the target itself for some reason, perhaps for
+identification against some other data store).
+
+Note: obscore defines s_ra/dec to be in degrees.
+
+I have taken s_region and created a FootPrint node; namely
+
+  s_region             : Circle J2000 350.4619 -9.76139 0.00277777777778
+
+gets an anonymous node of type adsobsv.RegionOfSky with this as its
+adsobs.fov.  As noted above, s_resolution is converted into the
+adsobsv.resolution of this footprint. So:
+
+  - is adsobs.fov the correct predicate? No it isn't, as its range is
+    double. TODO: fix this once I have worked out what predicate to use;
+    is this missing at present?
+
+  - is this the intended meaning of adsobsv.resolution (whose domain is
+    obsv.Footprint)?
+
+**) Units and ancillary data
+
+Howe do we encode the units and coord. system info for coordinates,
+times and other axes (not that the current modelling really does anything with
+the other axes at present).
+
+For instance we have
+
+  equinox              : 2000
+  radecsys             : FK5
+  s_resolution         : 20
+  timesys              : UTC
+
+I use the s_resolution field to populate the adsobsv.resolution predicate for
+the adsobsv.RegionOfSky object I create.
+
+Note: obscore defines s_resolution to be in arcsec (and gives the FWHM of the data).
+
+Note: obscore seems to mandate ICRS for s_ra/dec, although the working draft version
+of December 8 2010 in unclear whther they have to be ICRS or default to ICRS.
+
+**) Dates
+
+We have
+
+  creation_date        : 1999-09-15 22:41:38
+  vodate               : 2008-02-29 00:00:00
+  date_obs             : 1993-09-14 08:23:57
+
+creation_date is used as the object for the adsobsv.createdOn predicate and
+date_obs is used for adsobsv.atTime for the data and observation objects
+respectively; vodate is currently unused.
+
+Should the t_min/max fields - which are in MJD - be converted to
+
+  t_min                : 49244.349965280002
+  t_max                : 49244.371967589999
+
+adsobsv.fromTime/toTime? If so, how do we indicate units. Hmm, the domains of
+these predicates are xsd:dateTime, so that means we need to convert from MJD
+if we do add these predicates.
+
+What to do with?
+
+  t_resolution         : 1397
+
+This has units of seconds. Doh, there's an obsv.tResolution predicate which
+we can use, but how do we define the units?
+
+  t_span               : 2.2002309997333214E-2
+
+The exposure time, in seconds - namely
+
+  t_exptime            : 1397
+
+is currently mapped to both adsobsv.observedTime and adsobsv.tExptime. Do 
+we need both?
+
+**) Wavelengths
+
+  em_domain            : Extreme-UV
+  em_min               : 6.5838800000000001E-8
+  em_max               : 8.9544800000000001E-8
+  em_res_power         : 10000
+
+At present em_min/max are mapped to adsobsv.wavelengthStart/End predicates,
+but what are the units? ObsCore requires that these values are wavelengths
+in units of meters.
+
+em_domain is meant to be an enumerated type from
+
+  http://www.ivoa.net/Documents/latest/VODataService/
+
+Presumably they mean
+
+  http://www.ivoa.net/Documents/VODataService/
+
+and it does list a set
+
+RADIO, MILLIMETER, INFRARED, OPTICAL, UV, EUV, X-RAY, GAMMA-RAY
+
+which doesn't quite map to the above.
+
+**) Target information
+
+We have
+
+  target_name          : HD 220172
+  title                : befs1001_spc1, HD 220172
+
+so how do we encode these? I use target_name to create a bNode which
+is a adsobsv.AstronomicalSource and has an adsbase.title of the
+target_name. This bNode is connected to the observation by the
+adsobsv.target predicate.
+
+Is adsbase.title the correct title here or is it meant more for
+bibilographic resources?
+
+Does it make sense to create an anonymous node for the target in this
+way; conceptually yes, but is it actually useful? We end up with
+multiple copies of the target name creating multiple nodes which could
+be merged; however in the general case how are we to know that we can
+merge them?
+
+If we do not create an anonymous node, how do we link target
+information to the observation?
+
+The title cell is currently unused.
+
+**) Observer and Collection
+
+I use
+
+  obs_creator_name     : BEFS project
+
+as the agent.fullName of an anonymous node (agent.PersonName) as the
+object of the adsobsv.observationMadeBy predicate. It is not clear to
+me that PersonName is really the correct thing to use here; we could
+have a person or a group or ... and can PersonName be used to identify
+a group, since I think the ontology constraints explicitly exclude
+Group from consideration here.
+
+Similarly, I use
+
+  obs_collection       : ORFEUS/BEFS
+
+as the adsbase.title of an anonymous node (adsobsv.DataCollection) as
+the object of the adsobsv.fromDataCollection predicate.
+
+Do we really want this many anonymous nodes or should there be some
+clean up here?
+
+**) URL
+
+Should adsobsv.dataURL range be a literal or be a URI? It seems
+pointless to have a URI as a literal.
+
+**) Enumerations
+
+Probably want some enumerations for fields like
+
+  dataproduct_type     : Spectrum.1D
+
+Although calib_level is an enumeration, may just be worth leaving as
+an integer, with constraints on the predicate/ontology?
+
+**) Axes
+
+I have not looked at the axes yet.
+
+**) Observation vs SimpleObservation
+
+I use adsobsv.Observation rather than adsobsv.SimpleObservation since
+it is not clear to me that we can assume that the SimpleObservation
+restriction is valid here.
+
+--- END ---
+
+spectralsi           : 1.0E-10 L
+fluxsi               : 1.0E+7 ML-1T-3
+spec_bw              : 237.06
+obs_publisher_did    : ivo://orfeus.mast/befs1001_spc1
+spec_fil             : 1
+max_error            : 3.8441099999999999E-12
+fluxcal              : ABSOLUTE
+min_error            : 0
+max_flux             : 9.5153800000000002E-12
+access_estsize       : 276
+telescope_name       : ORFEUS
+spectralaxisname     : WAVE
+specsys              : HELIOCEN
+dssource             : POINTED
+fluxaxisname         : FLUX
+fluxmax2             : 3.6475099999999997E-12
+obs_id               : befs1001_spc1
+instrument           : BEFS
+version              : 1.0
+fluxucd              : phot.flux.density;em.wl
+vover                : 1.0
+aperture             : 20
+spec_val             : 776.91800000000001
+preview              : 
+filesize             : 275.625
+o_fluxucd            : phot.flux
+fluxavg              : 6.4075399999999996E-13
+access_format        : fits
+tmid                 : 49244.360966439999
+calib_level          : 2
+s_resolution         : 20
+representative       : 
+min_flux             : -2.2243300000000001E-12
+s_fov                : 5.5555555555600001E-3
+der_snr              : 0.52000000000000002
+spectralunit         : angstrom
+project              : 
+datalen              : 22000
+fluxunit             : erg/cm**2/s/angstrom
+access_url           : http://archive.stsci.edu/pub/vospectra/befs2/befs1001_spc1_vo.fits
+

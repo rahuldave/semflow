@@ -264,12 +264,14 @@ def addVals(graph, subject, plist):
         addVal(graph, subject, plist[i], plist[i+1], plist[i+2])
     
 def addObsCoreRow(row):
-    """Returns a Graph representing the given row.
+    """Returns a Graph representing the given row. We do not add it to the
+    main graph here in case there is invalid data for this row. Perhaps
+    it would be better to have all validity checks first and then add
+    direcctly to the graph, since it may be faster once the main graph
+    starts getting large (unlikely).
 
     Errors may be thrown if the input is invalid (e.g. unable to coerce
     a cell into the correct type).
-
-    TODO: need to handle missing values
     """
 
     vals = row2dict(row)
@@ -366,6 +368,7 @@ def addObsCoreRow(row):
     if sregion != '':
         predList = [
                 a, adsobsv.RegionOfSky,
+                # TODO: adsobsv.fov is the wrong predicate here
                 adsobsv.fov, Literal(sregion),
             ]
         sres = vals['s_resolution']
@@ -473,11 +476,18 @@ def getObsCoreFile(fname, ohead, nsplit=10000, format="n3"):
             
     fh.close()
 
-    if rsucc == 0:
+    # write out the last elements, if necessary
+    #
+    if rnum % nsplit != 0:
+        # TODO: do we want to catch IO errors here?
+        writeObsCoreGraph(graph, ohead + "." + str(idx) + "." + format,
+                          format=format)
+
+    if rpass == 0:
         raise IOError("No rows were converted!")
     
-    if rnum != rsucc:
-        print "NOTE: " + str(rnum-rsucc) + " rows were not included!"
+    if rnum != rpass:
+        print "NOTE: " + str(rnum-rpass) + " rows were not included!"
 
 _fmts = { "n3": "n3", "rdf": "xml" }
 
