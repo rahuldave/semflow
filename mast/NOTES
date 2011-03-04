@@ -78,6 +78,8 @@ obs_creator_name     : BEFS project
 
 *) Output N3:
 
+This has not yet been updated with the latest conversion
+
 @prefix adsbase: <https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#> .
 @prefix adsobsv: <https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#> .
 @prefix agent: <http://swan.mindinformatics.org/ontologies/1.2/agents/> .
@@ -151,16 +153,8 @@ I have taken s_region and created a FootPrint node; namely
 
   s_region             : Circle J2000 350.4619 -9.76139 0.00277777777778
 
-gets an anonymous node of type adsobsv.RegionOfSky with this as its
-adsobs.fov.  As noted above, s_resolution is converted into the
-adsobsv.resolution of this footprint. So:
-
-  - is adsobs.fov the correct predicate? No it isn't, as its range is
-    double. TODO: fix this once I have worked out what predicate to use;
-    is this missing at present?
-
-  - is this the intended meaning of adsobsv.resolution (whose domain is
-    obsv.Footprint)?
+gets an anonymous node of type adsobsv.FootPrint with this as its
+adsobsv.s_region.
 
 **) Units and ancillary data
 
@@ -175,13 +169,14 @@ For instance we have
   s_resolution         : 20
   timesys              : UTC
 
-I use the s_resolution field to populate the adsobsv.resolution predicate for
-the adsobsv.RegionOfSky object I create.
-
 Note: obscore defines s_resolution to be in arcsec (and gives the FWHM of the data).
 
 Note: obscore seems to mandate ICRS for s_ra/dec, although the working draft version
-of December 8 2010 in unclear whther they have to be ICRS or default to ICRS.
+of December 8 2010 in unclear whether they have to be ICRS or default to ICRS.
+
+The observation resolution is now a property of the observation rather
+than the footprint (since the domain restriction of the
+adsobsv.resolution predicate has been removed).
 
 **) Dates
 
@@ -191,8 +186,8 @@ We have
   vodate               : 2008-02-29 00:00:00
   date_obs             : 1993-09-14 08:23:57
 
-creation_date is used as the object for the adsobsv.createdOn predicate and
-date_obs is used for adsobsv.atTime for the data and observation objects
+creation_date is used as the object for the pav.createdOn predicate and
+date_obs is used for adsbase.atTime for the data and observation objects
 respectively; vodate is currently unused.
 
 Should the t_min/max fields - which are in MJD - be converted to
@@ -200,7 +195,7 @@ Should the t_min/max fields - which are in MJD - be converted to
   t_min                : 49244.349965280002
   t_max                : 49244.371967589999
 
-adsobsv.fromTime/toTime? If so, how do we indicate units. Hmm, the domains of
+adsbase.fromTime/toTime? If so, how do we indicate units. Hmm, the domains of
 these predicates are xsd:dateTime, so that means we need to convert from MJD
 if we do add these predicates.
 
@@ -209,7 +204,7 @@ What to do with?
   t_resolution         : 1397
 
 This has units of seconds. Doh, there's an obsv.tResolution predicate which
-we can use, but how do we define the units?
+we now use, but how do we define the units?
 
   t_span               : 2.2002309997333214E-2
 
@@ -252,47 +247,23 @@ We have
   target_name          : HD 220172
   title                : befs1001_spc1, HD 220172
 
-so how do we encode these? I use target_name to create a bNode which
-is a adsobsv.AstronomicalSource and has an adsbase.title of the
-target_name. This bNode is connected to the observation by the
-adsobsv.target predicate.
+so how do we encode these? I now use adsbase.name to link the 
+observation to the target_name, and adsbgase.title for the title.
 
-Is adsbase.title the correct title here or is it meant more for
-bibilographic resources?
+There should be some processing somewhere (here or downstream) to try
+and link the target (given by the name and pointing direction) to
+actual objects.
 
-Does it make sense to create an anonymous node for the target in this
-way; conceptually yes, but is it actually useful? We end up with
-multiple copies of the target name creating multiple nodes which could
-be merged; however in the general case how are we to know that we can
-merge them?
-
-If we do not create an anonymous node, how do we link target
-information to the observation?
-
-The title cell is currently unused.
+TODO: is it really right to link the observation to the target_name
+cell using the adsbase.name predicate? This doesn't seem to be
+quite right.
 
 **) Observer and Collection
 
-I use
-
-  obs_creator_name     : BEFS project
-
-as the agent.fullName of an anonymous node (agent.PersonName) as the
-object of the adsobsv.observationMadeBy predicate. It is not clear to
-me that PersonName is really the correct thing to use here; we could
-have a person or a group or ... and can PersonName be used to identify
-a group, since I think the ontology constraints explicitly exclude
-Group from consideration here.
-
-Similarly, I use
-
-  obs_collection       : ORFEUS/BEFS
-
-as the adsbase.title of an anonymous node (adsobsv.DataCollection) as
-the object of the adsobsv.fromDataCollection predicate.
-
-Do we really want this many anonymous nodes or should there be some
-clean up here?
+I now create URIs for an observer, mapped to the obs_creator_name
+cell, and an observation collection, mapped to the obs_collection
+cell. It is not obvious that obs_creator_name really maps to the
+range of adsobsv.observationMadeBy.
 
 **) URL
 
@@ -361,3 +332,25 @@ datalen              : 22000
 fluxunit             : erg/cm**2/s/angstrom
 access_url           : http://archive.stsci.edu/pub/vospectra/befs2/befs1001_spc1_vo.fits
 
+CHANGES - 2011/03/03
+
+- associatedFootprint predicate now links to a bnode which is a FootPrint and not RegionOfSky
+
+- changed from adsobsv.fov to adsobsv.s_region for linkink a FootPrint to a ADQL
+  description of the region
+
+- the adsobsv.resolution predicate has been moved to the observation rather than the FootPrint
+  (the domain restriction of Footprint has been removed)
+
+- corrected to pav.createdOn since it isn't in adsobsv (docs above also thought atTime as part
+  of asdobsv but code used correct namespace)
+
+- added use of adsobsv.tResolution to store the t_resolution field.
+
+- link to the target using adsbase.name rather than creating an anonymous node
+  via the adsobsv.target predicate.
+
+- wavelengthSAtart/End moved from the data to the observaion.
+
+- added URIs rather than bnodes for the objects of adsobsv.observationMadeBy
+  and adsobsv.fromDataCollection.

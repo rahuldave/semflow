@@ -232,18 +232,32 @@ def row2dict(row):
     check_row(row)
     return dict(zip(_colnames, row))
 
-def addVal(graph, subject, pred, obj, objconv):
-    """Add the triple
+def addVal(graph, subject, pred, obj, objconv=Literal):
+    """If obj is not '' then add the following triple to the
+    supplied graph:
 
-    (subject, pred, objconv(obj))
+    if objconv == None or obj is a URIRef
+      (subject, pred, obj)
 
-    to graph if obj is not == ''.
+    else
+      (subject, pred, objconv(obj))
+
+    If you are adding a URIRef then may as well just use gadd()
+    directly.
+    
     """
 
+    if isinstance(obj, URIRef):
+        gadd(graph, subject, pred, obj)
+        return
+    
     if obj == '':
         return
 
-    gadd(graph, subject, pred, objconv(obj))
+    if objconv == None:
+        gadd(graph, subject, pred, obj)
+    else:
+        gadd(graph, subject, pred, objconv(obj))
 
 def addVals(graph, subject, plist):
     """Adds the given predicate list to the graph for
@@ -262,6 +276,28 @@ def addVals(graph, subject, plist):
 
     for i in range(0, np, 3):
         addVal(graph, subject, plist[i], plist[i+1], plist[i+2])
+
+def cleanFragment(frag):
+    """Given a piece of text we wish to use as an identifier,
+    remove/replace un-wanted characters.
+
+    White space is removed (fails if all whitespace).
+    Converted to upper case.
+    
+    """
+
+    ans = frag.replace(" ", "")
+    if ans == "":
+        raise ValueError("Input fragment is empty!")
+    else:
+        return ans.upper()
+    
+
+def addFragment(base, fragment):
+    """Create a URI by combining base with fragment, after
+    cleaning the fragment. base should be a namespace object."""
+
+    return base[cleanFragment(fragment)]
     
 def addObsCoreRow(row):
     """Returns a Graph representing the given row. We do not add it to the
@@ -283,7 +319,7 @@ def addObsCoreRow(row):
     if obs_id == '':
         raise ValueError("No obs_id value in this row!")
     
-    urifrag = 'MAST_' + obs_id
+    urifrag = cleanFragment('MAST_' + obs_id)
     daturi = uri_dat[urifrag]
     obsuri = uri_obs[urifrag]
 
@@ -321,37 +357,24 @@ def addObsCoreRow(row):
                 adsobsv.observedTime, vals['t_exptime'], asFloat, # QUS: units?
                 adsobsv.tExptime, vals['t_exptime'], asFloat, # QUS: units?
 
-            ])
-    
-    # add _MAST_ to the URI fragment so that can identify them if necessary,
-    # although MAST isn't the observatory itself
-    #
-    # TODO: work out what prefix to use; for now guessing uri_conf is okay,
-    # since that's what the Chandra pipeline uses, but would uri_obsv be better?
-    #
-    tname = vals['telescope_name']
-    iname = vals['instrument']
-    if tname != '':
-        gadd(graph, obsuri, adsobsv.atTelescope, uri_conf['TELESCOPE_MAST_' + tname])
-
-    if iname != '':
-        gadd(graph, obsuri, adsbase.usingInstrument, uri_conf['INSTRUMENT_MAST_' + iname])
-        
-    ### Data set properties
-    #
-    addVals(graph, daturi,
-            [
-                adsobsv.createdOn, vals['creation_date'], asDateTime,
-                adsobsv.dataURL, vals['access_url'], Literal, # TODO: surely this should allow a URI?
-                adsobsv.calibLevel, vals['calib_level'], asInt,
-
-                adsbase.dataType, vals['dataproduct_type'], Literal,
+                adsobsv.resolution, vals['s_resolution'], asFloat,
+                adsobsv.tResolution, vals['t_resolution'], asFloat,
 
                 # Units?
                 adsobsv.wavelengthStart, vals['em_min'], asFloat,
                 adsobsv.wavelengthEnd, vals['em_max'], asFloat,
-            ])
 
+                # We just use a string literal to store the target name; downstream
+                # processing can try and improve this mapping.
+                #
+                # TODO: it seems that the predicate should be more descriptive
+                # than adsbase.name.
+                #
+                adsbase.name, vals['target_name'], Literal,
+                adsbase.title, vals['title'], Literal,
+                
+            ])
+    
     sra = vals['s_ra']
     sdec = vals['s_dec']
     if sra != '' and sdec != '':
@@ -362,55 +385,76 @@ def addObsCoreRow(row):
                     adsobsv.dec, asFloat(sdec),
                 ])
 
-    # We assume that s_resolution is only present if s_region is.
-    #
     sregion = vals['s_region']
     if sregion != '':
         predList = [
-                a, adsobsv.RegionOfSky,
-                # TODO: adsobsv.fov is the wrong predicate here
-                adsobsv.fov, Literal(sregion),
+                a, adsobsv.FootPrint,
+                adsobsv.s_region, Literal(sregion),
             ]
-        sres = vals['s_resolution']
-        if sres != '':
-            predList.extend([adsobsv.resolution, asFloat(sres)])
             
         gdbnadd(graph, obsuri, adsobsv.associatedFootprint, predList)
 
-    # TODO:  is adsbase.title the correct predicate?
+    # add _MAST_ to the URI fragment so that can identify them if necessary,
+    # although MAST isn't the observatory itself
     #
-    tname = vals['target_name']
+    # TODO: work out what prefix to use; for now guessing uri_conf is okay,
+    # since that's what the Chandra pipeline uses, but would uri_obsv be better?
+    #
+    tname = vals['telescope_name']
+    iname = vals['instrument']
     if tname != '':
-          gdbnadd(graph, obsuri, adsobsv.target, [
-              a, adsobsv.AstronomicalSource,
-              adsbase.title, Literal(tname),
-              ]
-            )
+        gadd(graph, obsuri, adsobsv.atTelescope,
+             addFragment(uri_conf, 'TELESCOPE_MAST_' + tname))
 
-    cname = vals['obs_creator_name']
-    if cname != '':
-        gdbnadd(graph, obsuri, adsobsv.observationMadeBy, [
-            a, agent.PersonName,
-            agent.fullName, Literal(cname)
-            ]
-        )
+    if iname != '':
+        gadd(graph, obsuri, adsbase.usingInstrument,
+             addFragment(uri_conf, 'INSTRUMENT_MAST_' + iname))
+        
+    ### Data set properties
+    #
+    addVals(graph, daturi,
+            [
+                pav.createdOn, vals['creation_date'], asDateTime,
+                adsobsv.dataURL, vals['access_url'], Literal, # TODO: surely this should allow a URI?
+                adsobsv.calibLevel, vals['calib_level'], asInt,
+
+                adsbase.dataType, vals['dataproduct_type'], Literal,
+
+            ])
 
     # TODO:
-    #   - is this semantically sensible
-    #   - should the data or observation be associated with the collection?
-    #     for now assume collection
-    #   - is adsbase.title the right predicate
-    #   - should we be clever and amalgamate all the nodes that refer to the
-    #     same collection?
+    #   - need to come up with a scheme for collection and creator URIs
+    #     (we assume that the name is an IFP for the object;
+    #     ie it uniquely identifies the object). What about
+    #     spelling errors/differences.
     #
+    #   - should I replace / by some other character since it could
+    #     confuse some parsers? Replace space with ?
+    #
+    #   - upper case all characters under the assumption that case
+    #     is not important and that there may be differences in case
+    #
+    cname = vals['obs_creator_name']
+    if cname != '':
+        # Is this correct; ie is the obs_creator_name really
+        # the same as observationMadeBy?
+        #
+        cnameuri = addFragment(uri_dat, 'MAST_CREATOR_' + cname)
+        gadd(graph, obsuri, adsobsv.observationMadeBy, cnameuri)
+        gdadd(graph, cnameuri, [
+            a, agent.PersonName,
+            agent.fullName, Literal(cname)
+            ])
+
     ocoll = vals['obs_collection']
     if ocoll != '':
-        gdbnadd(graph, daturi, adsobsv.fromDataCollection, [
-              a, adsobsv.DataCollection,
-              adsbase.title, Literal(ocoll),
-            ]
-        )
-
+        colluri = addFragment(uri_dat, 'MAST_COLLECTION_' + ocoll)
+        addVal(graph, daturi, adsobsv.fromDataCollection, colluri)
+        gdadd(graph, colluri, [
+            a, adsobsv.DataCollection,
+            adsbase.name, Literal(ocoll)
+            ])
+        
     return graph
 
 def writeObsCoreGraph(graph, fname, format="n3"):
@@ -509,7 +553,7 @@ if __name__=="__main__":
         getObsCoreFile(fname, ohead, format=fmt)
 
     else:
-        print "Wrong usage", sys.argv
+        print "Usage: " + sys.argv[0] + " <filename> [rdf|n3]"
         sys.exit(-1)
 
 
