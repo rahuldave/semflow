@@ -447,5 +447,17 @@ CHANGES - 2011/03/03
 
 - use wavelengthDomain to link to the em_domain field; note that I have changed the
   predicate to remove the range restriction since I want to use an enumerated type
-  for the records, and not just a string.
+  for the records, and not just a string. These em_domain values are now computed
+  from the data - based on the em_min and em_max settings - rather than use the
+  em_domain value itself.
 
+- a URI for the target is created, as an AstronomicalSourceName. Downstream
+  processing can use this, together with source location, to try and identify
+  the source and locate a URI for it.
+
+- dataURL is now a URI (I have replaced the literal restriction on the range with
+  anyURI).
+
+- observation and data URIs are now based on a hash of the access_url value, placed
+  under the obs_id value, to ensure metadata is separated. Downstream processing
+  may combine values where appropriate.

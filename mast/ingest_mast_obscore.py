@@ -371,12 +371,29 @@ def addObsCoreRow(row):
     if obs_id == '':
         raise ValueError("No obs_id value in this row!")
     
-    data_uri = URIRef(access_url)
+    access_uri = URIRef(access_url)
 
-    urifrag = cleanFragment('MAST_' + base64.urlsafe_b64encode(access_url[::-1]))
-    daturi = uri_dat[urifrag]
-    obsuri = uri_obs[urifrag]
-
+    # We use a scheme based on the path
+    #    
+    #    MAST/obsid/<obs_id>/data/<hash>
+    #    MAST/obsid/<obs_id>/observation/<hash>
+    #
+    # where <hash> is a "hash" of the access_url value.
+    # This is intentended to
+    #   - reduce file sizes (e.g. use of slash rather than hash URI)
+    #   - be more REST-ful in that we can define properties for parents
+    #     of these URIs to manage and merge data
+    #   - allow somewhat easier updates in case of changes - e.g to
+    #     the data location because a server changes so access_url
+    #     changes but nothing else does
+    #
+    # It does not match the Chandra approach so we need to work out
+    # what the best scheme is.
+    #
+    uri_hash = base64.urlsafe_b64encode(access_url[::-1])
+    daturi = MyNamespace(ads_baseurl + "/obsv/MAST/obsid/{0}/data/{1}".format(obs_id, uri_hash))
+    obsuri = MyNamespace(ads_baseurl + "/obsv/MAST/obsid/{0}/observation/{1}".format(obs_id, uri_hash))
+    
     tname = vals['target_name']
     if tname != '':
         tname_uri = uri_conf[cleanFragment('TARGET_' + tname)]
@@ -490,7 +507,7 @@ def addObsCoreRow(row):
     #
     addVals(graph, daturi,
             [
-                adsobsv.dataURL, data_uri, None,
+                adsobsv.dataURL, access_uri, None,
                 pav.createdOn, vals['creation_date'], asDateTime,
                 adsobsv.calibLevel, vals['calib_level'], asInt,
 
