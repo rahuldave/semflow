@@ -25,6 +25,11 @@ class ADSNamespace(MyNamespace):
                              "https://github.com/rahuldave/ontoads/raw/master/owl/" + fname + "#"
                              )
 
+IVOA_URI_HEAD = "ivoa://"
+
+def is_ivoa_uri(txt):
+    return txt.startswith(IVOA_URI_HEAD)
+
 rdf=MyNamespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
 rdfs=MyNamespace("http://www.w3.org/2000/01/rdf-schema#")
 

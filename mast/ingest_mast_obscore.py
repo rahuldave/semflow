@@ -257,7 +257,10 @@ def addVal(graph, subject, pred, obj, objconv=Literal):
         return
 
     if objconv == None:
-        gadd(graph, subject, pred, obj)
+        # should be an error now
+        #gadd(graph, subject, pred, obj)
+        raise ValueError("objconv is None for obj='{0}'".format(obj))
+
     else:
         gadd(graph, subject, pred, objconv(obj))
 
@@ -300,6 +303,25 @@ def addFragment(base, fragment):
     cleaning the fragment. base should be a namespace object."""
 
     return base[cleanFragment(fragment)]
+
+def cleanURIelement(txt):
+    """convert unwanted characters in txt so that we can use this
+    as part of the path of a URI.
+    """
+
+    return txt.replace(" ", "_").replace("/", "_")
+
+def mkURI(path, elem):
+    """Create a URI within ads_baseurl using path and then
+    elem, where elem is 'cleaned' to avoid unwanted characters.
+
+    path should start and end in '/'
+    """
+
+    if path[0] != "/" or path[-1] != "/":
+        raise ValueError("mkURI path ({0}) must start and end in /.".format(path))
+    
+    return URIRef(ads_baseurl + path + cleanURIelement(elem))
 
 # min/max wavelengths in metres, if applicable
 _emdomains = [
@@ -371,12 +393,10 @@ def addObsCoreRow(row):
     if obs_id == '':
         raise ValueError("No obs_id value in this row!")
     
-    access_uri = URIRef(access_url)
-
     # We use a scheme based on the path
     #    
-    #    MAST/obsid/<obs_id>/data/<hash>
-    #    MAST/obsid/<obs_id>/observation/<hash>
+    #    xxx/MAST/obsid/<obs_id>/data/<hash>
+    #    xxx/MAST/obsid/<obs_id>/observation/<hash>
     #
     # where <hash> is a "hash" of the access_url value.
     # This is intentended to
@@ -391,16 +411,9 @@ def addObsCoreRow(row):
     # what the best scheme is.
     #
     uri_hash = base64.urlsafe_b64encode(access_url[::-1])
-    daturi = MyNamespace(ads_baseurl + "/obsv/MAST/obsid/{0}/data/{1}".format(obs_id, uri_hash))
-    obsuri = MyNamespace(ads_baseurl + "/obsv/MAST/obsid/{0}/observation/{1}".format(obs_id, uri_hash))
+    daturi = mkURI("/obsv/MAST/obsid/{0}/data/".format(obs_id), uri_hash)
+    obsuri = mkURI("/obsv/MAST/obsid/{0}/observation/".format(obs_id), uri_hash)
     
-    tname = vals['target_name']
-    if tname != '':
-        tname_uri = uri_conf[cleanFragment('TARGET_' + tname)]
-
-    else:
-        tname_uri = None
-
     graph = Graph()
 
     # Can we assume this is a SimpleObservation or could it be a
@@ -452,9 +465,12 @@ def addObsCoreRow(row):
     # For now we create a URI for each target_name and make
     # it an AstronomicalSourceName.
     #
-    if tname_uri != None:
-        gadd(graph, obsuri, adsbase.target, tname_uri)
-        addVals(graph, tname_uri,
+    tname = vals['target_name']
+    if tname != '':
+        tnameuri = mkURI("/obsv/MAST/target/", tname)
+
+        gadd(graph, obsuri, adsbase.target, tnameuri)
+        addVals(graph, tnameuri,
                 [
                     a, adsobsv.AstronomicalSourceName, None,
                     adsbase.name, tname, Literal,
@@ -487,11 +503,11 @@ def addObsCoreRow(row):
             
         gdbnadd(graph, obsuri, adsobsv.associatedFootprint, predList)
 
-    # add _MAST_ to the URI fragment so that can identify them if necessary,
-    # although MAST isn't the observatory itself
-    #
-    # TODO: work out what prefix to use; for now guessing uri_conf is okay,
-    # since that's what the Chandra pipeline uses, but would uri_obsv be better?
+    # TODO:
+    #   - work out what prefix to use; for now guessing uri_conf is okay,
+    #     since that's what the Chandra pipeline uses, but would uri_obsv be
+    #     better? Alternatively, move to a scheme more like the other URIs
+    #     we create here
     #
     tname = vals['telescope_name']
     iname = vals['instrument']
@@ -505,9 +521,9 @@ def addObsCoreRow(row):
         
     ### Data set properties
     #
+    gadd(graph, daturi, adsobsv.dataURL, URIRef(access_url))
     addVals(graph, daturi,
             [
-                adsobsv.dataURL, access_uri, None,
                 pav.createdOn, vals['creation_date'], asDateTime,
                 adsobsv.calibLevel, vals['calib_level'], asInt,
 
@@ -515,11 +531,15 @@ def addObsCoreRow(row):
 
             ])
 
-    # TODO:
-    #   - need to come up with a scheme for collection and creator URIs
-    #     (we assume that the name is an IFP for the object;
-    #     ie it uniquely identifies the object). What about
-    #     spelling errors/differences.
+    # The scheme for creator and collection URI is
+    #
+    #    xxx/MAST/creator/<obs_creator_name>
+    #    xxx/MAST/collection/<obs_collection>
+    #
+    # although <obs_collection> can be an IVOA identifier, which means
+    # we use that instead; this breaks linked-data approach, so perhaps
+    # need a predicate to say "this represents this IVOA id" (could
+    # use owl:sameAs but not convinced we want this).
     #
     #   - should I replace / by some other character since it could
     #     confuse some parsers? Replace space with ?
@@ -532,19 +552,20 @@ def addObsCoreRow(row):
         # Is this correct; ie is the obs_creator_name really
         # the same as observationMadeBy?
         #
-        cnameuri = addFragment(uri_dat, 'MAST_CREATOR_' + cname)
+        cnameuri = mkURI("/obsv/MAST/creator/", cname)
         gadd(graph, obsuri, adsobsv.observationMadeBy, cnameuri)
         gdadd(graph, cnameuri, [
             a, agent.PersonName,
             agent.fullName, Literal(cname)
             ])
 
-    # NOTE:
-    #   have to be careful since the value could be an IVOA identifier.
-    #
     ocoll = vals['obs_collection']
     if ocoll != '':
-        colluri = addFragment(uri_dat, 'MAST_COLLECTION_' + ocoll)
+        if is_ivoa_uri(ocoll):
+            colluri = URIRef(ocoll)
+        else:
+            colluri = mkURI("/obsv/MAST/collection/", ocoll)
+
         addVal(graph, daturi, adsobsv.fromDataCollection, colluri)
         gdadd(graph, colluri, [
             a, adsobsv.DataCollection,

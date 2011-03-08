@@ -422,7 +422,39 @@ datalen              : 22000
 fluxunit             : erg/cm**2/s/angstrom
 access_url           : http://archive.stsci.edu/pub/vospectra/befs2/befs1001_spc1_vo.fits
 
-CHANGES - 2011/03/03
+CHANGES since 2011/03/03:
+
+- URIs for the observation and datum are now
+
+    <ads_baseurl>/obsv/MAST/obsid/<obs_id>/observation/<hash of access_url>
+    <ads_baseurl>/obsv/MAST/obsid/<obs_id>/data/<hash of access_url>
+
+  where we use base64.urlsafe_b64encode(reverse of access_url) to calculate the hash. The
+  intention is that this reduces data download from queries (slash rather than hash URI)
+  and should allow access to data somewhat irrelevant of the scheme we use to encode
+  a particular row (e.g. if the data is moved to a different machine/access scheme then
+  you can use ../obsid/<obs_id>/observation/ to get some metadata about it all). It
+  should hopefully allow downstream processing to link related entities in a more
+  generic manner.
+
+- added URIs rather than bnodes for the objects of adsobsv.observationMadeBy
+  and adsobsv.fromDataCollection. These use the scheme
+
+    <ads_baseurl>/obsv/MAST/creator/<obs_creator_name>
+    <ads_baseurl>/obsv/MAST/collection/<obs_collection>
+
+  unless <obs_collection> is an IVOA identifier, in which case this is used
+  directly. Actually, need to adjust obs_creator_name/obs_collection to ensure
+  valid URIs; in particular replace space and / by _ (for now at least).
+
+- a URI for the target is created, as an AstronomicalSourceName. Downstream
+  processing can use this, together with source location, to try and identify
+  the source and locate a URI for it. This replaces the initial approach of using
+  an anonymous node.
+
+  The URI scheme is
+
+    <ads_baseurl>/obsv/MAST/target/<target_name>
 
 - associatedFootprint predicate now links to a bnode which is a FootPrint and not RegionOfSky
 
@@ -437,13 +469,7 @@ CHANGES - 2011/03/03
 
 - added use of adsobsv.tResolution to store the t_resolution field.
 
-- link to the target using adsbase.name rather than creating an anonymous node
-  via the adsobsv.target predicate.
-
-- wavelengthSAtart/End moved from the data to the observaion.
-
-- added URIs rather than bnodes for the objects of adsobsv.observationMadeBy
-  and adsobsv.fromDataCollection.
+- wavelengthStart/End moved from the data to the observation.
 
 - use wavelengthDomain to link to the em_domain field; note that I have changed the
   predicate to remove the range restriction since I want to use an enumerated type
@@ -451,13 +477,6 @@ CHANGES - 2011/03/03
   from the data - based on the em_min and em_max settings - rather than use the
   em_domain value itself.
 
-- a URI for the target is created, as an AstronomicalSourceName. Downstream
-  processing can use this, together with source location, to try and identify
-  the source and locate a URI for it.
-
 - dataURL is now a URI (I have replaced the literal restriction on the range with
   anyURI).
 
-- observation and data URIs are now based on a hash of the access_url value, placed
-  under the obs_id value, to ensure metadata is separated. Downstream processing
-  may combine values where appropriate.
