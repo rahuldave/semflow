@@ -90,6 +90,8 @@ The format is taken to be (from initial obscore tables in CSV format):
 
 import sys 
 
+#import hashlib
+import base64
 import csv
 
 from namespaces import *
@@ -298,7 +300,41 @@ def addFragment(base, fragment):
     cleaning the fragment. base should be a namespace object."""
 
     return base[cleanFragment(fragment)]
+
+# min/max wavelengths in metres, if applicable
+_emdomains = [
+    ('RADIO', 0.01, None),
+    ('MILLIMETER', 0.1e-3, 0.01),
+    ('INFRARED', 1e-6, 100e-6),
+    ('OPTICAL', 0.3e-6, 1e-6),
+    ('UV', 100e-9, 300e-9),
+    ('EUV', 100e-10, 1000e-10),
+    ('X-RAY', 0.1e-10, 100e-10),
+    ('GAMMA-RAY', None, 0.1e-10)
+     ]
+
+def getEMDomains(emin, emax):
+    """Given emin/max fields in metres (as floats),
+    return URIs for the corresponding EM_DOMAIN values.
+    """
+
+    if emin >= emax:
+        raise ValueError("emin >= emax!")
     
+    out = []
+
+    for (lbl, lmin, lmax) in _emdomains:
+        if lmin == None or emax > lmin:
+            out.append(addFragment(adsobsv, 'EMDOMAIN_' + lbl))
+
+        if lmin == None or emin >= lmin:
+            break
+
+    if out == []:
+        raise ValueError("Unable to match up emin={0} emax={1}".format(emin, emax))
+                         
+    return out
+
 def addObsCoreRow(row):
     """Returns a Graph representing the given row. We do not add it to the
     main graph here in case there is invalid data for this row. Perhaps
@@ -312,16 +348,41 @@ def addObsCoreRow(row):
 
     vals = row2dict(row)
 
-    # Try using the obs_id field as the identifier for the URI
-    # fragment.
+    # We use this as a hash and assume it is a unique value
+    # (could check this assumption as we process the files, but
+    # it was true in the original dataset).
     #
+    # Originally I had used the obs_id cell as a unique identifier for
+    # both observation and dataset, but it turned out not to be unique
+    # enough. It may be that this is down to the modelling, where we try
+    # to associate as much information as possible with the observation,
+    # rather than the data product. If the observation were very light-weight
+    # then we could keep this as an identifier for the observation, but
+    # would still need unique identifiers for the data values.
+    #
+    # We reverse the access URL before hashing to try and reduce collisions.
+    # The encoding is OTT; we do not need this many characters
+    #
+    access_url = vals['access_url']
+    if access_url.strip() == '':
+        raise ValueError("Empty access_url for row")
+    
     obs_id = vals['obs_id']
     if obs_id == '':
         raise ValueError("No obs_id value in this row!")
     
-    urifrag = cleanFragment('MAST_' + obs_id)
+    data_uri = URIRef(access_url)
+
+    urifrag = cleanFragment('MAST_' + base64.urlsafe_b64encode(access_url[::-1]))
     daturi = uri_dat[urifrag]
     obsuri = uri_obs[urifrag]
+
+    tname = vals['target_name']
+    if tname != '':
+        tname_uri = uri_conf[cleanFragment('TARGET_' + tname)]
+
+    else:
+        tname_uri = None
 
     graph = Graph()
 
@@ -351,6 +412,9 @@ def addObsCoreRow(row):
 
     ### Observational properties
     #
+    emmin = vals['em_min']
+    emmax = vals['em_max']
+
     addVals(graph, obsuri,
             [
                 adsbase.atTime, vals['date_obs'], asDateTime,
@@ -361,20 +425,32 @@ def addObsCoreRow(row):
                 adsobsv.tResolution, vals['t_resolution'], asFloat,
 
                 # Units?
-                adsobsv.wavelengthStart, vals['em_min'], asFloat,
-                adsobsv.wavelengthEnd, vals['em_max'], asFloat,
+                adsobsv.wavelengthStart, emmin, asFloat,
+                adsobsv.wavelengthEnd, emmax, asFloat,
 
-                # We just use a string literal to store the target name; downstream
-                # processing can try and improve this mapping.
-                #
-                # TODO: it seems that the predicate should be more descriptive
-                # than adsbase.name.
-                #
-                adsbase.name, vals['target_name'], Literal,
                 adsbase.title, vals['title'], Literal,
                 
             ])
-    
+
+    # For now we create a URI for each target_name and make
+    # it an AstronomicalSourceName.
+    #
+    if tname_uri != None:
+        gadd(graph, obsuri, adsbase.target, tname_uri)
+        addVals(graph, tname_uri,
+                [
+                    a, adsobsv.AstronomicalSourceName, None,
+                    adsbase.name, tname, Literal,
+                    ])
+
+    # We do not use the em_domain field since the values found in
+    # the MAST table do not appear to match the ObsCore/VODataService
+    # enumerations. Instead we create values based on the em_min/max
+    # fields. These could be inferred but worth being explicit here.
+    #
+    for domain in getEMDomains(float(emmin), float(emmax)):
+        addVal(graph, obsuri, adsobsv.wavelengthDomain, domain)
+
     sra = vals['s_ra']
     sdec = vals['s_dec']
     if sra != '' and sdec != '':
@@ -414,8 +490,8 @@ def addObsCoreRow(row):
     #
     addVals(graph, daturi,
             [
+                adsobsv.dataURL, data_uri, None,
                 pav.createdOn, vals['creation_date'], asDateTime,
-                adsobsv.dataURL, vals['access_url'], Literal, # TODO: surely this should allow a URI?
                 adsobsv.calibLevel, vals['calib_level'], asInt,
 
                 adsbase.dataType, vals['dataproduct_type'], Literal,
@@ -446,6 +522,9 @@ def addObsCoreRow(row):
             agent.fullName, Literal(cname)
             ])
 
+    # NOTE:
+    #   have to be careful since the value could be an IVOA identifier.
+    #
     ocoll = vals['obs_collection']
     if ocoll != '':
         colluri = addFragment(uri_dat, 'MAST_COLLECTION_' + ocoll)

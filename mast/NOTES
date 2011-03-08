@@ -238,7 +238,82 @@ and it does list a set
 
 RADIO, MILLIMETER, INFRARED, OPTICAL, UV, EUV, X-RAY, GAMMA-RAY
 
-which doesn't quite map to the above.
+which doesn't quite map to the values found from MAST.
+
+An analysis of the full MAST dataset shows the domains
+
+  Extreme-UV
+  Far-UV
+  Near-UV
+  Near-IR
+  
+are used. Checking the em_min/max fields against the VODataService
+recommended values I get (where 'input domain' refers to the EM_DOMAIN
+cell value of a row from MAST):
+
+The following re-mappings are needed:
+ Input domain: OPTICAL,NEAR-IR
+  -> OPTICAL  (307 times)
+  -> OPTICAL,INFRARED  (2270 times)
+
+ Input domain: FAR-UV
+  -> EUV  (676 times)
+  -> UV  (55357 times)
+  -> EUV,UV  (196 times)
+
+ Input domain: FAR-UV,NEAR-UV
+  -> UV,OPTICAL  (34424 times)
+  -> UV  (2414 times)
+
+ Input domain: EXTREME-UV,FAR-UV,NEAR-UV
+  -> EUV,UV  (632 times)
+
+ Input domain: X-RAY,EXTREME-UV,FAR-UV,NEAR-UV,OPTICAL,NEAR-IR
+  -> GAMMA-RAY,X-RAY,EUV,UV,OPTICAL  (75 times)
+
+ Input domain: NEAR-UV,OPTICAL,NEAR-IR
+  -> UV,OPTICAL  (18 times)
+  -> OPTICAL  (1538 times)
+
+ Input domain: NEAR-UV,OPTICAL
+  -> OPTICAL  (946 times)
+  -> UV,OPTICAL  (2347 times)
+
+ Input domain: EXTREME-UV,FAR-UV,NEAR-UV,OPTICAL,NEAR-IR
+  -> EUV,UV,OPTICAL  (478 times)
+
+ Input domain: EXTREME-UV
+  -> EUV  (451 times)
+
+ Input domain: FAR-UV,NEAR-UV,OPTICAL,NEAR-IR
+  -> EUV,UV,OPTICAL  (20 times)
+  -> UV,OPTICAL  (928 times)
+
+ Input domain: X-RAY,EXTREME-UV
+  -> X-RAY,EUV  (1326 times)
+
+ Input domain: NEAR-IR
+  -> INFRARED  (8 times)
+  -> OPTICAL  (625 times)
+  -> OPTICAL,INFRARED  (29 times)
+
+ Input domain: EXTREME-UV,FAR-UV
+  -> EUV  (96 times)
+  -> EUV,UV  (7999 times)
+
+ Input domain: NEAR-UV
+  -> UV,OPTICAL  (2450 times)
+  -> OPTICAL  (463 times)
+  -> UV  (6207 times)
+
+ Input domain: X-RAY,EXTREME-UV,FAR-UV,NEAR-UV
+  -> X-RAY,EUV,UV  (754 times)
+
+ Input domain: FAR-UV,NEAR-UV,OPTICAL
+  -> UV,OPTICAL  (40 times)
+
+So have decided to re-create the EM_DOMAIN field based on the
+input em_min/max values.
 
 **) Target information
 
@@ -247,23 +322,30 @@ We have
   target_name          : HD 220172
   title                : befs1001_spc1, HD 220172
 
-so how do we encode these? I now use adsbase.name to link the 
-observation to the target_name, and adsbgase.title for the title.
+so how do we encode these? 
 
-There should be some processing somewhere (here or downstream) to try
-and link the target (given by the name and pointing direction) to
-actual objects.
+The title is linked to the observation using the adsbase.title
+predicate.
 
-TODO: is it really right to link the observation to the target_name
-cell using the adsbase.name predicate? This doesn't seem to be
-quite right.
+The target name is used to create a URI which is then linked to the
+observation via the adsobsv.target predicate and is made an instance
+of the adsobsv.AstronomicalSourceName class. This allows for multiple
+sources with the same name, or for differences in spelling (but these
+would have to be sorted out or fixed downstream by adding further
+triples).
 
 **) Observer and Collection
 
 I now create URIs for an observer, mapped to the obs_creator_name
 cell, and an observation collection, mapped to the obs_collection
-cell. It is not obvious that obs_creator_name really maps to the
+cell. 
+
+It is not obvious that obs_creator_name really maps to the
 range of adsobsv.observationMadeBy.
+
+The choice of URI for obs_collection needs work since the obs_collection
+call may contain an IVOA identifier, which would mean it would make
+sense to use this - or at least have a better way of encoding this.
 
 **) URL
 
@@ -276,8 +358,16 @@ Probably want some enumerations for fields like
 
   dataproduct_type     : Spectrum.1D
 
+The ObsCore documentation has the value for this field being a
+"."-separated list, in lower case, with the base/start level being
+one of: image, spectrym, timeseries, visibility, eventlist, cube.
+
+It appears that all the MAST products are 1D spectra, since all rows
+have a value of Spectrum.1D.
+
 Although calib_level is an enumeration, may just be worth leaving as
-an integer, with constraints on the predicate/ontology?
+an integer, with constraints on the predicate/ontology? Note that
+adsobsv has an integer constraint on the range of the calibLevel predicate.
 
 **) Axes
 
@@ -354,3 +444,8 @@ CHANGES - 2011/03/03
 
 - added URIs rather than bnodes for the objects of adsobsv.observationMadeBy
   and adsobsv.fromDataCollection.
+
+- use wavelengthDomain to link to the em_domain field; note that I have changed the
+  predicate to remove the range restriction since I want to use an enumerated type
+  for the records, and not just a string.
+
