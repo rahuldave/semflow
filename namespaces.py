@@ -154,13 +154,26 @@ def n3encode(theitem):
     namespace, endurl=theitem.split(':')
     return "<"+str(namespace_dict[namespace])+endurl+">"
 
+# Since the values are stored as strings; we do a type conversion
+# to check that the value is valid, but store the input string
+# to avoid unnescessary numeric conversion.
+#
 def asInt(lit):
     "Create a literal node assuming integer input (i.e. store int(lit))"
-    return Literal(int(lit))
+    int(lit)
+    return Literal(lit, datatype=XSD.integer)
 
 def asFloat(lit):
-    "Create a literal node assuming floating-point input (i.e. store float(lit))."
-    return Literal(float(lit))
+    """Create a literal node assuming floating-point input (i.e. store float(lit)),
+    as an xsd:float."""
+    float(lit)
+    return Literal(lit, datatype=XSD.float)
+
+def asDouble(lit):
+    """Create a literal node assuming floating-point input (i.e. store float(lit)),
+    as an xsd:double."""
+    float(lit)
+    return Literal(lit, datatype=XSD.double)
 
 """
 def asDate(lit):

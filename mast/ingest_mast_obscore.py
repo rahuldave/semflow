@@ -454,15 +454,15 @@ def addObsCoreRow(row):
     addVals(graph, obsuri,
             [
                 adsbase.atTime, vals['date_obs'], asDateTime,
-                adsobsv.observedTime, vals['t_exptime'], asFloat, # QUS: units?
-                adsobsv.tExptime, vals['t_exptime'], asFloat, # QUS: units?
+                adsobsv.observedTime, vals['t_exptime'], asFloat, # QUS: units?; TODO: this should be an xsd:duration
+                adsobsv.tExptime, vals['t_exptime'], asDouble, # QUS: units?
 
-                adsobsv.resolution, vals['s_resolution'], asFloat,
-                adsobsv.tResolution, vals['t_resolution'], asFloat,
+                adsobsv.resolution, vals['s_resolution'], asDouble,
+                adsobsv.tResolution, vals['t_resolution'], asDouble,
 
                 # Units?
-                adsobsv.wavelengthStart, emmin, asFloat,
-                adsobsv.wavelengthEnd, emmax, asFloat,
+                adsobsv.wavelengthStart, emmin, asDouble,
+                adsobsv.wavelengthEnd, emmax, asDouble,
 
                 adsbase.title, vals['title'], Literal,
                 
@@ -500,8 +500,8 @@ def addObsCoreRow(row):
         gdbnadd(graph, obsuri, adsobsv.associatedPosition,
                 [
                     a, adsobsv.Pointing,
-                    adsobsv.ra, asFloat(sra),
-                    adsobsv.dec, asFloat(sdec),
+                    adsobsv.ra, asDouble(sra),
+                    adsobsv.dec, asDouble(sdec),
                 ])
 
     sregion = vals['s_region']
