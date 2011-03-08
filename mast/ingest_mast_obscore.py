@@ -91,6 +91,7 @@ The format is taken to be (from initial obscore tables in CSV format):
 import sys 
 
 #import hashlib
+import urllib
 import base64
 import csv
 
@@ -307,9 +308,11 @@ def addFragment(base, fragment):
 def cleanURIelement(txt):
     """convert unwanted characters in txt so that we can use this
     as part of the path of a URI.
+
+    We percent encode spaces and / characters.
     """
 
-    return txt.replace(" ", "_").replace("/", "_")
+    return urllib.quote(txt, "")
 
 def mkURI(path, elem):
     """Create a URI within ads_baseurl using path and then
@@ -339,6 +342,9 @@ def getEMDomains(emin, emax):
     """Given emin/max fields in metres (as floats),
     return URIs for the corresponding EM_DOMAIN values.
     """
+
+    if emin <= 0 or emax <= 0:
+        raise ValueError("emin={0}  emax={1}".format(emin, emax))
 
     if emin >= emax:
         raise ValueError("emin >= emax!")
@@ -463,9 +469,13 @@ def addObsCoreRow(row):
             ])
 
     # For now we create a URI for each target_name and make
-    # it an AstronomicalSourceName.
+    # it an AstronomicalSourceName. We know that this is not
+    # always "sensible", in that some names are not sources as
+    # such but calibration values (e.g. '20% UV FLOOD' or
+    # 'NULL SAFETY RD') or some scheme of the observer
+    # which may be positional or something else (e.g. '+014381').
     #
-    tname = vals['target_name']
+    tname = vals['target_name'].strip()
     if tname != '':
         tnameuri = mkURI("/obsv/MAST/target/", tname)
 
@@ -582,7 +592,7 @@ def writeObsCoreGraph(graph, fname, format="n3"):
     fd = open(fname, "w")
     fd.write(output)
     fd.close()
-    print "Created: " + fname
+    print("Created: {0}".format(fname))
 
 def makeGraph():
     "Returns a new graph."
@@ -623,14 +633,15 @@ def getObsCoreFile(fname, ohead, nsplit=10000, format="n3"):
             rpass += 1
         
         except Exception, e:
-            print >> sys.stderr, "ERROR: row# " + str(rnum) + "\n" + str(e)
+            sys.stderr.write("ERROR: row# {0}\n\n".format(rnum))
 
         if rnum % 100 == 0:
-            print "Processed row: " + str(rnum)
+            print ("Processed row: {0}".format(rnum))
 
         if rnum % nsplit == 0:
             # TODO: do we want to catch IO errors here?
-            writeObsCoreGraph(graph, ohead + "." + str(idx) + "." + format,
+            writeObsCoreGraph(graph,
+                              "{0}.{1}.{2}".format(ohead, idx, format),
                               format=format)
             idx += 1
             graph = makeGraph()
@@ -641,14 +652,15 @@ def getObsCoreFile(fname, ohead, nsplit=10000, format="n3"):
     #
     if rnum % nsplit != 0:
         # TODO: do we want to catch IO errors here?
-        writeObsCoreGraph(graph, ohead + "." + str(idx) + "." + format,
+        writeObsCoreGraph(graph,
+                          "{0}.{1}.{2}".format(ohead, idx, format),
                           format=format)
 
     if rpass == 0:
         raise IOError("No rows were converted!")
     
     if rnum != rpass:
-        print "NOTE: " + str(rnum-rpass) + " rows were not included!"
+        print ("NOTE: {0} rows were not included!".format(rnum-rpass))
 
 _fmts = { "n3": "n3", "rdf": "xml" }
 
@@ -663,14 +675,14 @@ if __name__=="__main__":
             fmt = sys.argv[2]
 
         if not(fmt in _fmts):
-            raise ValueError("Invalid format '" + fmt + "'")
+            raise ValueError("Invalid format '{0}'".format(fmt))
         
         bname=os.path.basename(fname)
         ohead = "tests/mast/" + bname
-        getObsCoreFile(fname, ohead, format=fmt)
+        getObsCoreFile(fname, ohead, format=fmt, nsplit=2500)
 
     else:
-        print "Usage: " + sys.argv[0] + " <filename> [rdf|n3]"
+        sys.stderr.write("Usage: {0} <filename> [rdf|n3]\n".format(sys.argv[0]))
         sys.exit(-1)
 
 

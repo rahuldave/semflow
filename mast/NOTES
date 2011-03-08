@@ -422,6 +422,125 @@ datalen              : 22000
 fluxunit             : erg/cm**2/s/angstrom
 access_url           : http://archive.stsci.edu/pub/vospectra/befs2/befs1001_spc1_vo.fits
 
+* A study of the target_name field
+
+Analysis of output showed there are targets called 0 and NULL; apparently all from
+IUE.
+
+% ./select obscore.psv telescope_name target_name | sort | uniq
+... gives a lot of output
+
+% ./select obscore.psv telescope_name target_name | sort | uniq | wc -l
+   22205
+% ./select obscore.psv target_name | sort | uniq | wc -l
+   20789
+
+Note: first element is empty
+
+% ./select obscore.psv target_name | sort | uniq
+
+#24(N5139)
+#39(NGC4449)
+#5701(N5139)
+& AND
+& CEP
+& LEP
++014381
++031011
++072899
++102179
++133224
++28 4211
++284211
++302431
++332642
++341543
++371977
++37442
++393226
++394926
++463471
++482721
++492137
++523383A
++55 2899
++551317
++61303
++70 5824
++73 8031
++75 325
++75325
++9 5214
+-032179
+-035357
+-15,CM30
+-15,CM60
+-184436
+-2-58-22
+-249052
+-314800
+-38222
+-41 7727
+-417727
+-417753
+-4314304
+-481577
+-485215
+-5 23174
+-535072
+-535736
+-555588
+-568032
+-59 4550
+-66D40
+-67 117A
+-67153
+-69D249C
+0
+...
+20%
+20% CALUV
+20% TFLOOD
+20% UV
+20% UV FLOOD
+20%CALUV
+20%CALUVC
+20%TFLOOD
+20%UVFLOO
+200% CALUV
+200% TFLOOD
+200% UV
+200% UV FLOOD
+... (and other %/FLOOD ones)
+:HD137509
+...
+
+./select obscore.psv target_name | sort | uniq | grep NULL
+G1 CUTOFF NULL
+HEATER LOW NULL
+HI GAIN NULL
+HIGAIN NULL
+HIGH GAIN NULL
+LWR NULL
+NEAR NULL
+NULL
+NULL (SAFETY RD)
+NULL (SAFETYRD)
+NULL AT 40 KBS
+NULL AT 40KBS
+NULL HIGAIN
+NULL IMAGE
+NULL IMG
+NULL ITF TEST
+NULL READ
+NULL SAFETY RD
+NULL SAFETY READ
+NULL/SAFETY READ
+NULL/SAFTEY READ
+NULLREAD
+PARTIAL NULL
+
+
 CHANGES since 2011/03/03:
 
 - URIs for the observation and datum are now
