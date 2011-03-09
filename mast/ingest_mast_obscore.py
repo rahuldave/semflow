@@ -454,7 +454,7 @@ def addObsCoreRow(row):
     addVals(graph, obsuri,
             [
                 adsbase.atTime, vals['date_obs'], asDateTime,
-                adsobsv.observedTime, vals['t_exptime'], asFloat, # QUS: units?; TODO: this should be an xsd:duration
+                adsobsv.observedTime, vals['t_exptime'], asDuration,
                 adsobsv.tExptime, vals['t_exptime'], asDouble, # QUS: units?
 
                 adsobsv.resolution, vals['s_resolution'], asDouble,

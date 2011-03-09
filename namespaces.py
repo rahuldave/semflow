@@ -189,3 +189,49 @@ def asDateTime(lit):
 
     dt = datetime.datetime.strptime(lit, '%Y-%m-%d %H:%M:%S')
     return Literal(dt)
+
+def asDuration(lit):
+    """Create a literal node using the XSD.duration datatype,
+    described at http://www.w3.org/TR/xmlschema-2/#duration 
+
+    lit is assumed to be in seconds.
+
+    To simplify the conversion, the duration is split up to a
+    maximum of days; ie we do not try to calculate the number
+    of months or years (this should not be a common duration
+    for our data).
+    
+    """
+
+    dt = float(lit)
+    if dt < 0:
+        dt = abs(dt)
+        outstr = "-P"
+    elif dt > 0:
+        outstr = "P"
+    else:
+        return "PT0S"
+
+    (nd, r1) = divmod(dt, 24*3600)
+    nd = int(nd)
+    if nd > 0:
+        outstr += "{0}D".format(nd)
+
+    if r1 > 0:
+        outstr += "T"
+
+        (nh, r2) = divmod(r1, 3600)
+        nh = int(nh)
+        if nh > 0:
+            outstr += "{0}H".format(nh)
+
+        if r2 > 0:
+            (nm, ns) = divmod(r2, 60)
+            nm = int(nm)
+            if nm > 0:
+                outstr += "{0}M".format(nm)
+
+            if ns > 0:
+                outstr += "{0}S".format(ns)
+                      
+    return outstr
