@@ -54,12 +54,10 @@ adsobsv=ADSNamespace("ADS-obsv.owl")
 
 aakeys=ADSNamespace("AAKeys.rdf")
 
-# The following do not currently exist:
-#
-# ajkeys=ADSNamespace("AJKeys.rdf")
-# normalizedkeys=ADSNamespace("NormalizedKeys.rdf")
-# arxivkeys=ADSNamespace("ArxivKeys.rdf")
-# pacs=ADSNamespace("pacs.rdf")
+ajkeys=ADSNamespace("AJKeys.rdf")
+normalizedkeys=ADSNamespace("NormalizedKeys.rdf")
+arxivkeys=ADSNamespace("ArxivKeys.rdf")
+pacs=ADSNamespace("pacs.rdf")
 
 #get basic configuration instances from below
 
@@ -76,7 +74,7 @@ uri_meta=MyNamespace(ads_baseurl+"/meta#")
 uri_agents=MyNamespace(ads_baseurl+"/agents#")
 uri_conf=MyNamespace(ads_baseurl+"/conf#")
 
-#BASE=adsbase.namespace
+BASE=adsbase.namespace
 a=rdf.type
 
 
@@ -98,10 +96,10 @@ adsobsv=adsobsv.namespace,
 skos=skos.namespace,
 aakeys=aakeys.namespace,
 
-# pacs=pacs.namespace,
-# normalizedkeys=normalizedkeys.namespace,
-# arxivkeys=arxivkeys.namespace,
-# ajkeys=ajkeys.namespace,
+pacs=pacs.namespace,
+normalizedkeys=normalizedkeys.namespace,
+arxivkeys=arxivkeys.namespace,
+ajkeys=ajkeys.namespace,
 
 uri_context=uri_context.namespace,
 uri_base=uri_base.namespace,
