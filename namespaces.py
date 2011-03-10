@@ -210,7 +210,7 @@ def asDuration(lit):
     elif dt > 0:
         outstr = "P"
     else:
-        return "PT0S"
+        return Literal("PT0S", datatype=XSD.duration)
 
     (nd, r1) = divmod(dt, 24*3600)
     nd = int(nd)
