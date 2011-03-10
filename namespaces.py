@@ -234,4 +234,4 @@ def asDuration(lit):
             if ns > 0:
                 outstr += "{0}S".format(ns)
                       
-    return outstr
+    return Literal(outstr, datatype=XSD.duration)
