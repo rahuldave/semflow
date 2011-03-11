@@ -52,6 +52,15 @@ class XMLObj:
             "failed to get %s attribute value from %s element" % (attr, elem)
 
 
+def getObsURI(obsid):
+    return uri_obs['CHANDRA/obsid/'+obsid+"/"]
+    
+def getDatURI(obsid):
+    return uri_dat['CHANDRA/obsid/'+obsid+"/"]
+    
+def getPropURI(propid):
+    return uri_prop['CHANDRA/propid/'+propid+"/"]
+    
 def getObsFile(fname):
     g = ConjunctiveGraph(identifier=URIRef(ads_baseurl))
     bindgraph(g)
@@ -64,38 +73,80 @@ def getObsFile(fname):
     trec['instrument_name']=xobj.elementAttribute('instrument', 'name')
     trec['obsvtype']=xobj.type
     trec['time']=xobj.observed_time
+    trec['created_time']=xobj.public_avail
     trec['date']=xobj.start_date
     trec['ra']=xobj.ra
     trec['dec']=xobj.dec
     trec['proposal_id']=xobj.elementAttribute('proposal', 'id')
     #print trec
-    obsuri=uri_obs['CHANDRA_'+trec['obsid']]
-    daturi=uri_dat['CHANDRA_'+trec['obsid']]
+    obsuri=getObsURI(trec['obsid'])
+    daturi=getDatURI(trec['obsid'])
+    
     gadd(g, daturi, a, adsobsv.Datum)
     gadd(g, obsuri, a, adsobsv.SimpleObservation)
-    gdadd(g, obsuri, [
-            adsobsv.observationId, Literal(trec['obsid']),
-            adsobsv.observationType, Literal(trec['obsvtype']),
-            adsbase.atTime, Literal(trec['date']),
-            adsobsv.observedTime, Literal(trec['time']),
-            adsbase.atObservatory, uri_conf['OBSERVATORY_CHANDRA'],
-            adsobsv.atTelescope,   uri_conf['TELESCOPE_CHANDRA'],
-            adsbase.usingInstrument, uri_conf['INSTRUMENT_CHANDRA_'+trec['instrument_name']],
-            adsobsv.hasDatum, daturi,
-            adsbase.asAResultOfProposal, uri_prop['CHANDRA_'+trec['proposal_id']]
-        ]
-    )
+    #Connect the data product and the observation
     gdadd(g, daturi, [
             adsobsv.dataProductId, Literal(trec['obsid']),
             adsobsv.forSimpleObservation, obsuri
         ]
     )
-    gdbnadd(g, obsuri, adsobsv.associatedPosition, [
-            a, adsobsv.Pointing,
-            adsobsv.ra, Literal(trec['ra']),
-            adsobsv.dec, Literal(trec['dec'])
+    tname = trec['obsname'].strip()
+    gdadd(g, obsuri, [
+            adsobsv.observationId, Literal(trec['obsid']),
+            adsobsv.observationType, Literal(trec['obsvtype']),
+            adsbase.atObservatory, uri_infra['observatory/CHANDRA'],
+            adsobsv.atTelescope,   uri_infra['telescope/CHANDRA'],
+            adsbase.usingInstrument, uri_infra['instrument/CHANDRA_'+trec['instrument_name']],
+            adsobsv.hasDatum, daturi,
+            adsbase.title, Literal(tname),
+            adsbase.asAResultOfProposal, getPropURI(trec['proposal_id'])
         ]
     )
+    #fstring: Sep 17 2000  8:01PM %b %d %Y %H:%M%p
+    emmin=0.1e-10
+    emmax=100e-10
+    addVals(g, obsuri, [
+            adsbase.atTime, trec['date'], asDateTime('%b %d %Y %H:%M%p'),
+            adsobsv.observedTime, float(trec['time'])*1000, asDuration,
+            adsobsv.tExpTime, trec['time'], asDouble,
+            adsobsv.wavelengthStart, emmin, asDouble,
+            adsobsv.wavelengthEnd, emmax, asDouble,
+        ]
+    )
+    
+    
+    if tname != '':
+        tnameuri = uri_target["CHANDRA/"+quote_plus(tname)+"/"]
+
+        gadd(g, obsuri, adsbase.target, tnameuri)
+        addVals(g, tnameuri,
+                [
+                    a, adsobsv.AstronomicalSourceName, None,
+                    adsbase.name, tname, Literal,
+                    ])
+                    
+    for domain in getEMDomains(float(emmin), float(emmax)):
+        addVal(g, obsuri, adsobsv.wavelengthDomain, domain)
+        
+    gdbnadd(g, obsuri, adsobsv.associatedPosition, [
+            a, adsobsv.Pointing,
+            adsobsv.ra, asDouble(trec['ra']),
+            adsobsv.dec, asDouble(trec['dec'])
+        ]
+    )
+    
+    addVals(g, daturi,
+            [
+                pav.createdOn, trec['created_time'], asDateTime('%b %d %Y %H:%M%p'),
+            ]
+    )
+    #should this be under uri_agents or collaboration instead?
+    cnameuri = uri_conf["project/CHANDRA"]
+    gadd(g, obsuri, adsobsv.observationMadeBy, cnameuri)
+#    gdadd(graph, cnameuri, [ This stuff is thought off as configuration
+#            a, adsbase.Project,
+#            agent.fullName, Literal(cname)
+#    ])
     serializedstuff=g.serialize(format='xml')
     return serializedstuff
     
@@ -126,8 +177,10 @@ def getPubFile(fname):
     bibcode_uri = uri_bib[trec['bibcode']]
     print bibcode_uri
     for obsid in trec['obsids']:
-        obsuri=uri_obs['CHANDRA_'+obsid]
-        daturi=uri_dat['CHANDRA_'+obsid]
+        obsuri=getObsURI(obsid)
+        daturi=getDatURI(obsid)
+        #obsuri=uri_obs['CHANDRA_'+obsid]
+        #daturi=uri_dat['CHANDRA_'+obsid]
         gadd(g, bibcode_uri, adsbase.aboutScienceProcess, obsuri)
         gadd(g, bibcode_uri, adsbase.aboutScienceProduct, daturi)
         gadd(g, bibcode_uri, adsobsv.datum_p, Literal(str(boolobsids).lower()))
@@ -171,7 +224,12 @@ def getPropFile(fname):
     propuri=uri_prop['CHANDRA_'+trec['propid']]
     #This is FALSE. TODO..fix to ads normed name or lookitup How? Blanknode? WOW.
     qplabel=trec['pi'][0]+'_'+trec['pi'][1]
-    auth_uri = uri_agents[qplabel]
+    fullname=trec['pi'][0]+', '+trec['pi'][1]
+    auth_uri = uri_agents["PersonName/"+qplabel+"/"+str(uuid.uuid4())+"/"]
+    gdadd(g, auth_uri, [
+            a, agent.PersonName,
+            agent.fullName, Literal(fullname)
+            ])
     gadd(g, propuri, a, adsbase.ObservationProposal)
     gdadd(g, propuri, [
             adsobsv.observationProposalId, Literal(trec['propid']),
@@ -206,13 +264,14 @@ if __name__=="__main__":
         fname=sys.argv[1]
         bname=os.path.basename(fname)
         style=sys.argv[2]
-        ofname="tests/chandrastart/"+style+"/"+bname+".rdf"
+        ofname="tests/chandrastart2/"+style+"/"+bname+".rdf"
         output=dafunc[style](fname)
         #getPubFile(sys.argv[1])
         if style in ['obsv', 'pub', 'prop']:
-            fd=open(ofname, "w")
-            fd.write(output)
-            fd.close()
+            print output
+            #fd=open(ofname, "w")
+            #fd.write(output)
+            #fd.close()
     else:
         print "Worong usage", sys.argv
         sys.exit(-1)

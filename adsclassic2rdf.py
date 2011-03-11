@@ -111,7 +111,7 @@ def record_meta(g, record):
     bibcode_uri = uri_bib[record.bibcode]
     #ads='ADS'
     #ads_uri = uri_conf['ADS']
-    adsrdfagent_uri = uri_agents[__file__+"-"+str(__version__)]
+    adsrdfagent_uri = uri_agents["Software/"+__file__+"-"+str(__version__)]
     #gadd(g, ads_uri, a, adsbib.Aggregator)
     gadd(g, meta_uri, a, fabio.BibliographicMetadata)
     gadd(g, meta_uri, a, fabio.EntityMetadata)
@@ -253,7 +253,7 @@ def do_authors(g, record, theuuid):
         auth_fname=authnamenode.findall('western')[0].text
         auth_name=authnamenode.findall('normalized')[0].text
         qplabel='_'.join(quote_plus(auth_name).split('+'))
-        auth_uri = uri_agents[qplabel]
+        auth_uri = uri_agents["PersonName/"+qplabel+"/"+str(uuid.uuid4())+"/"]
         gadd(g, auth_uri, a, agent.PersonName)
         gadd(g, auth_uri, agent.fullName, Literal(auth_fname))
         gadd(g, auth_uri, agent.normName, Literal(auth_name))

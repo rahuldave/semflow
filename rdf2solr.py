@@ -1,4 +1,4 @@
-#rdf2solr
+#rdf2solr: this is only for the bib stuff...not the connected observation and proposal stuff
 import adsrdf
 import pysolr
 from urllib import unquote, quote_plus
@@ -6,7 +6,7 @@ import uuid, sys
 import HTMLParser
 
 SESAME='http://localhost:8081/openrdf-sesame/'
-REPOSITORY='testads3'
+REPOSITORY='testads4'
 SOLR='http://localhost:8983/solr'
 
 def getInfoForBibcode(bibcode):

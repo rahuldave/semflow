@@ -1,4 +1,4 @@
-#v2
+#v2: This contains the connected stuff
 #rdf2solr
 import adsrdf
 import pysolr
@@ -7,7 +7,7 @@ import uuid, sys
 import HTMLParser, datetime, calendar
 
 SESAME='http://localhost:8081/openrdf-sesame/'
-REPOSITORY='testads3'
+REPOSITORY='testads4'
 SOLR='http://localhost:8983/solr'
 
 def splitns(theuri):

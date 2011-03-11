@@ -30,7 +30,7 @@ stuff=fd.read()
 fd.close()
 
 simbad=eval(stuff)
-DATA="/home/rdave/semflow/tests/chandrastart"
+DATA="/home/rdave/semflow/tests/chandrastart2"
 
 
 #file to read is output of simad1.py and assumes bibcode.simbad
