@@ -52,10 +52,14 @@ class XMLObj:
             "failed to get %s attribute value from %s element" % (attr, elem)
 
 
-def getObsURI(obsid):
+def getObsURI(obsid, fragment=None):
+    if fragment:
+        return uri_obs['CHANDRA/obsid/'+obsid+"/"+fragment+"/"]
     return uri_obs['CHANDRA/obsid/'+obsid+"/"]
     
-def getDatURI(obsid):
+def getDatURI(obsid, fragment=None):
+    if fragment:
+        return uri_obs['CHANDRA/obsid/'+obsid+"/"+fragment+"/"]
     return uri_dat['CHANDRA/obsid/'+obsid+"/"]
     
 def getPropURI(propid):
@@ -80,15 +84,39 @@ def getObsFile(fname):
     trec['proposal_id']=xobj.elementAttribute('proposal', 'id')
     #print trec
     obsuri=getObsURI(trec['obsid'])
-    daturi=getDatURI(trec['obsid'])
-    
+    daturi=getDatURI(trec['obsid'], fragment="I")
+    daturi2=getDatURI(trec['obsid'], fragment="S")
     gadd(g, daturi, a, adsobsv.Datum)
     gadd(g, obsuri, a, adsobsv.SimpleObservation)
     #Connect the data product and the observation
+    access_url="http://cda.harvard.edu/chaser/ocatList.do?obsid="+trec['obsid']
     gdadd(g, daturi, [
-            adsobsv.dataProductId, Literal(trec['obsid']),
-            adsobsv.forSimpleObservation, obsuri
+            adsobsv.dataProductId, Literal(trec['obsid']+"/I/"),
+            adsobsv.forSimpleObservation, obsuri,
+            adsobsv.dataURL, URIRef(access_url)
         ]
+    )
+    gdadd(g, daturi2, [
+            adsobsv.dataProductId, Literal(trec['obsid']+"/S/"),
+            adsobsv.forSimpleObservation, obsuri,
+            adsobsv.dataURL, URIRef(access_url)
+        ]
+    )
+    addVals(g, daturi,
+            [
+                pav.createdOn, trec['created_time'], asDateTime('%b %d %Y %H:%M%p'),
+                adsobsv.calibLevel, 2, asInt,
+
+                adsbase.dataType, "image", Literal,
+            ]
+    )
+    addVals(g, daturi2,
+            [
+                pav.createdOn, trec['created_time'], asDateTime('%b %d %Y %H:%M%p'),
+                adsobsv.calibLevel, 2, asInt,
+
+                adsbase.dataType, "spectra", Literal,
+            ]
     )
     tname = trec['obsname'].strip()
     gdadd(g, obsuri, [
@@ -108,7 +136,7 @@ def getObsFile(fname):
     addVals(g, obsuri, [
             adsbase.atTime, trec['date'], asDateTime('%b %d %Y %H:%M%p'),
             adsobsv.observedTime, float(trec['time'])*1000, asDuration,
-            adsobsv.tExpTime, trec['time'], asDouble,
+            adsobsv.tExpTime, float(trec['time'])*1000, asDouble,
             adsobsv.wavelengthStart, emmin, asDouble,
             adsobsv.wavelengthEnd, emmax, asDouble,
         ]
@@ -135,11 +163,7 @@ def getObsFile(fname):
         ]
     )
     
-    addVals(g, daturi,
-            [
-                pav.createdOn, trec['created_time'], asDateTime('%b %d %Y %H:%M%p'),
-            ]
-    )
+    
     #should this be under uri_agents or collaboration instead?
     cnameuri = uri_conf["project/CHANDRA"]
     gadd(g, obsuri, adsobsv.observationMadeBy, cnameuri)

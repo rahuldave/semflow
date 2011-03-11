@@ -1,0 +1,15 @@
+Chandra uris and other notes
+-----------------------------
+
+As opposed to what is being currently done with MAST, i want to keep chandra uris not:
+/obsv/MAST/obsid/[obs_id]/data/hash/
+/obsv/MAST/obsid/[obs_id]/observation/hash/
+but 
+/obsv/data/CHANDRA/obsid/[obsid]/hash/
+/obsv/observation/CHANDRA/obsid/[obsid]/hash/
+
+and keep hash optional (as its uniqie in chandras case (no multiple row problem)
+
+Need added from Sherry:
+data type and data URL
+
