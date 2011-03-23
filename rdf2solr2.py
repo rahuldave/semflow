@@ -166,7 +166,7 @@ def putIntoSolr(solrinstance, bibcode):
     print '===================================='
     #print bibdir
     print '===================================='
-    solrinstance.add([bibdir], commit=True)
+    solrinstance.add([bibdir], commit=False)
     
 if __name__=="__main__":
     c=adsrdf.ADSConnection(SESAME, REPOSITORY)
@@ -182,4 +182,4 @@ if __name__=="__main__":
         print "Indexing: ",ele
         putIntoSolr(solr, ele)
         print "-------------"
-    #solr.commit()
+    solr.commit()

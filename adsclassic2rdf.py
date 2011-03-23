@@ -20,7 +20,7 @@ except:
     from xml.etree import ElementTree
 import HTMLParser
 
-DATA="./tests/chandrastart"
+DATA="../chandra-rdf"
 
 def _xmlcharref_encode(unicode_data, encoding="ascii"):
     """Emulate Python 2.3's 'xmlcharrefreplace' encoding error handler."""
