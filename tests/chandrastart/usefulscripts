@@ -1,4 +1,4 @@
-cat tests/chandrastart/obsids.txt | sed 's/^/python chandra\/obsids.py \/home\/rdave\/chandradata\/Datum\//g' | sed 's/$/.xml obsv/g' > tests/chandrastart/obsids.sh
-rdave@boom:~/semflow$ cat tests/chandrastart/bibs.txt | sed 's/^/python chandra\/obsids.py \/home\/rdave\/chandradata\/Publications\//g' | sed 's/$/.xml pub/g' > tests/chandrastart/pub.sh
-rdave@boom:~/semflow$ cat tests/chandrastart/prop | sed 's/^/python chandra\/obsids.py \/home\/rdave\/chandradata\/Proposal\//g' | sed 's/$/.xml prop/g' > tests/chandrastart/prop.sh
+cat tests/chandrastart/obsids.txt | sed 's/^/python chandra\/obsids.py ..\/rahul\/chandradata\/Datum\//g' | sed 's/$/.xml obsv/g' > tests/chandrastart/obsids.sh
+cat tests/chandrastart/bibs.txt | sed 's/&/%26/g' | sed 's/^/python chandra\/obsids.py ..\/rahul\/chandradata\/Publications\//g' | sed 's/$/.xml pub/g' > tests/chandrastart/pub.sh
+cat tests/chandrastart/prop.txt | sed 's/^/python chandra\/obsids.py ..\/rahul\/chandradata\/Proposal\//g' | sed 's/$/.xml prop/g' > tests/chandrastart/prop.sh
 

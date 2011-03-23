@@ -1,30 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:pav="http://swan.mindinformatics.org/ontologies/1.2/pav/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:nodeID="uMQanoQa2">
-    <adsobsv:dec>2.3114138224818</adsobsv:dec>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#Pointing"/>
-    <adsobsv:ra>149.91976957512</adsobsv:ra>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_8008">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#Datum"/>
-    <adsobsv:dataProductId>8008</adsobsv:dataProductId>
-    <adsobsv:forSimpleObservation rdf:resource="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_8008"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_8008">
-    <adsobsv:observationId>8008</adsobsv:observationId>
-    <adsbase:usingInstrument rdf:resource="http://ads.harvard.edu/sem/conf#INSTRUMENT_CHANDRA_ACIS-I"/>
-    <adsobsv:observedTime>47.03</adsobsv:observedTime>
-    <adsobsv:hasDatum rdf:resource="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_8008"/>
-    <adsbase:atObservatory rdf:resource="http://ads.harvard.edu/sem/conf#OBSERVATORY_CHANDRA"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#SimpleObservation"/>
-    <adsbase:atTime>Jan  2 2007  4:39AM</adsbase:atTime>
-    <adsobsv:associatedPosition rdf:nodeID="uMQanoQa2"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/8008/">
     <adsobsv:observationType>GO</adsobsv:observationType>
-    <adsbase:asAResultOfProposal rdf:resource="http://ads.harvard.edu/sem/bib/prop#CHANDRA_2245"/>
-    <adsobsv:atTelescope rdf:resource="http://ads.harvard.edu/sem/conf#TELESCOPE_CHANDRA"/>
+    <adsobsv:wavelengthDomain rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#EMDOMAIN_X-RAY"/>
+    <adsbase:atObservatory rdf:resource="http://ads.harvard.edu/sem/infrastructure/observatory/CHANDRA"/>
+    <adsbase:target rdf:resource="http://ads.harvard.edu/sem/obsv/target/CHANDRA/C-COSMOS3-5/"/>
+    <adsobsv:atTelescope rdf:resource="http://ads.harvard.edu/sem/infrastructure/telescope/CHANDRA"/>
+    <adsobsv:wavelengthEnd rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1e-08</adsobsv:wavelengthEnd>
+    <adsobsv:observationId>8008</adsobsv:observationId>
+    <adsobsv:observedTime rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">PT13H3M50.0S</adsobsv:observedTime>
+    <adsbase:title>C-COSMOS3-5</adsbase:title>
+    <adsbase:atTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2007-01-02T04:39:00</adsbase:atTime>
+    <adsobsv:associatedPosition rdf:nodeID="ndHlpeQA2"/>
+    <adsobsv:wavelengthStart rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1e-11</adsobsv:wavelengthStart>
+    <adsobsv:observationMadeBy rdf:resource="http://ads.harvard.edu/sem/conf/project/CHANDRA"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#SimpleObservation"/>
+    <adsbase:usingInstrument rdf:resource="http://ads.harvard.edu/sem/infrastructure/instrument/CHANDRA_ACIS-I"/>
+    <adsobsv:tExpTime rdf:datatype="http://www.w3.org/2001/XMLSchema#double">47030.0</adsobsv:tExpTime>
+    <adsobsv:hasDatum rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/8008/I/"/>
+    <adsbase:asAResultOfProposal rdf:resource="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/2245/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/8008/S/">
+    <pav:createdOn rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2007-01-03T06:40:00</pav:createdOn>
+    <adsobsv:dataURL rdf:resource="http://cda.harvard.edu/chaser/ocatList.do?obsid=8008"/>
+    <adsbase:dataType>spectra</adsbase:dataType>
+    <adsobsv:forSimpleObservation rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/8008/"/>
+    <adsobsv:dataProductId>8008/S/</adsobsv:dataProductId>
+    <adsobsv:calibLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</adsobsv:calibLevel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/target/CHANDRA/C-COSMOS3-5/">
+    <adsbase:name>C-COSMOS3-5</adsbase:name>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#AstronomicalSourceName"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/8008/I/">
+    <pav:createdOn rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2007-01-03T06:40:00</pav:createdOn>
+    <adsobsv:dataURL rdf:resource="http://cda.harvard.edu/chaser/ocatList.do?obsid=8008"/>
+    <adsobsv:forSimpleObservation rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/8008/"/>
+    <adsbase:dataType>image</adsbase:dataType>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#Datum"/>
+    <adsobsv:dataProductId>8008/I/</adsobsv:dataProductId>
+    <adsobsv:calibLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</adsobsv:calibLevel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ndHlpeQA2">
+    <adsobsv:ra rdf:datatype="http://www.w3.org/2001/XMLSchema#double">149.91976957512</adsobsv:ra>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#Pointing"/>
+    <adsobsv:dec rdf:datatype="http://www.w3.org/2001/XMLSchema#double">2.3114138224818</adsobsv:dec>
   </rdf:Description>
 </rdf:RDF>

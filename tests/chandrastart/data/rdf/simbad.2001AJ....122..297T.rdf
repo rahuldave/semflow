@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2001AJ....122..297T">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#KB_MK_101"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/KB_MK_101"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#KB_MK_101">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/KB_MK_101">
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <adsbase:name>KB MK 101</adsbase:name>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
     <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'PartofCloud ~', 'refcode': '2001AJ....122..297T', 'ra': 'No Coord.', '_raw': 'KB MK 101|No Coord.|PartofCloud ~|~,~,~|~,~,~', 'dec': 'No Coord.', 'id': 'KB MK 101'}</adsbase:hasMetadataString>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
   </rdf:Description>
 </rdf:RDF>

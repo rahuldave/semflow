@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2004ApJ...613..200S">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#SN_2000fv"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#SN_2000fv">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/SN_2000fv">
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+    <adsbase:name>SN 2000fv</adsbase:name>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
     <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'SN ~', 'refcode': '2004ApJ...613..200S', 'ra': '222.79158', '_raw': 'SN 2000fv|222.79158|-26.63653|SN ~|~,~,~|~,~,~', 'dec': '-26.63653', 'id': 'SN 2000fv'}</adsbase:hasMetadataString>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2004ApJ...613..200S">
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/SN_2000fv"/>
   </rdf:Description>
 </rdf:RDF>

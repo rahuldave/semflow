@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_322">
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/322/">
     <adsbase:title>X-RAY PROPERTIES OF A HIGH-REDSHIFT CLUSTER</adsbase:title>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
     <adsobsv:observationProposalId>322</adsobsv:observationProposalId>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Garmire_Gordon"/>
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Garmire_Gordon/33ba2680-f058-4a2a-81ca-abc2ccd04a75/"/>
     <adsobsv:observationProposalType>CHANDRA/CLUSTERS OF GALAXIES</adsobsv:observationProposalType>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Garmire_Gordon/33ba2680-f058-4a2a-81ca-abc2ccd04a75/">
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <agent:fullName>Garmire, Gordon</agent:fullName>
   </rdf:Description>
 </rdf:RDF>

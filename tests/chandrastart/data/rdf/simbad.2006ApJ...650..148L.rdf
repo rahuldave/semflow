@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#NAME_TADPOLE_GALAXY">
-    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'IG ~', 'refcode': '2006ApJ...650..148L', 'ra': '241.516417', '_raw': 'NAME TADPOLE GALAXY|241.516417|+55.425369|IG ~|~,~,~|SB,D,~', 'dec': '+55.425369', 'id': 'NAME TADPOLE GALAXY'}</adsbase:hasMetadataString>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2006ApJ...650..148L">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#NAME_TADPOLE_GALAXY"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/NAME_TADPOLE_GALAXY"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/NAME_TADPOLE_GALAXY">
+    <adsbase:name>NAME TADPOLE GALAXY</adsbase:name>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'IG ~', 'refcode': '2006ApJ...650..148L', 'ra': '241.516417', '_raw': 'NAME TADPOLE GALAXY|241.516417|+55.425369|IG ~|~,~,~|SB,D,~', 'dec': '+55.425369', 'id': 'NAME TADPOLE GALAXY'}</adsbase:hasMetadataString>
   </rdf:Description>
 </rdf:RDF>

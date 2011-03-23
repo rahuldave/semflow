@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2005ApJ...618...46J">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#ClG_1054-03"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#ClG_1054-03">
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/ClG_1054-03">
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
     <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'ClG ~', 'refcode': '2005ApJ...618...46J', 'ra': '164.2508', '_raw': 'ClG 1054-03|164.2508|-03.6242|ClG ~|~,~,~|~,~,~', 'dec': '-03.6242', 'id': 'ClG 1054-03'}</adsbase:hasMetadataString>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <adsbase:name>ClG 1054-03</adsbase:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2005ApJ...618...46J">
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/ClG_1054-03"/>
   </rdf:Description>
 </rdf:RDF>

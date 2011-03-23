@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2003ApJ...596.1177E">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#Cl%2A_NGC_104_EGH_R2"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#Cl%2A_NGC_104_EGH_R2">
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/Cl%2A_NGC_104_EGH_R2">
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+    <adsbase:name>Cl* NGC  104    EGH R2</adsbase:name>
     <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'RRLyr ~', 'refcode': '2003ApJ...596.1177E', 'ra': 'No Coord.', '_raw': 'Cl* NGC  104    EGH R2|No Coord.|RRLyr ~|~,~,~|~,~,~', 'dec': 'No Coord.', 'id': 'Cl* NGC  104    EGH R2'}</adsbase:hasMetadataString>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2003ApJ...596.1177E">
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/Cl%2A_NGC_104_EGH_R2"/>
   </rdf:Description>
 </rdf:RDF>

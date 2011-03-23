@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_871">
-    <adsobsv:observationProposalType>CHANDRA/SN, SNR AND ISOLATED NS</adsobsv:observationProposalType>
-    <adsbase:title>AO3A ACIS-I CALIBRATION OBSERVATIONS OF E0102-72</adsbase:title>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/871/">
     <adsobsv:observationProposalId>871</adsobsv:observationProposalId>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Calibration_CXC"/>
+    <adsobsv:observationProposalType>CHANDRA/SN, SNR AND ISOLATED NS</adsobsv:observationProposalType>
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Calibration_CXC/67ee3724-e5aa-45b1-81a4-bb1d75aec981/"/>
+    <adsbase:title>AO3A ACIS-I CALIBRATION OBSERVATIONS OF E0102-72</adsbase:title>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Calibration_CXC/67ee3724-e5aa-45b1-81a4-bb1d75aec981/">
+    <agent:fullName>Calibration, CXC</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
   </rdf:Description>
 </rdf:RDF>

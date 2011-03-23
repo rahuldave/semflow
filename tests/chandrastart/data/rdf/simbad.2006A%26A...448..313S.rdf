@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2006A&amp;A...448..313S">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#PSR_B2223%2B65"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#PSR_B2223%2B65">
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/PSR_B2223%2B65">
     <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Pulsar ~', 'refcode': '2006A&amp;A...448..313S', 'ra': '336.46817', '_raw': 'PSR B2223+65|336.46817|+65.59272|Pulsar ~|~,~,~|~,~,~', 'dec': '+65.59272', 'id': 'PSR B2223+65'}</adsbase:hasMetadataString>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+    <adsbase:name>PSR B2223+65</adsbase:name>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2006A&amp;A...448..313S">
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/PSR_B2223%2B65"/>
   </rdf:Description>
 </rdf:RDF>

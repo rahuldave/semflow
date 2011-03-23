@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#%5BXXM2002%5D_B">
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/%5BXXM2002%5D_B">
     <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'X ~', 'refcode': '2002ApJ...564..196X', 'ra': 'No Coord.', '_raw': '[XXM2002] B|No Coord.|X ~|~,~,~|~,~,~', 'dec': 'No Coord.', 'id': '[XXM2002] B'}</adsbase:hasMetadataString>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+    <adsbase:name>[XXM2002] B</adsbase:name>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2002ApJ...564..196X">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#%5BXXM2002%5D_B"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/%5BXXM2002%5D_B"/>
   </rdf:Description>
 </rdf:RDF>

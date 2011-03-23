@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#FRL_49">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/FRL_49">
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <adsbase:name>FRL   49</adsbase:name>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
     <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Seyfert_2 ~', 'refcode': '2006ApJ...651..728C', 'ra': '279.242737', '_raw': 'FRL   49|279.242737|-59.402344|Seyfert_2 ~|~,~,~|~,~,~', 'dec': '-59.402344', 'id': 'FRL   49'}</adsbase:hasMetadataString>
   </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2006ApJ...651..728C">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#FRL_49"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/FRL_49"/>
   </rdf:Description>
 </rdf:RDF>

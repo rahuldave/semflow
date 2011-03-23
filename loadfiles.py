@@ -9,7 +9,7 @@ c=connection('http://localhost:8081/openrdf-sesame/')
 c.use_repository('testads4')
 context=None
 testcodeuristart='<http://ads.harvard.edu/sem/context#'
-DATA="/home/rdave/semflow/tests/chandrastart2"
+DATA="../chandra-rdf"
 
 #c.addnamespace('fb','http://rdf.freebase.com/ns/')
 #c.addnamespace('dc','http://purl.org/dc/elements/1.1/')

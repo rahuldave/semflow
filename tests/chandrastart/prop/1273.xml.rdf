@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_1273">
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/1273/">
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
     <adsobsv:observationProposalId>1273</adsobsv:observationProposalId>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
-    <adsobsv:observationProposalType>CHANDRA/ACTIVE GALAXIES AND QUASARS</adsobsv:observationProposalType>
     <adsbase:title>A CHANDRA SURVEY OF INFRARED-BRIGHT LINER GALAXIES</adsbase:title>
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Satyapal_Shobita"/>
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Satyapal_Shobita/0d07cf8c-8643-4800-a32f-6125345e59f8/"/>
+    <adsobsv:observationProposalType>CHANDRA/ACTIVE GALAXIES AND QUASARS</adsobsv:observationProposalType>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Satyapal_Shobita/0d07cf8c-8643-4800-a32f-6125345e59f8/">
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <agent:fullName>Satyapal, Shobita</agent:fullName>
   </rdf:Description>
 </rdf:RDF>

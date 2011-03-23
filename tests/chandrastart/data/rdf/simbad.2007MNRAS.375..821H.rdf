@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2007MNRAS.375..821H">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#%5BFS2003%5D_1000"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/%5BFS2003%5D_1000"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#%5BFS2003%5D_1000">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/%5BFS2003%5D_1000">
     <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Star ~', 'refcode': '2007MNRAS.375..821H', 'ra': '284.14629', '_raw': '[FS2003] 1000|284.14629|-37.90847|Star ~|~,~,~|~,~,~', 'dec': '-37.90847', 'id': '[FS2003] 1000'}</adsbase:hasMetadataString>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+    <adsbase:name>[FS2003] 1000</adsbase:name>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
   </rdf:Description>
 </rdf:RDF>

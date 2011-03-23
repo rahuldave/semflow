@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsbib="http://github.com/rahuldave/ontoads/owl/adsbib.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsbib="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2005ApJ...631..832W">
-    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_4719"/>
-    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_4681"/>
-    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_4682"/>
-    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_4719"/>
-    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_4681"/>
-    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_4682"/>
+    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/4682/"/>
+    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/4719/"/>
+    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/4681/"/>
     <adsbib:paperType>science</adsbib:paperType>
     <adsobsv:datum_p>true</adsobsv:datum_p>
+    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/data/CHANDRA/obsid/4681/"/>
+    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/data/CHANDRA/obsid/4719/"/>
+    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/data/CHANDRA/obsid/4682/"/>
   </rdf:Description>
 </rdf:RDF>

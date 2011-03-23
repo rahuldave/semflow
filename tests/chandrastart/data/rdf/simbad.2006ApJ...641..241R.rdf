@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#%5BJRW2005b%5D_122">
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
-    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'X ~', 'refcode': '2006ApJ...641..241R', 'ra': '210.88492', '_raw': '[JRW2005b] 122|210.88492|+54.35083|X ~|~,~,~|~,~,~', 'dec': '+54.35083', 'id': '[JRW2005b] 122'}</adsbase:hasMetadataString>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2006ApJ...641..241R">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#%5BJRW2005b%5D_122"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/%5BJRW2005b%5D_122"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/%5BJRW2005b%5D_122">
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'X ~', 'refcode': '2006ApJ...641..241R', 'ra': '210.88492', '_raw': '[JRW2005b] 122|210.88492|+54.35083|X ~|~,~,~|~,~,~', 'dec': '+54.35083', 'id': '[JRW2005b] 122'}</adsbase:hasMetadataString>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+    <adsbase:name>[JRW2005b] 122</adsbase:name>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
   </rdf:Description>
 </rdf:RDF>

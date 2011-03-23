@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsbib="http://github.com/rahuldave/ontoads/owl/adsbib.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsbib="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2003ApJ...599..957B">
-    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_3412"/>
-    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_3494"/>
-    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_3493"/>
-    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_3411"/>
+    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/3494/"/>
+    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/3411/"/>
+    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/3412/"/>
+    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/3493/"/>
     <adsbib:paperType>science</adsbib:paperType>
     <adsobsv:datum_p>true</adsobsv:datum_p>
-    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_3493"/>
-    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_3494"/>
-    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_3412"/>
-    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_3411"/>
+    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/data/CHANDRA/obsid/3494/"/>
+    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/data/CHANDRA/obsid/3411/"/>
+    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/data/CHANDRA/obsid/3493/"/>
+    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/data/CHANDRA/obsid/3412/"/>
   </rdf:Description>
 </rdf:RDF>

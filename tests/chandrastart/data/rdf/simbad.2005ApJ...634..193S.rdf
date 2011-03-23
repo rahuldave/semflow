@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#%5BSKL2005%5D_QSO_J2303%2B0852_abs_0.0134">
-    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'AbsLineSystem ~', 'refcode': '2005ApJ...634..193S', 'ra': '345.81562', '_raw': '[SKL2005] QSO J2303+0852 abs 0.0134|345.81562|+08.87386|AbsLineSystem ~|~,~,~|~,~,~', 'dec': '+08.87386', 'id': '[SKL2005] QSO J2303+0852 abs 0.0134'}</adsbase:hasMetadataString>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2005ApJ...634..193S">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#%5BSKL2005%5D_QSO_J2303%2B0852_abs_0.0134"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/%5BSKL2005%5D_QSO_J2303%2B0852_abs_0.0134"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/%5BSKL2005%5D_QSO_J2303%2B0852_abs_0.0134">
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'AbsLineSystem ~', 'refcode': '2005ApJ...634..193S', 'ra': '345.81562', '_raw': '[SKL2005] QSO J2303+0852 abs 0.0134|345.81562|+08.87386|AbsLineSystem ~|~,~,~|~,~,~', 'dec': '+08.87386', 'id': '[SKL2005] QSO J2303+0852 abs 0.0134'}</adsbase:hasMetadataString>
+    <adsbase:name>[SKL2005] QSO J2303+0852 abs 0.0134</adsbase:name>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
   </rdf:Description>
 </rdf:RDF>

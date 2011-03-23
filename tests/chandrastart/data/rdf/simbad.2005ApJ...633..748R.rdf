@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#QSO_J1701%2B6412">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/QSO_J1701%2B6412">
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
     <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'QSO ~', 'refcode': '2005ApJ...633..748R', 'ra': '255.2525908', '_raw': 'QSO J1701+6412|255.2525908|+64.2025394|QSO ~|~,~,~|?...,D,~', 'dec': '+64.2025394', 'id': 'QSO J1701+6412'}</adsbase:hasMetadataString>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+    <adsbase:name>QSO J1701+6412</adsbase:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2005ApJ...633..748R">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#QSO_J1701%2B6412"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/QSO_J1701%2B6412"/>
   </rdf:Description>
 </rdf:RDF>

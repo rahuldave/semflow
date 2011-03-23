@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_674">
-    <adsbase:title>USING CHANDRA TO ELUCIDATE THE STARBURST-AGN CONNECTION</adsbase:title>
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Levenson_Nancy"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/674/">
     <adsobsv:observationProposalType>CHANDRA/ACTIVE GALAXIES AND QUASARS</adsobsv:observationProposalType>
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Levenson_Nancy/036393a8-8c2f-4632-8a7a-e743e88f33ac/"/>
+    <adsbase:title>USING CHANDRA TO ELUCIDATE THE STARBURST-AGN CONNECTION</adsbase:title>
     <adsobsv:observationProposalId>674</adsobsv:observationProposalId>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Levenson_Nancy/036393a8-8c2f-4632-8a7a-e743e88f33ac/">
+    <agent:fullName>Levenson, Nancy</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
   </rdf:Description>
 </rdf:RDF>

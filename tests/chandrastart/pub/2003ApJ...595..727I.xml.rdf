@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsbib="http://github.com/rahuldave/ontoads/owl/adsbib.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsbib="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2003ApJ...595..727I">
-    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_7674"/>
-    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_1968"/>
-    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_765"/>
-    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_763"/>
-    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_1969"/>
-    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_766"/>
-    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/dat#CHANDRA_1970"/>
+    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/766/"/>
+    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/765/"/>
+    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/1970/"/>
+    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/1968/"/>
+    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/763/"/>
+    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/7674/"/>
+    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/1969/"/>
     <adsbib:paperType>science</adsbib:paperType>
+    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/data/CHANDRA/obsid/7674/"/>
+    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/data/CHANDRA/obsid/763/"/>
+    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/data/CHANDRA/obsid/1969/"/>
+    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/data/CHANDRA/obsid/1968/"/>
+    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/data/CHANDRA/obsid/765/"/>
+    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/data/CHANDRA/obsid/766/"/>
+    <adsbase:aboutScienceProduct rdf:resource="http://ads.harvard.edu/sem/obsv/data/CHANDRA/obsid/1970/"/>
     <adsobsv:datum_p>true</adsobsv:datum_p>
-    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_763"/>
-    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_1968"/>
-    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_1969"/>
-    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_766"/>
-    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_7674"/>
-    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_765"/>
-    <adsbase:aboutScienceProcess rdf:resource="http://ads.harvard.edu/sem/obsv/obs#CHANDRA_1970"/>
   </rdf:Description>
 </rdf:RDF>

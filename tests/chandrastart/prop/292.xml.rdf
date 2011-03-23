@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_292">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
-    <adsobsv:observationProposalId>292</adsobsv:observationProposalId>
-    <adsobsv:observationProposalType>CHANDRA/ACTIVE GALAXIES AND QUASARS</adsobsv:observationProposalType>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Garmire_Gordon/f28d3b16-5299-4369-a941-fe63f7edc6c4/">
+    <agent:fullName>Garmire, Gordon</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/292/">
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Garmire_Gordon/f28d3b16-5299-4369-a941-fe63f7edc6c4/"/>
     <adsbase:title>ACIS IMAGING OF THE STARBURST GALAXY M82</adsbase:title>
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Garmire_Gordon"/>
+    <adsobsv:observationProposalType>CHANDRA/ACTIVE GALAXIES AND QUASARS</adsobsv:observationProposalType>
+    <adsobsv:observationProposalId>292</adsobsv:observationProposalId>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
   </rdf:Description>
 </rdf:RDF>

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#NAME_SCUTUM_SPIRAL_ARM">
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
-    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'PartofG ~', 'refcode': '2003ApJ...588..264K', 'ra': 'No Coord.', '_raw': 'NAME SCUTUM SPIRAL ARM|No Coord.|PartofG ~|~,~,~|~,~,~', 'dec': 'No Coord.', 'id': 'NAME SCUTUM SPIRAL ARM'}</adsbase:hasMetadataString>
-  </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2003ApJ...588..264K">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#NAME_SCUTUM_SPIRAL_ARM"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/NAME_SCUTUM_SPIRAL_ARM"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/NAME_SCUTUM_SPIRAL_ARM">
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'PartofG ~', 'refcode': '2003ApJ...588..264K', 'ra': 'No Coord.', '_raw': 'NAME SCUTUM SPIRAL ARM|No Coord.|PartofG ~|~,~,~|~,~,~', 'dec': 'No Coord.', 'id': 'NAME SCUTUM SPIRAL ARM'}</adsbase:hasMetadataString>
+    <adsbase:name>NAME SCUTUM SPIRAL ARM</adsbase:name>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
   </rdf:Description>
 </rdf:RDF>

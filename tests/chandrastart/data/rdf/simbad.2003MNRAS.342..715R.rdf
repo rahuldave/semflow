@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#NAME_LOCAL_GROUP">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
-    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'GroupG ~', 'refcode': '2003MNRAS.342..715R', 'ra': 'No Coord.', '_raw': 'NAME LOCAL GROUP|No Coord.|GroupG ~|~,~,~|~,~,~', 'dec': 'No Coord.', 'id': 'NAME LOCAL GROUP'}</adsbase:hasMetadataString>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2003MNRAS.342..715R">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#NAME_LOCAL_GROUP"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/NAME_LOCAL_GROUP"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/NAME_LOCAL_GROUP">
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'GroupG ~', 'refcode': '2003MNRAS.342..715R', 'ra': 'No Coord.', '_raw': 'NAME LOCAL GROUP|No Coord.|GroupG ~|~,~,~|~,~,~', 'dec': 'No Coord.', 'id': 'NAME LOCAL GROUP'}</adsbase:hasMetadataString>
+    <adsbase:name>NAME LOCAL GROUP</adsbase:name>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
   </rdf:Description>
 </rdf:RDF>

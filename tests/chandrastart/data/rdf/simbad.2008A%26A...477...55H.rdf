@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2008A&amp;A...477...55H">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#%5BHSE2008%5D_AC_114_512"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/%5BHSE2008%5D_AC_114_512"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#%5BHSE2008%5D_AC_114_512">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/%5BHSE2008%5D_AC_114_512">
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <adsbase:name>[HSE2008] AC 114  512</adsbase:name>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
     <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'RedExtreme ~', 'refcode': '2008A&amp;A...477...55H', 'ra': '344.721992', '_raw': '[HSE2008] AC 114  512|344.721992|-34.817356|RedExtreme ~|~,~,~|~,~,~', 'dec': '-34.817356', 'id': '[HSE2008] AC 114  512'}</adsbase:hasMetadataString>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
   </rdf:Description>
 </rdf:RDF>

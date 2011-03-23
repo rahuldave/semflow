@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2007AJ....133.1988G">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#UGC_12163"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/UGC_12163"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#UGC_12163">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/UGC_12163">
     <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Seyfert_1 ~', 'refcode': '2007AJ....133.1988G', 'ra': '340.663788', '_raw': 'UGC 12163|340.663788|+29.725431|Seyfert_1 ~|~,~,~|SB,D,~', 'dec': '+29.725431', 'id': 'UGC 12163'}</adsbase:hasMetadataString>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <adsbase:name>UGC 12163</adsbase:name>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
   </rdf:Description>
 </rdf:RDF>

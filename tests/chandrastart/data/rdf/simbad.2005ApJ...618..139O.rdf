@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2005ApJ...618..139O">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#18P_78"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/18P_78"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#18P_78">
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/18P_78">
+    <adsbase:name>18P  78</adsbase:name>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
     <adsbase:hasMetadataString>{'mtype': 'O4.5,D,~', 'otype': 'HII ~', 'refcode': '2005ApJ...618..139O', 'ra': '309.7546', '_raw': '18P  78|309.7546|+42.3286|HII ~|O4.5,D,~|~,~,~', 'dec': '+42.3286', 'id': '18P  78'}</adsbase:hasMetadataString>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
   </rdf:Description>
 </rdf:RDF>

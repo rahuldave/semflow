@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2001MNRAS.325.1500P">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#CCDM_J05168%2B4559AP"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/CCDM_J05168%2B4559AP"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#CCDM_J05168%2B4559AP">
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/CCDM_J05168%2B4559AP">
+    <adsbase:name>CCDM J05168+4559AP</adsbase:name>
     <adsbase:hasMetadataString>{'mtype': 'G5IIIe+...,D,1990ApJS...74.1075M', 'otype': '** ~', 'refcode': '2001MNRAS.325.1500P', 'ra': '079.1723296', '_raw': 'CCDM J05168+4559AP|079.1723296|+45.9979911|** ~|G5IIIe+...,D,1990ApJS...74.1075M|~,~,~', 'dec': '+45.9979911', 'id': 'CCDM J05168+4559AP'}</adsbase:hasMetadataString>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
   </rdf:Description>
 </rdf:RDF>

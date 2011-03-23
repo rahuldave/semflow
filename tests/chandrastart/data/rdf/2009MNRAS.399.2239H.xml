@@ -1,558 +1,558 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsbib="http://github.com/rahuldave/ontoads/owl/adsbib.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsbib="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#"
    xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:cito="http://purl.org/spar/cito/"
    xmlns:fabio="http://purl.org/spar/fabio/"
    xmlns:pav="http://swan.mindinformatics.org/ontologies/1.2/pav/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:nodeID="otCfwbPL2751">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2005ApJ...630..405H</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  Hynes  630  1  405  2005  10.1086/431966  Observational Constraints on Cool Disk Material in Quiescent Black Hole Binaries</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2717">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>laidler  2005  synphot user s guide version 5 0</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2749">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Pavlovsky   C.  ,   Koekemoer   A.  ,   Mack   J.   ,  eds ,  2005 ,  HST Data Handbook for ACS v4.0 .  STScI ,   Baltimore</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2714">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>1993MNRAS.265..834C</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>mnras  casares  265  834  1993</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Gallo%2C_E">
-    <agent:normName>Gallo, E</agent:normName>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Casares%2C_J/306e1ba4-9cde-4fde-8a8d-63c23156a195/">
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg2710"/>
+    <agent:normName>Casares, J</agent:normName>
+    <agent:fullName>Casares, J.</agent:fullName>
     <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL2708"/>
-    <agent:fullName>Gallo, E.</agent:fullName>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2705">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbase:affiliationText>Department of Physics and Astronomy, Louisiana State University, Baton Rouge, Louisiana 70803, USA</adsbase:affiliationText>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2715">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>chiaberge  2007  acs ccds uv and narrow-band filters red leak check instrument science report acs 2007-03</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2746">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2004ApJ...611L.125H</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  Hynes  611  2  L125  2004  10.1086/424005  Correlated X-Ray and Optical Variability in V404 Cygni in Quiescence</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/meta#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3">
-    <pav:importedOn rdf:datatype="xsd:dateTime">2011-01-03T15:43:45.349043</pav:importedOn>
-    <pav:importedFromSource rdf:resource="http://ads.harvard.edu/sem/conf#ADS"/>
-    <pav:lastUpdateOn rdf:datatype="xsd:dateTime">2011-01-03T15:43:45.349043</pav:lastUpdateOn>
-    <rdf:type rdf:resource="http://purl.org/spar/fabio/EntityMetadata"/>
-    <rdf:type rdf:resource="http://purl.org/spar/fabio/BibliographicMetadata"/>
-    <pav:importedBy rdf:resource="http://ads.harvard.edu/sem/agents#adsclassic2rdf.py-0.01"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2753">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2005PASP..117.1049S</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Publications of the Astronomical Society of the Pacific  00046280  Sirianni  117  836  1049  2005  10.1086/444553  The Photometric Performance and Calibration of the &lt;i&gt;Hubble Space Telescope&lt;/i&gt; Advanced Camera for Surveys</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2752">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier></adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Riess   A.  ,   Mack   J.   ,  2004 ,  Time Dependence of ACS WFC CTE Corrections for Photometry and Future Predictions, Instrument Science Report ACS 2004-006 .  STScI ,   Baltimore</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2759">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2009ApJ...690..496C</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  Chapman  690  1  496  2009  10.1088/0004-637X/690/1/496  THE MID-INFRARED EXTINCTION LAW IN THE OPHIUCHUS, PERSEUS, AND SERPENS MOLECULAR CLOUDS</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2733">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>1979ApJ...228..939C</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  Cash  228  939  1979  10.1086/156922  Parameter estimation in astronomy through application of the likelihood ratio</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2703">
-    <rdf:type rdf:resource="http://purl.org/spar/fabio/Abstract"/>
-    <adsbib:abstractText>We present a multiwavelength study of the black hole X-ray binary V404 Cyg in quiescence, focusing upon the spectral energy distribution (SED). Radio, optical, ultraviolet (UV) and X-ray coverage is simultaneous. We supplement the SED with additional non-simultaneous data in the optical through infrared where necessary. The compiled SED is the most complete available for this, the X-ray and radio brightest quiescent black hole system. We find no need for a substantial contribution from accretion light from the near-UV to the near-IR, and in particular the weak UV emission constrains published spectral models for V404 Cyg. We confirm that no plausible companion spectrum and interstellar extinction can fully explain the mid-IR, however, and an infrared (IR) excess from a jet or cool disc appears to be required. The X-ray spectrum is consistent with a Γ ~ 2 power law as found by all other studies to date. There is no evidence for any variation in the hardness over a range of a factor of 10 in luminosity. The radio flux is consistent with a flat spectrum (in f&lt;SUB&gt;ν&lt;/SUB&gt;). The break frequency between a flat and optically thin spectrum most likely occurs in the mid or far-IR, but is not strongly constrained by these data. We find the radio to be substantially variable but with no clear correlation with X-ray variability.</adsbib:abstractText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2755">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2006ApJ...648L.135M</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  Muno  648  2  L135  2006  10.1086/507990  Mid-Infrared Emission from Dust around Quiescent Low-Mass X-Ray Binaries</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2736">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2002hstc.conf..337K</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Koekemoer   A. M.  ,   Fruchter   A. S.  ,   Hook   R. N.  ,   Hack   W.   ,  2002 ,  in    Arribas   S.  ,   Koekemoer   A.  ,   Whitmore   B.   ,  eds ,  Proc. The 2002 HST Calibration Workshop: Hubble after the Installation of the ACS and the NICMOS Cooling System .  STScI ,   Baltimore  ,  p .  337</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2738">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>1999PASP..111...63F</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Publications of the Astronomical Society of the Pacific  00046280  Fitzpatrick  111  755  63  1999  10.1086/316293  Correcting for the Effects of Interstellar Extinction</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2709">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbase:affiliationText>School of Physics and Astronomy, The University of Southampton, Southampton, SO17 1BJ</adsbase:affiliationText>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3">
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...620..905Y"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000ApJ...531..956M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005MNRAS.356.1017G"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...555..483E"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994MNRAS.271L..10S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996ApJ...457..821N"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1993MNRAS.260L...5K"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1993MNRAS.265..834C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002A&amp;A...382..752H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1979ApJ...228..939C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...619..931I"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ApJ...648L.135M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002hstc.conf..337K"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1997ApJ...482..448N"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1977ApJ...218..767S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006MNRAS.370.1351G"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999ApJ...520..298Q"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...670..600G"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996ApJ...471..673C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008NewAR..51..733N"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996MNRAS.282..977S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...570..277K"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008MNRAS.388.1751M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...593..435M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001A&amp;A...372L..25M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...690..496C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999AJ....117..521V"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...553L..47G"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005PASP..117.1049S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999ApJ...525..871H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...630..405H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994MNRAS.271L...5C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999PASP..111...63F"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1991PASP..103..198U"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008MNRAS.389.1697C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002MNRAS.330.1009H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004MNRAS.352..877Z"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004ApJ...611L.125H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003MNRAS.343L..99F"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Fender%2C_R"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Zurita%2C_C"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Rupen%2C_M"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Gallo%2C_E"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Bradley%2C_C"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Hynes%2C_R"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Casares%2C_J"/>
-    <adsbib:keywordText>accretion disks, accretion, stars binaries close</adsbib:keywordText>
-    <adsbib:workIdentifier>2009MNRAS.399.2239H</adsbib:workIdentifier>
-    <adsbib:keywordConcept rdf:resource="http://github.com/rahuldave/ontoads/owl/NormalizedKeys.rdf#accretion"/>
-    <adsbib:keywordConcept rdf:resource="http://github.com/rahuldave/ontoads/owl/NormalizedKeys.rdf#stars_binaries_close"/>
-    <adsbib:keywordConcept rdf:resource="http://github.com/rahuldave/ontoads/owl/NormalizedKeys.rdf#accretion_disks"/>
-    <adsbib:hasAbstract rdf:nodeID="otCfwbPL2703"/>
-    <adsbase:languageIn>en</adsbase:languageIn>
-    <adsbib:citeMeAs>Monthly Notices of the Royal Astronomical Society, Volume 399, Issue 4, pp. 2239-2248.</adsbib:citeMeAs>
-    <rdf:type rdf:resource="http://purl.org/spar/fabio/ResearchPaper"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#WrittenProduct"/>
-    <adsbib:defaultRealizedThrough rdf:resource="http://ads.harvard.edu/sem/bib#2009MNRAS.399.2239H"/>
-    <adsbase:title>The quiescent spectral energy distribution of V404 Cyg</adsbase:title>
-    <adsbib:hasAggregation rdf:nodeID="otCfwbPL2704"/>
-    <cito:peerReviewed rdf:datatype="xsd:boolean">True</cito:peerReviewed>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2722">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>1996MNRAS.282..977S</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>mnras  shahbaz  282  977  1996</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2729">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2001ApJ...553L..47G</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  Garcia  553  1  L47  2001  10.1086/320494  New Evidence for Black Hole Event Horizons from [ITAL]Chandra[/ITAL]</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2758">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2008MNRAS.389.1697C</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Monthly Notices of the Royal Astronomical Society  00358711  Corbel  389  4  1697  2008  10.1111/j.1365-2966.2008.13542.x  Revisiting the radio/X-ray flux correlation in the black hole V404 Cyg: from outburst to quiescence</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2711">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>boffi  2007  acs instrument handbook version 8 0</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2723">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>1994MNRAS.271L..10S</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>mnras  shahbaz  271  10  1994</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2716">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>1993MNRAS.260L...5K</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>mnras  king  260  5  1993</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2720">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier></adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>pavlovsky  2005  hst data handbook for acs v4 0</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2724">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2002MNRAS.330.1009H</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Monthly Notices of the Royal Astronomical Society  00358711  Hynes  330  4  1009  2002  10.1046/j.1365-8711.2002.05145.x  H&lt;i /&gt; flares from V404 Cyg in quiescence</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2737">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2000ApJ...531..956M</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  McClintock  531  2  956  2000  10.1086/308510  &lt;i&gt;HST&lt;/i&gt;/STIS UV Spectroscopy of Two Quiescent X--Ray Novae: A0620-00 and Centaurus X--4</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2754">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2006MNRAS.370.1351G</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Monthly Notices of the Royal Astronomical Society  00358711  Gallo  370  3  1351  2006  10.1111/j.1365-2966.2006.10560.x  A radio-emitting outflow in the quiescent state of A0620?00: implications for modelling low-luminosity black hole binaries</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2706">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbase:affiliationText>Department of Physics and Astronomy, Louisiana State University, Baton Rouge, Louisiana 70803, USA</adsbase:affiliationText>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2747">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2005MNRAS.356.1017G</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Monthly Notices of the Royal Astronomical Society  00358711  Gallo  356  3  1017  2005  10.1111/j.1365-2966.2004.08503.x  The radio spectrum of a quiescent stellar mass black hole</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2727">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>1977ApJ...218..767S</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  Stone  218  767  1977  10.1086/155732  Spectral energy distributions of standard stars of intermediate brightness. II.</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2740">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2002ApJ...570..277K</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  Kong  570  1  277  2002  10.1086/339501  The X--Ray Spectra of Black Hole X--Ray Novae in Quiescence as Measured by &lt;i&gt;Chandra&lt;/i&gt;</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Zurita%2C_C">
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Zurita%2C_C/9406032a-22f6-458b-9f1c-71b7505b8328/">
     <agent:normName>Zurita, C</agent:normName>
-    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
     <agent:fullName>Zurita, C.</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2719">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2008MNRAS.388.1751M</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>mnras  miller-jones  388  1751  2008</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2744">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
+  <rdf:Description rdf:nodeID="eHQlytdg2744">
     <adsbib:identifier>2003MNRAS.343L..99F</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
     <adsbib:citationText>Monthly Notices of the Royal Astronomical Society  00358711  Fender  343  4  L99  2003  10.1046/j.1365-8711.2003.06950.x  Jet-dominated states: an alternative to advection across black hole event horizons in 'quiescent' X-ray binaries</adsbib:citationText>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2742">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
+  <rdf:Description rdf:nodeID="eHQlytdg2755">
+    <adsbib:identifier>2006ApJ...648L.135M</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  Muno  648  2  L135  2006  10.1086/507990  Mid-Infrared Emission from Dust around Quiescent Low-Mass X-Ray Binaries</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2742">
     <adsbib:identifier>2001A&amp;A...372L..25M</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
     <adsbib:citationText>Astronomy and Astrophysics  00046361  Markoff  372  2  L25  2001  10.1051/0004-6361:20010420  A jet model for the broadband spectrum of XTE J1118+480</adsbib:citationText>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2730">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>1996ApJ...471..673C</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  Churazov  471  2  673  1996  10.1086/177997  Mapping the Gas Temperature Distribution in Extended X--Ray Sources and Spectral Analysis in the Case of Low Statistics: Application to &lt;i&gt;ASCA&lt;/i&gt; Observations of Clusters of Galaxies</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2704">
-    <adsbib:hasExpression rdf:resource="http://ads.harvard.edu/sem/bib#2009MNRAS.399.2239H"/>
-    <adsbib:bibcode>2009MNRAS.399.2239H</adsbib:bibcode>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Aggregation"/>
-    <adsbib:aggregatedAt rdf:resource="http://ads.harvard.edu/sem/conf#ADS"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Rupen%2C_M">
-    <agent:normName>Rupen, M</agent:normName>
-    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL2707"/>
-    <agent:fullName>Rupen, M.</agent:fullName>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2009arXiv0907.4376H">
-    <fabio:isRealizationOf rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:publishedIn rdf:resource="http://ads.harvard.edu/sem/conf#ARXIV"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Eprint"/>
-    <adsbib:eprintid>arXiv:0907.4376</adsbib:eprintid>
-    <adsbib:alsoPublishedIn rdf:resource="http://ads.harvard.edu/sem/bib#2009MNRAS.399.2239H"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Bradley%2C_C">
-    <agent:normName>Bradley, C</agent:normName>
-    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL2706"/>
-    <agent:fullName>Bradley, C. K.</agent:fullName>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2710">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbase:affiliationText>Instituto de Astrof&amp;iacute;sica de Canarias, 38200 La Laguna, Tenerife, Spain</adsbase:affiliationText>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2743">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2003ApJ...593..435M</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  McClintock  593  1  435  2003  10.1086/376406  Multiwavelength Spectrum of the Black Hole XTE J1118+480 in Quiescence</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2757">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2008NewAR..51..733N</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>New Astronomy Reviews  13876473  NARAYAN  51  10-12  733  2008  10.1016/j.newar.2008.03.002  Advection-dominated accretion and the black hole event horizon</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2707">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbase:affiliationText>National Radio Astronomy Observatory, Array Operations Center, 1003 Lopezville Road, Socorro, NM 87801, USA</adsbase:affiliationText>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2739">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Laidler   V.   et al.  ,  2005 ,  Synphot User's Guide, version 5.0 .  STScI ,   Baltimore</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2732">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>1997ApJ...482..448N</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  Narayan  482  1  448  1997  10.1086/304134  Advection--dominated Accretion Model of the Black Hole V404 Cygni in Quiescence</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Casares%2C_J">
-    <agent:normName>Casares, J</agent:normName>
-    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL2710"/>
-    <agent:fullName>Casares, J.</agent:fullName>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2735">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>1999ApJ...520..298Q</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  Quataert  520  1  298  1999  10.1086/307439  Spectral Models of Advection--dominated Accretion Flows with Winds</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2712">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Boffi   F. R.   et al.  ,  2007 ,  ACS Instrument Handbook, Version 8.0 .  STScI ,   Baltimore</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2009MNRAS.399.2239H">
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...620..905Y"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000ApJ...531..956M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005MNRAS.356.1017G"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...555..483E"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994MNRAS.271L..10S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996ApJ...457..821N"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1993MNRAS.260L...5K"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1993MNRAS.265..834C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002A&amp;A...382..752H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1979ApJ...228..939C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...619..931I"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ApJ...648L.135M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002hstc.conf..337K"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1997ApJ...482..448N"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1977ApJ...218..767S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006MNRAS.370.1351G"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999ApJ...520..298Q"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...670..600G"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996ApJ...471..673C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008NewAR..51..733N"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996MNRAS.282..977S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...570..277K"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008MNRAS.388.1751M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...593..435M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001A&amp;A...372L..25M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...690..496C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999AJ....117..521V"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...553L..47G"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005PASP..117.1049S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999ApJ...525..871H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...630..405H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994MNRAS.271L...5C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999PASP..111...63F"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1991PASP..103..198U"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008MNRAS.389.1697C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002MNRAS.330.1009H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004MNRAS.352..877Z"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004ApJ...611L.125H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003MNRAS.343L..99F"/>
-    <adsbib:pageEnd>2248</adsbib:pageEnd>
-    <adsbib:publishedIn rdf:resource="http://ads.harvard.edu/sem/conf#MNRAS"/>
-    <adsbib:doi>10.1111/j.1365-2966.2009.15419.x</adsbib:doi>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2717"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2749"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2727"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2715"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2746"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2726"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2753"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2752"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2759"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2738"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2736"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2722"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2713"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2758"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2711"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2756"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2720"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2724"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2737"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2754"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2733"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2747"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2714"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2740"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2719"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2744"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2742"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2730"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2712"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2743"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2757"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2735"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2739"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2731"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2755"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2723"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2728"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2745"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2734"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2721"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2741"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2725"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2718"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2751"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2729"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2716"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2748"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2732"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL2750"/>
-    <adsbib:alsoHasEprint rdf:resource="http://ads.harvard.edu/sem/bib#2009arXiv0907.4376H"/>
-    <adsbib:volume>399</adsbib:volume>
-    <rdf:type rdf:resource="http://purl.org/spar/fabio/JournalArticle"/>
-    <adsbib:pubDate rdf:datatype="xsd:date">Nov 2009</adsbib:pubDate>
-    <adsbib:pageStart>2239</adsbib:pageStart>
-    <fabio:isRealizationOf rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2728">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>1991PASP..103..198U</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Publications of the Astronomical Society of the Pacific  00046280  Udalski  103  198  1991  10.1086/132808  CCD photometry of the X-ray nova V404 Cygni after the 1989 outburst</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Fender%2C_R">
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Fender%2C_R/3ee2f445-c54a-4e96-be28-9470d8473124/">
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg2709"/>
     <agent:normName>Fender, R</agent:normName>
-    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL2709"/>
     <agent:fullName>Fender, R. P.</agent:fullName>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2734">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>1999ApJ...525..871H</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  Hauschildt  525  2  871  1999  10.1086/307954  The &lt;scp&gt;NextGen&lt;/scp&gt; Model Atmosphere Grid. II. Spherically Symmetric Model Atmospheres for Giant Stars with Effective Temperatures between 3000 and 6800 K</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2721">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier></adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>riess  2004  time dependence of acs wfc cte corrections for photometry and future predictions instrument science report acs 2004-006</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2741">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2002A&amp;A...382..752H</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Astronomy and Astrophysics  00046361  Hynes  382  2  752  2002  10.1051/0004-6361:20011657  An optimal extraction of spatially blended spectra</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2726">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>1999AJ....117..521V</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astronomical Journal  00046256  van Belle  117  1  521  1999  10.1086/300677  Radii and Effective Temperatures for G, K, and M Giants and Supergiants</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2725">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2001ApJ...555..483E</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  Esin  555  1  483  2001  10.1086/321450  Modeling the Low--State Spectrum of the X--Ray Nova XTE J1118+480</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2718">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier></adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Chiaberge   M.  ,   Sirianni   M.   ,  2007 ,  ACS CCDs UV and Narrow-Band Filters Red Leak Check, Instrument Science Report ACS 2007-03 .  STScI ,   Baltimore</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2748">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2005ApJ...619..931I</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  Indebetouw  619  2  931  2005  10.1086/426679  The Wavelength Dependence of Interstellar Extinction from 1.25 to 8.0 mum Using GLIMPSE Data</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2713">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>1994MNRAS.271L...5C</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>mnras  casares  271  5  1994</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Hynes%2C_R">
-    <agent:normName>Hynes, R</agent:normName>
     <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL2705"/>
-    <agent:fullName>Hynes, R. I.</agent:fullName>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2708">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbase:affiliationText>Physics Department, Broida Hall, University of California, Santa Barbara, CA 93106, USA</adsbase:affiliationText>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2756">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
-    <adsbib:identifier>2007ApJ...670..600G</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>The Astrophysical Journal  0004637X  Gallo  670  1  600  2007  10.1086/521524  The Spectral Energy Distribution of Quiescent Black Hole X--Ray Binaries: New Constraints from &lt;i&gt;Spitzer&lt;/i&gt;</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2731">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
+  <rdf:Description rdf:nodeID="eHQlytdg2731">
     <adsbib:identifier>1996ApJ...457..821N</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
     <adsbib:citationText>The Astrophysical Journal  0004637X  Narayan  457  821  1996  10.1086/176777  A New Model for Black Hole Soft X-Ray Transients in Quiescence</adsbib:citationText>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2745">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
+  <rdf:Description rdf:nodeID="eHQlytdg2727">
+    <adsbib:identifier>1977ApJ...218..767S</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  Stone  218  767  1977  10.1086/155732  Spectral energy distributions of standard stars of intermediate brightness. II.</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/meta#c9d01231-a344-435b-9a8d-5066e3c03cf2">
+    <pav:importedOn rdf:datatype="xsd:dateTime">2011-03-16T13:12:34.515125</pav:importedOn>
+    <pav:importedBy rdf:resource="http://ads.harvard.edu/sem/agents/Software/adsclassic2rdf.py-0.01"/>
+    <rdf:type rdf:resource="http://purl.org/spar/fabio/EntityMetadata"/>
+    <rdf:type rdf:resource="http://purl.org/spar/fabio/BibliographicMetadata"/>
+    <pav:lastUpdateOn rdf:datatype="xsd:dateTime">2011-03-16T13:12:34.515125</pav:lastUpdateOn>
+    <pav:importedFromSource rdf:resource="http://ads.harvard.edu/sem/conf/ADS"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2712">
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>Boffi   F. R.   et al.  ,  2007 ,  ACS Instrument Handbook, Version 8.0 .  STScI ,   Baltimore</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2751">
+    <adsbib:identifier>2005ApJ...630..405H</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  Hynes  630  1  405  2005  10.1086/431966  Observational Constraints on Cool Disk Material in Quiescent Black Hole Binaries</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2746">
+    <adsbib:identifier>2004ApJ...611L.125H</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  Hynes  611  2  L125  2004  10.1086/424005  Correlated X-Ray and Optical Variability in V404 Cygni in Quiescence</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2745">
     <adsbib:identifier>2004MNRAS.352..877Z</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
     <adsbib:citationText>Monthly Notices of the Royal Astronomical Society  00358711  Zurita  352  3  877  2004  10.1111/j.1365-2966.2004.07979.x  Long-term optical/infrared variability in the quiescent X-ray transient V404 Cyg</adsbib:citationText>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL2750">
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#12384ff5-c31d-466b-9bdb-fbbb4ee1e4a3"/>
+  <rdf:Description rdf:nodeID="eHQlytdg2710">
+    <adsbase:affiliationText>Instituto de Astrof&amp;iacute;sica de Canarias, 38200 La Laguna, Tenerife, Spain</adsbase:affiliationText>
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2741">
+    <adsbib:identifier>2002A&amp;A...382..752H</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>Astronomy and Astrophysics  00046361  Hynes  382  2  752  2002  10.1051/0004-6361:20011657  An optimal extraction of spatially blended spectra</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2734">
+    <adsbib:identifier>1999ApJ...525..871H</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  Hauschildt  525  2  871  1999  10.1086/307954  The &lt;scp&gt;NextGen&lt;/scp&gt; Model Atmosphere Grid. II. Spherically Symmetric Model Atmospheres for Giant Stars with Effective Temperatures between 3000 and 6800 K</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Gallo%2C_E/81c7132d-f6b7-4717-94c0-7844bcada963/">
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg2708"/>
+    <agent:normName>Gallo, E</agent:normName>
+    <agent:fullName>Gallo, E.</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2717">
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>laidler  2005  synphot user s guide version 5 0</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2729">
+    <adsbib:identifier>2001ApJ...553L..47G</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  Garcia  553  1  L47  2001  10.1086/320494  New Evidence for Black Hole Event Horizons from [ITAL]Chandra[/ITAL]</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2711">
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>boffi  2007  acs instrument handbook version 8 0</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2730">
+    <adsbib:identifier>1996ApJ...471..673C</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  Churazov  471  2  673  1996  10.1086/177997  Mapping the Gas Temperature Distribution in Extended X--Ray Sources and Spectral Analysis in the Case of Low Statistics: Application to &lt;i&gt;ASCA&lt;/i&gt; Observations of Clusters of Galaxies</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2718">
+    <adsbib:identifier></adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>Chiaberge   M.  ,   Sirianni   M.   ,  2007 ,  ACS CCDs UV and Narrow-Band Filters Red Leak Check, Instrument Science Report ACS 2007-03 .  STScI ,   Baltimore</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2708">
+    <adsbase:affiliationText>Physics Department, Broida Hall, University of California, Santa Barbara, CA 93106, USA</adsbase:affiliationText>
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2726">
+    <adsbib:identifier>1999AJ....117..521V</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astronomical Journal  00046256  van Belle  117  1  521  1999  10.1086/300677  Radii and Effective Temperatures for G, K, and M Giants and Supergiants</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2725">
+    <adsbib:identifier>2001ApJ...555..483E</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  Esin  555  1  483  2001  10.1086/321450  Modeling the Low--State Spectrum of the X--Ray Nova XTE J1118+480</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2706">
+    <adsbase:affiliationText>Department of Physics and Astronomy, Louisiana State University, Baton Rouge, Louisiana 70803, USA</adsbase:affiliationText>
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2737">
+    <adsbib:identifier>2000ApJ...531..956M</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  McClintock  531  2  956  2000  10.1086/308510  &lt;i&gt;HST&lt;/i&gt;/STIS UV Spectroscopy of Two Quiescent X--Ray Novae: A0620-00 and Centaurus X--4</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2709">
+    <adsbase:affiliationText>School of Physics and Astronomy, The University of Southampton, Southampton, SO17 1BJ</adsbase:affiliationText>
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2705">
+    <adsbase:affiliationText>Department of Physics and Astronomy, Louisiana State University, Baton Rouge, Louisiana 70803, USA</adsbase:affiliationText>
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2722">
+    <adsbib:identifier>1996MNRAS.282..977S</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>mnras  shahbaz  282  977  1996</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2719">
+    <adsbib:identifier>2008MNRAS.388.1751M</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>mnras  miller-jones  388  1751  2008</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2704">
+    <adsbib:hasExpression rdf:resource="http://ads.harvard.edu/sem/bib#2009MNRAS.399.2239H"/>
+    <adsbib:aggregatedAt rdf:resource="http://ads.harvard.edu/sem/conf/ADS"/>
+    <adsbib:bibcode>2009MNRAS.399.2239H</adsbib:bibcode>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Aggregation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Hynes%2C_R/e67a0445-165f-4fba-b646-9e963f457bbb/">
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg2705"/>
+    <agent:normName>Hynes, R</agent:normName>
+    <agent:fullName>Hynes, R. I.</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2749">
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>Pavlovsky   C.  ,   Koekemoer   A.  ,   Mack   J.   ,  eds ,  2005 ,  HST Data Handbook for ACS v4.0 .  STScI ,   Baltimore</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2753">
+    <adsbib:identifier>2005PASP..117.1049S</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>Publications of the Astronomical Society of the Pacific  00046280  Sirianni  117  836  1049  2005  10.1086/444553  The Photometric Performance and Calibration of the &lt;i&gt;Hubble Space Telescope&lt;/i&gt; Advanced Camera for Surveys</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2703">
+    <adsbib:abstractText>We present a multiwavelength study of the black hole X-ray binary V404 Cyg in quiescence, focusing upon the spectral energy distribution (SED). Radio, optical, ultraviolet (UV) and X-ray coverage is simultaneous. We supplement the SED with additional non-simultaneous data in the optical through infrared where necessary. The compiled SED is the most complete available for this, the X-ray and radio brightest quiescent black hole system. We find no need for a substantial contribution from accretion light from the near-UV to the near-IR, and in particular the weak UV emission constrains published spectral models for V404 Cyg. We confirm that no plausible companion spectrum and interstellar extinction can fully explain the mid-IR, however, and an infrared (IR) excess from a jet or cool disc appears to be required. The X-ray spectrum is consistent with a Γ ~ 2 power law as found by all other studies to date. There is no evidence for any variation in the hardness over a range of a factor of 10 in luminosity. The radio flux is consistent with a flat spectrum (in f&lt;SUB&gt;ν&lt;/SUB&gt;). The break frequency between a flat and optically thin spectrum most likely occurs in the mid or far-IR, but is not strongly constrained by these data. We find the radio to be substantially variable but with no clear correlation with X-ray variability.</adsbib:abstractText>
+    <rdf:type rdf:resource="http://purl.org/spar/fabio/Abstract"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2707">
+    <adsbase:affiliationText>National Radio Astronomy Observatory, Array Operations Center, 1003 Lopezville Road, Socorro, NM 87801, USA</adsbase:affiliationText>
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Rupen%2C_M/ffeaf7b2-8d08-47de-a601-4162203002dd/">
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg2707"/>
+    <agent:normName>Rupen, M</agent:normName>
+    <agent:fullName>Rupen, M.</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2713">
+    <adsbib:identifier>1994MNRAS.271L...5C</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>mnras  casares  271  5  1994</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2009MNRAS.399.2239H">
+    <adsbib:pageStart>2239</adsbib:pageStart>
+    <adsbib:doi>10.1111/j.1365-2966.2009.15419.x</adsbib:doi>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005MNRAS.356.1017G"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...570..277K"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996ApJ...457..821N"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994MNRAS.271L..10S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...630..405H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...670..600G"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1979ApJ...228..939C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003MNRAS.343L..99F"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005PASP..117.1049S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002hstc.conf..337K"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996ApJ...471..673C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999PASP..111...63F"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1997ApJ...482..448N"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...593..435M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002MNRAS.330.1009H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ApJ...648L.135M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...553L..47G"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...690..496C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001A&amp;A...372L..25M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008MNRAS.388.1751M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006MNRAS.370.1351G"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1991PASP..103..198U"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1993MNRAS.265..834C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1993MNRAS.260L...5K"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1977ApJ...218..767S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999AJ....117..521V"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996MNRAS.282..977S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004ApJ...611L.125H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994MNRAS.271L...5C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...619..931I"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...620..905Y"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008MNRAS.389.1697C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002A&amp;A...382..752H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999ApJ...525..871H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004MNRAS.352..877Z"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999ApJ...520..298Q"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000ApJ...531..956M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...555..483E"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008NewAR..51..733N"/>
+    <adsbib:pageEnd>2248</adsbib:pageEnd>
+    <adsbib:publishedIn rdf:resource="http://ads.harvard.edu/sem/conf/MNRAS"/>
+    <adsbib:volume>399</adsbib:volume>
+    <fabio:isRealizationOf rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2744"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2742"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2716"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2731"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2751"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2746"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2745"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2741"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2717"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2729"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2711"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2730"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2718"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2726"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2725"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2737"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2712"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2722"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2719"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2734"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2749"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2753"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2714"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2713"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2747"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2733"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2758"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2724"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2759"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2735"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2743"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2750"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2748"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2715"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2728"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2720"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2740"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2757"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2756"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2754"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2727"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2732"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2723"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2721"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2738"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2739"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2736"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2755"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg2752"/>
+    <adsbib:pubDate rdf:datatype="xsd:date">Nov 2009</adsbib:pubDate>
+    <rdf:type rdf:resource="http://purl.org/spar/fabio/JournalArticle"/>
+    <adsbib:alsoHasEprint rdf:resource="http://ads.harvard.edu/sem/bib#2009arXiv0907.4376H"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2747">
+    <adsbib:identifier>2005MNRAS.356.1017G</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>Monthly Notices of the Royal Astronomical Society  00358711  Gallo  356  3  1017  2005  10.1111/j.1365-2966.2004.08503.x  The radio spectrum of a quiescent stellar mass black hole</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2733">
+    <adsbib:identifier>1979ApJ...228..939C</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  Cash  228  939  1979  10.1086/156922  Parameter estimation in astronomy through application of the likelihood ratio</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2758">
+    <adsbib:identifier>2008MNRAS.389.1697C</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>Monthly Notices of the Royal Astronomical Society  00358711  Corbel  389  4  1697  2008  10.1111/j.1365-2966.2008.13542.x  Revisiting the radio/X-ray flux correlation in the black hole V404 Cyg: from outburst to quiescence</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Bradley%2C_C/d2667bc6-39f5-4484-8c38-14bb0a577e92/">
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg2706"/>
+    <agent:normName>Bradley, C</agent:normName>
+    <agent:fullName>Bradley, C. K.</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2716">
+    <adsbib:identifier>1993MNRAS.260L...5K</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>mnras  king  260  5  1993</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2759">
+    <adsbib:identifier>2009ApJ...690..496C</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  Chapman  690  1  496  2009  10.1088/0004-637X/690/1/496  THE MID-INFRARED EXTINCTION LAW IN THE OPHIUCHUS, PERSEUS, AND SERPENS MOLECULAR CLOUDS</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2735">
+    <adsbib:identifier>1999ApJ...520..298Q</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  Quataert  520  1  298  1999  10.1086/307439  Spectral Models of Advection--dominated Accretion Flows with Winds</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2743">
+    <adsbib:identifier>2003ApJ...593..435M</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  McClintock  593  1  435  2003  10.1086/376406  Multiwavelength Spectrum of the Black Hole XTE J1118+480 in Quiescence</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2724">
+    <adsbib:identifier>2002MNRAS.330.1009H</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>Monthly Notices of the Royal Astronomical Society  00358711  Hynes  330  4  1009  2002  10.1046/j.1365-8711.2002.05145.x  H&lt;i /&gt; flares from V404 Cyg in quiescence</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2750">
     <adsbib:identifier>2005ApJ...620..905Y</adsbib:identifier>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
     <adsbib:citationText>The Astrophysical Journal  0004637X  Yuan  620  2  905  2005  10.1086/427206  An Accretion--Jet Model for Black Hole Binaries: Interpreting the Spectral and Timing Features of XTE J1118+480</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2748">
+    <adsbib:identifier>2005ApJ...619..931I</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  Indebetouw  619  2  931  2005  10.1086/426679  The Wavelength Dependence of Interstellar Extinction from 1.25 to 8.0 mum Using GLIMPSE Data</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2715">
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>chiaberge  2007  acs ccds uv and narrow-band filters red leak check instrument science report acs 2007-03</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2728">
+    <adsbib:identifier>1991PASP..103..198U</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>Publications of the Astronomical Society of the Pacific  00046280  Udalski  103  198  1991  10.1086/132808  CCD photometry of the X-ray nova V404 Cygni after the 1989 outburst</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2720">
+    <adsbib:identifier></adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>pavlovsky  2005  hst data handbook for acs v4 0</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2740">
+    <adsbib:identifier>2002ApJ...570..277K</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  Kong  570  1  277  2002  10.1086/339501  The X--Ray Spectra of Black Hole X--Ray Novae in Quiescence as Measured by &lt;i&gt;Chandra&lt;/i&gt;</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2757">
+    <adsbib:identifier>2008NewAR..51..733N</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>New Astronomy Reviews  13876473  NARAYAN  51  10-12  733  2008  10.1016/j.newar.2008.03.002  Advection-dominated accretion and the black hole event horizon</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2756">
+    <adsbib:identifier>2007ApJ...670..600G</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  Gallo  670  1  600  2007  10.1086/521524  The Spectral Energy Distribution of Quiescent Black Hole X--Ray Binaries: New Constraints from &lt;i&gt;Spitzer&lt;/i&gt;</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2754">
+    <adsbib:identifier>2006MNRAS.370.1351G</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>Monthly Notices of the Royal Astronomical Society  00358711  Gallo  370  3  1351  2006  10.1111/j.1365-2966.2006.10560.x  A radio-emitting outflow in the quiescent state of A0620?00: implications for modelling low-luminosity black hole binaries</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2714">
+    <adsbib:identifier>1993MNRAS.265..834C</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>mnras  casares  265  834  1993</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2732">
+    <adsbib:identifier>1997ApJ...482..448N</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>The Astrophysical Journal  0004637X  Narayan  482  1  448  1997  10.1086/304134  Advection--dominated Accretion Model of the Black Hole V404 Cygni in Quiescence</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2723">
+    <adsbib:identifier>1994MNRAS.271L..10S</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>mnras  shahbaz  271  10  1994</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2721">
+    <adsbib:identifier></adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>riess  2004  time dependence of acs wfc cte corrections for photometry and future predictions instrument science report acs 2004-006</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2738">
+    <adsbib:identifier>1999PASP..111...63F</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>Publications of the Astronomical Society of the Pacific  00046280  Fitzpatrick  111  755  63  1999  10.1086/316293  Correcting for the Effects of Interstellar Extinction</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2739">
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>Laidler   V.   et al.  ,  2005 ,  Synphot User's Guide, version 5.0 .  STScI ,   Baltimore</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2736">
+    <adsbib:identifier>2002hstc.conf..337K</adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>Koekemoer   A. M.  ,   Fruchter   A. S.  ,   Hook   R. N.  ,   Hack   W.   ,  2002 ,  in    Arribas   S.  ,   Koekemoer   A.  ,   Whitmore   B.   ,  eds ,  Proc. The 2002 HST Calibration Workshop: Hubble after the Installation of the ACS and the NICMOS Cooling System .  STScI ,   Baltimore  ,  p .  337</adsbib:citationText>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2009arXiv0907.4376H">
+    <adsbib:eprintid>arXiv:0907.4376</adsbib:eprintid>
+    <adsbib:alsoPublishedIn rdf:resource="http://ads.harvard.edu/sem/bib#2009MNRAS.399.2239H"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Eprint"/>
+    <adsbib:publishedIn rdf:resource="http://ads.harvard.edu/sem/conf/ARXIV"/>
+    <fabio:isRealizationOf rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2">
+    <adsbase:languageIn>en</adsbase:languageIn>
+    <adsbib:workIdentifier>2009MNRAS.399.2239H</adsbib:workIdentifier>
+    <adsbib:keywordText>accretion disks, accretion, stars binaries close</adsbib:keywordText>
+    <adsbib:keywordConcept rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/NormalizedKeys.rdf#accretion"/>
+    <adsbib:keywordConcept rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/NormalizedKeys.rdf#accretion_disks"/>
+    <adsbib:keywordConcept rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/NormalizedKeys.rdf#stars_binaries_close"/>
+    <adsbase:title>The quiescent spectral energy distribution of V404 Cyg</adsbase:title>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005MNRAS.356.1017G"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...570..277K"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996ApJ...457..821N"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994MNRAS.271L..10S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...630..405H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...670..600G"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1979ApJ...228..939C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003MNRAS.343L..99F"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005PASP..117.1049S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002hstc.conf..337K"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996ApJ...471..673C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999PASP..111...63F"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1997ApJ...482..448N"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...593..435M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002MNRAS.330.1009H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ApJ...648L.135M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...553L..47G"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...690..496C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001A&amp;A...372L..25M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008MNRAS.388.1751M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006MNRAS.370.1351G"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1991PASP..103..198U"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1993MNRAS.265..834C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1993MNRAS.260L...5K"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1977ApJ...218..767S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999AJ....117..521V"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996MNRAS.282..977S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004ApJ...611L.125H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994MNRAS.271L...5C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...619..931I"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...620..905Y"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008MNRAS.389.1697C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002A&amp;A...382..752H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999ApJ...525..871H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004MNRAS.352..877Z"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999ApJ...520..298Q"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000ApJ...531..956M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...555..483E"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008NewAR..51..733N"/>
+    <adsbib:citeMeAs>Monthly Notices of the Royal Astronomical Society, Volume 399, Issue 4, pp. 2239-2248.</adsbib:citeMeAs>
+    <adsbib:hasAggregation rdf:nodeID="eHQlytdg2704"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Casares%2C_J/306e1ba4-9cde-4fde-8a8d-63c23156a195/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Zurita%2C_C/9406032a-22f6-458b-9f1c-71b7505b8328/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Fender%2C_R/3ee2f445-c54a-4e96-be28-9470d8473124/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Bradley%2C_C/d2667bc6-39f5-4484-8c38-14bb0a577e92/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Hynes%2C_R/e67a0445-165f-4fba-b646-9e963f457bbb/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Rupen%2C_M/ffeaf7b2-8d08-47de-a601-4162203002dd/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Gallo%2C_E/81c7132d-f6b7-4717-94c0-7844bcada963/"/>
+    <cito:peerReviewed rdf:datatype="xsd:boolean">True</cito:peerReviewed>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#WrittenProduct"/>
+    <rdf:type rdf:resource="http://purl.org/spar/fabio/ResearchPaper"/>
+    <adsbib:defaultRealizedThrough rdf:resource="http://ads.harvard.edu/sem/bib#2009MNRAS.399.2239H"/>
+    <adsbib:hasAbstract rdf:nodeID="eHQlytdg2703"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg2752">
+    <adsbib:identifier></adsbib:identifier>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#c9d01231-a344-435b-9a8d-5066e3c03cf2"/>
+    <adsbib:citationText>Riess   A.  ,   Mack   J.   ,  2004 ,  Time Dependence of ACS WFC CTE Corrections for Photometry and Future Predictions, Instrument Science Report ACS 2004-006 .  STScI ,   Baltimore</adsbib:citationText>
   </rdf:Description>
 </rdf:RDF>

@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_2220">
-    <adsobsv:observationProposalType>CHANDRA/ACTIVE GALAXIES AND QUASARS</adsobsv:observationProposalType>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Miller_Brendan/c10eb3e9-1566-4ff4-8c26-6a9c8e4df74e/">
+    <agent:fullName>Miller, Brendan</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/2220/">
     <adsbase:title>A Chandra survey of hybrid morphology radio sources</adsbase:title>
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Miller_Brendan"/>
     <adsobsv:observationProposalId>2220</adsobsv:observationProposalId>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Miller_Brendan/c10eb3e9-1566-4ff4-8c26-6a9c8e4df74e/"/>
+    <adsobsv:observationProposalType>CHANDRA/ACTIVE GALAXIES AND QUASARS</adsobsv:observationProposalType>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
   </rdf:Description>
 </rdf:RDF>

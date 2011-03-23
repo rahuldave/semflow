@@ -8,7 +8,10 @@ from urllib import quote_plus
 from rdflib import URIRef, Namespace, Literal, BNode
 from rdflib import ConjunctiveGraph
 import uuid
-from lxml import etree as ElementTree
+try:
+    from lxml import etree as ElementTree
+except:
+    from xml.etree import ElementTree
 import HTMLParser
 
 def _xmlcharref_encode(unicode_data, encoding="ascii"):
@@ -155,13 +158,15 @@ def getObsFile(fname):
                     
     for domain in getEMDomains(float(emmin), float(emmax)):
         addVal(g, obsuri, adsobsv.wavelengthDomain, domain)
-        
-    gdbnadd(g, obsuri, adsobsv.associatedPosition, [
+    
+    print "RA?DEC", trec['ra'], trec['dec']
+    if trec['ra'] !=None and trec['dec'] != None:    
+        gdbnadd(g, obsuri, adsobsv.associatedPosition, [
             a, adsobsv.Pointing,
             adsobsv.ra, asDouble(trec['ra']),
             adsobsv.dec, asDouble(trec['dec'])
-        ]
-    )
+            ]
+        )
     
     
     #should this be under uri_agents or collaboration instead?
@@ -245,7 +250,7 @@ def getPropFile(fname):
     trec['abstract']=xobj.abstract
     trec['pi']=[xobj.elementAttribute('pi', 'last'),xobj.elementAttribute('pi', 'first')]
     #print trec
-    propuri=uri_prop['CHANDRA_'+trec['propid']]
+    propuri=getPropURI(trec['propid'])
     #This is FALSE. TODO..fix to ads normed name or lookitup How? Blanknode? WOW.
     qplabel=trec['pi'][0]+'_'+trec['pi'][1]
     fullname=trec['pi'][0]+', '+trec['pi'][1]
@@ -288,14 +293,16 @@ if __name__=="__main__":
         fname=sys.argv[1]
         bname=os.path.basename(fname)
         style=sys.argv[2]
-        ofname="tests/chandrastart2/"+style+"/"+bname+".rdf"
+        ofname="tests/chandrastart/"+style+"/"+bname+".rdf"
+        print "----------------------"
         output=dafunc[style](fname)
+        print "OFNAME",ofname
         #getPubFile(sys.argv[1])
         if style in ['obsv', 'pub', 'prop']:
-            print output
-            #fd=open(ofname, "w")
-            #fd.write(output)
-            #fd.close()
+            #print output
+            fd=open(ofname, "w")
+            fd.write(output)
+            fd.close()
     else:
         print "Worong usage", sys.argv
         sys.exit(-1)

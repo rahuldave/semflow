@@ -10,3 +10,8 @@ Infrastructure flows:
 (2) Set up basic namespaces
 (3) Script to poulate solr
 (4) How to search solr
+
+Modules needed
+lxml
+mx.DateTime
+rdflib 3

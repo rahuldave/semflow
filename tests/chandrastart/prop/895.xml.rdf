@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_895">
-    <adsbase:title>DIFFUSE X-RAY EMISSION IN EDGE-ON DISK GALAXIES: NGC 5775 AND NGC 3044</adsbase:title>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/895/">
     <adsobsv:observationProposalType>CHANDRA/NORMAL GALAXIES</adsobsv:observationProposalType>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
+    <adsbase:title>DIFFUSE X-RAY EMISSION IN EDGE-ON DISK GALAXIES: NGC 5775 AND NGC 3044</adsbase:title>
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Maloney_Philip/37be9a19-1148-4b3c-b06e-42ea5731dc38/"/>
     <adsobsv:observationProposalId>895</adsobsv:observationProposalId>
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Maloney_Philip"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Maloney_Philip/37be9a19-1148-4b3c-b06e-42ea5731dc38/">
+    <agent:fullName>Maloney, Philip</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
   </rdf:Description>
 </rdf:RDF>

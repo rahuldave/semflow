@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#NAME_CAMPBELL%27S_HYDROGEN_STAR">
-    <adsbase:hasMetadataString>{'mtype': 'WC...,C,~', 'otype': 'PN ~', 'refcode': '2000ApJ...545L..57K', 'ra': '293.6884679', '_raw': "NAME CAMPBELL'S HYDROGEN STAR|293.6884679|+30.5163711|PN ~|WC...,C,~|~,~,~", 'dec': '+30.5163711', 'id': "NAME CAMPBELL'S HYDROGEN STAR"}</adsbase:hasMetadataString>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2000ApJ...545L..57K">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#NAME_CAMPBELL%27S_HYDROGEN_STAR"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/NAME_CAMPBELL%27S_HYDROGEN_STAR"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/NAME_CAMPBELL%27S_HYDROGEN_STAR">
+    <adsbase:hasMetadataString>{'mtype': 'WC...,C,~', 'otype': 'PN ~', 'refcode': '2000ApJ...545L..57K', 'ra': '293.6884679', '_raw': "NAME CAMPBELL'S HYDROGEN STAR|293.6884679|+30.5163711|PN ~|WC...,C,~|~,~,~", 'dec': '+30.5163711', 'id': "NAME CAMPBELL'S HYDROGEN STAR"}</adsbase:hasMetadataString>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <adsbase:name>NAME CAMPBELL'S HYDROGEN STAR</adsbase:name>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
   </rdf:Description>
 </rdf:RDF>

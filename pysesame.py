@@ -47,6 +47,10 @@ class connection:
             data=sock.read()
             #print "DATA", data
             sock.close()
+        except urllib2.HTTPError, e:
+            print 'Code: ', e.code
+        except urllib2.URLError, e:
+            print 'Reason: ', e.reason
         except:
             import sys, traceback
             data=""
@@ -56,11 +60,12 @@ class connection:
             print "ATYPE", atype
             return data
         try:
+            #print "LOADSDATA", data, loads(data)
             result=loads(data)['results']['bindings']
             return result
         except:
             import sys, traceback
-            print "ERROR", traceback.print_tb(sys.exc_info()[2])
+            print "ERRORX", traceback.print_tb(sys.exc_info()[2])
             return [{'error':data}]
         
     def use_repository(self,r):
@@ -74,7 +79,10 @@ class connection:
         
     def querypost(self, q, atype=SPJSON):
         uri='repositories/'+self.repository
-        q='query='+quote(self.sparql_prefix+q)
+        #print self.sparql_prefix
+        #print q
+        q='query='+quote_plus(self.sparql_prefix+q)
+        #print q
         #q='query='+quote_plus(q)
         
         #print "Q",q
@@ -130,7 +138,15 @@ class connection:
         #print 'HOST', host , endpoint
         req=urllib2.Request(endpoint)
         req.get_method = lambda: 'DELETE'
-        res=urllib2.urlopen(req)
+        try:
+            res=urllib2.urlopen(req)
+        except urllib2.HTTPError, e:
+            print 'Code: ', e.code
+            res=None
+            if e.code > 299:
+                print 'Error code: ', e.code
+                raise ValueError(e.code)
+            return res
         #print "INFO", res.info()
         return res
            
@@ -152,7 +168,15 @@ class connection:
             req.get_method = lambda: 'PUT'
         req.add_header('Content-Type', SPCXML)
         req.add_data(data)
-        res=urllib2.urlopen(req)
+        try:
+            res=urllib2.urlopen(req)
+        except urllib2.HTTPError, e:
+            print 'Code: ', e.code
+            res=None
+            if e.code > 299:
+                print 'Error code: ', e.code
+                raise ValueError(e.code)
+            return res
         #print "INFO", res.info()
         return res.read()
        

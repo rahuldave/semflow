@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_1535">
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Greenhill_Lincoln"/>
-    <adsobsv:observationProposalId>1535</adsobsv:observationProposalId>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Greenhill_Lincoln/141aaace-fbfc-46da-9a0f-84bbdceb3e98/">
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <agent:fullName>Greenhill, Lincoln</agent:fullName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/1535/">
     <adsbase:title>Chandra Study of Water Megamaser AGN: Do Type-2 Objects Form a Heterogeneous Class?</adsbase:title>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
     <adsobsv:observationProposalType>CHANDRA/ACTIVE GALAXIES AND QUASARS</adsobsv:observationProposalType>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
+    <adsobsv:observationProposalId>1535</adsobsv:observationProposalId>
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Greenhill_Lincoln/141aaace-fbfc-46da-9a0f-84bbdceb3e98/"/>
   </rdf:Description>
 </rdf:RDF>

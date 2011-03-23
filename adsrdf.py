@@ -3,7 +3,7 @@ from pysesame import connection, SPJSON, SPXML, SPCXML
 #from bib2rdf2 import record_as_rdf, InvalidBibcode
 import namespaces, types, StringIO
 from rdflib import plugin, URIRef, BNode
-from rdflib.Graph import ConjunctiveGraph
+from rdflib import ConjunctiveGraph
 
 
 

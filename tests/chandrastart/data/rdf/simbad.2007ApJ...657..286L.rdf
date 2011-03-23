@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2007ApJ...657..286L">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#Cl%2A_NGC_7099_GWY_3327"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#Cl%2A_NGC_7099_GWY_3327">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/Cl%2A_NGC_7099_GWY_3327">
+    <adsbase:name>Cl* NGC 7099    GWY    3327</adsbase:name>
     <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Unknown ~', 'refcode': '2007ApJ...657..286L', 'ra': 'No Coord.', '_raw': 'Cl* NGC 7099    GWY    3327|No Coord.|Unknown ~|~,~,~|~,~,~', 'dec': 'No Coord.', 'id': 'Cl* NGC 7099    GWY    3327'}</adsbase:hasMetadataString>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2007ApJ...657..286L">
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/Cl%2A_NGC_7099_GWY_3327"/>
   </rdf:Description>
 </rdf:RDF>

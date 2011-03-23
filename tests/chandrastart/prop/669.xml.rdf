@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_669">
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Wilkes_Belinda"/>
-    <adsbase:title>RED QUASARS AND THE X-RAY BACKGROUND</adsbase:title>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Wilkes_Belinda/72cd2aae-a607-456f-a128-81429b7045ce/">
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <agent:fullName>Wilkes, Belinda</agent:fullName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/669/">
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Wilkes_Belinda/72cd2aae-a607-456f-a128-81429b7045ce/"/>
     <adsobsv:observationProposalId>669</adsobsv:observationProposalId>
+    <adsbase:title>RED QUASARS AND THE X-RAY BACKGROUND</adsbase:title>
     <adsobsv:observationProposalType>CHANDRA/ACTIVE GALAXIES AND QUASARS</adsobsv:observationProposalType>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
   </rdf:Description>
 </rdf:RDF>

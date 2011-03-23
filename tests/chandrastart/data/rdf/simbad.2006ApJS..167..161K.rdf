@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#NGC_4151">
-    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Seyfert_1 ~', 'refcode': '2006ApJS..167..161K', 'ra': '182.636079', '_raw': 'NGC  4151|182.636079|+39.405761|Seyfert_1 ~|~,~,~|Sa,D,~', 'dec': '+39.405761', 'id': 'NGC  4151'}</adsbase:hasMetadataString>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2006ApJS..167..161K">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#NGC_4151"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/NGC_4151"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/NGC_4151">
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Seyfert_1 ~', 'refcode': '2006ApJS..167..161K', 'ra': '182.636079', '_raw': 'NGC  4151|182.636079|+39.405761|Seyfert_1 ~|~,~,~|Sa,D,~', 'dec': '+39.405761', 'id': 'NGC  4151'}</adsbase:hasMetadataString>
+    <adsbase:name>NGC  4151</adsbase:name>
   </rdf:Description>
 </rdf:RDF>

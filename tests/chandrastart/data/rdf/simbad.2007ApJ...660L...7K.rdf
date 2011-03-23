@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#DEEP2-GRS_12011900">
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
-    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Galaxy ~', 'refcode': '2007ApJ...660L...7K', 'ra': 'No Coord.', '_raw': 'DEEP2-GRS 12011900|No Coord.|Galaxy ~|~,~,~|~,~,~', 'dec': 'No Coord.', 'id': 'DEEP2-GRS 12011900'}</adsbase:hasMetadataString>
-  </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2007ApJ...660L...7K">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#DEEP2-GRS_12011900"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/DEEP2-GRS_12011900"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/DEEP2-GRS_12011900">
+    <adsbase:name>DEEP2-GRS 12011900</adsbase:name>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Galaxy ~', 'refcode': '2007ApJ...660L...7K', 'ra': 'No Coord.', '_raw': 'DEEP2-GRS 12011900|No Coord.|Galaxy ~|~,~,~|~,~,~', 'dec': 'No Coord.', 'id': 'DEEP2-GRS 12011900'}</adsbase:hasMetadataString>
   </rdf:Description>
 </rdf:RDF>

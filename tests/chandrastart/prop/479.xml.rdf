@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_479">
-    <adsobsv:observationProposalId>479</adsobsv:observationProposalId>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Predehl_Peter"/>
-    <adsobsv:observationProposalType>CHANDRA/NORMAL GALAXIES</adsobsv:observationProposalType>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/479/">
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Predehl_Peter/e08ce19b-2945-41c4-880a-d8c11d7878ff/"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
     <adsbase:title>THE GIANT-OUTBURST SOURCE RXJ1242-1119: IDENTIFICATION OF THE COUNTERPART</adsbase:title>
+    <adsobsv:observationProposalId>479</adsobsv:observationProposalId>
+    <adsobsv:observationProposalType>CHANDRA/NORMAL GALAXIES</adsobsv:observationProposalType>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Predehl_Peter/e08ce19b-2945-41c4-880a-d8c11d7878ff/">
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <agent:fullName>Predehl, Peter</agent:fullName>
   </rdf:Description>
 </rdf:RDF>

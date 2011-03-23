@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2006A&amp;A...456..581G">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#SN_1987A"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#SN_1987A">
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/SN_1987A">
     <adsbase:hasMetadataString>{'mtype': 'SN.IIPec,D,2008yCat....1.2024B', 'otype': 'SN ~', 'refcode': '2006A&amp;A...456..581G', 'ra': '083.86663', '_raw': 'SN 1987A|083.86663|-69.26975|SN ~|SN.IIPec,D,2008yCat....1.2024B|~,~,~', 'dec': '-69.26975', 'id': 'SN 1987A'}</adsbase:hasMetadataString>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
+    <adsbase:name>SN 1987A</adsbase:name>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2006A&amp;A...456..581G">
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/SN_1987A"/>
   </rdf:Description>
 </rdf:RDF>

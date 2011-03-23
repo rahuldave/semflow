@@ -6,7 +6,7 @@ from urllib import quote_plus
 from rdflib import URIRef, Namespace, Literal, BNode
 from rdflib import ConjunctiveGraph
 import uuid
-from lxml import etree as ElementTree
+#from lxml import etree as ElementTree
 import HTMLParser
 import os.path
 
@@ -30,7 +30,7 @@ stuff=fd.read()
 fd.close()
 
 simbad=eval(stuff)
-DATA="/home/rdave/semflow/tests/chandrastart2"
+DATA="./tests/chandrastart"
 
 
 #file to read is output of simad1.py and assumes bibcode.simbad
@@ -43,10 +43,11 @@ for bibcode in simbad.keys():
         bindgraph(g)
         euri=uri_bib[bibcode]
         eleid=quote_plus("_".join(aobject['id'].split()))
-        gadd(g,euri, adsbase.hasAstronomicalSource, uri_base[eleid])
-        gadd(g,uri_base[eleid], a, adsbase.AstronomicalSource)
-        gadd(g,uri_base[eleid], adsobsv.curatedAt, uri_conf['SIMBAD'])
-        gadd(g,uri_base[eleid], adsbase.hasMetadataString, Literal(str(aobject)))
+        gadd(g,euri, adsbase.hasAstronomicalSource, uri_source[eleid])
+        gadd(g,uri_source[eleid], a, adsbase.AstronomicalSource)
+        gadd(g,uri_source[eleid], adsbase.name , Literal(aobject['id']))
+        gadd(g,uri_source[eleid], adsobsv.curatedAt, uri_conf['SIMBAD'])
+        gadd(g,uri_source[eleid], adsbase.hasMetadataString, Literal(str(aobject)))
         serializedstuff=g.serialize()
         fd=open(DATA+"/data/rdf/simbad."+quote_plus(bibcode)+".rdf", "w")
         fd.write(serializedstuff)

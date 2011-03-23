@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#NAME_COSMOS_FIELD">
-    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Region ~', 'refcode': '2008ApJ...687..959B', 'ra': '150.11917', '_raw': 'NAME COSMOS FIELD|150.11917|+02.20583|Region ~|~,~,~|~,~,~', 'dec': '+02.20583', 'id': 'NAME COSMOS FIELD'}</adsbase:hasMetadataString>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2008ApJ...687..959B">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#NAME_COSMOS_FIELD"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/NAME_COSMOS_FIELD"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/NAME_COSMOS_FIELD">
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Region ~', 'refcode': '2008ApJ...687..959B', 'ra': '150.11917', '_raw': 'NAME COSMOS FIELD|150.11917|+02.20583|Region ~|~,~,~|~,~,~', 'dec': '+02.20583', 'id': 'NAME COSMOS FIELD'}</adsbase:hasMetadataString>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+    <adsbase:name>NAME COSMOS FIELD</adsbase:name>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
   </rdf:Description>
 </rdf:RDF>

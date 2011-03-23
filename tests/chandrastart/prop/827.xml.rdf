@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_827">
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Murray_Steve"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
-    <adsobsv:observationProposalId>827</adsobsv:observationProposalId>
-    <adsbase:title>MULTIWAVELENGTH OBSERVATIONS OF THE BLACK HOLE XTE J1118+480 IN QUIESCENCE</adsbase:title>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/827/">
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Murray_Steve/6c964728-3642-4aa6-8bf0-5438ae322611/"/>
     <adsobsv:observationProposalType>CHANDRA/BH AND NS BINARIES</adsobsv:observationProposalType>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
+    <adsbase:title>MULTIWAVELENGTH OBSERVATIONS OF THE BLACK HOLE XTE J1118+480 IN QUIESCENCE</adsbase:title>
+    <adsobsv:observationProposalId>827</adsobsv:observationProposalId>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Murray_Steve/6c964728-3642-4aa6-8bf0-5438ae322611/">
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <agent:fullName>Murray, Steve</agent:fullName>
   </rdf:Description>
 </rdf:RDF>

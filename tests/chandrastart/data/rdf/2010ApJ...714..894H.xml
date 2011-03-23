@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsbib="http://github.com/rahuldave/ontoads/owl/adsbib.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsbib="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#"
    xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:cito="http://purl.org/spar/cito/"
    xmlns:fabio="http://purl.org/spar/fabio/"
@@ -9,929 +9,929 @@
    xmlns:pav="http://swan.mindinformatics.org/ontologies/1.2/pav/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:nodeID="otCfwbPL30534">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-    <adsbase:affiliationText>Astronomical Institute "Anton Pannekoek," University of Amsterdam, Science Park 904, 1098 XH, Amsterdam, The Netherlands ; MIT Kavli Institute for Astrophysics &amp;amp; Space Research, 70 Vassar St., Cambridge, MA 02139, USA </adsbase:affiliationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30541">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Altamirano, D., Casella, P., Patruno, A., Wijnands, R., &amp; van der Klis, M. 2008, ApJ, 674, L45</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2008ApJ...674L..45A</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30584">
-    <adsbib:identifier>2009ATel.2144....1L</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Li, W., Chornock, R., &amp; Filippenko, A. V. 2009, ATel, 2144</adsbib:citationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30548">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Cackett, E. M. et al. 2005, ApJ, 620, 922</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2005ApJ...620..922C</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30565">
-    <adsbib:identifier>2009ATel.2139....1H</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Heinke, C. O. &amp; Budac, S. A. 2009, ATel, 2139</adsbib:citationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30558">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Durant, M., Cornelisse, R., Remillard, R., &amp; Levine, A. 2010, MNRAS, 401, 355</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2010MNRAS.401..355D</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Heinke%2C_C">
-    <agent:fullName>Heinke, C. O.</agent:fullName>
-    <foaf:mbox rdf:resource="mailto:heinke@ualberta.ca"/>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL30528"/>
-    <agent:normName>Heinke, C</agent:normName>
+  <rdf:Description rdf:nodeID="eHQlytdg30549">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Cackett, E. M. et al. 2009, ApJ, 694, L21</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2009ApJ...694L..21C</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30531">
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbase:affiliationText>Department of Astronomy, Indiana University, 727 East Third St., Bloomington, IN 47405, USA </adsbase:affiliationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30560">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Gehrels, N. 1986, ApJ, 303, 336</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>1986ApJ...303..336G</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30533">
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbase:affiliationText>Harvard College Observatory, 60 Garden Street, Cambridge, MA 02138, USA </adsbase:affiliationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30617">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Wolff, M. T., Ray, P. S., Wood, K. S., &amp; Hertz, P. L. 2009, ApJS, 183, 156</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2009ApJS..183..156W</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30535">
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbase:affiliationText>Astrophysics Science Division, NASA/GSFC, Greenbelt, MD 20771, USA </adsbase:affiliationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30597">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Patruno, A., Altamirano, D., &amp; Messenger, C. 2010a, MNRAS, 403, 1426</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2010MNRAS.403.1426P</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30542">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Altamirano, D., Patruno, A., Heinke, C., Linares, M., Markwardt, C., &amp; Strohmayer, T. 2010b, ATel, 2500</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2010ATel.2500....1A</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30615">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Wijnands, R., Rol, E., Cackett, E. M., Starling, R. L. C., &amp; Remillard, R. A. 2009, MNRAS, 393, 126</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2009MNRAS.393..126W</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30538">
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbase:affiliationText>Astrophysics Science Division, NASA/GSFC, Greenbelt, MD 20771, USA </adsbase:affiliationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30551">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Campana, S., Stella, L., &amp; Kennea, J. A. 2008, ApJ, 684, L99</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2008ApJ...684L..99C</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Swank%2C_J/5c9482c8-963b-4d76-835a-3f6946a6ee65/">
+    <agent:normName>Swank, J</agent:normName>
+    <agent:fullName>Swank, J. H.</agent:fullName>
     <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg30538"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30553">
-    <adsbib:identifier>2009A&amp;A...508..297D</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
+  <rdf:Description rdf:nodeID="eHQlytdg30611">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Verbunt, F. &amp; Lewin, W. H. G. 2006, Compact Stellar X-Ray Sources (Cambridge Astrophys. Ser. 39), ed. W. Lewin &amp; M. van der Klis (Cambridge: Cambridge Univ. Press), 341</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2006csxs.book..341V</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30553">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
     <adsbib:citationText>D'Avanzo, P., Campana, S., Casares, J., Covino, S., Israel, G. L., &amp; Stella, L. 2009, A&amp;A, 508, 297</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2009A&amp;A...508..297D</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30614">
-    <adsbib:identifier>1988MNRAS.232...35W</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
+  <rdf:Description rdf:nodeID="eHQlytdg30593">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Muno, M. P., Pfahl, E., Baganoff, F. K., Brandt, W. N., Ghez, A., Lu, J., &amp; Morris, M. R. 2005, ApJ, 622, L113</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2005ApJ...622L.113M</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30612">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Verbunt, F., van Kerkwijk, M. H., in't Zand, J. J. M., &amp; Heise, J. 2000, A&amp;A, 359, 960</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2000A&amp;A...359..960V</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30566">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Heinke, C. O., Grindlay, J. E., Lugger, P. M., Cohn, H. N., Edmonds, P. D., Lloyd, D. A., &amp; Cool, A. M. 2003, ApJ, 598, 501</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2003ApJ...598..501H</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30606">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Suzuki, M. et al. 2010, ATel, 2360</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2009ATel.2360....1S</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30603">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Sarazin, C. L., Kundu, A., Irwin, J. A., Sivakoff, G. R., Blanton, E. L., &amp; Randall, S. W. 2003, ApJ, 595, 743</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2003ApJ...595..743S</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30598">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Patruno, A. et al. 2010b, ATel, 2407</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2010ATel.2407....1P</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30546">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Bertin, E. 2006, Astronomical Data Analysis Software and Systems XV (ASP Conf. Ser. 351), ed. C. Gabriel et al. (San Francisco, CA: ASP), 112</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2006ASPC..351..112B</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30588">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Markwardt, C. B., Altamirano, D., Strohmayer, T. E., &amp; Swank, J. H. 2009, ATel, 2237</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2009ATel.2237....1M</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Linares%2C_M/d786db60-de04-499c-9bb1-a960ab91bfd1/">
+    <agent:normName>Linares, M</agent:normName>
+    <agent:fullName>Linares, M.</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg30534"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30618">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Yakovlev, D. G. &amp; Pethick, C. J. 2004, ARA&amp;A, 42, 169</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2004ARA&amp;A..42..169Y</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Strohmayer%2C_T/1b00f8b4-0e1f-46f2-88c6-19753409dd7d/">
+    <agent:normName>Strohmayer, T</agent:normName>
+    <agent:fullName>Strohmayer, T. E.</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg30535"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30570">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Heinke, C. O. et al. 2009c, ATel, 2143</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2009ATel.2143....1H</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30565">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Heinke, C. O. &amp; Budac, S. A. 2009, ATel, 2139</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2009ATel.2139....1H</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30568">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Heinke, C. O., Jonker, P. G., Wijnands, R., &amp; Taam, R. E. 2007, ApJ, 660, 1424</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2007ApJ...660.1424H</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30616">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Wijnands, R. et al. 2006, A&amp;A, 449, 1117</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2006A&amp;A...449.1117W</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30614">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
     <adsbib:citationText>Whitehurst, R. 1988, MNRAS, 232, 35</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>1988MNRAS.232...35W</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30545">
-    <adsbib:identifier>1994ApJ...426L..85A</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Arzoumanian, Z., Fruchter, A. S., &amp; Taylor, J. H. 1994, ApJ, 426, L85</adsbib:citationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30532">
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbase:affiliationText>Department of Physics, University of Alberta, Room 238 CEB, Edmonton, AB T6G 2G7, Canada </adsbase:affiliationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30562">
-    <adsbib:identifier>1996AJ....112.1487H</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Harris, W. E. 1996, AJ, 112, 1487</adsbib:citationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30556">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Di Stefano, R., Kong, A. K. H., Garcia, M. R., Barmby, P., Greiner, J., Murray, S. S., &amp; Primini, F. A. 2002, ApJ, 570, 618</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2002ApJ...570..618D</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Lugger%2C_P/14a7b066-bd95-4875-9ddf-f1b8e03fb563/">
+    <agent:normName>Lugger, P</agent:normName>
+    <agent:fullName>Lugger, P. M.</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg30531"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30529">
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbase:affiliationText>Astronomical Institute "Anton Pannekoek," University of Amsterdam, Science Park 904, 1098 XH, Amsterdam, The Netherlands </adsbase:affiliationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30573">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Hut, P., Murphy, B. W., &amp; Verbunt, F. 1991, A&amp;A, 241, 137</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>1991A&amp;A...241..137H</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Servillat%2C_M/54207b9f-d2d6-4c89-8531-7e211f828fdc/">
+    <agent:normName>Servillat, M</agent:normName>
+    <agent:fullName>Servillat, M.</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg30533"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30613">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>White, N. E. &amp; Angelini, L. 2001, ApJ, 561, L101</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2001ApJ...561L.101W</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30527">
+    <adsbib:aggregatedAt rdf:resource="http://ads.harvard.edu/sem/conf/ADS"/>
+    <adsbib:hasExpression rdf:resource="http://ads.harvard.edu/sem/bib#2010ApJ...714..894H"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Aggregation"/>
+    <adsbib:bibcode>2010ApJ...714..894H</adsbib:bibcode>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30574">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>in't Zand, J. J. M., van Kerkwijk, M. H., Pooley, D., Verbunt, F., Wijnands, R., &amp; Lewin, W. H. G. 2001, ApJ, 563, L41</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2001ApJ...563L..41I</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30589">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Markwardt, C. B., Pereira, D., &amp; Swank, J. H. 2007, ATel, 1051</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2007ATel.1051....1M</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Heinke%2C_C/7c8bf3c7-10fc-472b-a405-253bff4e9ec8/">
+    <agent:normName>Heinke, C</agent:normName>
+    <foaf:mbox rdf:resource="mailto:heinke@ualberta.ca"/>
+    <agent:fullName>Heinke, C. O.</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg30528"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30599">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Piotto, G. et al. 2002, A&amp;A, 391, 945</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2002A&amp;A...391..945P</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30577">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Ivanova, N., Rasio, F. A., Lombardi, J. C., Jr., Dooley, K. L., &amp; Proulx, Z. F. 2005, ApJ, 621, L109</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2005ApJ...621L.109I</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30544">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Altamirano, D. et al. 2010a, ApJ, 712, L58</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2010ApJ...712L..58A</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30587">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Markert, T. H., Backman, D. E., Canizares, C. R., Clark, G. W., &amp; Levine, A. M. 1975, Nature, 257, 32</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>1975Natur.257...32M</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30600">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Pooley, D. et al. 2002, ApJ, 573, 184</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2002ApJ...573..184P</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30586">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Maccarone, T. J., Kundu, A., Zepf, S. E., &amp; Rhode, K. L. 2007, Nature, 445, 183</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2007Natur.445..183M</adsbib:identifier>
   </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2009arXiv0911.0444H">
-    <adsbib:publishedIn rdf:resource="http://ads.harvard.edu/sem/conf#ARXIV"/>
+    <adsbib:publishedIn rdf:resource="http://ads.harvard.edu/sem/conf/ARXIV"/>
     <adsbib:eprintid>arXiv:0911.0444</adsbib:eprintid>
     <adsbib:alsoPublishedIn rdf:resource="http://ads.harvard.edu/sem/bib#2010ApJ...714..894H"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Eprint"/>
-    <fabio:isRealizationOf rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Eprint"/>
+    <fabio:isRealizationOf rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30564">
-    <adsbib:identifier>2009ATel.2180....1H</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Heinke, C. O., Altamirano, D., &amp; Markwardt, C. 2009a, ATel, 2180</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30540">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-    <adsbase:affiliationText>Department of Astronomy, Yale University, P.O. Box 208101, New Haven, CT 06520, USA</adsbase:affiliationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30606">
-    <adsbib:identifier>2009ATel.2360....1S</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Suzuki, M. et al. 2010, ATel, 2360</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30557">
-    <adsbib:identifier>1990Natur.347..534D</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Dotani, T., Inoue, H., Murakami, T., Nagase, F., &amp; Tanaka, Y. 1990, Nature, 347, 534</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30558">
-    <adsbib:identifier>2010MNRAS.401..355D</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Durant, M., Cornelisse, R., Remillard, R., &amp; Levine, A. 2010, MNRAS, 401, 355</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30574">
-    <adsbib:identifier>2001ApJ...563L..41I</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>in't Zand, J. J. M., van Kerkwijk, M. H., Pooley, D., Verbunt, F., Wijnands, R., &amp; Lewin, W. H. G. 2001, ApJ, 563, L41</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30604">
-    <adsbib:identifier>2007ApJ...660.1246S</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Sivakoff, G. R. et al. 2007, ApJ, 660, 1246</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30602">
-    <adsbib:identifier>2002ApJ...578..405R</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Rutledge, R. E., Bildsten, L., Brown, E. F., Pavlov, G. G., &amp; Zavlin, V. E. 2002, ApJ, 578, 405</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Linares%2C_M">
-    <agent:fullName>Linares, M.</agent:fullName>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL30534"/>
-    <agent:normName>Linares, M</agent:normName>
-    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc">
-    <adsbib:hasAbstract rdf:nodeID="otCfwbPL30526"/>
-    <rdf:type rdf:resource="http://purl.org/spar/fabio/ResearchPaper"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#WrittenProduct"/>
-    <adsbib:hasAggregation rdf:nodeID="otCfwbPL30527"/>
-    <adsbib:citeMeAs>The Astrophysical Journal, Volume 714, Issue 1, pp. 894-903 (2010).</adsbib:citeMeAs>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002A&amp;A...391..945P"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000A&amp;A...359..960V"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...621L.109I"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000ApJ...530L..21D"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ATel.1055....1L"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...574L...5K"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2182....1A"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006AJ....131.1163S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...691.1035H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1990Natur.347..534D"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001Sci...292.2290G"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...573..184P"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010ATel.2500....1A"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009A&amp;A...493L..39P"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010ATel.2407....1P"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...563L..41I"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1988MNRAS.232...35W"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1983ApJ...275..105H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJS..183..156W"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...622L.113M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...591L.131P"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ASPC..351..112B"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...669L..29G"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001AJ....122.2627H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006A&amp;A...449.1117W"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1986ApJ...303..336G"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1991A&amp;A...241..137H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...660.1424H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...660.1246S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ATel..495....1M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ApJ...644.1090H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...578..405R"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1980AJ.....85..521M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2360....1S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...665L.147J"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1993SSRv...62..223L"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009A&amp;A...508..297D"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...570..618D"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009MNRAS.393..126W"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008ApJ...674L..45A"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008ApJ...684L..99C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004NuPhS.132..486I"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...561L.101W"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004SPIE.5492.1653M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2180....1H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ApJS..163..401J"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008ApJ...675.1468H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994A&amp;AS..108..653O"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994ApJ...426L..85A"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996AJ....112.1487H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...620..922C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...694L..21C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...598.1217D"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1987IAUS..125..187V"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1975ApJ...199L.143C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...699.1113Z"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009arXiv0908.1098C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010MNRAS.401..355D"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2143....1H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008A&amp;A...480..481B"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2144....1L"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010MNRAS.403.1426P"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999A&amp;A...345..100I"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...598..501H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004ApJ...613..279J"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2237....1M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007Natur.445..183M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ATel.1051....1M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006csxs.book..341V"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000ApJ...536..891N"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ASPC..251...94S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2139....1H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004ARA&amp;A..42..169Y"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...595..743S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1975Natur.257...32M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001NewAR..45..449L"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ASPC..296..245V"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010ApJ...712L..58A"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994A&amp;A...290..133V"/>
-    <adsbase:title>Discovery of a Second Transient Low-Mass X-ray Binary in the Globular Cluster Ngc 6440</adsbase:title>
-    <adsbib:workIdentifier>2010ApJ...714..894H</adsbib:workIdentifier>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Cohn%2C_H"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Markwardt%2C_C"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Bailyn%2C_C"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Budac%2C_S"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Strohmayer%2C_T"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Heinke%2C_C"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Servillat%2C_M"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Linares%2C_M"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Altamirano%2C_D"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Lugger%2C_P"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Swank%2C_J"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Wijnands%2C_R"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Grindlay%2C_J"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Knigge%2C_C"/>
-    <cito:peerReviewed rdf:datatype="xsd:boolean">True</cito:peerReviewed>
-    <adsbase:languageIn>en</adsbase:languageIn>
-    <adsbib:keywordConcept rdf:resource="http://github.com/rahuldave/ontoads/owl/NormalizedKeys.rdf#dense_matter"/>
-    <adsbib:keywordConcept rdf:resource="http://github.com/rahuldave/ontoads/owl/NormalizedKeys.rdf#astronomy_x_rays"/>
-    <adsbib:keywordText>dense matter, astronomy x rays</adsbib:keywordText>
-    <adsbib:defaultRealizedThrough rdf:resource="http://ads.harvard.edu/sem/bib#2010ApJ...714..894H"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30583">
-    <adsbib:identifier>1993SSRv...62..223L</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Lewin, W. H. G. 1993, Space Sci. Rev., 62, 223</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30536">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-    <adsbase:affiliationText>Astrophysics Science Division, NASA/GSFC, Greenbelt, MD 20771, USA </adsbase:affiliationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30596">
-    <adsbib:identifier>2009A&amp;A...493L..39P</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Papitto, A., di Salvo, T., Iaria, R., Burderi, L., Riggio, A., Menna, M. T., &amp; Robba, N. R. 2009, A&amp;A, 493, L39</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30580">
-    <adsbib:identifier>2004ApJ...613..279J</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Jordan, A. et al. 2004, ApJ, 613, 279</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30542">
-    <adsbib:identifier>2010ATel.2500....1A</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Altamirano, D., Patruno, A., Heinke, C., Linares, M., Markwardt, C., &amp; Strohmayer, T. 2010b, ATel, 2500</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30576">
-    <adsbib:identifier>2004NuPhS.132..486I</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>in't Zand, J. et al. 2004, Nucl. Phys. B, 132, 486</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30592">
-    <adsbib:identifier>1980AJ.....85..521M</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Martins, D. H., Harvel, C. A., &amp; Miller, D. H. 1980, AJ, 85, 521</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30528">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-    <adsbase:affiliationText>Department of Physics, University of Alberta, Room 238 CEB, Edmonton, AB T6G 2G7, Canada</adsbase:affiliationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30618">
-    <adsbib:identifier>2004ARA&amp;A..42..169Y</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Yakovlev, D. G. &amp; Pethick, C. J. 2004, ARA&amp;A, 42, 169</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30535">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-    <adsbase:affiliationText>Astrophysics Science Division, NASA/GSFC, Greenbelt, MD 20771, USA </adsbase:affiliationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30529">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-    <adsbase:affiliationText>Astronomical Institute "Anton Pannekoek," University of Amsterdam, Science Park 904, 1098 XH, Amsterdam, The Netherlands </adsbase:affiliationText>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Servillat%2C_M">
-    <agent:fullName>Servillat, M.</agent:fullName>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL30533"/>
-    <agent:normName>Servillat, M</agent:normName>
-    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30569">
-    <adsbib:identifier>2006ApJ...644.1090H</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Heinke, C. O., Rybicki, G. B., Narayan, R., &amp; Grindlay, J. E. 2006, ApJ, 644, 1090</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30617">
-    <adsbib:identifier>2009ApJS..183..156W</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Wolff, M. T., Ray, P. S., Wood, K. S., &amp; Hertz, P. L. 2009, ApJS, 183, 156</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30538">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-    <adsbase:affiliationText>Astrophysics Science Division, NASA/GSFC, Greenbelt, MD 20771, USA </adsbase:affiliationText>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Cohn%2C_H">
-    <agent:fullName>Cohn, H. N.</agent:fullName>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL30530"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Cohn%2C_H/5f0253f3-bad5-42c8-a507-39446bf4ec01/">
     <agent:normName>Cohn, H</agent:normName>
+    <agent:fullName>Cohn, H. N.</agent:fullName>
     <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30601">
-    <adsbib:identifier>2003ApJ...591L.131P</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Pooley, D. et al. 2003, ApJ, 591, L131</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30577">
-    <adsbib:identifier>2005ApJ...621L.109I</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Ivanova, N., Rasio, F. A., Lombardi, J. C., Jr., Dooley, K. L., &amp; Proulx, Z. F. 2005, ApJ, 621, L109</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30600">
-    <adsbib:identifier>2002ApJ...573..184P</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Pooley, D. et al. 2002, ApJ, 573, 184</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30608">
-    <adsbib:identifier>1994A&amp;A...290..133V</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>van Paradijs, J. &amp; McClintock, J. E. 1994, A&amp;A, 290, 133</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30615">
-    <adsbib:identifier>2009MNRAS.393..126W</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Wijnands, R., Rol, E., Cackett, E. M., Starling, R. L. C., &amp; Remillard, R. A. 2009, MNRAS, 393, 126</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Bailyn%2C_C">
-    <agent:fullName>Bailyn, C.</agent:fullName>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL30540"/>
-    <agent:normName>Bailyn, C</agent:normName>
-    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Budac%2C_S">
-    <agent:fullName>Budac, S. A.</agent:fullName>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL30532"/>
-    <agent:normName>Budac, S</agent:normName>
-    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30560">
-    <adsbib:identifier>1986ApJ...303..336G</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Gehrels, N. 1986, ApJ, 303, 336</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30595">
-    <adsbib:identifier>1994A&amp;AS..108..653O</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Ortolani, S., Barbuy, B., &amp; Bica, E. 1994, A&amp;AS, 108, 653</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30551">
-    <adsbib:identifier>2008ApJ...684L..99C</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Campana, S., Stella, L., &amp; Kennea, J. A. 2008, ApJ, 684, L99</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30587">
-    <adsbib:identifier>1975Natur.257...32M</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Markert, T. H., Backman, D. E., Canizares, C. R., Clark, G. W., &amp; Levine, A. M. 1975, Nature, 257, 32</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30573">
-    <adsbib:identifier>1991A&amp;A...241..137H</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Hut, P., Murphy, B. W., &amp; Verbunt, F. 1991, A&amp;A, 241, 137</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30610">
-    <adsbib:identifier>1987IAUS..125..187V</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Verbunt, F. &amp; Hut, P. 1987, The Origin and Evolution of Neutron Stars (IAU Symp. 125), ed. D. J. Helfand &amp; J.-H. Huang (Dordrecht: Kluwer), 187</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30532">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-    <adsbase:affiliationText>Department of Physics, University of Alberta, Room 238 CEB, Edmonton, AB T6G 2G7, Canada </adsbase:affiliationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30590">
-    <adsbib:identifier>2005ATel..495....1M</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Markwardt, C. B. &amp; Swank, J. H. 2005, ATel, 495</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30544">
-    <adsbib:identifier>2010ApJ...712L..58A</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Altamirano, D. et al. 2010a, ApJ, 712, L58</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Markwardt%2C_C">
-    <agent:fullName>Markwardt, C. B.</agent:fullName>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL30536"/>
-    <agent:normName>Markwardt, C</agent:normName>
-    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30597">
-    <adsbib:identifier>2010MNRAS.403.1426P</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Patruno, A., Altamirano, D., &amp; Messenger, C. 2010a, MNRAS, 403, 1426</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30533">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-    <adsbase:affiliationText>Harvard College Observatory, 60 Garden Street, Cambridge, MA 02138, USA </adsbase:affiliationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30611">
-    <adsbib:identifier>2006csxs.book..341V</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Verbunt, F. &amp; Lewin, W. H. G. 2006, Compact Stellar X-Ray Sources (Cambridge Astrophys. Ser. 39), ed. W. Lewin &amp; M. van der Klis (Cambridge: Cambridge Univ. Press), 341</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30552">
-    <adsbib:identifier>1975ApJ...199L.143C</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Clark, G. W. 1975, ApJ, 199, L143</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30599">
-    <adsbib:identifier>2002A&amp;A...391..945P</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Piotto, G. et al. 2002, A&amp;A, 391, 945</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30594">
-    <adsbib:identifier>2000ApJ...536..891N</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Natalucci, L. et al. 2000, ApJ, 536, 891</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30554">
-    <adsbib:identifier>2003ApJ...598.1217D</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Deloye, C. J. &amp; Bildsten, L. 2003, ApJ, 598, 1217</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30555">
-    <adsbib:identifier>2000ApJ...530L..21D</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Deutsch, E. W., Margon, B., &amp; Anderson, S. F. 2000, ApJ, 530, L21</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30605">
-    <adsbib:identifier>2006AJ....131.1163S</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Skrutskie, M. F. et al. 2006, AJ, 131, 1163</adsbib:citationText>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg30530"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2010ApJ...714..894H">
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30611"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30618"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30610"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30597"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30562"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30575"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30565"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30570"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30616"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30569"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30615"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30617"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30552"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30553"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30581"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30568"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30599"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30613"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30593"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30554"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30614"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30555"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30601"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30577"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30582"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30578"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30564"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30600"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30607"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30561"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30567"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30585"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30587"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30584"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30603"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30557"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30608"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30548"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30591"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30558"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30586"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30574"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30543"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30596"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30598"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30604"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30571"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30606"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30609"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30602"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30559"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30560"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30583"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30595"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30551"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30594"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30545"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30566"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30572"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30605"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30579"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30573"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30592"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30546"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30589"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30541"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30612"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30556"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30619"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30590"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30550"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30588"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30580"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30542"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30549"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30563"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30576"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30544"/>
-    <adsbib:hasCitation rdf:nodeID="otCfwbPL30547"/>
-    <adsbib:pubDate rdf:datatype="xsd:date">May 2010</adsbib:pubDate>
+    <adsbib:doi>10.1088/0004-637X/714/1/894</adsbib:doi>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30543"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30616"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30541"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30578"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30599"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30548"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30612"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30587"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30619"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30600"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30583"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30586"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30595"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30570"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30605"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30569"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30549"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30556"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30584"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30554"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30568"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30597"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30593"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30594"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30602"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30565"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30542"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30564"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30552"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30614"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30610"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30558"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30611"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30563"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30562"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30588"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30560"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30567"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30571"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30550"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30581"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30590"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30580"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30608"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30551"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30573"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30547"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30618"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30582"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30613"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30574"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30561"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30589"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30601"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30617"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30576"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30575"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30557"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30545"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30615"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30585"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30603"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30553"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30559"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30607"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30577"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30579"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30544"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30566"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30592"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30572"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30604"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30609"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30606"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30546"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30591"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30596"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30598"/>
+    <adsbib:hasCitation rdf:nodeID="eHQlytdg30555"/>
+    <adsbib:alsoHasEprint rdf:resource="http://ads.harvard.edu/sem/bib#2009arXiv0911.0444H"/>
+    <adsbib:pageEnd>903</adsbib:pageEnd>
+    <adsbib:volume>714</adsbib:volume>
     <rdf:type rdf:resource="http://purl.org/spar/fabio/JournalArticle"/>
-    <fabio:isRealizationOf rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002A&amp;A...391..945P"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000A&amp;A...359..960V"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...621L.109I"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000ApJ...530L..21D"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ATel.1055....1L"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...574L...5K"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2182....1A"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006AJ....131.1163S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...691.1035H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1990Natur.347..534D"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001Sci...292.2290G"/>
+    <adsbib:publishedIn rdf:resource="http://ads.harvard.edu/sem/conf/ApJ"/>
     <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...573..184P"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010ATel.2500....1A"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009A&amp;A...493L..39P"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010ATel.2407....1P"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...563L..41I"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1988MNRAS.232...35W"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1983ApJ...275..105H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJS..183..156W"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...622L.113M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...591L.131P"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ASPC..351..112B"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...669L..29G"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001AJ....122.2627H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006A&amp;A...449.1117W"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1986ApJ...303..336G"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1991A&amp;A...241..137H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...660.1424H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...660.1246S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ATel..495....1M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ApJ...644.1090H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...578..405R"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1980AJ.....85..521M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2360....1S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...665L.147J"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1993SSRv...62..223L"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009A&amp;A...508..297D"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...570..618D"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009MNRAS.393..126W"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008ApJ...674L..45A"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008ApJ...684L..99C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004NuPhS.132..486I"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...561L.101W"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004SPIE.5492.1653M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2180....1H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ApJS..163..401J"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008ApJ...675.1468H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994A&amp;AS..108..653O"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994ApJ...426L..85A"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996AJ....112.1487H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...620..922C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...694L..21C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...598.1217D"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1987IAUS..125..187V"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1975ApJ...199L.143C"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...699.1113Z"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009arXiv0908.1098C"/>
     <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010MNRAS.401..355D"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004NuPhS.132..486I"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001NewAR..45..449L"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...595..743S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1986ApJ...303..336G"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008ApJ...684L..99C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001AJ....122.2627H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ATel.1055....1L"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2139....1H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...574L...5K"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...578..405R"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ASPC..251...94S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...694L..21C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007Natur.445..183M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...699.1113Z"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010MNRAS.403.1426P"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004SPIE.5492.1653M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ASPC..351..112B"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1988MNRAS.232...35W"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...620..922C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000ApJ...536..891N"/>
     <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2143....1H"/>
     <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008A&amp;A...480..481B"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2144....1L"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010MNRAS.403.1426P"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999A&amp;A...345..100I"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1990Natur.347..534D"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994ApJ...426L..85A"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...563L..41I"/>
     <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...598..501H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004ApJ...613..279J"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2237....1M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007Natur.445..183M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ATel.1051....1M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006csxs.book..341V"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000ApJ...536..891N"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ASPC..251...94S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2139....1H"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004ARA&amp;A..42..169Y"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...595..743S"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1975Natur.257...32M"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001NewAR..45..449L"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010ATel.2500....1A"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...660.1424H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2144....1L"/>
     <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ASPC..296..245V"/>
-    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010ApJ...712L..58A"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...591L.131P"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ATel..495....1M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2182....1A"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009arXiv0908.1098C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1983ApJ...275..105H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...561L.101W"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...691.1035H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ApJ...644.1090H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ATel.1051....1M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...669L..29G"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008ApJ...674L..45A"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...665L.147J"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1987IAUS..125..187V"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004ApJ...613..279J"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009A&amp;A...508..297D"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002A&amp;A...391..945P"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006csxs.book..341V"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006A&amp;A...449.1117W"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2237....1M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008ApJ...675.1468H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996AJ....112.1487H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1980AJ.....85..521M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1993SSRv...62..223L"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...622L.113M"/>
     <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994A&amp;A...290..133V"/>
-    <adsbib:doi>10.1088/0004-637X/714/1/894</adsbib:doi>
-    <adsbib:volume>714</adsbib:volume>
-    <adsbib:pageEnd>903</adsbib:pageEnd>
-    <adsbib:alsoHasEprint rdf:resource="http://ads.harvard.edu/sem/bib#2009arXiv0911.0444H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994A&amp;AS..108..653O"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009A&amp;A...493L..39P"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2180....1H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJS..183..156W"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000A&amp;A...359..960V"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ApJS..163..401J"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004ARA&amp;A..42..169Y"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010ApJ...712L..58A"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1991A&amp;A...241..137H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1975ApJ...199L.143C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1975Natur.257...32M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000ApJ...530L..21D"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...598.1217D"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...660.1246S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009MNRAS.393..126W"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...570..618D"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001Sci...292.2290G"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2360....1S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...621L.109I"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010ATel.2407....1P"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999A&amp;A...345..100I"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006AJ....131.1163S"/>
+    <adsbib:pubDate rdf:datatype="xsd:date">May 2010</adsbib:pubDate>
     <adsbib:pageStart>894</adsbib:pageStart>
-    <adsbib:publishedIn rdf:resource="http://ads.harvard.edu/sem/conf#ApJ"/>
+    <fabio:isRealizationOf rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30578">
-    <adsbib:identifier>2006ApJS..163..401J</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Jahoda, K. et al. 2006, ApJS, 163, 401</adsbib:citationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30554">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Deloye, C. J. &amp; Bildsten, L. 2003, ApJ, 598, 1217</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2003ApJ...598.1217D</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30616">
-    <adsbib:identifier>2006A&amp;A...449.1117W</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Wijnands, R. et al. 2006, A&amp;A, 449, 1117</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30607">
-    <adsbib:identifier>2001ASPC..251...94S</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Swank, J. &amp; Markwardt, K. 2001, New Century of X-ray Astronomy (ASP Conf. Ser. 251), ed. H. Inoue &amp; H. Kunieda (San Francisco, CA: ASP), 94</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30561">
-    <adsbib:identifier>2001Sci...292.2290G</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Grindlay, J. E., Heinke, C., Edmonds, P. D., &amp; Murray, S. S. 2001, Science, 292, 2290</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30585">
-    <adsbib:identifier>2007ATel.1055....1L</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Linares, M., Wijnands, R., &amp; van der Klis, M. 2007, ATel, 1055</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30527">
-    <adsbib:aggregatedAt rdf:resource="http://ads.harvard.edu/sem/conf#ADS"/>
-    <adsbib:bibcode>2010ApJ...714..894H</adsbib:bibcode>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Aggregation"/>
-    <adsbib:hasExpression rdf:resource="http://ads.harvard.edu/sem/bib#2010ApJ...714..894H"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30548">
-    <adsbib:identifier>2005ApJ...620..922C</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Cackett, E. M. et al. 2005, ApJ, 620, 922</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30591">
-    <adsbib:identifier>2004SPIE.5492.1653M</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Martini, P., Persson, S. E., Murphy, D. C., Birk, C., Shectman, S. A., Gunnels, S. M., &amp; Koch, E. 2004, Proc. SPIE, 5492, 1653</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30543">
-    <adsbib:identifier>2009ATel.2182....1A</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Altamirano, D. et al. 2009, ATel, 2182</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30539">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-    <adsbase:affiliationText>School of Physics and Astronomy, University of Southampton, Hampshire SO17 1BJ, UK </adsbase:affiliationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30559">
-    <adsbib:identifier>2007ApJ...669L..29G</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Gavriil, F. P., Strohmayer, T. E., Swank, J. H., &amp; Markwardt, C. B. 2007, ApJ, 669, L29</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30571">
-    <adsbib:identifier>1983ApJ...275..105H</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Hertz, P. &amp; Grindlay, J. E. 1983, ApJ, 275, 105</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Swank%2C_J">
-    <agent:fullName>Swank, J. H.</agent:fullName>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL30538"/>
-    <agent:normName>Swank, J</agent:normName>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Bailyn%2C_C/621e58a4-6a21-4e6f-89ee-2f10df4a5b40/">
+    <agent:normName>Bailyn, C</agent:normName>
+    <agent:fullName>Bailyn, C.</agent:fullName>
     <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg30540"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30530">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-    <adsbase:affiliationText>Department of Astronomy, Indiana University, 727 East Third St., Bloomington, IN 47405, USA </adsbase:affiliationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30584">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Li, W., Chornock, R., &amp; Filippenko, A. V. 2009, ATel, 2144</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2009ATel.2144....1L</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30581">
-    <adsbib:identifier>2002ApJ...574L...5K</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Kundu, A., Maccarone, T. J., &amp; Zepf, S. E. 2002, ApJ, 574, L5</adsbib:citationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30594">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Natalucci, L. et al. 2000, ApJ, 536, 891</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2000ApJ...536..891N</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30546">
-    <adsbib:identifier>2006ASPC..351..112B</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Bertin, E. 2006, Astronomical Data Analysis Software and Systems XV (ASP Conf. Ser. 351), ed. C. Gabriel et al. (San Francisco, CA: ASP), 112</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30541">
-    <adsbib:identifier>2008ApJ...674L..45A</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Altamirano, D., Casella, P., Patruno, A., Wijnands, R., &amp; van der Klis, M. 2008, ApJ, 674, L45</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30588">
-    <adsbib:identifier>2009ATel.2237....1M</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Markwardt, C. B., Altamirano, D., Strohmayer, T. E., &amp; Swank, J. H. 2009, ATel, 2237</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30549">
-    <adsbib:identifier>2009ApJ...694L..21C</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Cackett, E. M. et al. 2009, ApJ, 694, L21</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30547">
-    <adsbib:identifier>2008A&amp;A...480..481B</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Borges, B. W., Baptista, R., Papadimitriou, C., &amp; Giannakis, O. 2008, A&amp;A, 480, 481</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30537">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
+  <rdf:Description rdf:nodeID="eHQlytdg30537">
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
     <adsbase:affiliationText>Astronomical Institute "Anton Pannekoek," University of Amsterdam, Science Park 904, 1098 XH, Amsterdam, The Netherlands </adsbase:affiliationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30575">
-    <adsbib:identifier>1999A&amp;A...345..100I</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>in't Zand, J. J. M. et al. 1999, A&amp;A, 345, 100</adsbib:citationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30564">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Heinke, C. O., Altamirano, D., &amp; Markwardt, C. 2009a, ATel, 2180</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2009ATel.2180....1H</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30570">
-    <adsbib:identifier>2009ATel.2143....1H</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Heinke, C. O. et al. 2009c, ATel, 2143</adsbib:citationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30563">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Hartman, J. M. et al. 2008, ApJ, 675, 1468</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2008ApJ...675.1468H</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Altamirano%2C_D">
-    <agent:fullName>Altamirano, D.</agent:fullName>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL30529"/>
-    <agent:normName>Altamirano, D</agent:normName>
-    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+  <rdf:Description rdf:nodeID="eHQlytdg30562">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Harris, W. E. 1996, AJ, 112, 1487</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>1996AJ....112.1487H</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30593">
-    <adsbib:identifier>2005ApJ...622L.113M</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Muno, M. P., Pfahl, E., Baganoff, F. K., Brandt, W. N., Ghez, A., Lu, J., &amp; Morris, M. R. 2005, ApJ, 622, L113</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30568">
-    <adsbib:identifier>2007ApJ...660.1424H</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Heinke, C. O., Jonker, P. G., Wijnands, R., &amp; Taam, R. E. 2007, ApJ, 660, 1424</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30613">
-    <adsbib:identifier>2001ApJ...561L.101W</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>White, N. E. &amp; Angelini, L. 2001, ApJ, 561, L101</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Knigge%2C_C">
-    <agent:fullName>Knigge, C.</agent:fullName>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL30539"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Knigge%2C_C/727e5778-56c9-46d3-9949-0a078597dc72/">
     <agent:normName>Knigge, C</agent:normName>
+    <agent:fullName>Knigge, C.</agent:fullName>
     <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg30539"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30582">
-    <adsbib:identifier>2001NewAR..45..449L</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Lasota, J. P. 2001, New Astron. Rev., 45, 449</adsbib:citationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30601">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Pooley, D. et al. 2003, ApJ, 591, L131</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2003ApJ...591L.131P</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Strohmayer%2C_T">
-    <agent:fullName>Strohmayer, T. E.</agent:fullName>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL30535"/>
-    <agent:normName>Strohmayer, T</agent:normName>
-    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30567">
-    <adsbib:identifier>2009ApJ...691.1035H</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
+  <rdf:Description rdf:nodeID="eHQlytdg30567">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
     <adsbib:citationText>Heinke, C. O., Jonker, P. G., Wijnands, R., Deloye, C. J., &amp; Taam, R. E. 2009b, ApJ, 691, 1035</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2009ApJ...691.1035H</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30603">
-    <adsbib:identifier>2003ApJ...595..743S</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Sarazin, C. L., Kundu, A., Irwin, J. A., Sivakoff, G. R., Blanton, E. L., &amp; Randall, S. W. 2003, ApJ, 595, 743</adsbib:citationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30550">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Cackett, E. M. et al. 2010, ApJ, submitted (arXiv:0908.1098)</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2009arXiv0908.1098C</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30612">
-    <adsbib:identifier>2000A&amp;A...359..960V</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Verbunt, F., van Kerkwijk, M. H., in't Zand, J. J. M., &amp; Heise, J. 2000, A&amp;A, 359, 960</adsbib:citationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30581">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Kundu, A., Maccarone, T. J., &amp; Zepf, S. E. 2002, ApJ, 574, L5</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2002ApJ...574L...5K</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30586">
-    <adsbib:identifier>2007Natur.445..183M</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Maccarone, T. J., Kundu, A., Zepf, S. E., &amp; Rhode, K. L. 2007, Nature, 445, 183</adsbib:citationText>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Grindlay%2C_J/d1f3ad2b-9abb-483a-aa17-487d12f30e55/">
+    <agent:normName>Grindlay, J</agent:normName>
+    <agent:fullName>Grindlay, J. E.</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30598">
-    <adsbib:identifier>2010ATel.2407....1P</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Patruno, A. et al. 2010b, ATel, 2407</adsbib:citationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30608">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>van Paradijs, J. &amp; McClintock, J. E. 1994, A&amp;A, 290, 133</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>1994A&amp;A...290..133V</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/meta#2fea0748-014f-4ce8-8d59-d105b66407dc">
-    <pav:importedOn rdf:datatype="xsd:dateTime">2011-01-03T15:44:09.791792</pav:importedOn>
-    <pav:importedBy rdf:resource="http://ads.harvard.edu/sem/agents#adsclassic2rdf.py-0.01"/>
-    <pav:lastUpdateOn rdf:datatype="xsd:dateTime">2011-01-03T15:44:09.791792</pav:lastUpdateOn>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Altamirano%2C_D/2a4762b7-826e-436a-bd1c-01d3a82dd876/">
+    <agent:normName>Altamirano, D</agent:normName>
+    <agent:fullName>Altamirano, D.</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg30529"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30530">
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbase:affiliationText>Department of Astronomy, Indiana University, 727 East Third St., Bloomington, IN 47405, USA </adsbase:affiliationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30575">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>in't Zand, J. J. M. et al. 1999, A&amp;A, 345, 100</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>1999A&amp;A...345..100I</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30595">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Ortolani, S., Barbuy, B., &amp; Bica, E. 1994, A&amp;AS, 108, 653</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>1994A&amp;AS..108..653O</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30579">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Jonker, P. G., Steeghs, D., Chakrabarty, D., &amp; Juett, A. M. 2007, ApJ, 665, L147</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2007ApJ...665L.147J</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30539">
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbase:affiliationText>School of Physics and Astronomy, University of Southampton, Hampshire SO17 1BJ, UK </adsbase:affiliationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30540">
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbase:affiliationText>Department of Astronomy, Yale University, P.O. Box 208101, New Haven, CT 06520, USA</adsbase:affiliationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30572">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Homer, L., Deutsch, E. W., Anderson, S. F., &amp; Margon, B. 2001, AJ, 122, 2627</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2001AJ....122.2627H</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30604">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Sivakoff, G. R. et al. 2007, ApJ, 660, 1246</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2007ApJ...660.1246S</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/meta#d7af626e-aa62-431e-98c5-0cbe1d6683aa">
+    <pav:importedOn rdf:datatype="xsd:dateTime">2011-03-16T13:15:00.390125</pav:importedOn>
+    <pav:lastUpdateOn rdf:datatype="xsd:dateTime">2011-03-16T13:15:00.390125</pav:lastUpdateOn>
+    <pav:importedBy rdf:resource="http://ads.harvard.edu/sem/agents/Software/adsclassic2rdf.py-0.01"/>
     <rdf:type rdf:resource="http://purl.org/spar/fabio/BibliographicMetadata"/>
     <rdf:type rdf:resource="http://purl.org/spar/fabio/EntityMetadata"/>
-    <pav:importedFromSource rdf:resource="http://ads.harvard.edu/sem/conf#ADS"/>
+    <pav:importedFromSource rdf:resource="http://ads.harvard.edu/sem/conf/ADS"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30609">
-    <adsbib:identifier>2003ASPC..296..245V</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Verbunt, F. 2003, New Horizons in Globular Cluster Astronomy (ASP Conf. Ser. 296), ed. G. Piotto et al. (San Francisco, CA: ASP), 245</adsbib:citationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30596">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Papitto, A., di Salvo, T., Iaria, R., Burderi, L., Riggio, A., Menna, M. T., &amp; Robba, N. R. 2009, A&amp;A, 493, L39</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2009A&amp;A...493L..39P</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Lugger%2C_P">
-    <agent:fullName>Lugger, P. M.</agent:fullName>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL30531"/>
-    <agent:normName>Lugger, P</agent:normName>
-    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+  <rdf:Description rdf:nodeID="eHQlytdg30555">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Deutsch, E. W., Margon, B., &amp; Anderson, S. F. 2000, ApJ, 530, L21</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2000ApJ...530L..21D</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Wijnands%2C_R">
-    <agent:fullName>Wijnands, R.</agent:fullName>
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL30537"/>
-    <agent:normName>Wijnands, R</agent:normName>
-    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+  <rdf:Description rdf:nodeID="eHQlytdg30543">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Altamirano, D. et al. 2009, ATel, 2182</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2009ATel.2182....1A</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30572">
-    <adsbib:identifier>2001AJ....122.2627H</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Homer, L., Deutsch, E. W., Anderson, S. F., &amp; Margon, B. 2001, AJ, 122, 2627</adsbib:citationText>
+  <rdf:Description rdf:nodeID="eHQlytdg30578">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Jahoda, K. et al. 2006, ApJS, 163, 401</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2006ApJS..163..401J</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30566">
-    <adsbib:identifier>2003ApJ...598..501H</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Heinke, C. O., Grindlay, J. E., Lugger, P. M., Cohn, H. N., Edmonds, P. D., Lloyd, D. A., &amp; Cool, A. M. 2003, ApJ, 598, 501</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30579">
-    <adsbib:identifier>2007ApJ...665L.147J</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Jonker, P. G., Steeghs, D., Chakrabarty, D., &amp; Juett, A. M. 2007, ApJ, 665, L147</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30589">
-    <adsbib:identifier>2007ATel.1051....1M</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Markwardt, C. B., Pereira, D., &amp; Swank, J. H. 2007, ATel, 1051</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30556">
-    <adsbib:identifier>2002ApJ...570..618D</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Di Stefano, R., Kong, A. K. H., Garcia, M. R., Barmby, P., Greiner, J., Murray, S. S., &amp; Primini, F. A. 2002, ApJ, 570, 618</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30619">
-    <adsbib:identifier>2009ApJ...699.1113Z</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
+  <rdf:Description rdf:nodeID="eHQlytdg30619">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
     <adsbib:citationText>Zurek, D. R., Knigge, C., Maccarone, T. J., Dieball, A., &amp; Long, K. S. 2009, ApJ, 699, 1113</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2009ApJ...699.1113Z</adsbib:identifier>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30526">
-    <rdf:type rdf:resource="http://purl.org/spar/fabio/Abstract"/>
-    <adsbib:abstractText>We have discovered a new transient low-mass X-ray binary, NGC 6440 X-2, with Chandra/ACIS, RXTE/PCA, and Swift/XRT observations of the globular cluster NGC 6440. The discovery outburst (2009 July 28-31) peaked at L&lt;SUB&gt;X&lt;/SUB&gt; ~ 1.5 × 10&lt;SUP&gt;36&lt;/SUP&gt; erg s&lt;SUP&gt;-1&lt;/SUP&gt; and lasted for &lt;4 days above L&lt;SUB&gt;X&lt;/SUB&gt; = 10&lt;SUP&gt;35&lt;/SUP&gt; erg s&lt;SUP&gt;-1&lt;/SUP&gt;. Four other outbursts (2009 May 29-June 4, August 29-September 1, October 1-3, and October 28-31) have been observed with RXTE/PCA (identifying millisecond pulsations) and Swift/XRT (confirming a positional association with NGC 6440 X-2), with similar peak luminosities and decay times. Optical and infrared imaging did not detect a clear counterpart, with best limits of V&gt;21, B&gt;22 in quiescence from archival Hubble Space Telescope imaging, g'&gt;22 during the August outburst from Gemini-South GMOS imaging, and J &gt;~ 18.5 and K &gt;~ 17 during the July outburst from CTIO 4 m ISPI imaging. Archival Chandra X-ray images of the core do not detect the quiescent counterpart (L&lt;SUB&gt;X&lt;/SUB&gt; &lt; (1-2) × 10&lt;SUP&gt;31&lt;/SUP&gt; erg s&lt;SUP&gt;-1&lt;/SUP&gt;) and place a bolometric luminosity limit of L &lt;SUB&gt;NS&lt;/SUB&gt; &lt; 6 × 10&lt;SUP&gt;31&lt;/SUP&gt; erg s&lt;SUP&gt;-1&lt;/SUP&gt; (one of the lowest measured) for a hydrogen atmosphere neutron star. A short Chandra observation 10 days into quiescence found two photons at NGC 6440 X-2's position, suggesting enhanced quiescent emission at L&lt;SUB&gt;X&lt;/SUB&gt; ~ 6 × 10&lt;SUP&gt;31&lt;/SUP&gt; erg s&lt;SUP&gt;-1&lt;/SUP&gt;. NGC 6440 X-2 currently shows the shortest recurrence time (~31 days) of any known X-ray transient, although regular outbursts were not visible in the bulge scans before early 2009. Fast, low-luminosity transients like NGC 6440 X-2 may be easily missed by current X-ray monitoring.</adsbib:abstractText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30550">
-    <adsbib:identifier>2009arXiv0908.1098C</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Cackett, E. M. et al. 2010, ApJ, submitted (arXiv:0908.1098)</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30531">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-    <adsbase:affiliationText>Department of Astronomy, Indiana University, 727 East Third St., Bloomington, IN 47405, USA </adsbase:affiliationText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL30563">
-    <adsbib:identifier>2008ApJ...675.1468H</adsbib:identifier>
-    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#2fea0748-014f-4ce8-8d59-d105b66407dc"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Citation"/>
-    <adsbib:citationText>Hartman, J. M. et al. 2008, ApJ, 675, 1468</adsbib:citationText>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Grindlay%2C_J">
-    <agent:fullName>Grindlay, J. E.</agent:fullName>
-    <agent:normName>Grindlay, J</agent:normName>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Markwardt%2C_C/445f4b49-c6a6-42ef-9375-36b8a2feb7df/">
+    <agent:normName>Markwardt, C</agent:normName>
+    <agent:fullName>Markwardt, C. B.</agent:fullName>
     <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg30536"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30534">
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbase:affiliationText>Astronomical Institute "Anton Pannekoek," University of Amsterdam, Science Park 904, 1098 XH, Amsterdam, The Netherlands ; MIT Kavli Institute for Astrophysics &amp;amp; Space Research, 70 Vassar St., Cambridge, MA 02139, USA </adsbase:affiliationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30569">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Heinke, C. O., Rybicki, G. B., Narayan, R., &amp; Grindlay, J. E. 2006, ApJ, 644, 1090</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2006ApJ...644.1090H</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Budac%2C_S/29318e78-4a58-4f59-a13b-ed35a18c94ab/">
+    <agent:normName>Budac, S</agent:normName>
+    <agent:fullName>Budac, S. A.</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg30532"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30609">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Verbunt, F. 2003, New Horizons in Globular Cluster Astronomy (ASP Conf. Ser. 296), ed. G. Piotto et al. (San Francisco, CA: ASP), 245</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2003ASPC..296..245V</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30602">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Rutledge, R. E., Bildsten, L., Brown, E. F., Pavlov, G. G., &amp; Zavlin, V. E. 2002, ApJ, 578, 405</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2002ApJ...578..405R</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30605">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Skrutskie, M. F. et al. 2006, AJ, 131, 1163</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2006AJ....131.1163S</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30552">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Clark, G. W. 1975, ApJ, 199, L143</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>1975ApJ...199L.143C</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30582">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Lasota, J. P. 2001, New Astron. Rev., 45, 449</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2001NewAR..45..449L</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa">
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...573..184P"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010MNRAS.401..355D"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004NuPhS.132..486I"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001NewAR..45..449L"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...595..743S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1986ApJ...303..336G"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008ApJ...684L..99C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001AJ....122.2627H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ATel.1055....1L"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2139....1H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...574L...5K"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...578..405R"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ASPC..251...94S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...694L..21C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007Natur.445..183M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...699.1113Z"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010MNRAS.403.1426P"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004SPIE.5492.1653M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ASPC..351..112B"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1988MNRAS.232...35W"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...620..922C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000ApJ...536..891N"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2143....1H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008A&amp;A...480..481B"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1990Natur.347..534D"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994ApJ...426L..85A"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...563L..41I"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...598..501H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010ATel.2500....1A"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...660.1424H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2144....1L"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ASPC..296..245V"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...591L.131P"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ATel..495....1M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2182....1A"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009arXiv0908.1098C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1983ApJ...275..105H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001ApJ...561L.101W"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJ...691.1035H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ApJ...644.1090H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ATel.1051....1M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...669L..29G"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008ApJ...674L..45A"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...665L.147J"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1987IAUS..125..187V"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004ApJ...613..279J"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009A&amp;A...508..297D"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002A&amp;A...391..945P"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006csxs.book..341V"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006A&amp;A...449.1117W"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2237....1M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2008ApJ...675.1468H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1996AJ....112.1487H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1980AJ.....85..521M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1993SSRv...62..223L"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...622L.113M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994A&amp;A...290..133V"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1994A&amp;AS..108..653O"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009A&amp;A...493L..39P"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2180....1H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ApJS..183..156W"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000A&amp;A...359..960V"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006ApJS..163..401J"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2004ARA&amp;A..42..169Y"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010ApJ...712L..58A"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1991A&amp;A...241..137H"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1975ApJ...199L.143C"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1975Natur.257...32M"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2000ApJ...530L..21D"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2003ApJ...598.1217D"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2007ApJ...660.1246S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009MNRAS.393..126W"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2002ApJ...570..618D"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2001Sci...292.2290G"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2009ATel.2360....1S"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2005ApJ...621L.109I"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2010ATel.2407....1P"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#1999A&amp;A...345..100I"/>
+    <cito:cites rdf:resource="http://ads.harvard.edu/sem/bib#2006AJ....131.1163S"/>
+    <adsbib:citeMeAs>The Astrophysical Journal, Volume 714, Issue 1, pp. 894-903 (2010).</adsbib:citeMeAs>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Cohn%2C_H/5f0253f3-bad5-42c8-a507-39446bf4ec01/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Linares%2C_M/d786db60-de04-499c-9bb1-a960ab91bfd1/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Bailyn%2C_C/621e58a4-6a21-4e6f-89ee-2f10df4a5b40/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Lugger%2C_P/14a7b066-bd95-4875-9ddf-f1b8e03fb563/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Grindlay%2C_J/d1f3ad2b-9abb-483a-aa17-487d12f30e55/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Altamirano%2C_D/2a4762b7-826e-436a-bd1c-01d3a82dd876/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Markwardt%2C_C/445f4b49-c6a6-42ef-9375-36b8a2feb7df/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Knigge%2C_C/727e5778-56c9-46d3-9949-0a078597dc72/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Strohmayer%2C_T/1b00f8b4-0e1f-46f2-88c6-19753409dd7d/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Servillat%2C_M/54207b9f-d2d6-4c89-8531-7e211f828fdc/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Swank%2C_J/5c9482c8-963b-4d76-835a-3f6946a6ee65/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Wijnands%2C_R/965d0f70-f07c-42f6-9a41-b0facde9f044/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Heinke%2C_C/7c8bf3c7-10fc-472b-a405-253bff4e9ec8/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Budac%2C_S/29318e78-4a58-4f59-a13b-ed35a18c94ab/"/>
+    <adsbib:hasAggregation rdf:nodeID="eHQlytdg30527"/>
+    <adsbib:keywordConcept rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/NormalizedKeys.rdf#astronomy_x_rays"/>
+    <adsbib:keywordConcept rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/NormalizedKeys.rdf#dense_matter"/>
+    <adsbib:keywordText>dense matter, astronomy x rays</adsbib:keywordText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#WrittenProduct"/>
+    <rdf:type rdf:resource="http://purl.org/spar/fabio/ResearchPaper"/>
+    <adsbib:defaultRealizedThrough rdf:resource="http://ads.harvard.edu/sem/bib#2010ApJ...714..894H"/>
+    <adsbib:hasAbstract rdf:nodeID="eHQlytdg30526"/>
+    <adsbase:title>Discovery of a Second Transient Low-Mass X-ray Binary in the Globular Cluster Ngc 6440</adsbase:title>
+    <adsbase:languageIn>en</adsbase:languageIn>
+    <cito:peerReviewed rdf:datatype="xsd:boolean">True</cito:peerReviewed>
+    <adsbib:workIdentifier>2010ApJ...714..894H</adsbib:workIdentifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30536">
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbase:affiliationText>Astrophysics Science Division, NASA/GSFC, Greenbelt, MD 20771, USA </adsbase:affiliationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30583">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Lewin, W. H. G. 1993, Space Sci. Rev., 62, 223</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>1993SSRv...62..223L</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30571">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Hertz, P. &amp; Grindlay, J. E. 1983, ApJ, 275, 105</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>1983ApJ...275..105H</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30590">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Markwardt, C. B. &amp; Swank, J. H. 2005, ATel, 495</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2005ATel..495....1M</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30580">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Jordan, A. et al. 2004, ApJ, 613, 279</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2004ApJ...613..279J</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30607">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Swank, J. &amp; Markwardt, K. 2001, New Century of X-ray Astronomy (ASP Conf. Ser. 251), ed. H. Inoue &amp; H. Kunieda (San Francisco, CA: ASP), 94</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2001ASPC..251...94S</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30547">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Borges, B. W., Baptista, R., Papadimitriou, C., &amp; Giannakis, O. 2008, A&amp;A, 480, 481</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2008A&amp;A...480..481B</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30528">
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbase:affiliationText>Department of Physics, University of Alberta, Room 238 CEB, Edmonton, AB T6G 2G7, Canada</adsbase:affiliationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Wijnands%2C_R/965d0f70-f07c-42f6-9a41-b0facde9f044/">
+    <agent:normName>Wijnands, R</agent:normName>
+    <agent:fullName>Wijnands, R.</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg30537"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30561">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Grindlay, J. E., Heinke, C., Edmonds, P. D., &amp; Murray, S. S. 2001, Science, 292, 2290</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2001Sci...292.2290G</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30576">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>in't Zand, J. et al. 2004, Nucl. Phys. B, 132, 486</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2004NuPhS.132..486I</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30557">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Dotani, T., Inoue, H., Murakami, T., Nagase, F., &amp; Tanaka, Y. 1990, Nature, 347, 534</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>1990Natur.347..534D</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30545">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Arzoumanian, Z., Fruchter, A. S., &amp; Taylor, J. H. 1994, ApJ, 426, L85</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>1994ApJ...426L..85A</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30585">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Linares, M., Wijnands, R., &amp; van der Klis, M. 2007, ATel, 1055</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2007ATel.1055....1L</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30559">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Gavriil, F. P., Strohmayer, T. E., Swank, J. H., &amp; Markwardt, C. B. 2007, ApJ, 669, L29</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2007ApJ...669L..29G</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30592">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Martins, D. H., Harvel, C. A., &amp; Miller, D. H. 1980, AJ, 85, 521</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>1980AJ.....85..521M</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30610">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Verbunt, F. &amp; Hut, P. 1987, The Origin and Evolution of Neutron Stars (IAU Symp. 125), ed. D. J. Helfand &amp; J.-H. Huang (Dordrecht: Kluwer), 187</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>1987IAUS..125..187V</adsbib:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30526">
+    <adsbib:abstractText>We have discovered a new transient low-mass X-ray binary, NGC 6440 X-2, with Chandra/ACIS, RXTE/PCA, and Swift/XRT observations of the globular cluster NGC 6440. The discovery outburst (2009 July 28-31) peaked at L&lt;SUB&gt;X&lt;/SUB&gt; ~ 1.5 × 10&lt;SUP&gt;36&lt;/SUP&gt; erg s&lt;SUP&gt;-1&lt;/SUP&gt; and lasted for &lt;4 days above L&lt;SUB&gt;X&lt;/SUB&gt; = 10&lt;SUP&gt;35&lt;/SUP&gt; erg s&lt;SUP&gt;-1&lt;/SUP&gt;. Four other outbursts (2009 May 29-June 4, August 29-September 1, October 1-3, and October 28-31) have been observed with RXTE/PCA (identifying millisecond pulsations) and Swift/XRT (confirming a positional association with NGC 6440 X-2), with similar peak luminosities and decay times. Optical and infrared imaging did not detect a clear counterpart, with best limits of V&gt;21, B&gt;22 in quiescence from archival Hubble Space Telescope imaging, g'&gt;22 during the August outburst from Gemini-South GMOS imaging, and J &gt;~ 18.5 and K &gt;~ 17 during the July outburst from CTIO 4 m ISPI imaging. Archival Chandra X-ray images of the core do not detect the quiescent counterpart (L&lt;SUB&gt;X&lt;/SUB&gt; &lt; (1-2) × 10&lt;SUP&gt;31&lt;/SUP&gt; erg s&lt;SUP&gt;-1&lt;/SUP&gt;) and place a bolometric luminosity limit of L &lt;SUB&gt;NS&lt;/SUB&gt; &lt; 6 × 10&lt;SUP&gt;31&lt;/SUP&gt; erg s&lt;SUP&gt;-1&lt;/SUP&gt; (one of the lowest measured) for a hydrogen atmosphere neutron star. A short Chandra observation 10 days into quiescence found two photons at NGC 6440 X-2's position, suggesting enhanced quiescent emission at L&lt;SUB&gt;X&lt;/SUB&gt; ~ 6 × 10&lt;SUP&gt;31&lt;/SUP&gt; erg s&lt;SUP&gt;-1&lt;/SUP&gt;. NGC 6440 X-2 currently shows the shortest recurrence time (~31 days) of any known X-ray transient, although regular outbursts were not visible in the bulge scans before early 2009. Fast, low-luminosity transients like NGC 6440 X-2 may be easily missed by current X-ray monitoring.</adsbib:abstractText>
+    <rdf:type rdf:resource="http://purl.org/spar/fabio/Abstract"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg30591">
+    <adsbib:citationFrom rdf:resource="http://ads.harvard.edu/sem/bib#d7af626e-aa62-431e-98c5-0cbe1d6683aa"/>
+    <adsbib:citationText>Martini, P., Persson, S. E., Murphy, D. C., Birk, C., Shectman, S. A., Gunnels, S. M., &amp; Koch, E. 2004, Proc. SPIE, 5492, 1653</adsbib:citationText>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Citation"/>
+    <adsbib:identifier>2004SPIE.5492.1653M</adsbib:identifier>
   </rdf:Description>
 </rdf:RDF>

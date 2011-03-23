@@ -1,106 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsbib="http://github.com/rahuldave/ontoads/owl/adsbib.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsbib="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#"
    xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:cito="http://purl.org/spar/cito/"
    xmlns:fabio="http://purl.org/spar/fabio/"
    xmlns:pav="http://swan.mindinformatics.org/ontologies/1.2/pav/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/meta#794e4ad8-2217-43fc-bc11-98c92e5879ba">
-    <pav:importedOn rdf:datatype="xsd:dateTime">2011-01-03T15:43:46.229180</pav:importedOn>
-    <pav:importedBy rdf:resource="http://ads.harvard.edu/sem/agents#adsclassic2rdf.py-0.01"/>
-    <pav:importedFromSource rdf:resource="http://ads.harvard.edu/sem/conf#ADS"/>
-    <rdf:type rdf:resource="http://purl.org/spar/fabio/BibliographicMetadata"/>
-    <rdf:type rdf:resource="http://purl.org/spar/fabio/EntityMetadata"/>
-    <pav:lastUpdateOn rdf:datatype="xsd:dateTime">2011-01-03T15:43:46.229180</pav:lastUpdateOn>
+  <rdf:Description rdf:nodeID="eHQlytdg3679">
+    <adsbib:abstractText>We present Hubble Space Telescope (HST)/Wide Field Planetary Camera 2 (WFPC2), Galaxy Evolution Explorer (GALEX) and Chandra observations of the position of the Type Ia supernova 2007sr in the Antennae galaxy, taken before the explosion. No source is found in any of the observations, allowing us to put interesting constraints on the progenitor luminosity. In total there is about 450ks of Chandra data, spread over seven different observations. Limiting magnitudes of far-ultraviolet (FUV) (23.7ABmag), near-ultraviolet (NUV) (23.8ABmag), F555W (26.5 Vegamag) and F814W (24.5-25 Vegamag) are derived. The distance to the Antennae galaxy is surprisingly poorly known, with almost a factor of 2 difference between the latest distance based on the tip of the red giant branch (13.3Mpc) and the distance derived from the 2007sr light curve (25Mpc). Using these distances we derive limits on absolute optical and UV magnitudes of any progenitor but these are still above the brightest (symbiotic) proposed progenitors. From the Chandra data a 3σ upper limit to the X-ray luminosity of 0.5-8.0 × 10&lt;SUP&gt;37&lt;/SUP&gt;ergs&lt;SUP&gt;-1&lt;/SUP&gt; in the 0.3-1keV range is found. This is below the X-ray luminosity of the potential progenitor of the Type Ia supernova 2007on that we recently discovered and for which we report a corrected X-ray luminosity. If that progenitor is confirmed it suggests the two supernovae have different progenitors. The X-ray limit is comparable to the brightest supersoft X-ray sources in the Galaxy, the Large Magellanic Cloud (LMC) and the Small Magellanic Cloud (SMC) and significantly below the luminosities of the brightest supersoft and quasi-soft X-ray sources found in nearby galaxies, ruling out such sources as progenitors of this Type Ia supernova.</adsbib:abstractText>
+    <rdf:type rdf:resource="http://purl.org/spar/fabio/Abstract"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Bassa%2C_C">
-    <agent:fullName>Bassa, Cees</agent:fullName>
-    <agent:normName>Bassa, C</agent:normName>
-    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2008arXiv0802.2239N">
-    <fabio:isRealizationOf rdf:resource="http://ads.harvard.edu/sem/bib#794e4ad8-2217-43fc-bc11-98c92e5879ba"/>
-    <adsbib:publishedIn rdf:resource="http://ads.harvard.edu/sem/conf#ARXIV"/>
-    <adsbib:eprintid>arXiv:0802.2239</adsbib:eprintid>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Eprint"/>
-    <adsbib:alsoPublishedIn rdf:resource="http://ads.harvard.edu/sem/bib#2008MNRAS.388..487N"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL3682">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#794e4ad8-2217-43fc-bc11-98c92e5879ba"/>
-    <adsbase:affiliationText>Max Planck Institute of Extraterrestrial Physics, Giessenbachstrasse, 85748 Garching, Germany; Excellence Cluster Universe, Technische Universit&amp;auml;t M&amp;uuml;nchen, Boltzmannstr. 2, D-85748 Garching, Germany</adsbase:affiliationText>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Nelemans%2C_G">
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL3681"/>
-    <agent:fullName>Nelemans, Gijs</agent:fullName>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Nelemans%2C_G/b5e9b9ec-9c99-4511-9bc4-7fd6142318ba/">
     <agent:normName>Nelemans, G</agent:normName>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg3681"/>
+    <agent:fullName>Nelemans, Gijs</agent:fullName>
     <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL3680">
-    <adsbib:aggregatedAt rdf:resource="http://ads.harvard.edu/sem/conf#ADS"/>
+  <rdf:Description rdf:nodeID="eHQlytdg3683">
+    <adsbase:affiliationText>Harvard-Smithsonian Center for Astrophysics, 60 Garden Street, Cambridge, MA 02138, USA</adsbase:affiliationText>
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#8c4de407-5726-48e5-9f24-b4b63e5384a3"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg3681">
+    <adsbase:affiliationText>Department of Astrophysics, IMAPP, Radboud University Nijmegen, PO Box 9010, NL-6500 GL Nijmegen, The Netherlands</adsbase:affiliationText>
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#8c4de407-5726-48e5-9f24-b4b63e5384a3"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eHQlytdg3680">
     <adsbib:hasExpression rdf:resource="http://ads.harvard.edu/sem/bib#2008MNRAS.388..487N"/>
     <adsbib:bibcode>2008MNRAS.388..487N</adsbib:bibcode>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbib.owl#Aggregation"/>
+    <adsbib:aggregatedAt rdf:resource="http://ads.harvard.edu/sem/conf/ADS"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Aggregation"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL3681">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#794e4ad8-2217-43fc-bc11-98c92e5879ba"/>
-    <adsbase:affiliationText>Department of Astrophysics, IMAPP, Radboud University Nijmegen, PO Box 9010, NL-6500 GL Nijmegen, The Netherlands</adsbase:affiliationText>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2008arXiv0802.2239N">
+    <adsbib:eprintid>arXiv:0802.2239</adsbib:eprintid>
+    <fabio:isRealizationOf rdf:resource="http://ads.harvard.edu/sem/bib#8c4de407-5726-48e5-9f24-b4b63e5384a3"/>
+    <adsbib:publishedIn rdf:resource="http://ads.harvard.edu/sem/conf/ARXIV"/>
+    <adsbib:alsoPublishedIn rdf:resource="http://ads.harvard.edu/sem/bib#2008MNRAS.388..487N"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-bibo.owl#Eprint"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#794e4ad8-2217-43fc-bc11-98c92e5879ba">
-    <cito:peerReviewed rdf:datatype="xsd:boolean">True</cito:peerReviewed>
-    <adsbib:hasAbstract rdf:nodeID="otCfwbPL3679"/>
-    <rdf:type rdf:resource="http://purl.org/spar/fabio/ResearchPaper"/>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#WrittenProduct"/>
-    <adsbase:languageIn>en</adsbase:languageIn>
-    <adsbib:citeMeAs>Monthly Notices of the Royal Astronomical Society, Volume 388, Issue 2, pp. 487-494.</adsbib:citeMeAs>
-    <adsbib:hasAggregation rdf:nodeID="otCfwbPL3680"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Bassa%2C_C"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Voss%2C_R"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Roelofs%2C_G"/>
-    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents#Nelemans%2C_G"/>
-    <adsbib:keywordConcept rdf:resource="http://github.com/rahuldave/ontoads/owl/NormalizedKeys.rdf#stars_white_dwarfs"/>
-    <adsbib:keywordConcept rdf:resource="http://github.com/rahuldave/ontoads/owl/NormalizedKeys.rdf#astronomy_x_rays"/>
-    <adsbib:keywordConcept rdf:resource="http://github.com/rahuldave/ontoads/owl/NormalizedKeys.rdf#stars_novae%3Bcataclysmic_variables"/>
-    <adsbib:keywordConcept rdf:resource="http://github.com/rahuldave/ontoads/owl/NormalizedKeys.rdf#stars_binaries_close"/>
-    <adsbase:title>Limits on the X-ray and optical luminosity of the progenitor of the Type Ia supernova 2007sr</adsbase:title>
-    <adsbib:workIdentifier>2008MNRAS.388..487N</adsbib:workIdentifier>
-    <adsbib:defaultRealizedThrough rdf:resource="http://ads.harvard.edu/sem/bib#2008MNRAS.388..487N"/>
-    <adsbib:keywordText>stars novae;cataclysmic variables, stars white dwarfs, stars binaries close, astronomy x rays</adsbib:keywordText>
+  <rdf:Description rdf:nodeID="eHQlytdg3682">
+    <adsbase:affiliationText>Max Planck Institute of Extraterrestrial Physics, Giessenbachstrasse, 85748 Garching, Germany; Excellence Cluster Universe, Technische Universit&amp;auml;t M&amp;uuml;nchen, Boltzmannstr. 2, D-85748 Garching, Germany</adsbase:affiliationText>
+    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#8c4de407-5726-48e5-9f24-b4b63e5384a3"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#Affiliation"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL3679">
-    <rdf:type rdf:resource="http://purl.org/spar/fabio/Abstract"/>
-    <adsbib:abstractText>We present Hubble Space Telescope (HST)/Wide Field Planetary Camera 2 (WFPC2), Galaxy Evolution Explorer (GALEX) and Chandra observations of the position of the Type Ia supernova 2007sr in the Antennae galaxy, taken before the explosion. No source is found in any of the observations, allowing us to put interesting constraints on the progenitor luminosity. In total there is about 450ks of Chandra data, spread over seven different observations. Limiting magnitudes of far-ultraviolet (FUV) (23.7ABmag), near-ultraviolet (NUV) (23.8ABmag), F555W (26.5 Vegamag) and F814W (24.5-25 Vegamag) are derived. The distance to the Antennae galaxy is surprisingly poorly known, with almost a factor of 2 difference between the latest distance based on the tip of the red giant branch (13.3Mpc) and the distance derived from the 2007sr light curve (25Mpc). Using these distances we derive limits on absolute optical and UV magnitudes of any progenitor but these are still above the brightest (symbiotic) proposed progenitors. From the Chandra data a 3σ upper limit to the X-ray luminosity of 0.5-8.0 × 10&lt;SUP&gt;37&lt;/SUP&gt;ergs&lt;SUP&gt;-1&lt;/SUP&gt; in the 0.3-1keV range is found. This is below the X-ray luminosity of the potential progenitor of the Type Ia supernova 2007on that we recently discovered and for which we report a corrected X-ray luminosity. If that progenitor is confirmed it suggests the two supernovae have different progenitors. The X-ray limit is comparable to the brightest supersoft X-ray sources in the Galaxy, the Large Magellanic Cloud (LMC) and the Small Magellanic Cloud (SMC) and significantly below the luminosities of the brightest supersoft and quasi-soft X-ray sources found in nearby galaxies, ruling out such sources as progenitors of this Type Ia supernova.</adsbib:abstractText>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="otCfwbPL3683">
-    <adsbase:affiliationContext rdf:resource="http://ads.harvard.edu/sem/bib#794e4ad8-2217-43fc-bc11-98c92e5879ba"/>
-    <adsbase:affiliationText>Harvard-Smithsonian Center for Astrophysics, 60 Garden Street, Cambridge, MA 02138, USA</adsbase:affiliationText>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#Affiliation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Voss%2C_R">
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL3682"/>
-    <agent:fullName>Voss, Rasmus</agent:fullName>
-    <agent:normName>Voss, R</agent:normName>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Bassa%2C_C/65818130-fc7e-430f-8cac-30855e2af6f1/">
+    <agent:normName>Bassa, C</agent:normName>
+    <agent:fullName>Bassa, Cees</agent:fullName>
     <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents#Roelofs%2C_G">
-    <adsbase:hasAffiliation rdf:nodeID="otCfwbPL3683"/>
-    <agent:fullName>Roelofs, Gijs</agent:fullName>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Roelofs%2C_G/b78fde50-a086-494f-98a2-9f45f584bdbd/">
     <agent:normName>Roelofs, G</agent:normName>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg3683"/>
+    <agent:fullName>Roelofs, Gijs</agent:fullName>
     <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Voss%2C_R/fbb17adf-8910-4453-8d81-489a76d93346/">
+    <agent:normName>Voss, R</agent:normName>
+    <adsbase:hasAffiliation rdf:nodeID="eHQlytdg3682"/>
+    <agent:fullName>Voss, Rasmus</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#8c4de407-5726-48e5-9f24-b4b63e5384a3">
+    <adsbib:keywordConcept rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/NormalizedKeys.rdf#stars_binaries_close"/>
+    <adsbib:keywordConcept rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/NormalizedKeys.rdf#stars_novae%3Bcataclysmic_variables"/>
+    <adsbib:keywordConcept rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/NormalizedKeys.rdf#stars_white_dwarfs"/>
+    <adsbib:keywordConcept rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/NormalizedKeys.rdf#astronomy_x_rays"/>
+    <adsbib:hasAggregation rdf:nodeID="eHQlytdg3680"/>
+    <adsbib:defaultRealizedThrough rdf:resource="http://ads.harvard.edu/sem/bib#2008MNRAS.388..487N"/>
+    <cito:peerReviewed rdf:datatype="xsd:boolean">True</cito:peerReviewed>
+    <adsbib:citeMeAs>Monthly Notices of the Royal Astronomical Society, Volume 388, Issue 2, pp. 487-494.</adsbib:citeMeAs>
+    <rdf:type rdf:resource="http://purl.org/spar/fabio/ResearchPaper"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#WrittenProduct"/>
+    <adsbase:languageIn>en</adsbase:languageIn>
+    <adsbib:hasAbstract rdf:nodeID="eHQlytdg3679"/>
+    <adsbib:keywordText>stars novae;cataclysmic variables, stars white dwarfs, stars binaries close, astronomy x rays</adsbib:keywordText>
+    <adsbase:title>Limits on the X-ray and optical luminosity of the progenitor of the Type Ia supernova 2007sr</adsbase:title>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Bassa%2C_C/65818130-fc7e-430f-8cac-30855e2af6f1/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Voss%2C_R/fbb17adf-8910-4453-8d81-489a76d93346/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Nelemans%2C_G/b5e9b9ec-9c99-4511-9bc4-7fd6142318ba/"/>
+    <pav:authoredBy rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Roelofs%2C_G/b78fde50-a086-494f-98a2-9f45f584bdbd/"/>
+    <adsbib:workIdentifier>2008MNRAS.388..487N</adsbib:workIdentifier>
   </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2008MNRAS.388..487N">
-    <fabio:isRealizationOf rdf:resource="http://ads.harvard.edu/sem/bib#794e4ad8-2217-43fc-bc11-98c92e5879ba"/>
+    <adsbib:doi>10.1111/j.1365-2966.2008.13416.x</adsbib:doi>
     <adsbib:alsoHasEprint rdf:resource="http://ads.harvard.edu/sem/bib#2008arXiv0802.2239N"/>
     <rdf:type rdf:resource="http://purl.org/spar/fabio/JournalArticle"/>
-    <adsbib:pageEnd>494</adsbib:pageEnd>
-    <adsbib:doi>10.1111/j.1365-2966.2008.13416.x</adsbib:doi>
-    <adsbib:publishedIn rdf:resource="http://ads.harvard.edu/sem/conf#MNRAS"/>
-    <adsbib:volume>388</adsbib:volume>
     <adsbib:pubDate rdf:datatype="xsd:date">Aug 2008</adsbib:pubDate>
+    <adsbib:pageEnd>494</adsbib:pageEnd>
+    <fabio:isRealizationOf rdf:resource="http://ads.harvard.edu/sem/bib#8c4de407-5726-48e5-9f24-b4b63e5384a3"/>
+    <adsbib:volume>388</adsbib:volume>
     <adsbib:pageStart>487</adsbib:pageStart>
+    <adsbib:publishedIn rdf:resource="http://ads.harvard.edu/sem/conf/MNRAS"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/meta#8c4de407-5726-48e5-9f24-b4b63e5384a3">
+    <pav:lastUpdateOn rdf:datatype="xsd:dateTime">2011-03-16T13:12:40.218125</pav:lastUpdateOn>
+    <pav:importedOn rdf:datatype="xsd:dateTime">2011-03-16T13:12:40.218125</pav:importedOn>
+    <pav:importedBy rdf:resource="http://ads.harvard.edu/sem/agents/Software/adsclassic2rdf.py-0.01"/>
+    <pav:importedFromSource rdf:resource="http://ads.harvard.edu/sem/conf/ADS"/>
+    <rdf:type rdf:resource="http://purl.org/spar/fabio/EntityMetadata"/>
+    <rdf:type rdf:resource="http://purl.org/spar/fabio/BibliographicMetadata"/>
   </rdf:Description>
 </rdf:RDF>

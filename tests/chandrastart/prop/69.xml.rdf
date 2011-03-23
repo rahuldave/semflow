@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_69">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
-    <adsobsv:observationProposalId>69</adsobsv:observationProposalId>
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Hamann_Fred"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Hamann_Fred/413d76f6-5001-47b6-9a1a-1f42412c9c50/">
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <agent:fullName>Hamann, Fred</agent:fullName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/69/">
     <adsbase:title>THE ULTRA-HIGH VELOCITY (-56,000 KM/S) ABSORBER IN THE QSO PG2302+029</adsbase:title>
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Hamann_Fred/413d76f6-5001-47b6-9a1a-1f42412c9c50/"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
+    <adsobsv:observationProposalId>69</adsobsv:observationProposalId>
     <adsobsv:observationProposalType>CHANDRA/ACTIVE GALAXIES AND QUASARS</adsobsv:observationProposalType>
   </rdf:Description>
 </rdf:RDF>

@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_2243">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
-    <adsobsv:observationProposalType>CHANDRA/CLUSTERS OF GALAXIES</adsobsv:observationProposalType>
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Sanders_Jeremy"/>
-    <adsbase:title>The cluster core of Abell 2204: AGN interaction and cold fronts</adsbase:title>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/2243/">
     <adsobsv:observationProposalId>2243</adsobsv:observationProposalId>
+    <adsbase:title>The cluster core of Abell 2204: AGN interaction and cold fronts</adsbase:title>
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Sanders_Jeremy/f55708bd-4f20-4d9b-8ffb-870ce5aab5ad/"/>
+    <adsobsv:observationProposalType>CHANDRA/CLUSTERS OF GALAXIES</adsobsv:observationProposalType>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Sanders_Jeremy/f55708bd-4f20-4d9b-8ffb-870ce5aab5ad/">
+    <agent:fullName>Sanders, Jeremy</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
   </rdf:Description>
 </rdf:RDF>

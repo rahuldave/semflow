@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_638">
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Heckman_Tim/82cce3fa-79d2-42b3-a27c-d6c07740f405/">
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <agent:fullName>Heckman, Tim</agent:fullName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/638/">
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
     <adsbase:title>STARBURST-DRIVEN OUTFLOWS AND THE EVOLUTION OF DWARF GALAXIES</adsbase:title>
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Heckman_Tim"/>
-    <adsobsv:observationProposalType>CHANDRA/NORMAL GALAXIES</adsobsv:observationProposalType>
     <adsobsv:observationProposalId>638</adsobsv:observationProposalId>
+    <adsobsv:observationProposalType>CHANDRA/NORMAL GALAXIES</adsobsv:observationProposalType>
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Heckman_Tim/82cce3fa-79d2-42b3-a27c-d6c07740f405/"/>
   </rdf:Description>
 </rdf:RDF>

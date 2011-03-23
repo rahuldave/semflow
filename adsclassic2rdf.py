@@ -14,10 +14,13 @@ from urllib import quote_plus
 from rdflib import URIRef, Namespace, Literal, BNode
 from rdflib import ConjunctiveGraph
 import uuid
-from lxml import etree as ElementTree
+try:
+    from lxml import etree as ElementTree
+except:
+    from xml.etree import ElementTree
 import HTMLParser
 
-DATA="/home/rdave/semflow/tests/chandrastart"
+DATA="./tests/chandrastart"
 
 def _xmlcharref_encode(unicode_data, encoding="ascii"):
     """Emulate Python 2.3's 'xmlcharrefreplace' encoding error handler."""
@@ -194,7 +197,7 @@ def expr_meta(g, record, theuuid):
     if record['lastpage']:
         gadd(g,expression_uri, adsbib.pageEnd, Literal(record.lastpage))
     gadd(g, expression_uri, adsbib.pubDate, Literal(record.pubdate, datatype="xsd:date"))
-    #lots more metadata and pav stuff needed. ask edwin.
+    #lots more metadata and pav stuff needed. ask edwin.BUG above use asDateTime for this
     return expression_uri
 
 def expr_eprint_meta(g, record, theuuid, maine=None):

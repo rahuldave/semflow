@@ -1,0 +1,12 @@
+
+   41  python loadfiles.py tests/chandrastart/sherry.p.a.list /data/rdf
+   42  python loadfiles-simbad.py tests/chandrastart/sherry.p.a.list /data/rdf
+   43  python chandra/loadfiles-pub.py tests/chandrastart/pub.txt /pub
+   44  cat ../hostory.nareau 
+   45  python chandra/loadfiles-obsv.py tests/chandrastart/obsv.txt /obsv
+   46  cat ../hostory.nareau 
+   47  python chandra/loadfiles-prop.py tests/chandrastart/prop.txt /prop
+   48  python solrclear.py
+   49  python rdf2solr2.py tests/chandrastart/sherry.p.a.list.obs
+   50  history | tail -10
+   51  history | tail -10 > ~/hottodo.it

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/base#NAME_EXTENDED_GROTH_STRIP">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#AstronomicalSource"/>
-    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Region ~', 'refcode': '2008ApJ...681.1163L', 'ra': '214.8', '_raw': 'NAME EXTENDED GROTH STRIP|214.8|+52.8|Region ~|~,~,~|~,~,~', 'dec': '+52.8', 'id': 'NAME EXTENDED GROTH STRIP'}</adsbase:hasMetadataString>
-    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf#SIMBAD"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib#2008ApJ...681.1163L">
-    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/base#NAME_EXTENDED_GROTH_STRIP"/>
+    <adsbase:hasAstronomicalSource rdf:resource="http://ads.harvard.edu/sem/obsv/source/NAME_EXTENDED_GROTH_STRIP"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/source/NAME_EXTENDED_GROTH_STRIP">
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#AstronomicalSource"/>
+    <adsobsv:curatedAt rdf:resource="http://ads.harvard.edu/sem/conf/SIMBAD"/>
+    <adsbase:name>NAME EXTENDED GROTH STRIP</adsbase:name>
+    <adsbase:hasMetadataString>{'mtype': '~,~,~', 'otype': 'Region ~', 'refcode': '2008ApJ...681.1163L', 'ra': '214.8', '_raw': 'NAME EXTENDED GROTH STRIP|214.8|+52.8|Region ~|~,~,~|~,~,~', 'dec': '+52.8', 'id': 'NAME EXTENDED GROTH STRIP'}</adsbase:hasMetadataString>
   </rdf:Description>
 </rdf:RDF>

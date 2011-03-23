@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_1194">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
-    <adsbase:title>MONITORING THE BIRTH OF SUPERNOVA REMNANT SNR1987A</adsbase:title>
-    <adsobsv:observationProposalType>CHANDRA/SN, SNR AND ISOLATED NS</adsobsv:observationProposalType>
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Burrows_David"/>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Burrows_David/b00d9bac-c7d0-44f6-89a3-994cf0d219ba/">
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+    <agent:fullName>Burrows, David</agent:fullName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/1194/">
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
     <adsobsv:observationProposalId>1194</adsobsv:observationProposalId>
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Burrows_David/b00d9bac-c7d0-44f6-89a3-994cf0d219ba/"/>
+    <adsobsv:observationProposalType>CHANDRA/SN, SNR AND ISOLATED NS</adsobsv:observationProposalType>
+    <adsbase:title>MONITORING THE BIRTH OF SUPERNOVA REMNANT SNR1987A</adsbase:title>
   </rdf:Description>
 </rdf:RDF>

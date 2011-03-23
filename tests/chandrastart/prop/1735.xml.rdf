@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-   xmlns:adsbase="http://github.com/rahuldave/ontoads/owl/adsbase.owl#"
-   xmlns:adsobsv="http://github.com/rahuldave/ontoads/owl/adsobsv.owl#"
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/prop#CHANDRA_1735">
-    <rdf:type rdf:resource="http://github.com/rahuldave/ontoads/owl/adsbase.owl#ObservationProposal"/>
-    <adsobsv:observationProposalId>1735</adsobsv:observationProposalId>
-    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents#Garmire_Gordon"/>
-    <adsbase:title>ACIS Imaging of an X-ray Jet from the Remarkable Quasar PG 1004+130</adsbase:title>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/agents/PersonName/Garmire_Gordon/ccc34bf3-708b-4e13-81b3-65913ef71212/">
+    <agent:fullName>Garmire, Gordon</agent:fullName>
+    <rdf:type rdf:resource="http://swan.mindinformatics.org/ontologies/1.2/agents/PersonName"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/bib/proposal/CHANDRA/propid/1735/">
     <adsobsv:observationProposalType>CHANDRA/ACTIVE GALAXIES AND QUASARS</adsobsv:observationProposalType>
+    <adsbase:principalInvestigator rdf:resource="http://ads.harvard.edu/sem/agents/PersonName/Garmire_Gordon/ccc34bf3-708b-4e13-81b3-65913ef71212/"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#ObservationProposal"/>
+    <adsbase:title>ACIS Imaging of an X-ray Jet from the Remarkable Quasar PG 1004+130</adsbase:title>
+    <adsobsv:observationProposalId>1735</adsobsv:observationProposalId>
   </rdf:Description>
 </rdf:RDF>
