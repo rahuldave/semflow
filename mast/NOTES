@@ -379,6 +379,15 @@ I use adsobsv.Observation rather than adsobsv.SimpleObservation since
 it is not clear to me that we can assume that the SimpleObservation
 restriction is valid here.
 
+**) How to link to the obs_publisher_did?
+
+What predicate to use; could use rdfs:seeAlso but it doesn't really capture
+the semantics.
+
+Maybe we need a generic hasIVOAIdentifier predicate with range of anyURI
+(or invent our own type which is a subclass of anyURI just for IVOA identifiers)?
+Such a predicate could be related to dc:identifier?
+
 --- END ---
 
 spectralsi           : 1.0E-10 L
@@ -548,56 +557,77 @@ CHANGES since 2011/03/03:
     <ads_baseurl>/obsv/MAST/obsid/<obs_id>/observation/<hash of access_url>
     <ads_baseurl>/obsv/MAST/obsid/<obs_id>/data/<hash of access_url>
 
-  where we use base64.urlsafe_b64encode(reverse of access_url) to calculate the hash. The
-  intention is that this reduces data download from queries (slash rather than hash URI)
-  and should allow access to data somewhat irrelevant of the scheme we use to encode
-  a particular row (e.g. if the data is moved to a different machine/access scheme then
-  you can use ../obsid/<obs_id>/observation/ to get some metadata about it all). It
-  should hopefully allow downstream processing to link related entities in a more
-  generic manner.
+    <ads_baseurl>/obsv/observation/MAST/obsid/<obs_id>/<hash of access_url>
+    <ads_baseurl>/obsv/data/MAST/obsid/<obs_id>/<hash of access_url>
 
-- added URIs rather than bnodes for the objects of adsobsv.observationMadeBy
-  and adsobsv.fromDataCollection. These use the scheme
+  where we use base64.urlsafe_b64encode(reverse of access_url) to
+  calculate the hash. The intention is that this reduces data download
+  from queries (slash rather than hash URI) and should allow access to
+  data somewhat irrelevant of the scheme we use to encode a particular
+  row (e.g. if the data is moved to a different machine/access scheme
+  then you can use ../obsid/<obs_id>/ to get some metadata
+  about it all). It should hopefully allow downstream processing to
+  link related entities in a more generic manner.
 
-    <ads_baseurl>/obsv/MAST/creator/<obs_creator_name>
-    <ads_baseurl>/obsv/MAST/collection/<obs_collection>
+  Note that obs_publisher_did is not unique to a row in this table (it
+  is essentially the same as obs_id).
 
-  unless <obs_collection> is an IVOA identifier, in which case this is used
-  directly. Actually, need to adjust obs_creator_name/obs_collection to ensure
-  valid URIs; in particular replace space and / by _ (for now at least).
+- added URIs rather than bnodes for the objects of
+  adsobsv.observationMadeBy and adsobsv.fromDataCollection. These use
+  the scheme
 
-- a URI for the target is created, as an AstronomicalSourceName. Downstream
-  processing can use this, together with source location, to try and identify
-  the source and locate a URI for it. This replaces the initial approach of using
-  an anonymous node.
+    <ads_baseurl>/obsv/creator/MAST/<obs_creator_name>
+    <ads_baseurl>/obsv/collection/MAST/<obs_collection>
+
+  unless <obs_collection> is an IVOA identifier, in which case this is
+  used directly. Actually, need to adjust
+  obs_creator_name/obs_collection to ensure valid URIs; in particular
+  replace space and / by _ (for now at least).
+
+- a URI for the target is created, as an
+  AstronomicalSourceName. Downstream processing can use this, together
+  with source location, to try and identify the source and locate a
+  URI for it. This replaces the initial approach of using an anonymous
+  node.
 
   The URI scheme is
 
-    <ads_baseurl>/obsv/MAST/target/<target_name>
+    <ads_baseurl>/obsv/target/MAST/<target_name>
 
-- associatedFootprint predicate now links to a bnode which is a FootPrint and not RegionOfSky
+- associatedFootprint predicate now links to a bnode which is a
+  FootPrint and not RegionOfSky
 
-- changed from adsobsv.fov to adsobsv.s_region for linkink a FootPrint to a ADQL
-  description of the region
+- changed from adsobsv.fov to adsobsv.s_region for linkink a FootPrint
+  to a ADQL description of the region
 
-- the adsobsv.resolution predicate has been moved to the observation rather than the FootPrint
-  (the domain restriction of Footprint has been removed)
+- the adsobsv.resolution predicate has been moved to the observation
+  rather than the FootPrint (the domain restriction of Footprint has
+  been removed)
 
-- corrected to pav.createdOn since it isn't in adsobsv (docs above also thought atTime as part
-  of asdobsv but code used correct namespace)
+- corrected to pav.createdOn since it isn't in adsobsv (docs above
+  also thought atTime as part of asdobsv but code used correct
+  namespace)
 
 - added use of adsobsv.tResolution to store the t_resolution field.
 
 - wavelengthStart/End moved from the data to the observation.
 
-- use wavelengthDomain to link to the em_domain field; note that I have changed the
-  predicate to remove the range restriction since I want to use an enumerated type
-  for the records, and not just a string. These em_domain values are now computed
-  from the data - based on the em_min and em_max settings - rather than use the
+- use wavelengthDomain to link to the em_domain field; note that I
+  have changed the predicate to remove the range restriction since I
+  want to use an enumerated type for the records, and not just a
+  string. These em_domain values are now computed from the data -
+  based on the em_min and em_max settings - rather than use the
   em_domain value itself.
 
-- dataURL is now a URI (I have replaced the literal restriction on the range with
-  anyURI).
+- dataURL is now a URI (I have replaced the literal restriction on the
+  range with anyURI).
 
-- the domain of the adsobsv.observedTime predicate is now xsd:duration rather than
-  xsd:float
+- the domain of the adsobsv.observedTime predicate is now xsd:duration
+  rather than xsd:float
+
+- added s_fov and access_format using adsobsv.fov and
+  adsobsv.dataFormat predicates to the observation and data product
+  respectively
+
+- added a link to the IVOA identifier for the dataset - the
+  obs_publisher_id field - using the predicate hasIVOAIdentifier

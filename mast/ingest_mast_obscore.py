@@ -1,243 +1,21 @@
 #!/usr/bin/env python
 
 """
-Read in the MAST obscore file.
-
-We assume the data is in pipe-separated format and has no
-header line. The format is discussed below.
-
-At present we output to a single file, but I think it would make sense to
-create smaller files - perhaps trying to select groups of related rows
-from the table itself or just bundle a set number of rows - to reduce
-memory consumption/execution time.
-
-The format is taken to be (from initial obscore tables in CSV format):
-
-% head -1 obscore.csv | tr , '\n' | cat -n
-     1  s_ra
-     2  s_dec
-     3  datalen
-     4  radecsys
-     5  equinox
-     6  timesys
-     7  specsys
-     8  vover
-     9  vodate
-    10  target_name
-    11  ra_targ
-    12  dec_targ
-    13  title
-    14  obs_creator_name
-    15  obs_collection
-    16  obs_publisher_did
-    17  obs_id
-    18  creation_date
-    19  version
-    20  instrument
-    21  dssource
-    22  em_domain
-    23  der_snr
-    24  spec_val
-    25  spec_bw
-    26  spec_fil
-    27  em_res_power
-    28  date_obs
-    29  t_exptime
-    30  t_min
-    31  t_max
-    32  aperture
-    33  telescope_name
-    34  tmid
-    35  fluxavg
-    36  fluxmax2
-    37  em_min
-    38  em_max
-    39  min_flux
-    40  max_flux
-    41  min_error
-    42  max_error
-    43  access_format
-    44  access_url
-    45  representative
-    46  preview
-    47  project
-    48  spectralaxisname
-    49  fluxaxisname
-    50  spectralsi
-    51  fluxsi
-    52  spectralunit
-    53  fluxunit
-    54  fluxucd
-    55  fluxcal
-    56  coord_obs
-    57  coord_targ
-    58  s_ra_min
-    59  s_ra_max
-    60  s_dec_min
-    61  s_dec_max
-    62  s_resolution
-    63  t_resolution
-    64  s_region
-    65  o_fluxucd
-    66  calib_level
-    67  dataproduct_type
-    68  t_span
-    69  s_fov
-    70  filesize
-    71  access_estsize
+Create RDF/XML or N3 versions of the input file, which
+is assumed to be in pipe-separated format and have no header line.
 
 """
 
 import sys 
 
 #import hashlib
-import urllib
 import base64
-import csv
+
+from rdflib import URIRef, Literal, Graph
 
 from namespaces import *
-
-from rdflib import URIRef, Namespace, Literal, BNode, \
-     ConjunctiveGraph, Graph
-
-# utility routines (should probably move to namespaces)
-
-# A dialect for pipe-separated values
-class PSV(csv.Dialect):
-    """Pipe-separated values (separator is |).
-
-    At present all we really care about is the delimiter
-    and lineterminator fields; the others are guesses.
-    """
-    
-    delimiter = '|'
-    doublequote = False
-    escapechar = '\\'
-    lineterminator = "\r\n"
-    quotechar = None
-    quoting = csv.QUOTE_NONE
-    skipinitialspace = True # not sure about this one
-    
-csv.register_dialect("psv", PSV)
-
-"""
-From
-
-head -1 obscore.csv | tr , '\n' | awk '{ printf "  \"%s\",\n", $1 }' -
-
-"""
-
-_colnames = [
-  "s_ra",
-  "s_dec",
-  "datalen",
-  "radecsys",
-  "equinox",
-  "timesys",
-  "specsys",
-  "vover",
-  "vodate",
-  "target_name",
-  "ra_targ",
-  "dec_targ",
-  "title",
-  "obs_creator_name",
-  "obs_collection",
-  "obs_publisher_did",
-  "obs_id",
-  "creation_date",
-  "version",
-  "instrument",
-  "dssource",
-  "em_domain",
-  "der_snr",
-  "spec_val",
-  "spec_bw",
-  "spec_fil",
-  "em_res_power",
-  "date_obs",
-  "t_exptime",
-  "t_min",
-  "t_max",
-  "aperture",
-  "telescope_name",
-  "tmid",
-  "fluxavg",
-  "fluxmax2",
-  "em_min",
-  "em_max",
-  "min_flux",
-  "max_flux",
-  "min_error",
-  "max_error",
-  "access_format",
-  "access_url",
-  "representative",
-  "preview",
-  "project",
-  "spectralaxisname",
-  "fluxaxisname",
-  "spectralsi",
-  "fluxsi",
-  "spectralunit",
-  "fluxunit",
-  "fluxucd",
-  "fluxcal",
-  "coord_obs",
-  "coord_targ",
-  "s_ra_min",
-  "s_ra_max",
-  "s_dec_min",
-  "s_dec_max",
-  "s_resolution",
-  "t_resolution",
-  "s_region",
-  "o_fluxucd",
-  "calib_level",
-  "dataproduct_type",
-  "t_span",
-  "s_fov",
-  "filesize",
-  "access_estsize",
-]
-
-_ncols = len(_colnames)
-_colmap = dict(zip(_colnames, range(0,_ncols)))
-
-def check_row(row):
-    """Ensure the number of columns is correct.
-
-    We could also check other items but for now do not
-    bother.
-    """
-    
-    if len(row) != _ncols:
-        raise ValueError("Row contains {0} columns, expected {1}!\n\n{2}\n".format(len(row), _ncols, row))
-
-def get_column(row, cname):
-    """Return the cell for the given column name from the row,
-    which is expected to be the return value of a csv reader
-    object.
-
-    We assume that check_row() has already been called on this
-    row.
-    """
-
-    try:
-        return row[_colmap[cname]]
-
-    except KeyError:
-        raise ValueError("Invalid column name: {0}!".format(cname))
-
-def row2dict(row):
-    "Return a dictionary of key=column-name, value=column-value."
-
-    check_row(row)
-    return dict(zip(_colnames, row))
-
-
-
-# min/max wavelengths in metres, if applicable
+from psv import open_obscore, row2dict
+from mast_utils import *
 
 def addObsCoreRow(row):
     """Returns a Graph representing the given row. We do not add it to the
@@ -265,7 +43,9 @@ def addObsCoreRow(row):
     # would still need unique identifiers for the data values.
     #
     # We reverse the access URL before hashing to try and reduce collisions.
-    # The encoding is OTT; we do not need this many characters
+    # This is a bit silly and needs replacing; for instance
+    # we do not need this many characters and the current "hash" scheme isn't
+    # very unique.
     #
     access_url = vals['access_url']
     if access_url.strip() == '':
@@ -277,8 +57,8 @@ def addObsCoreRow(row):
     
     # We use a scheme based on the path
     #    
-    #    xxx/MAST/obsid/<obs_id>/data/<hash>
-    #    xxx/MAST/obsid/<obs_id>/observation/<hash>
+    #    xxx/data/MAST/obsid/<obs_id>/<hash>
+    #    xxx/observation/MAST/obsid/<obs_id>/<hash>
     #
     # where <hash> is a "hash" of the access_url value.
     # This is intentended to
@@ -289,12 +69,9 @@ def addObsCoreRow(row):
     #     the data location because a server changes so access_url
     #     changes but nothing else does
     #
-    # It does not match the Chandra approach so we need to work out
-    # what the best scheme is.
-    #
     uri_hash = base64.urlsafe_b64encode(access_url[::-1])
-    daturi = mkURI("/obsv/MAST/obsid/{0}/data/".format(obs_id), uri_hash)
-    obsuri = mkURI("/obsv/MAST/obsid/{0}/observation/".format(obs_id), uri_hash)
+    daturi = mkURI("/obsv/data/MAST/obsid/{0}/".format(obs_id), uri_hash)
+    obsuri = mkURI("/obsv/observation/MAST/obsid/{0}/".format(obs_id), uri_hash)
     
     graph = Graph()
 
@@ -329,19 +106,21 @@ def addObsCoreRow(row):
 
     addVals(graph, obsuri,
             [
-                adsbase.atTime, vals['date_obs'], asDateTime,
+                adsbase.atTime, vals['date_obs'], asDateTime(),
+                # not convinced that observerTime is worth it, as a xsd:duration
                 adsobsv.observedTime, vals['t_exptime'], asDuration,
-                adsobsv.tExptime, vals['t_exptime'], asDouble, # QUS: units?
+                adsobsv.tExptime, vals['t_exptime'], asDouble,
 
                 adsobsv.resolution, vals['s_resolution'], asDouble,
                 adsobsv.tResolution, vals['t_resolution'], asDouble,
 
-                # Units?
                 adsobsv.wavelengthStart, emmin, asDouble,
                 adsobsv.wavelengthEnd, emmax, asDouble,
 
                 adsbase.title, vals['title'], Literal,
                 
+                adsobsv.fov, vals['s_fov'], asDouble,
+
             ])
 
     # For now we create a URI for each target_name and make
@@ -353,7 +132,7 @@ def addObsCoreRow(row):
     #
     tname = vals['target_name'].strip()
     if tname != '':
-        tnameuri = mkURI("/obsv/MAST/target/", tname)
+        tnameuri = mkURI("/obsv/target/MAST/", tname)
 
         gadd(graph, obsuri, adsbase.target, tnameuri)
         addVals(graph, tnameuri,
@@ -404,23 +183,30 @@ def addObsCoreRow(row):
     if iname != '':
         gadd(graph, obsuri, adsbase.usingInstrument,
              addFragment(uri_conf, 'INSTRUMENT_MAST_' + iname))
-        
+
     ### Data set properties
     #
     gadd(graph, daturi, adsobsv.dataURL, URIRef(access_url))
     addVals(graph, daturi,
             [
-                pav.createdOn, vals['creation_date'], asDateTime,
+                pav.createdOn, vals['creation_date'], asDateTime(),
                 adsobsv.calibLevel, vals['calib_level'], asInt,
 
-                adsbase.dataType, vals['dataproduct_type'], Literal,
-
+                adsbase.dataType, vals['dataproduct_type'], Literal, # could be a URI; how standardised are the values?
+                adsobsv.dataFormat, vals['access_format'], Literal, # could be a URI; how standardised are the values?
             ])
 
+    # Adding a link to the IVOA identifier for completeness.
+    # Since this is the dataset identifier, we link it to the
+    # dataset rather than the observation.
+    #
+    gadd(graph, daturi, adsbase.hasIVOAIdentifier,
+         URIRef(vals['obs_publisher_did']))
+        
     # The scheme for creator and collection URI is
     #
-    #    xxx/MAST/creator/<obs_creator_name>
-    #    xxx/MAST/collection/<obs_collection>
+    #    xxx/creator/MAST/<obs_creator_name>
+    #    xxx/collection/MAST/<obs_collection>
     #
     # although <obs_collection> can be an IVOA identifier, which means
     # we use that instead; this breaks linked-data approach, so perhaps
@@ -438,7 +224,7 @@ def addObsCoreRow(row):
         # Is this correct; ie is the obs_creator_name really
         # the same as observationMadeBy?
         #
-        cnameuri = mkURI("/obsv/MAST/creator/", cname)
+        cnameuri = mkURI("/obsv/creator/MAST/", cname)
         gadd(graph, obsuri, adsobsv.observationMadeBy, cnameuri)
         gdadd(graph, cnameuri, [
             a, agent.PersonName,
@@ -450,31 +236,14 @@ def addObsCoreRow(row):
         if is_ivoa_uri(ocoll):
             colluri = URIRef(ocoll)
         else:
-            colluri = mkURI("/obsv/MAST/collection/", ocoll)
+            colluri = mkURI("/obsv/collection/MAST/", ocoll)
 
         addVal(graph, daturi, adsobsv.fromDataCollection, colluri)
         gdadd(graph, colluri, [
             a, adsobsv.DataCollection,
             adsbase.name, Literal(ocoll)
             ])
-        
-    return graph
 
-def writeObsCoreGraph(graph, fname, format="n3"):
-    "Write the graph to the given file."
-
-    output = graph.serialize(format=_fmts[format])
-
-    fd = open(fname, "w")
-    fd.write(output)
-    fd.close()
-    print("Created: {0}".format(fname))
-
-def makeGraph():
-    "Returns a new graph."
-
-    graph = ConjunctiveGraph(identifier=URIRef(ads_baseurl))
-    bindgraph(graph)
     return graph
 
 def getObsCoreFile(fname, ohead, nsplit=10000, format="n3"):
@@ -492,8 +261,7 @@ def getObsCoreFile(fname, ohead, nsplit=10000, format="n3"):
     where i is a counter, starting at 1
     """
 
-    fh = open(fname, "r")
-    rdr = csv.reader(fh, dialect="psv")
+    (rdr, fh) = open_obscore(fname)
 
     rnum = 0
     rpass = 0
@@ -509,16 +277,16 @@ def getObsCoreFile(fname, ohead, nsplit=10000, format="n3"):
             rpass += 1
         
         except Exception, e:
-            sys.stderr.write("ERROR: row# {0}\n\n".format(rnum))
+            sys.stderr.write("ERROR: row# {0}\n{1}\n".format(rnum, str(e)))
 
-        if rnum % 100 == 0:
+        if rnum % 500 == 0:
             print ("Processed row: {0}".format(rnum))
 
         if rnum % nsplit == 0:
             # TODO: do we want to catch IO errors here?
-            writeObsCoreGraph(graph,
-                              "{0}.{1}.{2}".format(ohead, idx, format),
-                              format=format)
+            writeGraph(graph,
+                       "{0}.{1}.{2}".format(ohead, idx, format),
+                       format=format)
             idx += 1
             graph = makeGraph()
             
@@ -528,17 +296,15 @@ def getObsCoreFile(fname, ohead, nsplit=10000, format="n3"):
     #
     if rnum % nsplit != 0:
         # TODO: do we want to catch IO errors here?
-        writeObsCoreGraph(graph,
-                          "{0}.{1}.{2}".format(ohead, idx, format),
-                          format=format)
+        writeGraph(graph,
+                   "{0}.{1}.{2}".format(ohead, idx, format),
+                   format=format)
 
     if rpass == 0:
         raise IOError("No rows were converted!")
     
     if rnum != rpass:
         print ("NOTE: {0} rows were not included!".format(rnum-rpass))
-
-_fmts = { "n3": "n3", "rdf": "xml" }
 
 if __name__=="__main__":
     nargs = len(sys.argv)
@@ -550,8 +316,7 @@ if __name__=="__main__":
         else:
             fmt = sys.argv[2]
 
-        if not(fmt in _fmts):
-            raise ValueError("Invalid format '{0}'".format(fmt))
+        validateFormat(fmt)
         
         bname=os.path.basename(fname)
         ohead = "tests/mast/" + bname

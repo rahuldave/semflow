@@ -2,11 +2,11 @@
 Namespaces and related routines for ADS project.
 """
 
-from rdflib import URIRef, Namespace, Literal, BNode
-from rdflib.namespace import XSD
-
 import urllib
 import datetime
+
+from rdflib import URIRef, Namespace, Literal, BNode
+from rdflib.namespace import XSD
 
 class MyNamespace(object):
 
@@ -71,10 +71,8 @@ uri_prop=MyNamespace(ads_baseurl+"/bib/proposal/")
 #What is the below namespace for?
 uri_obsv=MyNamespace(ads_baseurl+"/obsv#")
 uri_obs=MyNamespace(ads_baseurl+"/obsv/observation/")
-#uri_chandra_obs=MyNamespace(ads_baseurl+'/obsv/observation/CHANDRA/obsid/')
 uri_dat=MyNamespace(ads_baseurl+"/obsv/data/")
 uri_target=MyNamespace(ads_baseurl+"/obsv/target/")
-uri_source=MyNamespace(ads_baseurl+"/obsv/source/")
 uri_infra=MyNamespace(ads_baseurl+"/infrastructure/")
 uri_meta=MyNamespace(ads_baseurl+"/meta#")
 uri_agents=MyNamespace(ads_baseurl+"/agents/")
@@ -118,7 +116,6 @@ uri_obs=uri_obs.namespace,
 uri_dat=uri_dat.namespace,
 uri_prop=uri_prop.namespace,
 uri_target=uri_target.namespace,
-uri_source=uri_source.namespace,
 uri_infra=uri_infra.namespace,
 )
 
@@ -200,6 +197,7 @@ def asDateTime(formatstring='%Y-%m-%d %H:%M:%S'):
     so needs to be followed by () when using the default format.
     
     """
+
     def internalfunc(lit):
         dt = datetime.datetime.strptime(lit, formatstring)
         return Literal(dt)
@@ -231,8 +229,7 @@ def asDuration(lit):
     (nd, r1) = divmod(dt, 24*3600)
     nd = int(nd)
     if nd > 0:
-        #outstr += "{0}D".format(nd)
-        outstr += str(nd)+"D"
+        outstr += "{0}D".format(nd)
 
     if r1 > 0:
         outstr += "T"
@@ -240,19 +237,16 @@ def asDuration(lit):
         (nh, r2) = divmod(r1, 3600)
         nh = int(nh)
         if nh > 0:
-            #outstr += "{0}H".format(nh)
-            outstr += str(nh)+"H"
+            outstr += "{0}H".format(nh)
 
         if r2 > 0:
             (nm, ns) = divmod(r2, 60)
             nm = int(nm)
             if nm > 0:
-                #outstr += "{0}M".format(nm)
-                outstr += str(nm)+"M"
+                outstr += "{0}M".format(nm)
 
             if ns > 0:
-                #outstr += "{0}S".format(ns)
-                outstr += str(ns)+"S"
+                outstr += "{0}S".format(ns)
                       
     return Literal(outstr, datatype=XSD.duration)
     
@@ -281,8 +275,7 @@ def addVal(graph, subject, pred, obj, objconv=Literal):
     if objconv == None:
         # should be an error now
         #gadd(graph, subject, pred, obj)
-        #raise ValueError("objconv is None for obj='{0}'".format(obj))
-        raise ValueError("objconv is None for obj="+str(obj))
+        raise ValueError("objconv is None for obj='{0}'".format(obj))
 
     else:
         gadd(graph, subject, pred, objconv(obj))
@@ -344,8 +337,7 @@ def mkURI(path, elem):
     """
 
     if path[0] != "/" or path[-1] != "/":
-        #raise ValueError("mkURI path ({0}) must start and end in /.".format(path))
-        raise ValueError("mkURI path "+path+" must start and end in /.")
+        raise ValueError("mkURI path ({0}) must start and end in /.".format(path))
     
     return URIRef(ads_baseurl + path + cleanURIelement(elem))
     
@@ -366,8 +358,7 @@ def getEMDomains(emin, emax):
     """
 
     if emin <= 0 or emax <= 0:
-        #raise ValueError("emin={0}  emax={1}".format(emin, emax))
-        raise ValueError("emin="+str(emin)+"  emax="+str(emax))
+        raise ValueError("emin={0}  emax={1}".format(emin, emax))
 
     if emin >= emax:
         raise ValueError("emin >= emax!")
@@ -382,7 +373,7 @@ def getEMDomains(emin, emax):
             break
 
     if out == []:
-        #raise ValueError("Unable to match up emin={0} emax={1}".format(emin, emax))
-        raise ValueError("Unable to match up emin="+str(emin)+" emax="+str(emax))                 
+        raise ValueError("Unable to match up emin={0} emax={1}".format(emin, emax))
+                         
     return out
 
