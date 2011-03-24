@@ -1,0 +1,4 @@
+cat tests/hut/obsids.overlap.txt | sed 's/^/python chandra\/obsids.py ..\/rahul\/chandradata\/Datum\//g' | sed 's/$/.xml obsv/g' > ../chandra-rdf/obsids.overlap.sh
+cat tests/hut/hut-chandra-overlap.txt | sed 's/&/%26/g' | sed 's/^/python chandra\/obsids.py ..\/rahul\/chandradata\/Publications\//g' | sed 's/$/.xml pub/g' > ../chandra-rdf/pub.overlap.sh
+cat tests/hut/prop.overlap.txt | sed 's/^/python chandra\/obsids.py ..\/rahul\/chandradata\/Proposal\//g' | sed 's/$/.xml prop/g' > ../chandra-rdf/prop.overlap.sh
+

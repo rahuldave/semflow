@@ -1,0 +1,2 @@
+sed 's/$/\.xml/g' hut-chandra-overlap.txt | sed 's/^/cat \.\.\/\.\.\/\.\.\/rahul\/chandradata\/Publications\//' | sh | grep obsid > obsids.overlap.txt
+sed 's/$/\.xml/g' obsids.overlap.txt | sed 's/^/cat \.\.\/\.\.\/\.\.\/rahul\/chandradata\/Datum\//' | sh | grep proposal > prop.overlap.txt

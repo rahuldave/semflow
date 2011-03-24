@@ -3,3 +3,4 @@ o audit pub rdf production
 o datetime in pub rdf
 o skosify our keywords
 o for objecttypes should we skos or use simbad vocab?
+o there is no check if stuff already loaded into solr is loaded again. And now, when we load for HUT, what happens as we have more statements that link paper to text. Our design should be as uncoupled as rdf is, even in solr, so in solr we should add to our defensive programming by programming as if things are being added to the arrays in solr. How to we do this and keep the order? Or do we just redo solr
