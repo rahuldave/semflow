@@ -12,7 +12,7 @@ REPOSITORY='testads4'
 SOLR='http://localhost:8983/solr'
 
 def splitns(theuri, atposition=-2, splitter='/'):
-    mission, variable, theid=theuri.split(splitter)[atposition-2:atposition+1]
+    mission, variable, theid=theuri.split(splitter)[atposition-1:]
     return mission, variable, theid
     
 def rinitem(item):
@@ -54,7 +54,7 @@ def getInfoForBibcode(bibcode):
     authoren=c.getDataBySP(iduri, 'pav:authoredBy')
     #print authoren
     #BUG: one slash too many in authors you think?
-    result['author']=[unquote(e.split('/')[-3]).replace('_',' ') for e in authoren]
+    result['author']=[unquote(e.split('/')[-2]).replace('_',' ') for e in authoren]
     #print result['author']
     result['keywords_s']=result['keywords']
     result['author_s']=result['author']
@@ -150,7 +150,7 @@ def getInfoForBibcode(bibcode):
         thedict['proposaltype_s']=c.getDataBySP('uri_prop:'+proptail, 'adsobsv:observationProposalType')[0]
         e=c.getDataBySP('uri_prop:'+proptail, 'adsbase:principalInvestigator')[0]
         #print "PI", e
-        thedict['proposalpi']=unquote(e.split('/')[-3]).replace('_',' ')
+        thedict['proposalpi']=unquote(e.split('/')[-2]).replace('_',' ')
         thedict['proposalpi_s']=thedict['proposalpi']
         #print thedict
         obsray.append(thedict)

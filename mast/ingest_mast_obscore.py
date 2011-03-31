@@ -176,23 +176,32 @@ def addObsCoreRow(row):
     #
     tname = vals['telescope_name']
     iname = vals['instrument']
+    oname="MAST"
+    gadd(graph, obsuri, adsobsv.atObservatory,
+             addFragment(uri_infra, 'observatory/' + oname))
     if tname != '':
         gadd(graph, obsuri, adsobsv.atTelescope,
-             addFragment(uri_conf, 'TELESCOPE_MAST_' + tname))
+             addFragment(uri_infra, 'telescope/MAST_' + tname))
 
     if iname != '':
         gadd(graph, obsuri, adsbase.usingInstrument,
-             addFragment(uri_conf, 'INSTRUMENT_MAST_' + iname))
+             addFragment(uri_infra, 'instrument/MAST_' + iname))
 
     ### Data set properties
     #
     gadd(graph, daturi, adsobsv.dataURL, URIRef(access_url))
+    #BUG: fix this to use a mapper
+    dprodtype="image"#DEFAULT
+    if vals['dataproduct_type'].find("Spectrum.") != -1:
+        dprodtype="spectra"
+    elif vals['dataproduct_type'].find("Image.") != -1:
+        dprodtype="image"
     addVals(graph, daturi,
             [
                 pav.createdOn, vals['creation_date'], asDateTime(),
                 adsobsv.calibLevel, vals['calib_level'], asInt,
 
-                adsbase.dataType, vals['dataproduct_type'], Literal, # could be a URI; how standardised are the values?
+                adsbase.dataType, dprodtype, Literal, # could be a URI; how standardised are the values?
                 adsobsv.dataFormat, vals['access_format'], Literal, # could be a URI; how standardised are the values?
             ])
 
@@ -224,12 +233,13 @@ def addObsCoreRow(row):
         # Is this correct; ie is the obs_creator_name really
         # the same as observationMadeBy?
         #
-        cnameuri = mkURI("/obsv/creator/MAST/", cname)
+        #cnameuri = mkURI("/obsv/creator/MAST/", cname)
+        cnameuri=addFragment(uri_conf, 'project/MAST_' + cname)
         gadd(graph, obsuri, adsobsv.observationMadeBy, cnameuri)
-        gdadd(graph, cnameuri, [
-            a, agent.PersonName,
-            agent.fullName, Literal(cname)
-            ])
+        #gdadd(graph, cnameuri, [
+        #    a, agent.PersonName,
+        #    agent.fullName, Literal(cname)
+        #    ])
 
     ocoll = vals['obs_collection']
     if ocoll != '':
@@ -319,8 +329,8 @@ if __name__=="__main__":
         validateFormat(fmt)
         
         bname=os.path.basename(fname)
-        ohead = "tests/mast/" + bname
-        getObsCoreFile(fname, ohead, format=fmt, nsplit=2500)
+        ohead = "../mast-test/" + bname
+        getObsCoreFile(fname, ohead, format=fmt, nsplit=1000)
 
     else:
         sys.stderr.write("Usage: {0} <filename> [rdf|n3]\n".format(sys.argv[0]))

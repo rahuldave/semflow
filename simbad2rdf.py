@@ -30,6 +30,7 @@ stuff=fd.read()
 fd.close()
 
 simbad=eval(stuff)
+DATA="../mast_hut-rdf"
 DATA="../chandra-rdf"
 
 

@@ -20,6 +20,7 @@ except:
     from xml.etree import ElementTree
 import HTMLParser
 
+DATA="../mast_hut-rdf"
 DATA="../chandra-rdf"
 
 def _xmlcharref_encode(unicode_data, encoding="ascii"):
@@ -96,10 +97,12 @@ class RecordObj:
         return []
                 
     def getarxivchannel(self):
+        "this is called when there is only an arxiv record and not anything else"
         for node in self.rec.findall('keywords'):
             if node.attrib['type'] == 'arXiv':
                 achan=node.findall('keyword')[0]
-        return achan.attrib['channel']
+                return achan.attrib['channel']
+        return []
 
 
         
@@ -179,17 +182,32 @@ def expr_meta(g, record, theuuid):
             adsbib.pageStart, Literal(record.page),
             fabio.isRealizationOf, work_uri,
         ])
-    else:
+    else:#either we are arxiv or we are something like ADASS or AAS.
+        print "For "+record.bibcode+ " expression is EPRINT"
         channel=record.getarxivchannel()
-        gdadd(g, expression_uri, [
-            a, cito.Eprint,
-            adsbib.publishedIn, uri_conf['ARXIV'],
-            adsbib.channel, Literal(channel),
-            adsbib.eprintid, Literal(record.preprintid),
-            adsbib.volume, Literal(record.volume),
-            adsbib.pageStart, Literal(record.page),
-            fabio.isRealizationOf, work_uri,
-        ])
+        if len(channel) >0:
+            gdadd(g, expression_uri, [
+                a, cito.Eprint,
+                adsbib.publishedIn, uri_conf['ARXIV'],
+                adsbib.channel, Literal(channel),
+                adsbib.eprintid, Literal(record.preprintid),
+                adsbib.volume, Literal(record.volume),
+                adsbib.pageStart, Literal(record.page),
+                fabio.isRealizationOf, work_uri,
+            ])
+        else:#this is a non-arxiv'ed, non refereed paper, eg AAS/ADASS with no arxiv'
+            #thus assume unrefereed but journal
+            endnum=record.bibcode[4:9].find('.')
+            if endnum==-1:
+                endnum=5
+            jsource=record.bibcode[4:4+endnum]#giovanni method
+            gdadd(g, expression_uri, [
+                a, fabio.JournalArticle,
+                adsbib.publishedIn, uri_conf[jsource],
+                adsbib.volume, Literal(record.volume),
+                adsbib.pageStart, Literal(record.page),
+                fabio.isRealizationOf, work_uri,
+            ])
     if record['DOI']:
         print '-----DOI------'
         gadd(g,expression_uri, adsbib.doi, Literal(record.DOI))
@@ -256,7 +274,7 @@ def do_authors(g, record, theuuid):
         auth_fname=authnamenode.findall('western')[0].text
         auth_name=authnamenode.findall('normalized')[0].text
         qplabel='_'.join(quote_plus(auth_name).split('+'))
-        auth_uri = uri_agents["PersonName/"+qplabel+"/"+str(uuid.uuid4())+"/"]
+        auth_uri = uri_agents["PersonName/"+qplabel+"/"+str(uuid.uuid4())]
         gadd(g, auth_uri, a, agent.PersonName)
         gadd(g, auth_uri, agent.fullName, Literal(auth_fname))
         gadd(g, auth_uri, agent.normName, Literal(auth_name))

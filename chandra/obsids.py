@@ -60,16 +60,16 @@ class XMLObj:
 
 def getObsURI(obsid, fragment=None):
     if fragment:
-        return uri_obs['CHANDRA/obsid/'+obsid+"/"+fragment+"/"]
-    return uri_obs['CHANDRA/obsid/'+obsid+"/"]
+        return uri_obs['CHANDRA/obsid/'+obsid+"/"+fragment]
+    return uri_obs['CHANDRA/obsid/'+obsid]
     
 def getDatURI(obsid, fragment=None):
     if fragment:
-        return uri_obs['CHANDRA/obsid/'+obsid+"/"+fragment+"/"]
-    return uri_dat['CHANDRA/obsid/'+obsid+"/"]
+        return uri_dat['CHANDRA/obsid/'+obsid+"/"+fragment]
+    return uri_dat['CHANDRA/obsid/'+obsid]
     
 def getPropURI(propid):
-    return uri_prop['CHANDRA/propid/'+propid+"/"]
+    return uri_prop['CHANDRA/propid/'+propid]
     
 def getObsFile(fname):
     g = ConjunctiveGraph(identifier=URIRef(ads_baseurl))
@@ -97,13 +97,13 @@ def getObsFile(fname):
     #Connect the data product and the observation
     access_url="http://cda.harvard.edu/chaser/ocatList.do?obsid="+trec['obsid']
     gdadd(g, daturi, [
-            adsobsv.dataProductId, Literal(trec['obsid']+"/I/"),
+            adsobsv.dataProductId, Literal(trec['obsid']+"/I"),
             adsobsv.forSimpleObservation, obsuri,
             adsobsv.dataURL, URIRef(access_url)
         ]
     )
     gdadd(g, daturi2, [
-            adsobsv.dataProductId, Literal(trec['obsid']+"/S/"),
+            adsobsv.dataProductId, Literal(trec['obsid']+"/S"),
             adsobsv.forSimpleObservation, obsuri,
             adsobsv.dataURL, URIRef(access_url)
         ]
@@ -150,7 +150,7 @@ def getObsFile(fname):
     
     
     if tname != '':
-        tnameuri = uri_target["CHANDRA/"+quote_plus(tname)+"/"]
+        tnameuri = uri_target["CHANDRA/"+quote_plus(tname)]
 
         gadd(g, obsuri, adsbase.target, tnameuri)
         addVals(g, tnameuri,
@@ -173,6 +173,7 @@ def getObsFile(fname):
     
     
     #should this be under uri_agents or collaboration instead?
+    #the typing for this should be done in a conf file
     cnameuri = uri_conf["project/CHANDRA"]
     gadd(g, obsuri, adsobsv.observationMadeBy, cnameuri)
 #    gdadd(graph, cnameuri, [ This stuff is thought off as configuration
@@ -257,7 +258,7 @@ def getPropFile(fname):
     #This is FALSE. TODO..fix to ads normed name or lookitup How? Blanknode? WOW.
     qplabel=trec['pi'][0]+'_'+trec['pi'][1]
     fullname=trec['pi'][0]+', '+trec['pi'][1]
-    auth_uri = uri_agents["PersonName/"+qplabel+"/"+str(uuid.uuid4())+"/"]
+    auth_uri = uri_agents["PersonName/"+qplabel+"/"+str(uuid.uuid4())]
     gdadd(g, auth_uri, [
             a, agent.PersonName,
             agent.fullName, Literal(fullname)

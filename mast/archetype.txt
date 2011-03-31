@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:adsbase="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-Base.owl#"
+   xmlns:adsobsv="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#"
+   xmlns:agent="http://swan.mindinformatics.org/ontologies/1.2/agents/"
+   xmlns:pav="http://swan.mindinformatics.org/ontologies/1.2/pav/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/observation/MAST/obsid/0833p652_275_01/c3RpZi5vdl9ocF9hXzEwXzU3Ml8yNTZwMzM4MC8ydHVoL2FydGNlcHNvdi9idXAvdWRlLmljc3RzLmV2aWhjcmEvLzpwdHRo">
+    <adsobsv:observedTime rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">PT26M45.9863S</adsobsv:observedTime>
+    <adsobsv:wavelengthEnd rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.8760699999999999E-7</adsobsv:wavelengthEnd>
+    <adsbase:title>0833p652_275_01, 0833+652</adsbase:title>
+    <adsobsv:resolution rdf:datatype="http://www.w3.org/2001/XMLSchema#double">20</adsobsv:resolution>
+    <adsbase:atTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1995-03-13T18:24:11</adsbase:atTime>
+    <adsobsv:observationId>0833p652_275_01</adsobsv:observationId>
+    <adsobsv:associatedFootprint rdf:nodeID="OKeugRST93"/>
+    <adsobsv:tExptime rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1605.9863</adsobsv:tExptime>
+    <adsbase:usingInstrument rdf:resource="http://ads.harvard.edu/sem/conf/INSTRUMENT_MAST_ASTRO-2HUT"/>
+    <adsobsv:tResolution rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1605.9863</adsobsv:tResolution>
+    <adsobsv:observationMadeBy rdf:resource="http://ads.harvard.edu/sem/obsv/creator/MAST/HUT%20project"/>
+    <adsobsv:hasDataProduct rdf:resource="http://ads.harvard.edu/sem/obsv/data/MAST/obsid/0833p652_275_01/c3RpZi5vdl9ocF9hXzEwXzU3Ml8yNTZwMzM4MC8ydHVoL2FydGNlcHNvdi9idXAvdWRlLmljc3RzLmV2aWhjcmEvLzpwdHRo"/>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#Observation"/>
+    <adsobsv:fov rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.5555555555600001E-3</adsobsv:fov>
+    <adsbase:target rdf:resource="http://ads.harvard.edu/sem/obsv/target/MAST/0833%2B652"/>
+    <adsobsv:wavelengthDomain rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#EMDOMAIN_EUV"/>
+    <adsobsv:wavelengthDomain rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#EMDOMAIN_UV"/>
+    <adsobsv:associatedPosition rdf:nodeID="OKeugRST92"/>
+    <adsobsv:wavelengthStart rdf:datatype="http://www.w3.org/2001/XMLSchema#double">8.1402000000000003E-8</adsobsv:wavelengthStart>
+    <adsobsv:atTelescope rdf:resource="http://ads.harvard.edu/sem/conf/TELESCOPE_MAST_HUT"/>
+  </rdf:Description>
+  
+<rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/data/MAST/obsid/0833p652_275_01/c3RpZi5vdl9ocF9hXzEwXzU3Ml8yNTZwMzM4MC8ydHVoL2FydGNlcHNvdi9idXAvdWRlLmljc3RzLmV2aWhjcmEvLzpwdHRo">
+    <adsobsv:dataURL rdf:resource="http://archive.stsci.edu/pub/vospectra/hut2/0833p652_275_01_a_ph_vo.fits"/>
+    <pav:createdOn rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1996-12-07T00:00:00</pav:createdOn>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#Datum"/>
+    <adsobsv:dataFormat>fits</adsobsv:dataFormat>
+    <adsobsv:fromDataCollection rdf:resource="http://ads.harvard.edu/sem/obsv/collection/MAST/ASTRO%2FHUT"/>
+    <adsbase:hasIVOAIdentifier rdf:resource="ivo://astro.mast/0833p652_275_01"/>
+    <adsbase:dataType>Spectrum.1D</adsbase:dataType>
+    <adsobsv:forObservation rdf:resource="http://ads.harvard.edu/sem/obsv/observation/MAST/obsid/0833p652_275_01/c3RpZi5vdl9ocF9hXzEwXzU3Ml8yNTZwMzM4MC8ydHVoL2FydGNlcHNvdi9idXAvdWRlLmljc3RzLmV2aWhjcmEvLzpwdHRo"/>
+    <adsobsv:dataProductId>0833p652_275_01</adsobsv:dataProductId>
+    <adsobsv:calibLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</adsobsv:calibLevel>
+  </rdf:Description>
+  
+<rdf:Description rdf:nodeID="OKeugRST93">
+    <adsobsv:s_region>Circle J2000 129.5978240967 65.12074279789999 0.00277777777778</adsobsv:s_region>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#FootPrint"/>
+  </rdf:Description>    
+  
+ <rdf:Description rdf:nodeID="OKeugRST92">
+    <adsobsv:ra rdf:datatype="http://www.w3.org/2001/XMLSchema#double">129.59782409670001</adsobsv:ra>
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#Pointing"/>
+    <adsobsv:dec rdf:datatype="http://www.w3.org/2001/XMLSchema#double">65.120742797899993</adsobsv:dec>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ads.harvard.edu/sem/obsv/target/MAST/0833%2B652">
+    <rdf:type rdf:resource="https://github.com/rahuldave/ontoads/raw/master/owl/ADS-obsv.owl#AstronomicalSourceName"/>
+    <adsbase:name>0833+652</adsbase:name>
+  </rdf:Description>
+  
+    
