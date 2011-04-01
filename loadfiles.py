@@ -10,6 +10,7 @@ c.use_repository('testads4')
 context=None
 testcodeuristart='<http://ads.harvard.edu/sem/context#'
 DATA="../chandra-rdf"
+#DATA="../mast_hut-rdf"
 
 #c.addnamespace('fb','http://rdf.freebase.com/ns/')
 #c.addnamespace('dc','http://purl.org/dc/elements/1.1/')

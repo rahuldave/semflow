@@ -5,7 +5,7 @@ Read in the HUT bibliographic data; we also require the obscore table
 to support mapping between the records.
 
 """
-
+DATA="../mast_hut-rdf"
 import sys 
 
 #import hashlib
@@ -73,9 +73,10 @@ def writeBibliographyFile(fname, ohead, bibcodes, format="n3"):
             # the obscore table.
             #
             uri_hash = base64.urlsafe_b64encode(access_url[::-1])
-            daturi = mkURI("/obsv/MAST/obsid/{0}/data/".format(obs_id), uri_hash)
-            obsuri = mkURI("/obsv/MAST/obsid/{0}/observation/".format(obs_id), uri_hash)
-
+            #daturi = mkURI("/obsv/MAST/obsid/{0}/data/".format(obs_id), uri_hash)
+            #obsuri = mkURI("/obsv/MAST/obsid/{0}/observation/".format(obs_id), uri_hash)
+            daturi = mkURI("/obsv/data/MAST/obsid/{0}/".format(obs_id), uri_hash)
+            obsuri = mkURI("/obsv/observation/MAST/obsid/{0}/".format(obs_id), uri_hash)
             # Loop through each bibcode, linking them to the data/observation URIs
             #
             for b in bs:
@@ -106,7 +107,7 @@ if __name__=="__main__":
         
         bibcodes = getBibliography(bname)
         writeBibliographyFile(oname,
-                              "tests/mast/" + os.path.basename(bname),
+                              DATA+"/" + os.path.basename(bname),
                               bibcodes, format=fmt)
 
     else:

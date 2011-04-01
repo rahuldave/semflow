@@ -5,7 +5,7 @@ Create RDF/XML or N3 versions of the input file, which
 is assumed to be in pipe-separated format and have no header line.
 
 """
-
+DATA="../mast_hut-rdf"
 import sys 
 
 #import hashlib
@@ -329,7 +329,7 @@ if __name__=="__main__":
         validateFormat(fmt)
         
         bname=os.path.basename(fname)
-        ohead = "../mast-test/" + bname
+        ohead = DATA+"/" + bname
         getObsCoreFile(fname, ohead, format=fmt, nsplit=1000)
 
     else:
