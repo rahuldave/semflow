@@ -5,7 +5,7 @@ Create RDF/XML or N3 versions of the input file, which
 is assumed to be in pipe-separated format and have no header line.
 
 """
-DATA="../mast_hut-rdf"
+#DATA="../mast_hut-rdf"
 import sys 
 
 #import hashlib
@@ -317,6 +317,7 @@ def getObsCoreFile(fname, ohead, nsplit=10000, format="n3"):
         print ("NOTE: {0} rows were not included!".format(rnum-rpass))
 
 if __name__=="__main__":
+    execfile("./mast/default.conf")
     nargs = len(sys.argv)
     if nargs in [2,3] :
         import os.path

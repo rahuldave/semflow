@@ -21,8 +21,9 @@ import os.path
     ]
 }
 """
-
-
+if len(sys.argv)<2 or len(sys.argv)> 3:
+    print "Usage: python simbad2rdf.py dictfile [targetdir]"
+    sys.exit(-1)
 
 filetoread=sys.argv[1]
 fd=open(filetoread)
@@ -30,8 +31,15 @@ stuff=fd.read()
 fd.close()
 
 simbad=eval(stuff)
-DATA="../mast_hut-rdf"
-DATA="../chandra-rdf"
+
+if len(sys.argv)==3:
+    DATA=sys.argv[2]
+else:
+    DATA="../chandra-rdf"
+    
+    
+#DATA="../mast_hut-rdf"
+
 
 
 #file to read is output of simad1.py and assumes bibcode.simbad

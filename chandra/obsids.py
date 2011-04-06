@@ -15,7 +15,7 @@ except:
 import HTMLParser
 
 
-DATA="../chandra-rdf"
+#DATA="../chandra-rdf"
 
 def _xmlcharref_encode(unicode_data, encoding="ascii"):
     """Emulate Python 2.3's 'xmlcharrefreplace' encoding error handler."""
@@ -297,6 +297,7 @@ if __name__=="__main__":
         fname=sys.argv[1]
         bname=os.path.basename(fname)
         style=sys.argv[2]
+        execfile("./chandra/default.conf")
         ofname=DATA+"/"+style+"/"+bname+".rdf"
         print "----------------------"
         output=dafunc[style](fname)

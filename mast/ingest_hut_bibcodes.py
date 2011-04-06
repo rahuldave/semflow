@@ -5,7 +5,7 @@ Read in the HUT bibliographic data; we also require the obscore table
 to support mapping between the records.
 
 """
-DATA="../mast_hut-rdf"
+#DATA="../mast_hut-rdf"
 import sys 
 
 #import hashlib
@@ -93,6 +93,7 @@ def writeBibliographyFile(fname, ohead, bibcodes, format="n3"):
     writeGraph(graph, "{0}.{1}".format(ohead, format), format=format)
     
 if __name__=="__main__":
+    execfile("./mast/default.conf")
     nargs = len(sys.argv)
     if nargs in [3,4] :
         import os.path

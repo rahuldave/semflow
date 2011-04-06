@@ -16,7 +16,7 @@ var Manager;
   $(function () {
     console.log("WHEN IS THIS CALLED?");
     Manager = new AjaxSolr.Manager({
-      solrUrl: 'http://localhost:8983/solr/'
+      solrUrl: 'http://boom.dyndns.org:8983/solr/'
 	  //solrUrl: 'http://adslabs.nareau.com:8983/solr/'
     });
     Manager.addWidget(new AjaxSolr.ResultWidget({

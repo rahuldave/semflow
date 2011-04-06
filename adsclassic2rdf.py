@@ -355,7 +355,7 @@ def record_as_graph_from_xml(bibcode, node, baseUrl=None, thegraph=None):
     do_references(g, record, theuuid)     
     return g    
 
-def record_as_rdf(bibcodefile, format='xml', baseUrl=None):
+def record_as_rdf(datapath, bibcodefile, format='xml', baseUrl=None):
     recordstree=ElementTree.parse(bibcodefile)
     for rec in recordstree.findall('record'):
         node=RecordObj(rec)
@@ -369,7 +369,9 @@ def record_as_rdf(bibcodefile, format='xml', baseUrl=None):
         if format=="pretty-xml":
             dformat='xml'
         serializedstuff=graph.serialize(format=format)
-        fd=open(DATA+"/data/rdf/"+quote_plus(bibcode)+"."+dformat, "w")
+        #print serializedstuff
+        #path and data/rdf path must be made first
+        fd=open(datapath+"/data/rdf/"+quote_plus(bibcode)+"."+dformat, "w")
         fd.write(serializedstuff)
         fd.close()
         print "-----------------------------------------------"
@@ -381,12 +383,18 @@ def main():
     except getopt.error, msg:
         print msg 
         print __doc__
+        print "Usage: python adsclassic2rdf.py [datapath] bibcodefile [format]"
         sys.exit(2)
-    if len(args) == 2:
-        bibcodefile, format = args
-        print record_as_rdf(bibcodefile, format, baseUrl=adsbaseurl)
+    print "ARGS: ", args
+    if len(args) == 3:
+        datapath, bibcodefile, format = args
+        print record_as_rdf(datapath, bibcodefile, format, baseUrl=adsbaseurl)
+    elif len(args) == 2:
+        datapath, bibcodefile = args
+        print record_as_rdf(datapath, bibcodefile, baseUrl=adsbaseurl)
     else:
-        print record_as_rdf(args[0], baseUrl=adsbaseurl)
+        datapath="../chandra-rdf"
+        print record_as_rdf(datapath, args[0], baseUrl=adsbaseurl)
 
 if __name__ == '__main__':
     main()
