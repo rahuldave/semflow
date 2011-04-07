@@ -291,13 +291,16 @@ dafunc={
 'propids':getPropIdsForObs
 }    
 if __name__=="__main__":
-    if len(sys.argv)==3 and sys.argv[2] in dafunc.keys():
+    if len(sys.argv)==3 or len(sys.argv)==4 and sys.argv[2] in dafunc.keys():
         #getObsFile(sys.argv[1])
         import os.path
         fname=sys.argv[1]
         bname=os.path.basename(fname)
         style=sys.argv[2]
-        execfile("./chandra/default.conf")
+        if len(sys.argv)==4:
+            execfile(sys.argv[3])
+        else:
+            execfile("./chandra/default.conf")
         ofname=DATA+"/"+style+"/"+bname+".rdf"
         print "----------------------"
         output=dafunc[style](fname)
@@ -309,5 +312,5 @@ if __name__=="__main__":
             fd.write(output)
             fd.close()
     else:
-        print "Worong usage", sys.argv
+        print "Usage: python obsids.py xmlfile obsv|pub|prop|obsids|propids [conffile]"
         sys.exit(-1)

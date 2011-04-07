@@ -11,9 +11,14 @@ import uuid
 testcodeuristart='<http://ads.harvard.edu/sem/context#'
 #DATA="../mast_hut-rdf"
 
-execfile("./default.conf")
-
-execfile("./mast/default.conf")
+if len(sys.argv)==2:
+    execfile("./default.conf")
+    execfile("./mast/default.conf")
+elif len(sys.argv)==3:
+    execfile(sys.argv[2])
+else:
+    print "Usage: python loadfiles-hut-pub.py obsvpubmatchpattern [conffile]"
+    sys.exit(-1)
 #c.addnamespace('fb','http://rdf.freebase.com/ns/')
 #c.addnamespace('dc','http://purl.org/dc/elements/1.1/')
 c=connection(SESAME)

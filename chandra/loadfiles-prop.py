@@ -11,10 +11,14 @@ import uuid
 testcodeuristart='<http://ads.harvard.edu/sem/context#'
 #DATA="../chandra-rdf"
 
-
-execfile("./default.conf")
-
-execfile("./chandra/default.conf")
+if len(sys.argv)==3:
+    execfile("./default.conf")
+    execfile("./chandra/default.conf")
+elif len(sys.argv)==4:
+    execfile(sys.argv[3])
+else:
+    print "Usage: python loadfiles-prop.py bibfile proprdfdir [conffile]"
+    sys.exit(-1)
 #c.addnamespace('fb','http://rdf.freebase.com/ns/')
 #c.addnamespace('dc','http://purl.org/dc/elements/1.1/')
 c=connection(SESAME)

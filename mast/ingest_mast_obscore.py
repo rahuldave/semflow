@@ -317,24 +317,28 @@ def getObsCoreFile(fname, ohead, nsplit=10000, format="n3"):
         print ("NOTE: {0} rows were not included!".format(rnum-rpass))
 
 if __name__=="__main__":
-    execfile("./mast/default.conf")
+    
     nargs = len(sys.argv)
-    if nargs in [2,3] :
+    if nargs in [2,3,4] :
         import os.path
         fname=sys.argv[1]
-        if nargs == 2:
+        if nargs < 4:
             fmt = "rdf"
         else:
-            fmt = sys.argv[2]
+            fmt = sys.argv[3]
 
         validateFormat(fmt)
         
         bname=os.path.basename(fname)
+        if nargs >=3:
+            execfile(sys.argv[2])
+        else:
+            execfile("./mast/default.conf")
         ohead = DATA+"/" + bname
         getObsCoreFile(fname, ohead, format=fmt, nsplit=1000)
 
     else:
-        sys.stderr.write("Usage: {0} <filename> [rdf|n3]\n".format(sys.argv[0]))
+        sys.stderr.write("Usage: {0} <filename> [conffile] [rdf|n3]\n".format(sys.argv[0]))
         sys.exit(-1)
 
 

@@ -95,24 +95,27 @@ def writeBibliographyFile(fname, ohead, bibcodes, format="n3"):
 if __name__=="__main__":
     execfile("./mast/default.conf")
     nargs = len(sys.argv)
-    if nargs in [3,4] :
+    if nargs in [3,4,5] :
         import os.path
         oname = sys.argv[1]
         bname = sys.argv[2]
-        if nargs == 3:
+        if nargs < 5:
             fmt = "rdf"
         else:
-            fmt = sys.argv[3]
+            fmt = sys.argv[4]
 
         validateFormat(fmt)
-        
+        if nargs >=3:
+            execfile(sys.argv[3])
+        else:
+            execfile("./mast/default.conf")
         bibcodes = getBibliography(bname)
         writeBibliographyFile(oname,
                               DATA+"/" + os.path.basename(bname),
                               bibcodes, format=fmt)
 
     else:
-        sys.stderr.write("Usage: {0} <MAST obscore> <HUT bibcode> [rdf|n3]\n".format(sys.argv[0]))
+        sys.stderr.write("Usage: {0} <MAST obscore> <HUT bibcode> [conffile] [rdf|n3]\n".format(sys.argv[0]))
         sys.exit(-1)
 
 
