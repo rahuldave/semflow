@@ -158,8 +158,12 @@ def gdbnadd(g, s, p, tlist):
     gadd(g, s, p, bnode)
     
 def n3encode(theitem):
-    namespace, endurl=theitem.split(':')
-    return "<"+str(namespace_dict[namespace])+endurl+">"
+    colonarray=theitem.split(':')
+    namespace=colonarray[0]
+    endurl=":".join(colonarray[1:])
+    theencodeditem="<"+str(namespace_dict[namespace])+endurl+">"
+    #print theencodeditem
+    return theencodeditem
 
 # Since the values are stored as strings; we do a type conversion
 # to check that the value is valid, but store the input string
@@ -336,7 +340,7 @@ def cleanURIelement(txt):
 
     return urllib.quote(txt, "")
 
-def mkURI(path, elem):
+def mkURI(path, elem=None):
     """Create a URI within ads_baseurl using path and then
     elem, where elem is 'cleaned' to avoid unwanted characters.
 
@@ -346,7 +350,8 @@ def mkURI(path, elem):
     if path[0] != "/" or path[-1] != "/":
         #raise ValueError("mkURI path ({0}) must start and end in /.".format(path))
         raise ValueError("mkURI path "+path+" must start and end in /.")
-    
+    if elem==None:
+        return URIRef(ads_baseurl + path[:-1])
     return URIRef(ads_baseurl + path + cleanURIelement(elem))
     
 _emdomains = [
@@ -364,13 +369,13 @@ def getEMDomains(emin, emax):
     """Given emin/max fields in metres (as floats),
     return URIs for the corresponding EM_DOMAIN values.
     """
-
+    print "emin, emax", emin, emax
     if emin <= 0 or emax <= 0:
         #raise ValueError("emin={0}  emax={1}".format(emin, emax))
         raise ValueError("emin="+str(emin)+"  emax="+str(emax))
-
-    if emin >= emax:
-        raise ValueError("emin >= emax!")
+    #RAHUL change not sure why this worked earlier
+    if emin > emax:
+        raise ValueError("emin > emax!")
     
     out = []
 

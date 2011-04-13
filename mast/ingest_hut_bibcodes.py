@@ -16,6 +16,7 @@ from psv import open_obscore, get_column
 from namespaces import *
 
 from rdflib import URIRef, Graph
+import rdflib
 
 from mast_utils import *
 
@@ -61,7 +62,7 @@ def writeBibliographyFile(fname, ohead, bibcodes, format="n3"):
 
         obs_id = get_column(row, "obs_id")
         access_url = get_column(row, "access_url")
-
+        thedate="_".join(get_column(row, "date_obs").split())
         for (k,bs) in bibcodes.iteritems():
             # The HUT bibcodes appear to use obsid values which are
             # prefixes of the obscore ones.
@@ -75,8 +76,9 @@ def writeBibliographyFile(fname, ohead, bibcodes, format="n3"):
             uri_hash = base64.urlsafe_b64encode(access_url[::-1])
             #daturi = mkURI("/obsv/MAST/obsid/{0}/data/".format(obs_id), uri_hash)
             #obsuri = mkURI("/obsv/MAST/obsid/{0}/observation/".format(obs_id), uri_hash)
-            daturi = mkURI("/obsv/data/MAST/obsid/{0}/".format(obs_id), uri_hash)
-            obsuri = mkURI("/obsv/observation/MAST/obsid/{0}/".format(obs_id), uri_hash)
+            daturi = mkURI("/obsv/data/MAST/obsid/{0}/".format(obs_id+"-"+thedate), uri_hash)
+            #obsuri = mkURI("/obsv/observation/MAST/obsid/{0}/".format(obs_id), uri_hash)
+            obsuri = mkURI("/obsv/observation/MAST/obsid/{0}/".format(obs_id+"-"+thedate))
             # Loop through each bibcode, linking them to the data/observation URIs
             #
             for b in bs:
@@ -91,7 +93,49 @@ def writeBibliographyFile(fname, ohead, bibcodes, format="n3"):
     fh.close()
 
     writeGraph(graph, "{0}.{1}".format(ohead, format), format=format)
+
+
+def writeBibliographyFile2(fname, ohead, bibcodes, format="n3"):
+    """Write out bibliographic records using the hash in fname.
+
+    bibcodes is a dictionary with key: obsid, value: list of bibcodes.
+
+    The output is written to
     
+        ohead.<format>
+
+    """
+
+    hms=open(fname).read()
+    hmd=eval(hms)
+    graph = makeGraph()
+
+    nbib = 0
+    for row in hmd.keys():
+
+        obsuri=row
+        obs_id=str(obsuri).split("/")[-1].split('=')[0]
+        for daturi in hmd[obsuri]:
+            for (k,bs) in bibcodes.iteritems():
+                # The HUT bibcodes appear to use obsid values which are
+                # prefixes of the obscore ones.
+                #
+                if not obs_id.startswith(k):
+                    continue
+
+                for b in bs:
+                    biburi = URIRef(ads_baseurl + "/bib#" + cleanFragment(b))
+                    gadd(graph, biburi, adsbase.aboutScienceProduct, daturi)
+                    gadd(graph, biburi, adsbase.aboutScienceProcess, obsuri)
+
+
+                nbib += len(bs)
+                print("# bibcodes = {0}".format(nbib))
+
+
+
+    writeGraph(graph, "{0}.{1}".format(ohead, format), format=format)
+        
 if __name__=="__main__":
     execfile("./mast/default.conf")
     nargs = len(sys.argv)
@@ -105,17 +149,17 @@ if __name__=="__main__":
             fmt = sys.argv[4]
 
         validateFormat(fmt)
-        if nargs >=3:
+        if nargs >3:
             execfile(sys.argv[3])
         else:
             execfile("./mast/default.conf")
         bibcodes = getBibliography(bname)
-        writeBibliographyFile(oname,
+        writeBibliographyFile2(DATA+"/"+oname,
                               DATA+"/" + os.path.basename(bname),
                               bibcodes, format=fmt)
 
     else:
-        sys.stderr.write("Usage: {0} <MAST obscore> <HUT bibcode> [conffile] [rdf|n3]\n".format(sys.argv[0]))
+        sys.stderr.write("Usage: {0} <MAST obscore map> <HUT bibcode> [conffile] [rdf|n3]\n".format(sys.argv[0]))
         sys.exit(-1)
 
 

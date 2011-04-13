@@ -22,6 +22,7 @@ def splitns(theuri, atposition=-2, splitter='/'):
 
 def splitnsmast(theuri, atposition=-3, splitter='/'):
     mission, variable, theid, thehash=theuri.split(splitter)[atposition-1:]
+    print mission,"+++"
     return mission, variable, theid+"/"+thehash
         
 def rinitem(item):
@@ -101,7 +102,7 @@ def getInfoForBibcode(bibcode):
         thedict={}
         #BUG: make this polymorphic
         if theuri.find('MAST')!=-1:
-            themission, thevariable, theobsid=splitnsmast(theuri)
+            themission, thevariable, theobsid=splitns(theuri)
         else:
             themission, thevariable, theobsid=splitns(theuri)
         #print "::::::::::::::::", theobsid, theuri, themission, thevariable
@@ -116,7 +117,7 @@ def getInfoForBibcode(bibcode):
         else:
             thedict['obsvtypes_s']=themission+"/None"
         #Hut dosent have obsvtypes. Caal it MAST_HUT/None
-        #print "???", c.getDataBySP('uri_obs:'+uritail, 'adsobsv:tExptime')
+        print "???", c.getDataBySP('uri_obs:'+uritail, 'adsobsv:tExptime'), c.getDataBySP('uri_obs:'+uritail, 'adsobsv:tExpTime')
         try:
             thedict['exptime_f']=float(c.getDataBySP('uri_obs:'+uritail, 'adsobsv:tExpTime')[0])
         except:
@@ -230,7 +231,7 @@ def putIntoSolr(solrinstance, bibcode):
     print '===================================='
     #print bibdir
     print '===================================='
-    #solrinstance.add([bibdir], commit=False)
+    solrinstance.add([bibdir], commit=False)
     
     
     
@@ -257,4 +258,4 @@ if __name__=="__main__":
         print "Indexing: ",ele
         putIntoSolr(solr, ele)
         print "-------------"
-    #solr.commit()
+    solr.commit()

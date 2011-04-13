@@ -1,11 +1,10 @@
-python loadfiles.py tests/chandrastart/sherry.p.a.list /data/rdf
-python loadfiles-simbad.py tests/chandrastart/sherry.p.a.list /data/rdf
-python chandra/loadfiles-pub.py tests/chandrastart/pub.txt /pub
-python chandra/loadfiles-obsv.py tests/chandrastart/obsv.txt /obsv
-python chandra/loadfiles-prop.py tests/chandrastart/prop.txt /prop
-python loadfiles.py tests/hut/hut-chandra-overlap.txt /data/rdf
-python loadfiles-simbad.py tests/hut/hut-chandra-overlap.txt /data/rdf
-#python loadfiles.py tests/hut/hut.biblist.txt /data/rdf
-#python loadfiles-simbad.py tests/hut/hut.biblist.txt /data/rdf
-#python mast/loadfiles-hut-obsv.py obscore.hut.psv 3
-#python mast/loadfiles-hut-pub.py hut_bibcode_dataid_map.list
+
+python loadfiles.py tests/hut/hut-chandra-overlap.txt
+python loadfiles-simbad.py tests/hut/hut-chandra-overlap.txt
+python loadfiles.py tests/hut/hut.biblist.txt default2.conf
+python loadfiles-simbad.py tests/hut/hut.biblist.txt default2.conf
+#python mast/ingest_mast_obscore.py ../mast-test/obscore.hut.psv
+#python mast/ingest_hut_bibcodes.py obsdatahash.map ../mast-test/hut_bibcode_dataid_map.list
+python mast/loadfiles-hut-obsv.py ../mast_hut-rdf/obsdatahash.map
+python mast/loadfiles-hut-pub.py hut_bibcode_dataid_map.list
+#python rdf2solr3.py tests/hut/hut.biblist.txt
