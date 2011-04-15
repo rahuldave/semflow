@@ -1,2 +1,7 @@
- python mast/ingest_hut_bibcodes.py ../mast-test/obscore.hut.psv 
-
+#do below for appropriate overlap and hut xml files
+python adsclassic2rdf.py ./tests/chandrastart/sherry.p.a.bibcodes.xml 
+python simbad2rdf.py ./tests/chandrastart/sherry.p.a.simbad.dict 
+sh tests/chandrastart/usefulscripts
+#sh ../chandra-rdf/pub.overlap.sh
+#sh ../chandra-rdf/prop.overlap.sh
+#sh ../chandra-rdf/obsids.overlap.sh

@@ -1,12 +1,12 @@
 
 
 python loadfiles.py tests/chandrastart/sherry.p.a.list
-python loadfiles-simbad.py tests/chandrastart/sherry.p.a.list /data/rdf
+python loadfiles-simbad.py tests/chandrastart/sherry.p.a.list
 
 python chandra/loadfiles-pub.py tests/chandrastart/pub.txt /pub
 python chandra/loadfiles-obsv.py tests/chandrastart/obsv.txt /obsv
 python chandra/loadfiles-prop.py tests/chandrastart/prop.txt /prop
 
-python solrclear.py
-python rdf2solr3.py tests/chandrastart/sherry.p.a.list.obs
+#python solrclear.py
+#python rdf2solr3.py tests/chandrastart/sherry.p.a.list.obs
 

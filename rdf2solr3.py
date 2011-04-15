@@ -62,8 +62,10 @@ def getInfoForBibcode(bibcode):
     ptray=c.getDataBySP(bibcodeuri, 'adsbib:paperType')
     if len(ptray)>0:
         result['papertype_s']=ptray
+        print "PTYPE", bibcode, ptray
     else:
         result['papertype_s']=["None"]
+        print "PTYPE", bibcode, "NONE"
     
     #Above is only accurate when we dont do overlaps. For HUT/Chandra overlap, we should
     #be doing None/Something overlap but i do this as just Something should be fine
@@ -97,19 +99,43 @@ def getInfoForBibcode(bibcode):
     theobsiduris=c.getDataBySP(bibcodeuri, 'adsbase:aboutScienceProcess')
     #print "OBSIDS", bibcodeuri, theobsiduris
     obsray=[]
-    daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s', 'ra_f','dec_f', 'propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
+    daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s', 'missions_s', 'targets_s', 'ra_f','dec_f', 'propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
+    print "THEOBSIDURIS", theobsiduris
     for theuri in theobsiduris:
         thedict={}
         #BUG: make this polymorphic
+        themission, thevariable, theobsid=splitns(theuri)
+        uritail=themission+"/"+thevariable+"/"+theobsid
+        print "URITAIL", uritail
+        thedict['missions_s']=themission # this should be in RDF!!
+        
+
         if theuri.find('MAST')!=-1:
-            themission, thevariable, theobsid=splitns(theuri)
+            pquery0="""
+            SELECT ?tname WHERE {
+            %s adsbase:target ?tnode.
+            ?tnode adsbase:name ?tname.            
+            }
+            """ % (n3encode('uri_obs:'+uritail))
+            #Sprint pquery0
+            res1=c.makeQuery(pquery0)
+            target=res1[0]['tname']['value']
+            thetarget=themission+"/"+target
+        elif theuri.find('CHANDRA'):
+            titleray=c.getDataBySP('uri_obs:'+uritail, 'adsbase:title')
+            if len(titleray)==0:
+                title="Unspecified"
+            else:
+                title=titleray[0]
+            thetarget=themission+"/"+title
         else:
-            themission, thevariable, theobsid=splitns(theuri)
+            thetarget="None"
+        print "The target", thetarget
+        thedict['targets_s']=thetarget
         #print "::::::::::::::::", theobsid, theuri, themission, thevariable
         #thedict['obsids_s']=rinitem(theobsid)
         thedict['obsids_s']=themission+"/"+theobsid
-        uritail=themission+"/"+thevariable+"/"+theobsid
-        print "URITAIL", uritail
+
         #print theobsid, c.getDataBySP('uri_obs:'+uritail, 'adsobsv:observationType')
         obstypes=c.getDataBySP('uri_obs:'+uritail, 'adsobsv:observationType')
         if len(obstypes)>0:

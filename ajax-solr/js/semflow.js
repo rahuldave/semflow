@@ -33,8 +33,8 @@ var Manager;
         $('#pager-header').html($('<span/>').text('displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total));
       }
     }));
-    var fields = [ 'keywords', 'author', 'papertype', 'objecttypes', 'objectnames', 'obsvtypes', 'obsids', 'instruments', 'propids', 'proposaltype', 'proposalpi'];
-    var facet_fields= [ 'keywords_s', 'author_s', 'papertype_s' , 'objecttypes_s', 'objectnames_s', 'obsvtypes_s', 'obsids_s', 'instruments_s', 'propids_s', 'proposaltype_s', 'proposalpi_s'];
+    var fields = [ 'keywords', 'author', 'papertype', 'objecttypes', 'objectnames', 'obsvtypes', 'obsids', 'instruments', 'missions', 'emdomains', 'targets', 'propids', 'proposaltype', 'proposalpi'];
+    var facet_fields= [ 'keywords_s', 'author_s', 'papertype_s' , 'objecttypes_s', 'objectnames_s', 'obsvtypes_s', 'obsids_s', 'instruments_s', 'missions_s', 'emdomains_s', 'targets_s', 'propids_s', 'proposaltype_s', 'proposalpi_s'];
     for (var i = 0, l = fields.length; i < l; i++) {
       Manager.addWidget(new AjaxSolr.TagcloudWidget({
         id: fields[i],

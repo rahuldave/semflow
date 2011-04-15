@@ -208,7 +208,10 @@ def getPubFile(fname):
         trec['obsids']=[]
     #print trec
     bibcode_uri = uri_bib[trec['bibcode']]
+    gadd(g, bibcode_uri, adsbib.paperType, Literal(trec['paper_type']))
     print bibcode_uri
+    if len(trec['obsids'])>0:
+        gadd(g, bibcode_uri, adsobsv.datum_p, Literal(str(boolobsids).lower()))
     for obsid in trec['obsids']:
         obsuri=getObsURI(obsid)
         daturi=getDatURI(obsid)
@@ -216,9 +219,9 @@ def getPubFile(fname):
         #daturi=uri_dat['CHANDRA_'+obsid]
         gadd(g, bibcode_uri, adsbase.aboutScienceProcess, obsuri)
         gadd(g, bibcode_uri, adsbase.aboutScienceProduct, daturi)
-        gadd(g, bibcode_uri, adsobsv.datum_p, Literal(str(boolobsids).lower()))
+        
         #This is temporary. must map papertype to scienceprocesses and use those ones exactly
-        gadd(g, bibcode_uri, adsbib.paperType, Literal(trec['paper_type']))
+        
         
     serializedstuff=g.serialize(format='xml')
     return serializedstuff

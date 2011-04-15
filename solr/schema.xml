@@ -452,10 +452,13 @@
    <field name="ra_f" type="tfloat" indexed="true" stored="true" multiValued="true"/>
    <field name="dec_f" type="tfloat" indexed="true" stored="true" multiValued="true"/>
    <field name="obsvtypes_s" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="papertype_s" type="string" indexed="true" stored="true" multivalues="true"/>
+   <field name="papertype_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="instruments_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="telescopes_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="emdomains_s" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="targets_s" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="missions_s" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="datatypes_s" type="string" indexed="true" stored="true" multiValued="true"/>
 
    <field name="propids_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="proposaltitle" type="text" indexed="true" stored="true" multiValued="true"/>

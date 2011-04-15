@@ -28,6 +28,7 @@ class connection:
         uri must be supplied. If GET method is entire URI, if POST its the 
         query string
         """
+        #print method,uri
         if uri!=None:
             req=urllib2.Request(self.baseurl+uri)
         else:
@@ -60,7 +61,7 @@ class connection:
             print "ATYPE", atype
             return data
         try:
-            #print "LOADSDATA", data, loads(data)
+            #print "LOADSDATA", data
             result=loads(data)['results']['bindings']
             return result
         except:
