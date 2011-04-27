@@ -93,6 +93,7 @@ def getObsFile(fname):
     daturi=getDatURI(trec['obsid'], fragment="I")
     daturi2=getDatURI(trec['obsid'], fragment="S")
     gadd(g, daturi, a, adsobsv.Datum)
+    gadd(g, daturi2, a, adsobsv.Datum)
     gadd(g, obsuri, a, adsobsv.SimpleObservation)
     #Connect the data product and the observation
     access_url="http://cda.harvard.edu/chaser/ocatList.do?obsid="+trec['obsid']
@@ -132,6 +133,7 @@ def getObsFile(fname):
             adsobsv.atTelescope,   uri_infra['telescope/CHANDRA'],
             adsbase.usingInstrument, uri_infra['instrument/CHANDRA_'+trec['instrument_name']],
             adsobsv.hasDatum, daturi,
+            adsobsv.hasDatum, daturi2,
             adsbase.title, Literal(tname),
             adsbase.asAResultOfProposal, getPropURI(trec['proposal_id'])
         ]

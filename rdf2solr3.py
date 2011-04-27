@@ -99,8 +99,10 @@ def getInfoForBibcode(bibcode):
     theobsiduris=c.getDataBySP(bibcodeuri, 'adsbase:aboutScienceProcess')
     #print "OBSIDS", bibcodeuri, theobsiduris
     obsray=[]
-    daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s', 'missions_s', 'targets_s', 'ra_f','dec_f', 'propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
+    #TESTnotice by this we dont uniq telescopes or data types...what does this mean for the numbers, if anything?
+    daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s', 'missions_s', 'targets_s', 'ra_f','dec_f', 'datatypes_s','propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
     print "THEOBSIDURIS", theobsiduris
+    datatypes=[]
     for theuri in theobsiduris:
         thedict={}
         #BUG: make this polymorphic
@@ -161,9 +163,32 @@ def getInfoForBibcode(bibcode):
         #    print "TDT", tdt
         #obsvtime=datetime.datetime(int(year), list(calendar.month_abbr).index(month), int(day), th, tmin)
         thedict['obsvtime_d']=obsvtime.isoformat()+"Z"
+        
+        #hasDatum is a subset of hasDataProduct. How do we get sparql to fo up inhertitance hierarchy
+        #Currently we have no way of knowing as the owl file hasnt been loaded in
+        pquery="""
+            SELECT ?dtype WHERE {
+            {%s adsobsv:hasDataProduct ?daturi.} UNION {%s adsobsv:hasDatum ?daturi.}
+            ?daturi adsbase:dataType ?dtype.
+            }
+        """ % (n3encode('uri_obs:'+uritail),n3encode('uri_obs:'+uritail) )
+        res=c.makeQuery(pquery)
+        #print "RES", res, pquery
+        tempdt={}
+        if len(res)>0:
+            for ele in res:
+                tkey=ele['dtype']['value']
+                if tempdt.has_key('tkey'):
+                    tempdt[tkey]+=1
+                else:
+                    tempdt[tkey]=1
+            thedict['datatypes_s']=tempdt.keys()
+        else:
+            thedict['datatypes_s']=[]
         #BUG: Still assume one istrument. This will change, point is how? There will be both
         #multiple stuff for non-simple obs and hierarchical stuff for simple obs like gratings
         #how will we model this?
+        print "DATATYPES", thedict['datatypes_s']
         theinstrument=c.getDataBySP('uri_obs:'+uritail, 'adsbase:usingInstrument')[0]
         theinstrumentname=theinstrument.split('/')[-1]
         thedict['instruments_s']="/".join(theinstrumentname.split('_'))
@@ -186,6 +211,7 @@ def getInfoForBibcode(bibcode):
                 thedict['emdomains_s'].append(domain.split('_')[-1])
             
         thepointings=c.getDataBySP('uri_obs:'+uritail, 'adsobsv:associatedPosition')
+        
         if len(thepointings) > 0:
             pquery="""
             SELECT ?ra ?dec WHERE {

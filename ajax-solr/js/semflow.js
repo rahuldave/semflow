@@ -16,8 +16,9 @@ var Manager;
   $(function () {
     console.log("WHEN IS THIS CALLED?");
     Manager = new AjaxSolr.Manager({
-      solrUrl: 'http://boom.dyndns.org:8983/solr/'
+      //solrUrl: 'http://boom.dyndns.org:8983/solr/'
 	  //solrUrl: 'http://adslabs.nareau.com:8983/solr/'
+	  solrUrl: 'http://labs.adsabs.harvard.edu/semanticsolr2/solr/'
     });
     Manager.addWidget(new AjaxSolr.ResultWidget({
       id: 'result',
@@ -33,8 +34,8 @@ var Manager;
         $('#pager-header').html($('<span/>').text('displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total));
       }
     }));
-    var fields = [ 'keywords', 'author', 'papertype', 'objecttypes', 'objectnames', 'obsvtypes', 'obsids', 'instruments', 'missions', 'emdomains', 'targets', 'propids', 'proposaltype', 'proposalpi'];
-    var facet_fields= [ 'keywords_s', 'author_s', 'papertype_s' , 'objecttypes_s', 'objectnames_s', 'obsvtypes_s', 'obsids_s', 'instruments_s', 'missions_s', 'emdomains_s', 'targets_s', 'propids_s', 'proposaltype_s', 'proposalpi_s'];
+    var fields = [ 'keywords', 'author', 'papertype', 'objecttypes', 'objectnames', 'obsvtypes', 'obsids', 'instruments', 'missions', 'emdomains', 'targets', 'datatypes', 'propids', 'proposaltype', 'proposalpi'];
+    var facet_fields= [ 'keywords_s', 'author_s', 'papertype_s' , 'objecttypes_s', 'objectnames_s', 'obsvtypes_s', 'obsids_s', 'instruments_s', 'missions_s', 'emdomains_s', 'targets_s', 'datatypes_s', 'propids_s', 'proposaltype_s', 'proposalpi_s'];
     for (var i = 0, l = fields.length; i < l; i++) {
       Manager.addWidget(new AjaxSolr.TagcloudWidget({
         id: fields[i],
