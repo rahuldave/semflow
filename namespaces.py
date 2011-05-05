@@ -350,7 +350,7 @@ def mkURI(path, elem=None):
     if path[0] != "/" or path[-1] != "/":
         #raise ValueError("mkURI path ({0}) must start and end in /.".format(path))
         raise ValueError("mkURI path "+path+" must start and end in /.")
-    if elem==None:
+    if elem==None:#STRIP TRAILING SLASH
         return URIRef(ads_baseurl + path[:-1])
     return URIRef(ads_baseurl + path + cleanURIelement(elem))
     

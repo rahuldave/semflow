@@ -1,6 +1,6 @@
 python loadfiles.py tests/hut/hut.biblist.txt default2.conf
 python loadfiles-simbad.py tests/hut/hut.biblist.txt default2.conf
-#python mast/ingest_mast_obscore.py ../mast-test/obscore.hut.psv
+#python mast/ingest_mast_obscore.py hut ../mast-test/obscore.hut.psv
 #python mast/ingest_hut_bibcodes.py obsdatahash.map ../mast-test/hut_bibcode_dataid_map.list
 python mast/loadfiles-hut-obsv.py ../mast_hut-rdf/obsdatahash.map
 python mast/loadfiles-hut-pub.py hut_bibcode_dataid_map.list
