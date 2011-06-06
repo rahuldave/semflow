@@ -88,6 +88,8 @@ var Manager;
         themax: 2010,
         thestep: 10
     }));
+    Manager.setStore(new AjaxSolr.ParameterHashStore());
+    Manager.store.exposed = [ 'fq', 'q' ];
     Manager.init();
     Manager.store.addByValue('q', '*:*');
     console.log("facet_fields:", facet_fields);
