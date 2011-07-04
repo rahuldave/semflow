@@ -1,0 +1,104 @@
+PREREQS:
+python2.6
+python modules:
+	lxml
+	mx.DateTime
+	rdflib 3
+
+(Use pip or easy_install)
+
+BASIC INSTALL:
+mkdir ads-stuff
+git clone git@github.com:rahuldave/semflow.git
+rsync -avz ~/Dropbox/AstroExplorer .
+
+If Installing AppSem:
+Install node.js 0.4.8
+install modules using npm:
+	connect connect-redis hiredis mime mustache redis qs
+	
+git clone git@github.com:rahuldave/appsem.git
+
+VENDOR INSTALLS:
+
+mkdir ads-stuff/vendor
+cd ads-stuff/vendor
+
+(a) Install Solr
+tar zxvf ../AstroExplorer/vendor/apache-solr-3.2.0.tgz
+cp -a apache-solr-3.2.0/example container
+
+
+(b) Install Sesame
+tar zxvf ../AstroExplorer/vendor/openrdf-sesame-2.4.0-sdk.tar.gz
+cp openrdf-sesame-2.4.0/war/openrdf-* container/webapps/
+
+(c) Install Redis
+tar zxvf ../AstroExplorer/vendor/redis-2.2.10.tar.gz
+cd redis-2.2.10
+make; sudo make install
+/usr/local/bin/redis-server (if installed)
+redis-cli can be used to check it
+
+(d) Start Sesame and Solr on port 8983:
+pushd container/solr/conf
+mv solrconfig.xml solrconfig.xml.bak
+mv schema.xml schema.xml.bak
+# Link to configuration files in semflow repository
+ln -s ../../../../semflow/solr/schema.xml .
+ln -s ../../../../semflow/solr/solrconfig.xml .
+popd
+cd container
+#Now back in container directory
+java -jar container/start.jar
+
+Solr admin is at:
+http://localhost:8983/solr/admin/
+Seasme Workbench is at:
+http://localhost:8983/openrdf-workbench/
+Create a repository there:
+Type: Native Java Store
+Id: testads8
+Title: testads8
+
+Accept the default for triple indexes.
+
+DATA INSTALL
+cd ads-stuff
+pushd AstroExplorer/Missions/Chandra/chandra/
+tar zxvf chda.tgz
+popd
+mkdir chandra-rdf
+mkdir mast-rdf
+
+CHANDRA INSTALL
+
+python adsclassic2rdf.py ../chandra-rdf ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt
+
+python adsclassic2rdf.py ../chandra-rdf ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
+
+python simbad2rdf.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.simbad.dict ../chandra-rdf
+
+python simbad2rdf.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.simbad.dict ../chandra-rdf
+
+python chandra/genrdf.py pub ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.linkedpubs.txt ../chandra-rdf/
+
+python chandra/genrdf.py pub ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.linkedpubs.txt ../chandra-rdf/
+
+
+python chandra/genrdf.py obsv ../AstroExplorer/Missions/Chandra/chandra/global.obsids.txt ../chandra-rdf/
+
+python loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt
+
+python loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
+python chandra/genrdf.py prop ../AstroExplorer/Missions/Chandra/chandra/global.proposals.txt ../chandra-rdf/
+
+python chandra/loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.linkedpubs.txt pub
+
+python chandra/loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.linkedpubs.txt pub
+
+python chandra/loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/global.obsids.txt obsv
+
+python rdf2solr4.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt.cut 
+
+python rdf2solr4.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt

@@ -10,3 +10,50 @@ python chandra/loadfiles-prop.py tests/chandrastart/prop.txt /prop
 #python solrclear.py
 #python rdf2solr3.py tests/chandrastart/sherry.p.a.list.obs
 
+
+CHANDRA LOAD ERRORS:
+Te-Bomatemaki:semflow rahul$ grep aboutScienceProcess ../chandra-rdf/pub/2003ApJ...595..727I.xml.rdf | awk '{print $2}' | sed 's/\// /g' | awk '{print $8}' | sed 's/\"//g' | sort | uniq | sed 's/^/ls -l \.\.\/chandra-rdf\/obsv\//g' | sed 's/$/\.xml\.rdf/g' | sh
+-rw-r--r--  1 rahul  staff  4448 Jul  4 14:01 ../chandra-rdf/obsv/1968.xml.rdf
+-rw-r--r--  1 rahul  staff  4453 Jul  4 14:01 ../chandra-rdf/obsv/1969.xml.rdf
+-rw-r--r--  1 rahul  staff  4452 Jul  4 14:01 ../chandra-rdf/obsv/1970.xml.rdf
+-rw-r--r--  1 rahul  staff  4440 Jul  4 14:04 ../chandra-rdf/obsv/763.xml.rdf
+-rw-r--r--  1 rahul  staff  4440 Jul  4 14:04 ../chandra-rdf/obsv/765.xml.rdf
+-rw-r--r--  1 rahul  staff  3999 Jul  4 14:04 ../chandra-rdf/obsv/766.xml.rdf
+ls: ../chandra-rdf/obsv/7674.xml.rdf: No such file or directory
+Te-Bomatemaki:semflow rahul$ grep aboutScienceProcess ../chandra-rdf/pub/2004ApJ...612..729H.xml.rdf | awk '{print $2}' | sed 's/\// /g' | awk '{print $8}' | sed 's/\"//g' | sort | uniq | sed 's/^/ls -l \.\.\/chandra-rdf\/obsv\//g' | sed 's/$/\.xml\.rdf/g' | sh
+-rw-r--r--  1 rahul  staff  4437 Jul  4 14:01 ../chandra-rdf/obsv/1593.xml.rdf
+-rw-r--r--  1 rahul  staff  4424 Jul  4 14:01 ../chandra-rdf/obsv/1595.xml.rdf
+-rw-r--r--  1 rahul  staff  4437 Jul  4 14:01 ../chandra-rdf/obsv/1623.xml.rdf
+-rw-r--r--  1 rahul  staff  4447 Jul  4 14:01 ../chandra-rdf/obsv/2096.xml.rdf
+-rw-r--r--  1 rahul  staff  4440 Jul  4 14:01 ../chandra-rdf/obsv/2097.xml.rdf
+-rw-r--r--  1 rahul  staff  4437 Jul  4 14:01 ../chandra-rdf/obsv/2126.xml.rdf
+-rw-r--r--  1 rahul  staff  4437 Jul  4 14:01 ../chandra-rdf/obsv/2127.xml.rdf
+-rw-r--r--  1 rahul  staff  4437 Jul  4 14:01 ../chandra-rdf/obsv/2128.xml.rdf
+-rw-r--r--  1 rahul  staff  4436 Jul  4 14:01 ../chandra-rdf/obsv/2129.xml.rdf
+-rw-r--r--  1 rahul  staff  4440 Jul  4 14:01 ../chandra-rdf/obsv/2130.xml.rdf
+-rw-r--r--  1 rahul  staff  4452 Jul  4 14:01 ../chandra-rdf/obsv/2133.xml.rdf
+-rw-r--r--  1 rahul  staff  4442 Jul  4 14:01 ../chandra-rdf/obsv/2194.xml.rdf
+-rw-r--r--  1 rahul  staff  4441 Jul  4 14:01 ../chandra-rdf/obsv/2195.xml.rdf
+-rw-r--r--  1 rahul  staff  4431 Jul  4 14:01 ../chandra-rdf/obsv/2209.xml.rdf
+-rw-r--r--  1 rahul  staff  4437 Jul  4 14:01 ../chandra-rdf/obsv/2210.xml.rdf
+-rw-r--r--  1 rahul  staff  4433 Jul  4 14:01 ../chandra-rdf/obsv/2254.xml.rdf
+-rw-r--r--  1 rahul  staff  4432 Jul  4 14:01 ../chandra-rdf/obsv/2453.xml.rdf
+ls: ../chandra-rdf/obsv/2968360.xml.rdf: No such file or directory
+-rw-r--r--  1 rahul  staff  4442 Jul  4 14:02 ../chandra-rdf/obsv/2984.xml.rdf
+-rw-r--r--  1 rahul  staff  4437 Jul  4 14:02 ../chandra-rdf/obsv/3009.xml.rdf
+-rw-r--r--  1 rahul  staff  4446 Jul  4 14:02 ../chandra-rdf/obsv/3053.xml.rdf
+-rw-r--r--  1 rahul  staff  4438 Jul  4 14:02 ../chandra-rdf/obsv/3054.xml.rdf
+-rw-r--r--  1 rahul  staff  4438 Jul  4 14:02 ../chandra-rdf/obsv/3083.xml.rdf
+-rw-r--r--  1 rahul  staff  4439 Jul  4 14:02 ../chandra-rdf/obsv/3138.xml.rdf
+-rw-r--r--  1 rahul  staff  4441 Jul  4 14:02 ../chandra-rdf/obsv/3207.xml.rdf
+-rw-r--r--  1 rahul  staff  4470 Jul  4 14:02 ../chandra-rdf/obsv/3226.xml.rdf
+-rw-r--r--  1 rahul  staff  4431 Jul  4 14:02 ../chandra-rdf/obsv/326.xml.rdf
+-rw-r--r--  1 rahul  staff  4439 Jul  4 14:02 ../chandra-rdf/obsv/346.xml.rdf
+-rw-r--r--  1 rahul  staff  4444 Jul  4 14:02 ../chandra-rdf/obsv/3967.xml.rdf
+-rw-r--r--  1 rahul  staff  4432 Jul  4 14:02 ../chandra-rdf/obsv/4005.xml.rdf
+-rw-r--r--  1 rahul  staff  4431 Jul  4 14:02 ../chandra-rdf/obsv/434.xml.rdf
+-rw-r--r--  1 rahul  staff  4428 Jul  4 14:04 ../chandra-rdf/obsv/827.xml.rdf
+-rw-r--r--  1 rahul  staff  4430 Jul  4 14:04 ../chandra-rdf/obsv/829.xml.rdf
+-rw-r--r--  1 rahul  staff  4465 Jul  4 14:04 ../chandra-rdf/obsv/830.xml.rdf
+-rw-r--r--  1 rahul  staff  4428 Jul  4 14:04 ../chandra-rdf/obsv/838.xml.rdf
+-rw-r--r--  1 rahul  staff  4437 Jul  4 14:04 ../chandra-rdf/obsv/839.xml.rdf

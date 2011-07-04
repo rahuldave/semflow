@@ -280,7 +280,8 @@ def addObsCoreObs(dkey, valstuplearray, obsdatahash):
     for iname in inameray:
         if iname != '':
             gadd(graph, obsuri, adsbase.usingInstrument,
-                addFragment(uri_infra, 'instrument/MAST_' + iname))
+                #addFragment(uri_infra, 'instrument/MAST_' + iname))
+                addFragment(uri_infra, 'instrument/MAST_' + cleanURIelement(iname)))
 
 
 

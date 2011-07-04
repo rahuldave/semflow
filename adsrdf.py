@@ -108,7 +108,7 @@ class ADSConnection:
         res=bg.parse(StringIO.StringIO(data))
         listofo=[]
         for trip in res:
-            listofo.append(str(trip[0]))
+            listofo.append(str(trip[0].encode('utf-8')))
         return listofo
             
     def getDataBySP(self, thingy, propthingy, context=None):
@@ -131,7 +131,7 @@ class ADSConnection:
         listofo=[]
         #this bnode crap is very fragile TODO:replace
         for trip in res:
-            listofo.append(str(trip[2]))
+            listofo.append(str(trip[2].encode('utf-8')))
         return listofo
                 
     def addFile(self, thefile,context=None):
