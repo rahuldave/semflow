@@ -64,6 +64,8 @@ for bibcode in simbad.keys():
         gadd(g,uri_source[eleid], adsbase.hasMetadataString, Literal(str(aobject)))
         
     serializedstuff=g.serialize()
+    if not os.path.isdir(DATA+"/data/rdf"):
+            os.makedirs(DATA+"/data/rdf")
     fd=open(DATA+"/data/rdf/simbad."+quote_plus(bibcode)+".rdf", "w")
     fd.write(serializedstuff)
     fd.close()

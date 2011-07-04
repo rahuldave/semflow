@@ -8,12 +8,14 @@ Usage: adsclassic2rdf.py bibcodefile [format]
 
 import getopt
 import re
-import sys 
+import sys
+import os, os.path
 from namespaces import *
 from urllib import quote_plus
 from rdflib import URIRef, Namespace, Literal, BNode
 from rdflib import ConjunctiveGraph
 import uuid
+import getuuid4bibcode
 try:
     from lxml import etree as ElementTree
 except:
@@ -22,6 +24,7 @@ import HTMLParser
 
 DATA="../mast_hut-rdf"
 DATA="../chandra-rdf"
+SORTEDYEARLIST='../AstroExplorer/filebibs/sortedyearlist.txt'
 
 def _xmlcharref_encode(unicode_data, encoding="ascii"):
     """Emulate Python 2.3's 'xmlcharrefreplace' encoding error handler."""
@@ -108,10 +111,10 @@ class RecordObj:
         
 
 #stuff like ADS should be inited from the database.
-def record_meta(g, record):
+def record_meta(g, incuuid, record):
     import datetime
     thetime=datetime.datetime.today().isoformat()
-    theuuid=str(uuid.uuid4())
+    theuuid=incuuid
     #meta_uri = uri_meta[record.bibcode]
     meta_uri = uri_meta[theuuid]
     bibcode_uri = uri_bib[record.bibcode]
@@ -323,7 +326,7 @@ def do_references(g, record, theuuid):
 
     
     
-def record_as_graph_from_xml(bibcode, node, baseUrl=None, thegraph=None):
+def record_as_graph_from_xml(bibcode, incuuid, node, baseUrl=None, thegraph=None):
     record = node
     print ">>>>", bibcode, record.bibcode
     bibcode_uri = uri_bib[record.bibcode]
@@ -334,7 +337,7 @@ def record_as_graph_from_xml(bibcode, node, baseUrl=None, thegraph=None):
     else:
         g=thegraph 
     bindgraph(g)
-    theuuid=record_meta(g,record)
+    theuuid=record_meta(g, incuuid, record)
     #gadd(g, URIRef('#hello'), a, adsbase.Bastard)
     work_meta(g, record, theuuid)
     eray=[]
@@ -356,15 +359,24 @@ def record_as_graph_from_xml(bibcode, node, baseUrl=None, thegraph=None):
     return g    
 
 def record_as_rdf(datapath, bibcodefile, format='xml', baseUrl=None):
-    recordstree=ElementTree.parse(bibcodefile)
+    if not os.path.isdir(datapath+"/data/rdf"):
+            os.makedirs(datapath+"/data/rdf")
+    
+    xmlfile=bibcodefile.replace('biblist.txt', 'bibcodes.xml')	
+    yhash=getuuid4bibcode.storeYears(SORTEDYEARLIST)
+    dbhash=getuuid4bibcode.setsFromBibcodes(bibcodefile,  yhash)
+    print "LOADING XML FILE", xmlfile
+    recordstree=ElementTree.parse(xmlfile)
+    print "LOOPING OVER RECORDS"
     for rec in recordstree.findall('record'):
         node=RecordObj(rec)
         bibcode=node.bibcode
         print "BIBCODE", bibcode
         h= HTMLParser.HTMLParser()
         bibcode=h.unescape(bibcode)
+        incuuid=dbhash[bibcode]
         node.bibcode=bibcode
-        graph = record_as_graph_from_xml(bibcode, node, baseUrl)
+        graph = record_as_graph_from_xml(bibcode, incuuid, node, baseUrl)
         dformat=format
         if format=="pretty-xml":
             dformat='xml'

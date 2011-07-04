@@ -1,5 +1,7 @@
 #reading chandra observation files
 
+#Bug: we should have test asserts for the data files in our workflow to make sure they follow some logic
+
 import getopt
 import re
 import sys 
@@ -84,6 +86,8 @@ def getObsFile(fname):
     trec['obsvtype']=xobj.type
     trec['time']=xobj.observed_time
     trec['created_time']=xobj.public_avail
+    #Bug: in some of Sheery's stuff this is null
+    #print "Created",trec['created_time']
     trec['date']=xobj.start_date
     trec['ra']=xobj.ra
     trec['dec']=xobj.dec
@@ -111,15 +115,18 @@ def getObsFile(fname):
     )
     addVals(g, daturi,
             [
-                pav.createdOn, trec['created_time'], asDateTime('%b %d %Y %H:%M%p'),
+                
                 adsobsv.calibLevel, 2, asInt,
 
                 adsbase.dataType, "image", Literal,
             ]
     )
+    #These are untrue anyway: creation time is not public time, but we are using it now.
+    if trec['created_time']!=None:
+        addVals(g, daturi, [pav.createdOn, trec['created_time'], asDateTime('%b %d %Y %H:%M%p')])
+        addVals(g, daturi2, [pav.createdOn, trec['created_time'], asDateTime('%b %d %Y %H:%M%p')])
     addVals(g, daturi2,
             [
-                pav.createdOn, trec['created_time'], asDateTime('%b %d %Y %H:%M%p'),
                 adsobsv.calibLevel, 2, asInt,
 
                 adsbase.dataType, "spectra", Literal,

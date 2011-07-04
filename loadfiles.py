@@ -16,7 +16,7 @@ testcodeuristart='<http://ads.harvard.edu/sem/context#'
 #c.addnamespace('dc','http://purl.org/dc/elements/1.1/')
 import os.path, sys, os, glob
 
-identifier=str(uuid.uuid4())+"-"+__file__+"-"+__version__
+#identifier=str(uuid.uuid4())+"-"+__file__+"-"+__version__
 if len(sys.argv)==2:
     execfile("./default.conf")
 elif len(sys.argv)==3:
@@ -26,7 +26,8 @@ else:
     sys.exit(-1)
     
 c=connection(SESAME)
-c.use_repository(REPOSITORY)    
+c.use_repository(REPOSITORY)
+identifier='publications-'+__file__    
 context=quote_plus(testcodeuristart+identifier+">")
 bibcodes=[quote_plus(ele.strip()) for ele in open(sys.argv[1]).readlines()]
 print bibcodes
