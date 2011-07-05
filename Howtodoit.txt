@@ -18,7 +18,9 @@ install modules using npm:
 	connect connect-redis hiredis mime mustache redis qs
 	
 git clone git@github.com:rahuldave/appsem.git
-
+cd appsem
+git submodule init
+git submodule update
 VENDOR INSTALLS:
 
 mkdir ads-stuff/vendor
