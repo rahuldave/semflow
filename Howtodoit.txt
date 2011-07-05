@@ -104,3 +104,17 @@ python chandra/loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/global.obs
 python rdf2solr4.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt.cut 
 
 python rdf2solr4.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
+
+Ok, doing HUT
+--------------
+
+python adsclassic2rdf.py ../mast-rdf ../AstroExplorer/Missions/MAST/hut/hut.biblist.txt
+
+1992BAAS...24.1285L
+
+BAAS error, need to use the ADS bibcode synonym file
+No output, need to fix first.
+
+python simbad2rdf.py ../AstroExplorer/Missions/MAST/hut/hut.simbad.dict ../mast-rdf
+
+
