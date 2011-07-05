@@ -28,7 +28,7 @@ else:
     
 c=connection(SESAME)
 c.use_repository(REPOSITORY)
-identifier='objects-'+__file__    
+identifier='simbad-'+__file__    
 context=quote_plus(testcodeuristart+identifier+">")
 bibcodes=[quote_plus(ele.strip()) for ele in open(sys.argv[1]).readlines()]
 print bibcodes
@@ -42,4 +42,4 @@ for ele in bibcodes:
         print filename
         c.postfile(filename, context)
     else:
-        "FILE not found: ", filename
+        "FILENOTFOUND: ", filename

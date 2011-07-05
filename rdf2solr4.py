@@ -81,20 +81,25 @@ def getInfoForBibcode(bibcode):
     #get the publication uri
     result['pubyear_i']=int(c.getDataBySP(bibcodeuri, 'adsbib:pubDate')[0].split()[1])
     theobjects=c.getDataBySP(bibcodeuri, 'adsbase:hasAstronomicalSource')
+    print "THEOBJECTS", bibcode, len(theobjects)
     objectlist=[]
     for theobj in theobjects:
         #print "theobj", theobj
         odata=c.getDataBySP('uri_source:'+theobj.split('/')[-1], 'adsbase:hasMetadataString')
-        odict=eval(odata[0])
-        oid=odict['id']
-        otype=odict['otype']
-        ouri=theobj
-        objectlist.append({'oid':oid, 'otype':otype, 'ouri':ouri})
+        #print "theobj", theobj, odata
+        if len(odata)>0:
+            odict=eval(odata[0])
+            oid=odict['id']
+            otype=odict['otype']
+            ouri=theobj
+            objectlist.append({'oid':oid, 'otype':otype, 'ouri':ouri})
+        else:
+            print "PROBLEM", bibcode, theobj, odata
     result['objectnames']=[e['oid'] for e in objectlist]
     result['objecttypes']=[e['otype'] for e in objectlist]
     result['objectnames_s']=result['objectnames']
     result['objecttypes_s']=result['objecttypes']
-    print result['objectnames']
+    #print result['objectnames']
     #theobsids=[rinitem(splitns(e)) for e in c.getDataBySP(bibcodeuri, 'adsbase:aboutScienceProduct')]
     theobsiduris=c.getDataBySP(bibcodeuri, 'adsbase:aboutScienceProcess')
     #print "OBSIDS", bibcodeuri, theobsiduris

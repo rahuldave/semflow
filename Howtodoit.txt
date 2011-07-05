@@ -52,7 +52,7 @@ ln -s ../../../../semflow/solr/solrconfig.xml .
 popd
 cd container
 #Now back in container directory
-java -jar container/start.jar
+java -jar start.jar
 
 Solr admin is at:
 http://localhost:8983/solr/admin/
@@ -66,44 +66,61 @@ Title: testads8
 Accept the default for triple indexes.
 
 DATA INSTALL
+Depending on if u r on a mac or nor , the directory will be Chandra or CHANDRA. Make sure one is
+symbolically linked to the other. as below on linux
+
 cd ads-stuff
 pushd AstroExplorer/Missions/Chandra/chandra/
 tar zxvf chda.tgz
+cd ../..
+ln -s Chandra CHANDRA
 popd
 mkdir chandra-rdf
 mkdir mast-rdf
 
+
+POSSIBLE THINGIES NEEDING DOING
+(a) java heap size
+(b) ulimits on ubuntu
+
 CHANDRA INSTALL
+cd semflow
+export PYTHONPATH=`pwd`
 
-python adsclassic2rdf.py ../chandra-rdf ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt
+adsrdf:
+    python adsclassic2rdf.py ../chandra-rdf ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt
+    python adsclassic2rdf.py ../chandra-rdf ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
+simbadrdf:
+    python simbad2rdf.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.simbad.dict ../chandra-rdf
+    python simbad2rdf.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.simbad.dict ../chandra-rdf
+pubrdf:
+    python chandra/genrdf.py pub ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.linkedpubs.txt ../chandra-rdf/
+    python chandra/genrdf.py pub ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.linkedpubs.txt ../chandra-rdf/
+obsvrdf:
+    python chandra/genrdf.py obsv ../AstroExplorer/Missions/Chandra/chandra/global.obsids.txt ../chandra-rdf/
+proprdf:
+    python chandra/genrdf.py prop ../AstroExplorer/Missions/Chandra/chandra/global.proposals.txt ../chandra-rdf/
+    
+adsload:    
+    python loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt
+    python loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
+simbadload:
+    python loadfiles-simbad.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt
+    python loadfiles-simbad.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
+pubload:
+    python chandra/loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.linkedpubs.txt pub
+    python chandra/loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.linkedpubs.txt pub
 
-python adsclassic2rdf.py ../chandra-rdf ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
-
-python simbad2rdf.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.simbad.dict ../chandra-rdf
-
-python simbad2rdf.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.simbad.dict ../chandra-rdf
-
-python chandra/genrdf.py pub ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.linkedpubs.txt ../chandra-rdf/
-
-python chandra/genrdf.py pub ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.linkedpubs.txt ../chandra-rdf/
-
-
-python chandra/genrdf.py obsv ../AstroExplorer/Missions/Chandra/chandra/global.obsids.txt ../chandra-rdf/
-
-python loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt
-
-python loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
-python chandra/genrdf.py prop ../AstroExplorer/Missions/Chandra/chandra/global.proposals.txt ../chandra-rdf/
-
-python chandra/loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.linkedpubs.txt pub
-
-python chandra/loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.linkedpubs.txt pub
-
-python chandra/loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/global.obsids.txt obsv
-
-python rdf2solr4.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt.cut 
-
-python rdf2solr4.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
+obsvload:
+    python chandra/loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/global.obsids.txt obsv
+propload:
+    python chandra/loadfiles.py ../AstroExplorer/Missions/Chandra/chandra/global.proposals.txt prop
+    
+#We had to produce a cut file below due to some linkage probs in Chandra
+pubsolr:
+    python solrclear.py
+    python rdf2solr4.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt.cut 
+    python rdf2solr4.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
 
 Ok, doing HUT
 --------------

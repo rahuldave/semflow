@@ -40,4 +40,4 @@ for ele in bibcodes:
         print filename
         c.postfile(filename, context)
     else:
-        "FILE not found: ", filename
+        "FILENOTFOUND: ", filename

@@ -91,7 +91,9 @@ class connection:
         
     def construct_query(self,q):
         q='repositories/'+self.repository+'?query='+quote_plus(self.sparql_prefix+q)
-        data=urllib2.urlopen(self.baseurl+q).read()
+        res=urllib2.urlopen(self.baseurl+q)
+        data=res.read()
+        res.close()
         return data
     
     def query_statements(self, qdict, atype=SPCXML):
@@ -113,7 +115,9 @@ class connection:
         req.add_header('Accept', atype)
         res=urllib2.urlopen(req)
         #print "INFO", res.info()
-        return res.read()
+        readstuff=res.read()
+        res.close()
+        return readstuff
         
     def get_in_context(self, context=None, atype=SPCXML):
         host=self.baseurl+'repositories/'+self.repository+'/statements'
@@ -127,7 +131,9 @@ class connection:
         req.add_header('Accept', atype)
         res=urllib2.urlopen(req)
         #print "INFO", res.info()
-        return res.read()
+        readstuff=res.read()
+        res.close()
+        return readstuff
     
     def deletedata(self, context=None):
         #delete everything in a repository or in a specific context
@@ -147,9 +153,11 @@ class connection:
             if e.code > 299:
                 print 'Error code: ', e.code
                 raise ValueError(e.code)
-            return res
+            res.close()
+            return 0
         #print "INFO", res.info()
-        return res
+        res.close()
+        return 0
            
     def postdata(self,data, context=None, method='POST'):
         "POST/PUT a bunch of RDF statements into the repository"
@@ -177,13 +185,18 @@ class connection:
             if e.code > 299:
                 print 'Error code: ', e.code
                 raise ValueError(e.code)
-            return res
+            res.close()
+            return 0
         #print "INFO", res.info()
-        return res.read()
+        #readstuff=res.read()
+        res.close()
+        return 0
        
     def postfile(self, thefile, context=None, method='POST'):
         #print "FILE", thefile
-        data=open(thefile).read()
+        fd=open(thefile)
+        data=fd.read()
+        fd.close()
         #print "DATA"
         #print data
         #print "========================"
