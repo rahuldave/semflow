@@ -2,6 +2,7 @@
 from psv import open_obscore, row2dict
 from mast_utils import *
 
+
 def getObsidForPubMap(obsid):
     return obsid
     

@@ -179,6 +179,7 @@ class connection:
         req.add_data(data)
         try:
             res=urllib2.urlopen(req)
+            print res.info()
         except urllib2.HTTPError, e:
             print 'Code: ', e.code
             res=None

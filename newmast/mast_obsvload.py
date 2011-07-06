@@ -35,8 +35,8 @@ obsdict=eval(obstr).keys()
 obsfiles=[str(k).split("/")[-1] for k in obsdict]
 print obsfiles
 for ele in obsfiles:
-    filename=DATA+"/"+mastmission+"/obscore.hut.psv."+ele+".rdf"
-    #print filename
+    filename=DATA+"/"+mastmission+"/obscore."+mastmission+".psv."+ele+".rdf"
+    print filename
     if os.path.isfile(filename):
         print "LOADING", filename
         c.postfile(filename, context)
