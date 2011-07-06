@@ -2,6 +2,9 @@ from namespaces import *
 from psv import open_obscore, row2dict
 from mast_utils import *
 
+def getObsidForPubMap(obsid):
+    return obsid.split('=')[0]
+    
 def getObsCoreFile(fname):
     """
     Takes psv format file, returns a dict with keys the filenames to use, the values

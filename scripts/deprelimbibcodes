@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export PYTHONPATH=/proj/ads/soft/python/lib/site-packages/
+mission=$1
+module=$2
+cp ${mission}/prelim.${module}.bibcodes.xml  ${mission}/${module}.bibcodes.xml

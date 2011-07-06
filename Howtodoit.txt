@@ -118,20 +118,52 @@ propload:
     
 #We had to produce a cut file below due to some linkage probs in Chandra
 pubsolr:
-    python solrclear.py
+    python solrclear.py #is doing this first
     python rdf2solr4.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt.cut 
     python rdf2solr4.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
+
+
 
 Ok, doing HUT
 --------------
 
-python adsclassic2rdf.py ../mast-rdf ../AstroExplorer/Missions/MAST/hut/hut.biblist.txt
+
 
 1992BAAS...24.1285L
-
+1992AAS...18110208L
 BAAS error, need to use the ADS bibcode synonym file
 No output, need to fix first.
+Multiple fixes were needed. We corrected at file level by new alts.py in scripts folder.
+also see errors.txt in hut where we had to exscise one non-existent bibcode
 
-python simbad2rdf.py ../AstroExplorer/Missions/MAST/hut/hut.simbad.dict ../mast-rdf
+adsrdf:
+	python adsclassic2rdf.py ../mast-rdf ../AstroExplorer/Missions/MAST/hut/hut.biblist.txt
+simbadrdf:
+	python simbad2rdf.py ../AstroExplorer/Missions/MAST/hut/hut.simbad.dict ../mast-rdf
+	
+# Order is important here	
+obsvrdf:
+	python newmast/mast_obsvrdf.py hut ../AstroExplorer/Missions/MAST/hut/obscore.hut.psv 	
+pubrdf:
 
+	python newmast/mast_pubrdf.py hut ../AstroExplorer/Missions/MAST/hut/map.hut.txt
+proprdf:
+	echo None
 
+adsload:
+	python loadfiles.py ../AstroExplorer/Missions/MAST/hut/hut.biblist.txt default2.conf
+	
+simbadload:
+	python loadfiles-simbad.py ../AstroExplorer/Missions/MAST/hut/hut.biblist.txt default2.conf
+	
+obsvload:
+	python newmast/mast_obsvload.py hut
+	
+pubload:
+	python newmast/mast_pubload.py hut
+
+propload:
+	echo None
+	
+pubsolr:
+	python rdf2solr4.py ../AstroExplorer/Missions/MAST/hut/hut.biblist.txt

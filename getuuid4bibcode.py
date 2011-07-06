@@ -1,9 +1,21 @@
 import gzip
 import sys
-SORTEDYEARLIST='./sortedyearlist.txt'
+SORTEDYEARLIST='sortedyearlist.txt'
 DEFAULTPATH='../AstroExplorer/filebibs/'
 from sets import Set
 
+
+def setupAlts(defaultpath,altfile):
+    dbhash={}
+    fd=open(defaultpath+altfile)
+    pairs=[line.strip().split() for line in fd.readlines()]
+    for ele in pairs:
+        dbhash[ele[0].strip()]=ele[1].strip()
+    fd.close()
+    return dbhash
+    
+
+   
 def storeYears(sortedyearlistfile):
     dbhash={}
     for line in open(sortedyearlistfile):
@@ -19,6 +31,7 @@ def openset(thefile, dbhash):
         dbhash[bibcode]=theuuid
 
 def setsFromBibcodes(bibcodefile, yearhash):
+    #dh=setupAlts(DEFAULTPATH,'bmap.txt')
     dbhash={}
     bibcodehash={}
     fileset=Set()
@@ -38,11 +51,15 @@ def setsFromBibcodes(bibcodefile, yearhash):
         openset(everyfile, bibcodehash)		
     for bcode in bibcodesiwant:
         dbhash[bcode]=bibcodehash[bcode]
+        #if not dh.has_key(bcode):
+        #    dbhash[bcode]=bibcodehash[bcode]
+        #else:
+        #    dbhash[bcode]=bibcodehash[dh[bcode]]
     return dbhash
 
 if __name__=='__main__':
     filename=sys.argv[1]	
-    yhash=storeYears(SORTEDYEARLIST)
+    yhash=storeYears(DEFAULTPATH+SORTEDYEARLIST)
     dbhash=setsFromBibcodes(filename,  yhash)
     for ele in dbhash.keys():
         print ele, dbhash[ele]

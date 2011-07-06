@@ -1,0 +1,7 @@
+#!/bin/bash
+
+export PYTHONPATH=/proj/ads/soft/python/lib/site-packages/
+mission=$1
+module=$2
+(./getADSrecords_rdf -m rdf -f ${mission}/${module}.biblist.txt -o ${mission}/prelim.${module}.bibcodes.xml ) >&  ${mission}/error.${module}.bibcodes
+(./getSimbad.py ${mission}/${module}.biblist.txt > ${mission}/prelim.${module}.simbad.dict ) >& ${mission}/error.${module}.simbad

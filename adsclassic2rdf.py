@@ -358,11 +358,13 @@ def record_as_graph_from_xml(bibcode, incuuid, node, baseUrl=None, thegraph=None
     do_references(g, record, theuuid)     
     return g    
 
+
+
 def record_as_rdf(datapath, bibcodefile, format='xml', baseUrl=None):
     if not os.path.isdir(datapath+"/data/rdf"):
             os.makedirs(datapath+"/data/rdf")
-    
-    xmlfile=bibcodefile.replace('biblist.txt', 'bibcodes.xml')	
+   
+    xmlfile=bibcodefile.replace('biblist.txt', 'bibcodes.xml')
     yhash=getuuid4bibcode.storeYears(SORTEDYEARLIST)
     dbhash=getuuid4bibcode.setsFromBibcodes(bibcodefile,  yhash)
     print "LOADING XML FILE", xmlfile

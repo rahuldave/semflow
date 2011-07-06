@@ -1,0 +1,91 @@
+#!/usr/bin/env python2.4
+# Script to generate (currently only XML) a file contain an
+# export of ADS records
+# Usage:
+#         getADSrecords -f <input file> -o <output file> -m <mode>
+# or
+#         getADSrecords -b <bibcode> -o <output file> -m <mode>
+# where:
+#
+#   input file  - file with one bibcode per line
+#   output file - name for output file
+#   mode        - output mode (either 'ADS' or 'full')
+#                 'ADS': same as output from web interface
+#                 'full': as above plus additional information
+#
+import sys
+sys.path.append('/proj/ads/soft/python/lib/site-packages')
+import re
+import select
+#from ads.ADSExports import ADSRecords
+from ads.ArtUtils import Canonicalize as CAN
+from optparse import OptionParser
+parser = OptionParser()
+
+parser.add_option("-f", "--file", dest="bibsfile",
+                  help="read bibcodes from file", metavar="BFILE")
+parser.add_option("-b", "--bibcode", dest="bibcode",
+                  help="read bibcode from command line", metavar="BCODE")
+parser.add_option("-o", "--ouput", dest="outfile",
+                  help="output file", metavar="OFILE")
+parser.add_option("-m", "--mode", dest="mode",
+                  help="mode for output", metavar="MODE")
+parser.add_option("-t", "--type", dest="type",
+                  help="type", metavar="TYPE")
+
+(options, args) = parser.parse_args()
+r, w, x = select.select([sys.stdin], [], [], 0)
+# Get the bibcode(s) for processing
+bibcodes = []
+if options.bibsfile:
+    bibcodes = open(options.bibsfile).read().strip().split('\n')
+    # create a list of canonical bibcodes
+    bibcodes = CAN(bibcodes)
+elif options.bibcode:
+    bibcodes.append(options.bibcode)
+elif r:
+    data = sys.stdin.read().strip()
+    bibcodes = data.split('\n')
+else:
+    print "Specify either file or bibcode!"
+    sys.exit()
+# Get the file name for the results to be written to
+if options.outfile:
+    outfile = options.outfile
+else:
+    outfile = 'stdout'
+
+# Get the output 'mode'
+mode = 'ADS'
+if options.mode:
+    mode = options.mode
+# Get the output 'type'
+type = 'XML'
+if options.type:
+    type = options.type
+# a couple of initial sanity checks
+if type != 'XML':
+    sys.stderr.write("Only 'XML' is currently supported as output type...\n")
+    sys.exit()
+if mode not in ['ADS','full','keywords','rdf','facet']:
+    sys.stderr.write("Choose either 'ADS' or 'full' as output mode...\n")
+    sys.exit()
+# filter out anything that doesn't look like a bibcode
+bibcodes = filter(lambda a: len(a) == 19 and re.search('^\d{4}',a),bibcodes)
+if len(bibcodes) == 0:
+    sys.stderr.write("No or no valid bibcodes were specified...\n")
+    sys.exit()
+# Initialize record export mechanism
+if mode == 'facet':
+    from ads.ADSFacets import ADSRecords
+else:
+    from ads.ADSExports import ADSRecords
+recs = ADSRecords(mode,type)
+# add each article in export format to output
+for bibcode in bibcodes:
+    try:
+        recs.addRecord(bibcode)
+    except:
+        continue
+# write everything to file
+recs.write(outfile)
