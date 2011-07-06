@@ -70,9 +70,9 @@ Depending on if u r on a mac or nor , the directory will be Chandra or CHANDRA. 
 symbolically linked to the other. as below on linux
 
 cd ads-stuff
-pushd AstroExplorer/Missions/Chandra/chandra/
-tar zxvf chda.tgz
-cd ../..
+#pushd AstroExplorer/Missions/Chandra/chandra/
+tar zxvf AstroExplorer/Missions/Chandra/chandra/chda.tgz
+pushd AstroExplorer/Missions/
 ln -s Chandra CHANDRA
 popd
 mkdir chandra-rdf

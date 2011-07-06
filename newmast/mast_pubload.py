@@ -35,7 +35,7 @@ if not os.path.exists(filename):
 
 
 if os.path.isfile(filename):
-    print filename
+    print "PLODING", filename
     c.postfile(filename, context)
 else:
     "FILE not found: ", filename

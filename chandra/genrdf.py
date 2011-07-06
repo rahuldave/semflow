@@ -25,6 +25,7 @@ if not os.path.exists(output+"/"+style):
     os.makedirs(output+"/"+style)
 
 INCDIR=os.path.dirname(typelist)
+INCDIR='..'
 for line in open(typelist):
     item=line.strip()+".xml"
     if style=='pub':

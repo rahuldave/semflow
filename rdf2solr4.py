@@ -126,6 +126,7 @@ def getInfoForBibcode(bibcode):
             """ % (n3encode('uri_obs:'+uritail))
             #Sprint pquery0
             res1=c.makeQuery(pquery0)
+            print "RES1", res1
             target=res1[0]['tname']['value']
             thetarget=themission+"/"+target
         elif theuri.find('CHANDRA'):
