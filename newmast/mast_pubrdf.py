@@ -27,17 +27,21 @@ def getBibliography(fname):
     out = {}
     for l in fh.readlines():
         args = l.strip().split()
-        if len(args) != 2:
+        if len(args) not in [2,3]:
             print("SKIPPING: [{0}]".format(l))
 
         else:
             bibcode = args[0]
             obsid = args[1]
+            if len(args)==3:
+                program=args[2]
+            else:
+                program=None
             try:
-                out[obsid].append(bibcode)
+                out[obsid].append((bibcode, program))
 
             except KeyError:
-                out[obsid] = [bibcode]
+                out[obsid] = [(bibcode, program)]
 
     fh.close()
     return out
@@ -95,7 +99,7 @@ def writeBibliographyFile(fname, ohead, bibcodes, format="n3"):
     writeGraph(graph, "{0}.{1}".format(ohead, format), format=format)
 
 
-def writeBibliographyFile2(hashmapfname, ohead, bibcodes, missionmapfunc, format="n3"):
+def writeBibliographyFile2(mission, hashmapfname, ohead, bibcodes, missionmapfunc, format="n3"):
     """Write out bibliographic records using the hash in fname.
 
     bibcodes is a dictionary with key: obsid, value: list of bibcodes.
@@ -124,10 +128,12 @@ def writeBibliographyFile2(hashmapfname, ohead, bibcodes, missionmapfunc, format
                     continue
 
                 for b in bs:
-                    biburi = URIRef(ads_baseurl + "/bib#" + cleanFragment(b))
+                    biburi = URIRef(ads_baseurl + "/bib#" + cleanFragment(b[0]))
                     gadd(graph, biburi, adsbase.aboutScienceProduct, daturi)
                     gadd(graph, biburi, adsbase.aboutScienceProcess, obsuri)
-
+                    if b[1]!=None:
+                        propuri=uri_prop['MAST/propid/'+mission+'/'+cleanFragment(b[1])]
+                        gadd(graph, obsuri, adsbase.asAResultOfProposal, propuri)
 
                 nbib += len(bs)
                 print("# bibcodes = {0}".format(nbib))
@@ -156,7 +162,7 @@ if __name__=="__main__":
             execfile("./mast/default.conf")
         bibcodes = getBibliography(bname)
         ofname="map."+mastmission
-        writeBibliographyFile2(DATA+"/"+oname,
+        writeBibliographyFile2(mastmission, DATA+"/"+oname,
                               DATA+"/" + mastmission+"/"+ofname,
                               bibcodes, getObsidForPubMap, format=fmt)
 
