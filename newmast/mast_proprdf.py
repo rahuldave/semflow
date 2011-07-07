@@ -43,7 +43,7 @@ from mast_utils import makeGraph, validateFormat, writeGraph
 # For now assuming that the proposal id is unique within MAST;
 # this could be changed.
 def getPropURI(propid, mission):
-    return uri_prop['MAST/propid/'+mission+'/'+propid]
+    return uri_prop['MAST/'+mission+'/propid/'+propid]
 
 # hack to support breaks in the title
 #
@@ -131,12 +131,16 @@ def add_proposal(graph, text, mission):
     addVals(graph, author_uri,
             [a, agent.PersonName, None,
              agent.fullName, fullname, Literal])
-
+    #print type(title), propid, author_uri, title
+    #adsbase.title, str(title.encode('utf-8')), Literal
+    #BUG: munges characters, will have to do for now
+    mungedtitle=title.decode('iso-8859-1').encode('utf-8')
     addVals(graph, prop_uri,
             [a, adsbase.ObservationProposal, None,
              adsobsv.observationProposalId, propid, Literal,
+             adsobsv.observationProposalType, mission+"/None", Literal,
              adsbase.principalInvestigator, author_uri, None,
-             adsbase.title, title, Literal
+             adsbase.title, mungedtitle, Literal
              ]
             )
     

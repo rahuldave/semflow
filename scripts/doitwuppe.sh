@@ -16,8 +16,7 @@
 	python loadfiles.py ../AstroExplorer/Missions/MAST/wuppe/wuppe.biblist.txt default2.conf
 	
 #simbadload:
-	python loadfiles-simbad.py ../AstroExplorer/Missions/MAST/wuppe/wuppe.biblist.txt
-	 default2.conf
+	python loadfiles-simbad.py ../AstroExplorer/Missions/MAST/wuppe/wuppe.biblist.txt default2.conf
 	
 #obsvload:
 	python newmast/mast_obsvload.py wuppe

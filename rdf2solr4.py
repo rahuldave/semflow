@@ -282,14 +282,25 @@ def getInfoForBibcode(bibcode, mission, project):
             #proptail=themission+"/"+thevariable+"/"+thepropid
             thedict['propids_s']=theproject+"/"+thepropid
             #print proptail, n3encode('uri_prop:'+proptail), c.getDataBySP('uri_prop:'+proptail, 'adsbase:title')
-            thedict['proposaltitle']=c.getDataBySP('uri_prop:'+proptail, 'adsbase:title')[0]
+            proposaltitles=c.getDataBySP('uri_prop:'+proptail, 'adsbase:title')
+            if len(proposaltitles)>0:
+                thedict['proposaltitle']=proposaltitles[0]
+            else:
+                thedict['proposaltitle']='No Info'
             #proposal type already has project or mission included
-            thedict['proposaltype_s']=c.getDataBySP('uri_prop:'+proptail, 'adsobsv:observationProposalType')[0]
-            e=c.getDataBySP('uri_prop:'+proptail, 'adsbase:principalInvestigator')[0]
+            proposaltypes=c.getDataBySP('uri_prop:'+proptail, 'adsobsv:observationProposalType')
+            if len(proposaltypes)>0:
+                thedict['proposaltype_s']=proposaltypes[0]
+            else:
+                thedict['proposaltype_s']='No Info'
+            elist=c.getDataBySP('uri_prop:'+proptail, 'adsbase:principalInvestigator')
             #print "PI", e
-            thedict['proposalpi']=unquote(e.split('/')[-2]).replace('_',' ')
+            if len(elist)>0:
+                e=elist[0]
+                thedict['proposalpi']=unquote(e.split('/')[-2]).replace('_',' ')
+            else:
+                thedict['proposalpi']='No Info'
             thedict['proposalpi_s']=thedict['proposalpi']
-        
         #BUG: SHOULD we have something like this associating None's where there is no proposal?????'    
         #else:
         #    thedict['propids_s']=themission+"/None"
@@ -305,10 +316,10 @@ def getInfoForBibcode(bibcode, mission, project):
             #print "temptkey", temptkey
             temp2=[item if hasattr(item,'__iter__') else [item] for item in temptkey]
             #print "temp2", temp2
-	    if len(temp2) >0:
-            	result[tkey]=reduce(lambda x,y: x+y, temp2)
-	    else:
-		result[tkey]=[]
+            if len(temp2) >0:
+                result[tkey]=reduce(lambda x,y: x+y, temp2)
+            else:
+                result[tkey]=[]
     return result
     
 def putIntoSolr(solrinstance, bibcode, mission, project):
@@ -327,7 +338,7 @@ if __name__=="__main__":
     elif len(sys.argv)==5:
         execfile(sys.argv[4])
     else:
-        print "Usage: python rdf2solr3.py MISSION(CAPS) project(small) biblistfile [conffile]"
+        print "Usage: python rdf2solr4.py MISSION(CAPS) project(small) biblistfile [conffile]"
         sys.exit(-1)
     biblist=sys.argv[3]
     mission=sys.argv[1]

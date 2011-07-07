@@ -25,6 +25,8 @@ git submodule update
 
 In appsem run node server.js and point at http://localhost:3000/explorer/publications
 
+or open publications.html in appsem/static
+
 VENDOR INSTALLS:
 
 mkdir ads-stuff/vendor
@@ -122,11 +124,13 @@ propload:
     
 #We had to produce a cut file below due to some linkage probs in Chandra
 pubsolr:
-    python solrclear.py #is doing this first
+    #python solrclear.py #is doing this first
     python rdf2solr4.py CHANDRA chandra ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt.cut 
     python rdf2solr4.py CHANDRA chandra ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
 
-
+MAST:
+create ingest_mission.py
+The key thing (this comes from Doug's code : obs_id.startswith(k)) is that the obsid in the map file (map.mission.txt) must be a string which starts the general obsid.
 
 Ok, doing HUT
 --------------
@@ -171,6 +175,9 @@ propload:
 	
 pubsolr:
 	python rdf2solr4.py MAST hut ../AstroExplorer/Missions/MAST/hut/hut.biblist.txt
+
+
+
 	
 WUPPE
 
@@ -261,7 +268,7 @@ pubrdf:
 	python newmast/mast_pubrdf.py euve ../AstroExplorer/Missions/MAST/euve/map.euve.txt
 	
 proprdf:
-	echo None
+	python newmast/mast_proprdf.py euve ../AstroExplorer/Missions/MAST/euve/euve_program.list
 
 adsload:
 	python loadfiles.py ../AstroExplorer/Missions/MAST/euve/euve.biblist.txt default2.conf
@@ -276,7 +283,7 @@ pubload:
 	python newmast/mast_pubload.py euve
 
 propload:
-	echo None
+	python newmast/mast_propload.py euve
 	
 pubsolr:
 	python rdf2solr4.py MAST euve ../AstroExplorer/Missions/MAST/euve/euve.biblist.txt

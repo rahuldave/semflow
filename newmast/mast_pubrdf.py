@@ -132,7 +132,7 @@ def writeBibliographyFile2(mission, hashmapfname, ohead, bibcodes, missionmapfun
                     gadd(graph, biburi, adsbase.aboutScienceProduct, daturi)
                     gadd(graph, biburi, adsbase.aboutScienceProcess, obsuri)
                     if b[1]!=None:
-                        propuri=uri_prop['MAST/propid/'+mission+'/'+cleanFragment(b[1])]
+                        propuri=uri_prop['MAST/'+mission+'/propid/'+cleanFragment(b[1])]
                         gadd(graph, obsuri, adsbase.asAResultOfProposal, propuri)
 
                 nbib += len(bs)
