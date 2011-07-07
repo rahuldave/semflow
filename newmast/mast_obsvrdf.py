@@ -32,12 +32,12 @@ def pdev(blist):
 
 
 
-def addObsCoreObs(dkey, valstuplearray, obsdatahash):
+def addObsCoreObs(mission, dkey, valstuplearray, obsdatahash):
 
     print "=============================================================="
     if dkey == '':
         raise ValueError("No obs_id value in this row!")
-    print "FOR DKEY OBSID:",dkey, len(valstuplearray)
+    print "FOR DKEY OBSID:",mission, dkey, len(valstuplearray)
     #dkey is the filename under which to do this (not the obsid, thats in vals)
     #tups are vals,anbool
     valsarray=[tup[0] for tup in valstuplearray]
@@ -59,7 +59,7 @@ def addObsCoreObs(dkey, valstuplearray, obsdatahash):
     #
 
     #obsuri = mkURI("/obsv/observation/MAST/obsid/{0}/".format(obs_id), uri_hash)
-    obsuri = mkURI("/obsv/observation/MAST/obsid/{0}/".format(dkey))
+    obsuri = mkURI("/obsv/observation/MAST/{0}/obsid/{1}/".format(mission,dkey))
     graph = Graph()
 
     # Can we assume this is a SimpleObservation or could it be a
@@ -85,7 +85,7 @@ def addObsCoreObs(dkey, valstuplearray, obsdatahash):
         if access_url.strip() == '':
             raise ValueError("Empty access_url for row")
         uri_hash = base64.urlsafe_b64encode(access_url[::-1])
-        daturi = mkURI("/obsv/data/MAST/obsid/{0}/".format(dkey), uri_hash)    
+        daturi = mkURI("/obsv/data/MAST/{0}/obsid/{1}/".format(mission, dkey), uri_hash)    
         #gadd(graph, obsuri, adsobsv.hasDatum, daturi)
         gadd(graph, daturi, a, adsobsv.Datum)
         gadd(graph, obsuri, adsobsv.hasDataProduct, daturi)
@@ -151,6 +151,7 @@ def addObsCoreObs(dkey, valstuplearray, obsdatahash):
             #    ])
 
         ocoll = vals['obs_collection']
+        #should collections be at MAST level or lower? like HUT level?
         if ocoll != '':
             if is_ivoa_uri(ocoll):
                 colluri = URIRef(ocoll)
@@ -217,6 +218,8 @@ def addObsCoreObs(dkey, valstuplearray, obsdatahash):
     print "TargetName",tnameray
     tname=tnameray[0]#WE ASSUME that stuff classfied together has the same TARGET
     #BUG: we should check this
+    #should target name be at MAST level, or even higher? or lower? higher has auto network effects. Lets keep it mast level
+    #to see if we have overlaps between MAST projects
     if tname != '':
         tnameuri = mkURI("/obsv/target/MAST/", tname)
 
@@ -274,14 +277,14 @@ def addObsCoreObs(dkey, valstuplearray, obsdatahash):
              addFragment(uri_infra, 'observatory/' + oname))
     if tname != '':
         gadd(graph, obsuri, adsobsv.atTelescope,
-             addFragment(uri_infra, 'telescope/MAST_' + tnameray[0]))
+             addFragment(uri_infra, 'telescope/MAST_' + mission+'_'+tnameray[0]))
     #In theory we have multiple instruments, so
     #should we not associate with dauri too?
     for iname in inameray:
         if iname != '':
             gadd(graph, obsuri, adsbase.usingInstrument,
                 #addFragment(uri_infra, 'instrument/MAST_' + iname))
-                addFragment(uri_infra, 'instrument/MAST_' + cleanURIelement(iname)))
+                addFragment(uri_infra, 'instrument/MAST_' + mission+'_'+cleanURIelement(iname)))
 
 
 
@@ -324,7 +327,7 @@ if __name__=="__main__":
         for oid in hat.keys():
             print "OID",oid
             #print "<<<",h_at[oid],">>>"
-            graph=addObsCoreObs(oid,hat[oid], obsdatahash)
+            graph=addObsCoreObs(mastmission, oid,hat[oid], obsdatahash)
             #print "Graph", graph
             writeGraph(graph,
                        "{0}.{1}.{2}".format(ohead, oid, fmt),

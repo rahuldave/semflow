@@ -16,9 +16,9 @@ from namespaces import n3encode
 #are twofold (a) Ordering (b) stuff added later. Currently we punt on (b)
 #by assuming everything is just added at one time. ie we redo all SOLR.
 
-def splitns(theuri, atposition=-2, splitter='/'):
-    mission, variable, theid=theuri.split(splitter)[atposition-1:]
-    return mission, variable, theid
+def splitns(theuri, splitter='/', atposition=-2):
+    splittuple=theuri.split(splitter)[atposition-1:]
+    return splittuple
 
 def splitnsmast(theuri, atposition=-3, splitter='/'):
     mission, variable, theid, thehash=theuri.split(splitter)[atposition-1:]
@@ -28,7 +28,7 @@ def splitnsmast(theuri, atposition=-3, splitter='/'):
 def rinitem(item):
     return "/".join(item.split('_'))
     
-def getInfoForBibcode(bibcode):
+def getInfoForBibcode(bibcode, mission, project):
     c=adsrdf.ADSConnection(SESAME, REPOSITORY)
     bibcodeuri='uri_bib:'+bibcode
     result={}
@@ -61,10 +61,10 @@ def getInfoForBibcode(bibcode):
     #we still dont handle this
     ptray=c.getDataBySP(bibcodeuri, 'adsbib:paperType')
     if len(ptray)>0:
-        result['papertype_s']=ptray
+        result['papertype_s']=[mission+"/"+ele for ele in ptray]
         print "PTYPE", bibcode, ptray
     else:
-        result['papertype_s']=["None"]
+        result['papertype_s']=[mission+"/None"]
         print "PTYPE", bibcode, "NONE"
     
     #Above is only accurate when we dont do overlaps. For HUT/Chandra overlap, we should
@@ -99,24 +99,34 @@ def getInfoForBibcode(bibcode):
     result['objecttypes']=[e['otype'] for e in objectlist]
     result['objectnames_s']=result['objectnames']
     result['objecttypes_s']=result['objecttypes']
+    if mission=='CHANDRA':
+        result['missions_s']=mission
+    else:
+        result['missions_s']=mission+"/"+project
     #print result['objectnames']
     #theobsids=[rinitem(splitns(e)) for e in c.getDataBySP(bibcodeuri, 'adsbase:aboutScienceProduct')]
     theobsiduris=c.getDataBySP(bibcodeuri, 'adsbase:aboutScienceProcess')
     #print "OBSIDS", bibcodeuri, theobsiduris
     obsray=[]
     #TESTnotice by this we dont uniq telescopes or data types...what does this mean for the numbers, if anything?
-    daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s', 'missions_s', 'targets_s', 'ra_f','dec_f', 'datatypes_s','propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
+    #daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s', 'missions_s', 'targets_s', 'ra_f','dec_f', 'datatypes_s','propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
+    daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s','propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
     print "THEOBSIDURIS", theobsiduris
     datatypes=[]
     for theuri in theobsiduris:
         thedict={}
         #BUG: make this polymorphic
-        themission, thevariable, theobsid=splitns(theuri)
-        uritail=themission+"/"+thevariable+"/"+theobsid
-        print "URITAIL", uritail
-        thedict['missions_s']=themission # this should be in RDF!!
+        if theuri.find('MAST')!=-1:
+            themission, theproject,thevariable, theobsid=splitns(theuri, atposition=-3)
+            uritail=themission+"/"+theproject+"/"+thevariable+"/"+theobsid
+            #thedict['missions_s']=themission+"/"+theproject
+        else:
+            themission, thevariable, theobsid=splitns(theuri)
+            theproject=themission#like Chandra/Chandra
+            uritail=themission+"/"+thevariable+"/"+theobsid
+            #thedict['missions_s']=themission # this should be in RDF!!
         
-
+        print "URITAIL", uritail
         if theuri.find('MAST')!=-1:
             pquery0="""
             SELECT ?tname WHERE {
@@ -142,14 +152,20 @@ def getInfoForBibcode(bibcode):
         thedict['targets_s']=thetarget
         #print "::::::::::::::::", theobsid, theuri, themission, thevariable
         #thedict['obsids_s']=rinitem(theobsid)
-        thedict['obsids_s']=themission+"/"+theobsid
+        thedict['obsids_s']=theproject+"/"+theobsid
 
         #print theobsid, c.getDataBySP('uri_obs:'+uritail, 'adsobsv:observationType')
         obstypes=c.getDataBySP('uri_obs:'+uritail, 'adsobsv:observationType')
         if len(obstypes)>0:
-            thedict['obsvtypes_s']=obstypes[0]
+            if theproject==themission:
+                thedict['obsvtypes_s']=theproject+"/"+obstypes[0]
+            else:
+                thedict['obsvtypes_s']=themission+"/"+theproject+"/"+obsvtypes[0]
         else:
-            thedict['obsvtypes_s']=themission+"/None"
+            if theproject==themission:
+                thedict['obsvtypes_s']=theproject+"/None"
+            else:
+                thedict['obsvtypes_s']=themission+"/"+theproject+"/None"
         #Hut dosent have obsvtypes. Caal it MAST_HUT/None
         print "???", c.getDataBySP('uri_obs:'+uritail, 'adsobsv:tExptime'), c.getDataBySP('uri_obs:'+uritail, 'adsobsv:tExpTime')
         try:
@@ -245,18 +261,29 @@ def getInfoForBibcode(bibcode):
             
         #proposal stuff...not searching abstracts yet
         props=c.getDataBySP('uri_obs:'+uritail, 'adsbase:asAResultOfProposal')
+        print "PROPS", props
         #BUG: again assuming only one proposal here. When we get paper proposals this will
         #Not be true any more. We should also disambiguate observational from paper proposals.
         #though paper proposals will be assoced with papers, not here, so this should be obsvprop
         #only
+        #what happens when like in 2002ApJ...573..157N, this shows up for multiple missions
         if len(props)>0:
             propuri=props[0]
-            #print "PROPURI", propuri
-            themission, thevariable, thepropid=splitns(propuri)
-            proptail=themission+"/"+thevariable+"/"+thepropid
-            thedict['propids_s']=themission+"/"+thepropid
+            print "PROPURI", propuri
+            if propuri.find('MAST')!=-1:
+                themission, theproject,thevariable, thepropid=splitns(propuri, atposition=-3)
+                proptail=themission+"/"+theproject+"/"+thevariable+"/"+thepropid
+            else:
+                themission, thevariable, thepropid=splitns(propuri)
+                theproject=themission#like Chandra/Chandra
+                proptail=themission+"/"+thevariable+"/"+thepropid
+            print "PROPTAIL", proptail
+            #themission, thevariable, thepropid=splitns(propuri)
+            #proptail=themission+"/"+thevariable+"/"+thepropid
+            thedict['propids_s']=theproject+"/"+thepropid
             #print proptail, n3encode('uri_prop:'+proptail), c.getDataBySP('uri_prop:'+proptail, 'adsbase:title')
             thedict['proposaltitle']=c.getDataBySP('uri_prop:'+proptail, 'adsbase:title')[0]
+            #proposal type already has project or mission included
             thedict['proposaltype_s']=c.getDataBySP('uri_prop:'+proptail, 'adsobsv:observationProposalType')[0]
             e=c.getDataBySP('uri_prop:'+proptail, 'adsbase:principalInvestigator')[0]
             #print "PI", e
@@ -284,8 +311,8 @@ def getInfoForBibcode(bibcode):
 		result[tkey]=[]
     return result
     
-def putIntoSolr(solrinstance, bibcode):
-    bibdir=getInfoForBibcode(bibcode)
+def putIntoSolr(solrinstance, bibcode, mission, project):
+    bibdir=getInfoForBibcode(bibcode, mission, project)
     print '===================================='
     #print bibdir
     print '===================================='
@@ -295,18 +322,21 @@ def putIntoSolr(solrinstance, bibcode):
     
     #Issue with loading into sh obsids.sh and all wont we duplicate them if we do stuff separateky for overlaps and stuff. Should we do it just once or check whats been loaded to protect against this BUG
 if __name__=="__main__":
-    if len(sys.argv)==2:
+    if len(sys.argv)==4:
         execfile("./default.conf")
-    elif len(sys.argv)==3:
-        execfile(sys.argv[2])
+    elif len(sys.argv)==5:
+        execfile(sys.argv[4])
     else:
-        print "Usage: python rdf2solr3.py biblistfile [conffile]"
+        print "Usage: python rdf2solr3.py MISSION(CAPS) project(small) biblistfile [conffile]"
         sys.exit(-1)
+    biblist=sys.argv[3]
+    mission=sys.argv[1]
+    project=sys.argv[2]
     c=adsrdf.ADSConnection(SESAME, REPOSITORY)
     print "cccccccccccccccccccccccccccccccccccc",c
     #researchpapers=[unquote(e.split('#')[1]) for e in c.getDataByType('cito:ResearchPaper')]
     #h= HTMLParser.HTMLParser()
-    researchpapers=[ele.strip() for ele in open(sys.argv[1]).readlines()]
+    researchpapers=[ele.strip() for ele in open(biblist).readlines()]
     print researchpapers
     #researchpapers=['2000A&A...359..489C', '2000ApJ...534L..47G', '2000ApJ...536L..27W', '2000ApJ...540L..69S', '2000ApJ...541...49H']
     solr=pysolr.Solr(SOLR)
@@ -314,6 +344,6 @@ if __name__=="__main__":
     #researchpapers=['2000ApJ...534L..47G', '2009ApJ...692.1143K']
     for ele in researchpapers:
         print "Indexing: ",ele
-        putIntoSolr(solr, ele)
+        putIntoSolr(solr, ele, mission, project)
         print "-------------"
     solr.commit()

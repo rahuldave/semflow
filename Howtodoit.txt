@@ -122,8 +122,8 @@ propload:
 #We had to produce a cut file below due to some linkage probs in Chandra
 pubsolr:
     python solrclear.py #is doing this first
-    python rdf2solr4.py ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt.cut 
-    python rdf2solr4.py ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
+    python rdf2solr4.py CHANDRA chandra ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt.cut 
+    python rdf2solr4.py CHANDRA chandra ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
 
 
 
@@ -169,7 +169,7 @@ propload:
 	echo None
 	
 pubsolr:
-	python rdf2solr4.py ../AstroExplorer/Missions/MAST/hut/hut.biblist.txt
+	python rdf2solr4.py MAST hut ../AstroExplorer/Missions/MAST/hut/hut.biblist.txt
 	
 WUPPE
 
@@ -204,7 +204,7 @@ propload:
 	echo None
 	
 pubsolr:
-	python rdf2solr4.py ../AstroExplorer/Missions/MAST/wuppe/wuppe.biblist.txt
+	python rdf2solr4.py MAST wuppe ../AstroExplorer/Missions/MAST/wuppe/wuppe.biblist.txt
 	
 
 
@@ -240,4 +240,4 @@ propload:
 	echo None
 	
 pubsolr:
-	python rdf2solr4.py ../AstroExplorer/Missions/MAST/hpol/hpol.biblist.txt	
+	python rdf2solr4.py MAST hpol ../AstroExplorer/Missions/MAST/hpol/hpol.biblist.txt	
