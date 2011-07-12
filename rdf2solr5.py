@@ -130,6 +130,7 @@ def getInfoForBibcode(solr, bibcode, mission, project):
             uritail=themission+"/"+theproject+"/"+thevariable+"/"+theobsid
             #thedict['missions_s']=themission+"/"+theproject
             papertypes.add(theproject+"/Regular")
+            missions.add(themission+"/"+theproject)
         else:
             themission, thevariable, theobsid=splitns(theuri)
             theproject=themission#like Chandra/Chandra
@@ -137,7 +138,7 @@ def getInfoForBibcode(solr, bibcode, mission, project):
             #thedict['missions_s']=themission # this should be in RDF!!
             #chandra already has papertypes thanks to sherry so dont do anything
             #perhaps papertypes should be handled at the pubrdf level
-        missions.add(theproject)
+            missions.add(theproject)
         print "URITAIL", uritail
         if theuri.find('MAST')!=-1:
             pquery0="""
