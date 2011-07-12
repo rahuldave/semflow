@@ -270,12 +270,14 @@ def addObsCoreObs(mission, dkey, valstuplearray, obsdatahash):
     #
     tnameray = [vals['telescope_name'] for vals in valsarray]
     print "telescope", tnameray
+    tname=tnameray[0]
     inameray = [vals['instrument'] for vals in valsarray]
     print "instrument", inameray
     oname="MAST"
     gadd(graph, obsuri, adsobsv.atObservatory,
              addFragment(uri_infra, 'observatory/' + oname))
     if tname != '':
+        print "FRAG", 'telescope/MAST_' + mission+'_'+tnameray[0]
         gadd(graph, obsuri, adsobsv.atTelescope,
              addFragment(uri_infra, 'telescope/MAST_' + mission+'_'+tnameray[0]))
     #In theory we have multiple instruments, so

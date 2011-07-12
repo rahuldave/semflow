@@ -137,7 +137,10 @@ def getInfoForBibcode(bibcode, mission, project):
             #Sprint pquery0
             res1=c.makeQuery(pquery0)
             print "RES1", res1
-            target=res1[0]['tname']['value']
+            if len(res1) > 0:
+                target=res1[0]['tname']['value']
+            else:
+                target='Unspecified'
             thetarget=themission+"/"+target
         elif theuri.find('CHANDRA'):
             titleray=c.getDataBySP('uri_obs:'+uritail, 'adsbase:title')

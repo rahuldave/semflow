@@ -125,8 +125,9 @@ def writeBibliographyFile2(mission, hashmapfname, ohead, bibcodes, missionmapfun
                 # prefixes of the obscore ones.
                 #
                 if not obs_id.startswith(k):
+                    #print "NSW", obs_id, k
                     continue
-
+                print "Got here", obs_id, k
                 for b in bs:
                     biburi = URIRef(ads_baseurl + "/bib#" + b[0])
                     gadd(graph, biburi, adsbase.aboutScienceProduct, daturi)

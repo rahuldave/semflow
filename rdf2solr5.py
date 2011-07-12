@@ -6,6 +6,7 @@ from urllib import unquote, quote_plus
 import uuid, sys
 import HTMLParser, datetime, calendar
 from namespaces import n3encode
+from sets import Set
 
 #SESAME='http://localhost:8081/openrdf-sesame/'
 #REPOSITORY='testads4'
@@ -37,6 +38,7 @@ def getInfoForBibcode(solr, bibcode, mission, project):
     iduri=iduri[0]
 
     result['id']=iduri.split('#')[1]
+    theid=result['id']
     iduri='uri_bib:'+result['id']
     print "IDURI", iduri, result['id']
         
@@ -60,11 +62,12 @@ def getInfoForBibcode(solr, bibcode, mission, project):
     #this is the first thing that can have multiple stuff from chandra, hut and other
     #we still dont handle this
     ptray=c.getDataBySP(bibcodeuri, 'adsbib:paperType')
+    ######FLAG
     if len(ptray)>0:
-        result['papertype_s']=[mission+"/"+ele for ele in ptray]
+        paptypes=[mission+"/"+ele for ele in ptray]
         print "PTYPE", bibcode, ptray
     else:
-        result['papertype_s']=[mission+"/None"]
+        paptypes=[]
         print "PTYPE", bibcode, "NONE"
     
     #Above is only accurate when we dont do overlaps. For HUT/Chandra overlap, we should
@@ -99,10 +102,11 @@ def getInfoForBibcode(solr, bibcode, mission, project):
     result['objecttypes']=[e['otype'] for e in objectlist]
     result['objectnames_s']=result['objectnames']
     result['objecttypes_s']=result['objecttypes']
-    if mission=='CHANDRA':
-        result['missions_s']=mission
-    else:
-        result['missions_s']=mission+"/"+project
+    ######FLAG
+    #if mission=='CHANDRA':
+    #    result['missions_s']=mission
+    #else:
+    #    result['missions_s']=mission+"/"+project
     #print result['objectnames']
     #theobsids=[rinitem(splitns(e)) for e in c.getDataBySP(bibcodeuri, 'adsbase:aboutScienceProduct')]
     theobsiduris=c.getDataBySP(bibcodeuri, 'adsbase:aboutScienceProcess')
@@ -110,9 +114,14 @@ def getInfoForBibcode(solr, bibcode, mission, project):
     obsray=[]
     #TESTnotice by this we dont uniq telescopes or data types...what does this mean for the numbers, if anything?
     #daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s', 'missions_s', 'targets_s', 'ra_f','dec_f', 'datatypes_s','propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
+    #daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s','propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
     daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s','propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
+    
     print "THEOBSIDURIS", theobsiduris
     datatypes=[]
+    #olddict=solr.search('id:'+theid)
+    missions=Set()
+    papertypes=Set()
     for theuri in theobsiduris:
         thedict={}
         #BUG: make this polymorphic
@@ -120,12 +129,15 @@ def getInfoForBibcode(solr, bibcode, mission, project):
             themission, theproject,thevariable, theobsid=splitns(theuri, atposition=-3)
             uritail=themission+"/"+theproject+"/"+thevariable+"/"+theobsid
             #thedict['missions_s']=themission+"/"+theproject
+            papertypes.add(theproject+"/Regular")
         else:
             themission, thevariable, theobsid=splitns(theuri)
             theproject=themission#like Chandra/Chandra
             uritail=themission+"/"+thevariable+"/"+theobsid
             #thedict['missions_s']=themission # this should be in RDF!!
-        
+            #chandra already has papertypes thanks to sherry so dont do anything
+            #perhaps papertypes should be handled at the pubrdf level
+        missions.add(theproject)
         print "URITAIL", uritail
         if theuri.find('MAST')!=-1:
             pquery0="""
@@ -137,7 +149,11 @@ def getInfoForBibcode(solr, bibcode, mission, project):
             #Sprint pquery0
             res1=c.makeQuery(pquery0)
             print "RES1", res1
-            target=res1[0]['tname']['value']
+            if len(res1) > 0:
+                target=res1[0]['tname']['value']
+            else:
+                target='Unspecified'
+            #target=res1[0]['tname']['value']
             thetarget=themission+"/"+target
         elif theuri.find('CHANDRA'):
             titleray=c.getDataBySP('uri_obs:'+uritail, 'adsbase:title')
@@ -163,9 +179,9 @@ def getInfoForBibcode(solr, bibcode, mission, project):
                 thedict['obsvtypes_s']=themission+"/"+theproject+"/"+obsvtypes[0]
         else:
             if theproject==themission:
-                thedict['obsvtypes_s']=theproject+"/None"
+                thedict['obsvtypes_s']=theproject+"/Unspecified"
             else:
-                thedict['obsvtypes_s']=themission+"/"+theproject+"/None"
+                thedict['obsvtypes_s']=themission+"/"+theproject+"/Unspecified"
         #Hut dosent have obsvtypes. Caal it MAST_HUT/None
         print "???", c.getDataBySP('uri_obs:'+uritail, 'adsobsv:tExptime'), c.getDataBySP('uri_obs:'+uritail, 'adsobsv:tExpTime')
         try:
@@ -307,7 +323,9 @@ def getInfoForBibcode(solr, bibcode, mission, project):
             
             #print thedict
         obsray.append(thedict)
-    
+    result['missions_s']=list(missions)
+    paptypes.extend(list(papertypes))
+    result['papertype_s']=paptypes
     #print "OBSRAY", obsray
     if len(obsray)>0:
         for tkey in daprops:
