@@ -53,7 +53,7 @@ def getInfoForBibcode(bibcode, mission, project):
     #print pquery0
     res1=c.makeQuery(pquery0)
     #print res1[0]
-    result['abstract']=res1[0]['atext']['value'][0]#ADDED; as there is only one abstract
+    result['abstract']=res1[0]['atext']['value']
     print "TITLE", result['title']
     citationcount=len(c.getDataBySP(iduri, 'cito:cites'))
     result['citationcount_i']=citationcount
