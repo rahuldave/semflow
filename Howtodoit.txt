@@ -71,6 +71,34 @@ Title: testads8
 
 Accept the default for triple indexes.
 
+Web access can be a problem. Links will help for solr but not for sesame. For Sesame Do:
+(inside sesame dir in vendor/)
+
+Te-Bomatemaki:openrdf-sesame-2.4.0 rahul$ ./bin/console.sh 03:11:25.843 [main] DEBUG info.aduna.platform.PlatformFactory - os.name = mac os x
+03:11:25.848 [main] DEBUG info.aduna.platform.PlatformFactory - Detected Mac OS X platform
+Connected to default data directory
+
+Commands end with '.' at the end of a line
+Type 'help.' for help
+> connect http://localhost:8983/openrdf-sesame.
+Disconnecting from default data directory
+Connected to http://localhost:8983/openrdf-sesame
+> show repositories.
++----------
+|SYSTEM ("System configuration repository")
++----------
+> create native.
+Please specify values for the following variables:
+Repository ID [native]: testads8
+Repository title [Native store]: testads8
+Triple indexes [spoc,posc]: 
+Repository created
+> Disconnecting from http://localhost:8983/openrdf-sesame
+Bye
+
+
+
+
 DATA INSTALL
 Depending on if u r on a mac or nor , the directory will be Chandra or CHANDRA. Make sure one is
 symbolically linked to the other. as below on linux

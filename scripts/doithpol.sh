@@ -28,4 +28,4 @@
 	echo None
 	
 #pubsolr:
-#	python rdf2solr4.py MAST hpol ../AstroExplorer/Missions/MAST/hpol/hpol.biblist.txt	`
+	python rdf2solr4.py MAST hpol ../AstroExplorer/Missions/MAST/hpol/hpol.biblist.txt	`

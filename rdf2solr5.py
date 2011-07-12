@@ -28,7 +28,7 @@ def splitnsmast(theuri, atposition=-3, splitter='/'):
 def rinitem(item):
     return "/".join(item.split('_'))
     
-def getInfoForBibcode(bibcode, mission, project):
+def getInfoForBibcode(solr, bibcode, mission, project):
     c=adsrdf.ADSConnection(SESAME, REPOSITORY)
     bibcodeuri='uri_bib:'+bibcode
     result={}
@@ -323,7 +323,7 @@ def getInfoForBibcode(bibcode, mission, project):
     return result
     
 def putIntoSolr(solrinstance, bibcode, mission, project):
-    bibdir=getInfoForBibcode(bibcode, mission, project)
+    bibdir=getInfoForBibcode(solrinstance, bibcode, mission, project)
     print '===================================='
     #print bibdir
     print '===================================='

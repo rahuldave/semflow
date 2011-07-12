@@ -28,4 +28,4 @@
 	echo None
 	
 #pubsolr:
-	#python rdf2solr4.py MAST hut ../AstroExplorer/Missions/MAST/hut/hut.biblist.txt
+	python rdf2solr4.py MAST hut ../AstroExplorer/Missions/MAST/hut/hut.biblist.txt
