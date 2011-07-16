@@ -28,4 +28,4 @@
 	echo None
 	
 #pubsolr:
-	python rdf2solr4.py MAST wuppe ../AstroExplorer/Missions/MAST/wuppe/wuppe.biblist.txt
+	python rdf2solr5.py MAST wuppe ../AstroExplorer/Missions/MAST/wuppe/wuppe.biblist.txt

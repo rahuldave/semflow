@@ -153,8 +153,8 @@ propload:
 #We had to produce a cut file below due to some linkage probs in Chandra
 pubsolr:
     #python solrclear.py #is doing this first
-    python rdf2solr4.py CHANDRA chandra ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt.cut 
-    python rdf2solr4.py CHANDRA chandra ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
+    python rdf2solr5.py CHANDRA chandra ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt.cut 
+    python rdf2solr5.py CHANDRA chandra ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
 
 MAST:
 create ingest_mission.py
@@ -202,7 +202,7 @@ propload:
 	echo None
 	
 pubsolr:
-	python rdf2solr4.py MAST hut ../AstroExplorer/Missions/MAST/hut/hut.biblist.txt
+	python rdf2solr5.py MAST hut ../AstroExplorer/Missions/MAST/hut/hut.biblist.txt
 
 
 
@@ -239,7 +239,7 @@ propload:
 	echo None
 	
 pubsolr:
-	python rdf2solr4.py MAST wuppe ../AstroExplorer/Missions/MAST/wuppe/wuppe.biblist.txt
+	python rdf2solr5.py MAST wuppe ../AstroExplorer/Missions/MAST/wuppe/wuppe.biblist.txt
 	
 
 
@@ -277,7 +277,7 @@ propload:
 	echo None
 	
 pubsolr:
-	python rdf2solr4.py MAST hpol ../AstroExplorer/Missions/MAST/hpol/hpol.biblist.txt	
+	python rdf2solr5.py MAST hpol ../AstroExplorer/Missions/MAST/hpol/hpol.biblist.txt	
 	
 	
 EUVE
@@ -314,7 +314,7 @@ propload:
 	python newmast/mast_propload.py euve
 	
 pubsolr:
-	python rdf2solr4.py MAST euve ../AstroExplorer/Missions/MAST/euve/euve.biblist.txt
+	python rdf2solr5.py MAST euve ../AstroExplorer/Missions/MAST/euve/euve.biblist.txt
 	
 
 FUSE
@@ -352,4 +352,4 @@ propload:
 	python newmast/mast_propload.py fuse
 	
 pubsolr:
-	python rdf2solr4.py MAST fuse ../AstroExplorer/Missions/MAST/fuse/fuse.biblist.txt
+	python rdf2solr5.py MAST fuse ../AstroExplorer/Missions/MAST/fuse/fuse.biblist.txt

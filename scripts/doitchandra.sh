@@ -39,5 +39,5 @@
 #We had to produce a cut file below due to some linkage probs in Chandra
 #pubsolr:
     #python solrclear.py #is doing this first
-    python rdf2solr4.py CHANDRA chandra ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt.cut 
-    python rdf2solr4.py CHANDRA chandra ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
+    python rdf2solr5.py CHANDRA chandra ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt.cut 
+    python rdf2solr5.py CHANDRA chandra ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt

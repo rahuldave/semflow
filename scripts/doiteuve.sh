@@ -30,4 +30,4 @@
 	python newmast/mast_propload.py euve
 	
 #pubsolr:
-	python rdf2solr4.py MAST euve ../AstroExplorer/Missions/MAST/euve/euve.biblist.txt
+	python rdf2solr5.py MAST euve ../AstroExplorer/Missions/MAST/euve/euve.biblist.txt
