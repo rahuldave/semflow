@@ -30,4 +30,4 @@
 	python newmast/mast_propload.py fuse
 	
 #pubsolr:
-	python rdf2solr4.py MAST fuse ../AstroExplorer/Missions/MAST/fuse/fuse.biblist.txt
+	python rdf2solr5.py MAST fuse ../AstroExplorer/Missions/MAST/fuse/fuse.biblist.txt
