@@ -1,4 +1,5 @@
-PREREQS:
+*) PREREQUISITES:
+
 python2.6
 python modules:
 	lxml
@@ -8,7 +9,8 @@ python modules:
 
 (Use pip or easy_install)
 
-BASIC INSTALL:
+*) BASIC INSTALL:
+
 mkdir ads-stuff
 git clone git@github.com:rahuldave/semflow.git
 rsync -avz ~/Dropbox/AstroExplorer .
@@ -23,11 +25,14 @@ cd appsem
 git submodule init
 git submodule update
 
-In appsem run node server.js and point at http://localhost:3000/explorer/publications
+In appsem run node server.js and point at 
+    http://localhost:3000/semantic2/alpha/explorer/publications/
 
-or open publications.html in appsem/static
+or open
+   appsem/static/ajax-solr/publications.html
+in your browser
 
-VENDOR INSTALLS:
+*) VENDOR INSTALLS:
 
 mkdir ads-stuff/vendor
 cd ads-stuff/vendor
@@ -35,7 +40,6 @@ cd ads-stuff/vendor
 (a) Install Solr
 tar zxvf ../AstroExplorer/vendor/apache-solr-3.2.0.tgz
 cp -a apache-solr-3.2.0/example container
-
 
 (b) Install Sesame
 tar zxvf ../AstroExplorer/vendor/openrdf-sesame-2.4.0-sdk.tar.gz
@@ -64,17 +68,39 @@ Solr admin is at:
 http://localhost:8983/solr/admin/
 Seasme Workbench is at:
 http://localhost:8983/openrdf-workbench/
-Create a repository there:
-Type: Native Java Store
-Id: testads8
-Title: testads8
 
-Accept the default for triple indexes.
+*) CREATION OR CLEANING OF THE DATABASES:
 
-Web access can be a problem. Links will help for solr but not for sesame. For Sesame Do:
-(inside sesame dir in vendor/)
+We have three data stores that either need creating or cleaning:
 
-Te-Bomatemaki:openrdf-sesame-2.4.0 rahul$ ./bin/console.sh 03:11:25.843 [main] DEBUG info.aduna.platform.PlatformFactory - os.name = mac os x
+(a) on disk storage
+
+This is in the chandra-rdf/ and mast-rdf/ directories created in the
+SET UP FOR DATA INSTALL step below.
+
+(b) Sesame database
+
+This can be created (or deleted and then created) using either the
+Sesame workbench interface at
+  http://localhost:8983/openrdf-workbench/
+
+or using the console.sh script at
+  vendor/openrdf-sesame-2.4.0/bin/console.sh
+
+The repository should have
+   Type = Native Java Store
+   Id     = testads8
+   Title = testads8
+
+and accept the default value for the triple indexes (which will be
+"spoc,posc".
+
+Here's a run-through using the command-line interface, which is
+described at
+  http://www.openrdf.org/doc/sesame2/users/ch07.html
+
+% vendor/openrdf-sesame-2.4.0/bin/console.sh
+03:11:25.843 [main] DEBUG info.aduna.platform.PlatformFactory - os.name = mac os x
 03:11:25.848 [main] DEBUG info.aduna.platform.PlatformFactory - Detected Mac OS X platform
 Connected to default data directory
 
@@ -93,18 +119,39 @@ Repository ID [native]: testads8
 Repository title [Native store]: testads8
 Triple indexes [spoc,posc]: 
 Repository created
-> Disconnecting from http://localhost:8983/openrdf-sesame
+> show repositories.
++----------
+|SYSTEM ("System configuration repository")
+|testads8 ("testads8")
++----------
+> quit.
+Disconnecting from http://localhost:8983/openrdf-sesame
 Bye
 
+The database should be deleted and re-created if re-running the
+scripts. This can be done from the web page or from within the console
+by saying
 
+  connect http://localhost:8983/openrdf-sesame.
+  drop testads8.
+  create native.
+  ...
 
+(c) Solr database
 
-DATA INSTALL
+It looks like there's no need to create a database for Solr. If
+re-running the scripts then the existing data needs to be removed
+which is achieved with the solrclear.py script:
+
+  cd semflow
+  python solrclear.py
+
+*) SETUP FOR DATA INSTALL:
+
 Depending on if u r on a mac or nor , the directory will be Chandra or CHANDRA. Make sure one is
 symbolically linked to the other. as below on linux
 
 cd ads-stuff
-#pushd AstroExplorer/Missions/Chandra/chandra/
 tar zxvf AstroExplorer/Missions/Chandra/chandra/chda.tgz
 pushd AstroExplorer/Missions/
 ln -s Chandra CHANDRA
@@ -112,14 +159,21 @@ popd
 mkdir chandra-rdf
 mkdir mast-rdf
 
+cd semflow
+export PYTHONPATH=`pwd`
 
 POSSIBLE THINGIES NEEDING DOING
 (a) java heap size
 (b) ulimits on ubuntu
 
-CHANDRA INSTALL
-cd semflow
-export PYTHONPATH=`pwd`
+*) CHANDRA INSTALL:
+
+To do everything (there are also scripts for the other missions but
+these are not included in this document).
+
+% source scripts/doitchandra.sh
+
+Manual steps are:
 
 adsrdf:
     python adsclassic2rdf.py ../chandra-rdf ../AstroExplorer/Missions/Chandra/chandra/sherry.p.a.biblist.txt
@@ -157,8 +211,30 @@ pubsolr:
     python rdf2solr5.py CHANDRA chandra ../AstroExplorer/Missions/Chandra/chandra/hutoverlap.biblist.txt
 
 MAST:
-create ingest_mission.py
-The key thing (this comes from Doug's code : obs_id.startswith(k)) is that the obsid in the map file (map.mission.txt) must be a string which starts the general obsid.
+
+For each mission there needs to be a file
+  mast/ingest_<mission>.py
+
+In most cases this can be simple, such as mast/ingest_wuppe.py, but it
+can get complex (e.g. hut).
+
+In order to match bibcodes, datasets and possibly proposals, you need
+to understand how the obsid value in the map.<mission>.txt file
+relates to the obsid values from the obscore.<mission>.psv file. In
+most cases the map file just gives the prefix of the obscore value
+(hopefully a unique prefix) but there are cases where more
+manipulation is needed (e.g. case conversion), which should be done by
+the getObsidForPubMap routine. This routine takes in the obsid value which we
+use to create the URI for the object, so essentially the obscore
+value, and converts it to a form that can be compared to the map
+version via 
+  if getObsidForPubMap(...).startswith(obsid-from-map-file):
+    start processing
+
+Note that Doug has messed around with this flow slightly and now made
+the comparison case insensitive, so you should not need to do case
+conversion in the ingest_<mission>.py file, but this change may be
+backed out.
 
 Ok, doing HUT
 --------------
@@ -205,8 +281,6 @@ pubsolr:
 	python rdf2solr5.py MAST hut ../AstroExplorer/Missions/MAST/hut/hut.biblist.txt
 
 
-
-	
 WUPPE
 
 adsrdf:
