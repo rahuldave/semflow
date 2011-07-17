@@ -44,7 +44,7 @@ def getInfoForBibcode(solr, bibcode, mission, project):
         
     result['bibcode']=bibcode
     result['keywords']=[e.split('#')[1].replace('_',' ') for e in c.getDataBySP(iduri, 'adsbib:keywordConcept')]
-    result['title']=c.getDataBySP(iduri, 'adsbase:title')[0]
+    result['title']=c.getDataBySP(iduri, 'adsbase:title')[0].decode("utf-8") # DJB added decode statement as I think we want to send across a unicode string
     pquery0="""
         SELECT ?atext WHERE {
             uri_bib:%s adsbib:hasAbstract ?anode.
@@ -124,14 +124,19 @@ def getInfoForBibcode(solr, bibcode, mission, project):
     papertypes=Set()
     for theuri in theobsiduris:
         thedict={}
+
+        # There must be better ways to do this
+        is_mast = theuri.find('MAST') != -1
+        is_chandra = theuri.find('CHANDRA') != -1
+        
         #BUG: make this polymorphic
-        if theuri.find('MAST')!=-1:
+        if is_mast:
             themission, theproject,thevariable, theobsid=splitns(theuri, atposition=-3)
             uritail=themission+"/"+theproject+"/"+thevariable+"/"+theobsid
             #thedict['missions_s']=themission+"/"+theproject
             papertypes.add(theproject+"/Regular")
             missions.add(themission+"/"+theproject)
-        else:
+        elif is_chandra:
             themission, thevariable, theobsid=splitns(theuri)
             theproject=themission#like Chandra/Chandra
             uritail=themission+"/"+thevariable+"/"+theobsid
@@ -139,8 +144,11 @@ def getInfoForBibcode(solr, bibcode, mission, project):
             #chandra already has papertypes thanks to sherry so dont do anything
             #perhaps papertypes should be handled at the pubrdf level
             missions.add(theproject)
+        else:
+            raise ValueError("Unable to decode URI for mission: " + theuri)
+        
         print "URITAIL", uritail
-        if theuri.find('MAST')!=-1:
+        if is_mast:
             pquery0="""
             SELECT ?tname WHERE {
             %s adsbase:target ?tnode.
@@ -156,7 +164,7 @@ def getInfoForBibcode(solr, bibcode, mission, project):
                 target='Unspecified'
             #target=res1[0]['tname']['value']
             thetarget=themission+"/"+target
-        elif theuri.find('CHANDRA'):
+        elif is_chandra:
             titleray=c.getDataBySP('uri_obs:'+uritail, 'adsbase:title')
             if len(titleray)==0:
                 title="Unspecified"
@@ -340,12 +348,14 @@ def getInfoForBibcode(solr, bibcode, mission, project):
             else:
                 result[tkey]=[]
     return result
-    
+
+
 def putIntoSolr(solrinstance, bibcode, mission, project):
     bibdir=getInfoForBibcode(solrinstance, bibcode, mission, project)
-    print '===================================='
+    #print '===================================='
     #print bibdir
-    print '===================================='
+    #print '===================================='
+
     solrinstance.add([bibdir], commit=False)
     
     
@@ -376,4 +386,5 @@ if __name__=="__main__":
         print "Indexing: ",ele
         putIntoSolr(solr, ele, mission, project)
         print "-------------"
+
     solr.commit()
