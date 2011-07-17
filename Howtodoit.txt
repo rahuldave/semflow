@@ -169,9 +169,11 @@ POSSIBLE THINGIES NEEDING DOING
 *) CHANDRA INSTALL:
 
 To do everything (there are also scripts for the other missions but
-these are not included in this document).
+these are not included in this document); the scripts log information
+about each stage to <mission>.log (to make it easier to see how long
+stages are taking and to see if any fail).
 
-% source scripts/doitchandra.sh
+% ./scripts/doitchandra.sh
 
 Manual steps are:
 
