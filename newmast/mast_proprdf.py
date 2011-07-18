@@ -8,26 +8,7 @@ Read in an IUE proposal list and spit out RDF.
 
 It is based on the chandra/obsids.py script.
 
-The IUE proposal list looks like
-
-OD89K|Observing the Earth|Ralph C.|Bohlin|STScI|Abstract unavailable|N
-
-where the 'Abstract unavailable' can be filled in with the abstract
-text and this text can contain | characters. Note that the proposal
-title can contain \n (at least it does for proposal id OD88Z).
-
-EUVE proposals are as IUE but without the last |N field:
-
-99-036|A Deep EUVE Variability Study of the Seyfert Galaxy NGC 4051| Antonella|Fruscione|Harvard CfA/CXC|The Seyfert galaxy NGC~4051 is one of the brightest AGN in the EUV and X-ray sky. It is also one of the most rapidly variable. It is therefore an excellent candidate on which to study the origin of the EUV and X-ray emission in AGN. Its central black hole mass is quite small (approx 10e6 solar masses), making comparison with the behaviour of galactic black hole X-ray binary systems (BHXRBs) much easier than with other AGN with more massive black holes where characteristic variability timescales will be longer. Comptonisation of soft photons is a widely favoured possibility for the production of the X-ray/EUV emission in AGN. Here we propose to build on previous very successful coordinated EUVE and RXTE observations to further test the Comptonisation model and to investigate the similarities between AGN and BHXRBs. We propose to carry out a continuous 1 month EUVE observation to be coordinated with a 2 month RXTE programme of 4-times daily observations.
-
-FUSE proposals have a different ordering:
-
-A061|1| |JOHN|HUTCHINGS|Dominion Astrophysical Observatory, HIA, NRC of Canada, Cana|We propose FUSE observations of the brightest OB stars in the local group galaxies M31 and M33.  The stars are faint but their UV fluxes are known from HST and UIT data.  This will extend the stellar wind and interstellar studies currently under way with HST and ground-based telescopes, with similar resolution (1000) and S/N.  The program will expand our comparison of stellar winds, evolution, and the ISM among the major galaxies of the local group.
-
-Z908|0| | |Andersson|FUSE Observatory Program|This program will obtain emission line spectra from 4 positions in the Vela SNR.
-Z008|0| |Dr. Peter|Lundqvist|Stockholm Observatory|O VI emission from SN 1987A in the Large Magellanic Cloud will be observed to characterize the time dependence of the hot gas. The observation will be done on the LWRS aperture to obtain the total O VI flux from the SN environment.
-
-so there's also different formats (case and inclusion of an honorific) in author names.
+Parsing of a proposal line is left to mast_proprdf_<mission>.py
 
 """
 
@@ -56,36 +37,6 @@ from mast_utils import makeGraph, validateFormat, writeGraph
 # this could be changed.
 def getPropURI(propid, mission):
     return uri_prop['MAST/'+mission+'/propid/'+propid]
-
-def splitProposalLine(line):
-    """Given a single line of text representing a proposal,
-    split out the interesting fields and return as a dictionary:
-
-      propid
-      title
-      pi_first
-      pi_last
-
-   The only required field is propid, although expect to have pi_last
-   if pi_first is present.
-
-   """
-
-    (propid, title, pi_first, pi_last, place, remainder) = \
-        line.split("|", 5)
-
-    out = { "propid": propid }
-
-    def addit(field, value):
-        val = value.strip()
-        if val != "":
-            out[field] = val
-
-    addit("title", title)
-    addit("pi_first", pi_first)
-    addit("pi_last", pi_last)
-
-    return out
 
 # hack to support breaks in the title
 #
@@ -173,6 +124,8 @@ def read_proposal(fh):
         if fields.has_key("pi_first"):
             print("DBG: proposal has pi_first but no pi_last: {0}".format(fields))
 
+        #print("DBG: Proposal {0} has no PI name.".format(fields))
+
     try:
         out["title"] = fields["title"]
 
@@ -230,6 +183,11 @@ if __name__=="__main__":
     nargs = len(sys.argv)
     if nargs in [3, 4, 5]:
         mission=sys.argv[1]
+
+        # load in mission-specific proposal parsing code
+        mfile = "newmast/mast_proprdf_{0}.py".format(mission)
+        execfile(mfile)
+
         fname = sys.argv[2]
         bname = os.path.basename(fname)
         
@@ -252,7 +210,7 @@ if __name__=="__main__":
         datapath=DATA+'/'+mission
         if not os.path.isdir(datapath):
             os.makedirs(datapath)
-        ofname = datapath+"/proposals."+mission+"."+fmt + ".copy"
+        ofname = datapath+"/proposals."+mission+"."+fmt
         
         ifh = open(fname, "r")
         graph = makeGraph()

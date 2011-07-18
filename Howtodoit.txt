@@ -137,6 +137,11 @@ by saying
   create native.
   ...
 
+You may want to try physically deleting the files from disk after the
+drop but before re-creating: on OS-X this worked for me:
+
+rm -rf ~/Library/Application\ Support/Aduna/OpenRDF\ Sesame/repositories/testads8/
+
 (c) Solr database
 
 It looks like there's no need to create a database for Solr. If
@@ -216,6 +221,9 @@ MAST:
 
 For each mission there needs to be a file
   mast/ingest_<mission>.py
+
+  newmast/mast_proprdf_<mission>.py
+    (only if there are proposals for the mission)
 
 In most cases this can be simple, such as mast/ingest_wuppe.py, but it
 can get complex (e.g. hut).
