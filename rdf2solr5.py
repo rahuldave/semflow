@@ -361,6 +361,7 @@ def getInfoForBibcode(solr, bibcode, mission, project):
             else:
                 thedict['proposaltype_s']='No Info'
 
+            """ Was:
             elist=c.getDataBySP('uri_prop:'+proptail, 'adsbase:principalInvestigator')
             #print "PI", e
             if len(elist)>0:
@@ -368,9 +369,21 @@ def getInfoForBibcode(solr, bibcode, mission, project):
                 thedict['proposalpi']=unquote(e.split('/')[-2]).replace('_',' ')
             else:
                 thedict['proposalpi']='No Info'
+            """
 
+            qstr = "SELECT ?name WHERE { <" + propuri + "> adsbase:principalInvestigator [ agent:fullName ?name ] . }"
+            pinameres = c.makeQuery(qstr)
+            nres = len(pinameres)
+            if nres == 0:
+                piname = 'No Info'
+            else:
+                if nres != 1:
+                    print("DBG: found {0} proposal pis for {1}, using first from {2}".format(nres, propuri, pinameres))
+                piname = pinameres[0]["name"]["value"]
+
+            thedict['proposalpi'] = piname
             thedict['proposalpi_s']=thedict['proposalpi']
-
+            
         #BUG: SHOULD we have something like this associating None's where there is no proposal?????'    
         #else:
         #    thedict['propids_s']=themission+"/None"
