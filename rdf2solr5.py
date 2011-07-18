@@ -6,7 +6,9 @@ from urllib import unquote, quote_plus
 import uuid, sys
 import HTMLParser, datetime, calendar
 from namespaces import n3encode
-from sets import Set
+
+# as we are assuming python 2.6 we can use set() rather than Set()
+# from sets import Set
 
 #SESAME='http://localhost:8081/openrdf-sesame/'
 #REPOSITORY='testads4'
@@ -120,8 +122,8 @@ def getInfoForBibcode(solr, bibcode, mission, project):
     print "THEOBSIDURIS", theobsiduris
     datatypes=[]
     #olddict=solr.search('id:'+theid)
-    missions=Set()
-    papertypes=Set()
+    missions=set()
+    papertypes=set()
     for theuri in theobsiduris:
         thedict={}
 
