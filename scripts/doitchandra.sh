@@ -53,7 +53,7 @@ runStage "obsvload"     chandra/loadfiles.py ${MISSIONSTORE}/global.obsids.txt o
 runStage "propload"     chandra/loadfiles.py ${MISSIONSTORE}/global.proposals.txt prop
 
 #We had to produce a cut file below due to some linkage probs in Chandra
-runStage "pubsolr a"    python rdf2solr5.py CHANDRA chandra ${BIBLISTA}.cut 
-runStage "pubsolr b"    python rdf2solr5.py CHANDRA chandra ${BIBLISTB}
+runStage "pubsolr a"    rdf2solr5.py CHANDRA chandra ${BIBLISTA}.cut 
+runStage "pubsolr b"    rdf2solr5.py CHANDRA chandra ${BIBLISTB}
 
 echo "# Ending script: `date`" >> $LOGFILE
