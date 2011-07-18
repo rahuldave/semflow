@@ -37,7 +37,7 @@ import uuid
 
 from rdflib import Literal
 
-from namespaces import a, uri_prop, uri_agents, agent, adsbase, adsobsv, addVals
+from namespaces import a, uri_prop, uri_agents, agent, adsbase, adsobsv, addVals, addVal
 from mast_utils import makeGraph, validateFormat, writeGraph
 
 #DATA = "../mast_hut-rdf"
@@ -56,6 +56,36 @@ from mast_utils import makeGraph, validateFormat, writeGraph
 # this could be changed.
 def getPropURI(propid, mission):
     return uri_prop['MAST/'+mission+'/propid/'+propid]
+
+def splitProposalLine(line):
+    """Given a single line of text representing a proposal,
+    split out the interesting fields and return as a dictionary:
+
+      propid
+      title
+      pi_first
+      pi_last
+
+   The only required field is propid, although expect to have pi_last
+   if pi_first is present.
+
+   """
+
+    (propid, title, pi_first, pi_last, place, remainder) = \
+        line.split("|", 5)
+
+    out = { "propid": propid }
+
+    def addit(field, value):
+        val = value.strip()
+        if val != "":
+            out[field] = val
+
+    addit("title", title)
+    addit("pi_first", pi_first)
+    addit("pi_last", pi_last)
+
+    return out
 
 # hack to support breaks in the title
 #
@@ -105,8 +135,7 @@ def read_proposal(fh):
         # will worry about that if we find it.
         #
         try:
-            (propid, title, pi_first, pi_last, place, remainder) = \
-                line.split("|", 5)
+            fields = splitProposalLine(line)
             flag = False
 
         except ValueError:
@@ -121,20 +150,36 @@ def read_proposal(fh):
     #
     # also, surnames can contain spaces too.
     #
-    pi_first = pi_first.strip()
-    if pi_first == "":
-        qplabel = pi_last
-        fullname = pi_last
-        
-    else:
-        qplabel = pi_last + "_" + pi_first
-        fullname = pi_last + ", " + pi_first
+    # note: we reject any fields with first-name only
+    #
+    out = { "propid": fields["propid"] }
 
-    return { "propid": propid,
-             "title": title,
-             "qplabel": qplabel,
-             "fullname": fullname
-             }
+    try:
+        pi_last = fields["pi_last"]
+
+        try:
+            pi_first = fields["pi_first"]
+
+            out["qplabel"] = pi_last + "_" + pi_first
+            out["fullname"] = pi_last + ", " + pi_first
+
+        except KeyError:
+
+            out["qplabel"] = pi_last
+            out["fullname"] = pi_last
+
+    except KeyError:
+        # pass
+        if fields.has_key("pi_first"):
+            print("DBG: proposal has pi_first but no pi_last: {0}".format(fields))
+
+    try:
+        out["title"] = fields["title"]
+
+    except KeyError:
+        pass
+
+    return out
              
 def add_proposal(graph, proposal, mission):
     """Add the proposal, returned by read_proposal, to
@@ -147,34 +192,39 @@ def add_proposal(graph, proposal, mission):
 
     """
 
+    # We require propid but the rest is optional
     propid = proposal["propid"]
-    title = proposal["title"]
-    qplabel = proposal["qplabel"]
-    fullname = proposal["fullname"]
-
     prop_uri = getPropURI(propid, mission)
-
-    # TODO: may need more elaborate escaping
-    qplabel = qplabel.replace(" ", "_")
-
-    author_uri = uri_agents["PersonName/"+qplabel+"/"+str(uuid.uuid4())]
-
-    addVals(graph, author_uri,
-            [a, agent.PersonName, None,
-             agent.fullName, fullname, Literal])
-    #print type(title), propid, author_uri, title
-    #adsbase.title, str(title.encode('utf-8')), Literal
-    #BUG: munges characters, will have to do for now
-    mungedtitle=title.decode('iso-8859-1').encode('utf-8')
     addVals(graph, prop_uri,
             [a, adsbase.ObservationProposal, None,
              adsobsv.observationProposalId, propid, Literal,
-             adsobsv.observationProposalType, mission+"/None", Literal,
-             adsbase.principalInvestigator, author_uri, None,
-             adsbase.title, mungedtitle, Literal
-             ]
-            )
-    
+             adsobsv.observationProposalType, mission+"/None", Literal
+             ])
+
+    try:
+        title = proposal["title"]
+        #BUG: munges characters, will have to do for now
+        mungedtitle = title.decode('iso-8859-1').encode('utf-8')
+        addVal(graph, prop_uri, adsbase.title, mungedtitle, Literal)
+
+    except KeyError:
+        pass
+
+    try:
+        qplabel = proposal["qplabel"]
+        # TODO: may need more elaborate escaping
+        qplabel = qplabel.replace(" ", "_")
+
+        author_uri = uri_agents["PersonName/"+qplabel+"/"+str(uuid.uuid4())]
+        fullname = proposal["fullname"]
+        addVals(graph, author_uri,
+                [a, agent.PersonName, None,
+                 agent.fullName, fullname, Literal])
+        addVal(graph, prop_uri, adsbase.principalInvestigator, author_uri, None)
+
+    except KeyError:
+        pass
+
 if __name__=="__main__":
 
     nargs = len(sys.argv)
