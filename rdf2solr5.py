@@ -276,13 +276,20 @@ def getInfoForBibcode(c, solr, bibcode, mission, project):
             thedict['datatypes_s']=tempdt.keys()
         else:
             thedict['datatypes_s']=[]
+
         #BUG: Still assume one istrument. This will change, point is how? There will be both
         #multiple stuff for non-simple obs and hierarchical stuff for simple obs like gratings
         #how will we model this?
         debug("DATATYPES", thedict['datatypes_s'])
         theinstrument=c.getDataBySP('uri_obs:'+uritail, 'adsbase:usingInstrument')[0]
         theinstrumentname=theinstrument.split('/')[-1]
+
+        # TODO: should be able to query the RDF store for the label to use for the instrument
+        # but for now just extract the information from the URI, and remove any %-encoding
+        # done
+        theinstrumentname = unquote(theinstrumentname)
         thedict['instruments_s']="/".join(theinstrumentname.split('_'))
+
         #BUG: Still assume one telescope, this will change
         thetelescope=c.getDataBySP('uri_obs:'+uritail, 'adsobsv:atTelescope')[0]
         thetelescopename=thetelescope.split('/')[-1]
