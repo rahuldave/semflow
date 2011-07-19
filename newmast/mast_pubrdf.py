@@ -32,7 +32,9 @@ def getBibliography(fname):
 
         else:
             bibcode = args[0]
+            # convert obsid to lower case for use in writeBibliographyFile2
             obsid = args[1]
+            obsid = obsid.lower()
             if len(args)==3:
                 program=args[2]
             else:
@@ -118,11 +120,15 @@ def writeBibliographyFile2(mission, hashmapfname, ohead, bibcodes, missionmapfun
     for row in hmd.keys():
 
         obsuri=row
-        obs_id=missionmapfunc(str(obsuri).split("/")[-1])
+        obs_id=missionmapfunc(str(obsuri).split("/")[-1]).lower()
         for daturi in hmd[obsuri]:
             for (k,bs) in bibcodes.iteritems():
                 # Many MAST bibcodes appear to use obsid values which are
-                # prefixes of the obscore ones.
+                # prefixes of the obscore ones; there may also be case differences
+                # which we paper over by making both lower case (a bit excessive,
+                # since it is likely that the obscore-derived values are in lower
+                # case, but just in case). The lower casing of the keys in bibcodes
+                # is done on data entry (by getBibliography).
                 #
                 if not obs_id.startswith(k):
                     #print "NSW", obs_id, k
