@@ -356,12 +356,27 @@ def getInfoForBibcode(c, solr, bibcode, mission, project):
                 thedict['proposaltitle']=proposaltitles[0]
             else:
                 thedict['proposaltitle']='No Info'
+                
             #proposal type already has project or mission included
             proposaltypes=c.getDataBySP('uri_prop:'+proptail, 'adsobsv:observationProposalType')
             if len(proposaltypes)>0:
                 thedict['proposaltype_s']=proposaltypes[0]
             else:
-                thedict['proposaltype_s']='No Info'
+                # The map between bibcode, obsid and proposal can contain proposals
+                # for which we have no other data. Instead of saying 'No Info' we can
+                # at least add in the mission name.
+                #
+                # TODO: should we just remove proposaltype_s for these records? If not,
+                # do we want to add in fake proposals for other missions that do not have
+                # them (probably not)?
+                #
+                #thedict['proposaltype_s']='No Info'
+                if themission == "MAST":
+                    thedict['proposaltype_s'] = theproject + '/None'
+                elif themission == "CHANDRA":
+                    thedict['proposaltype_s'] = 'CHANDRA/None'
+                else:
+                    raise ValueError("Unexpected mission '{0}' for {1}".format(mission, propuri))
 
             qstr = "SELECT ?name WHERE { <" + propuri + "> adsbase:principalInvestigator [ agent:fullName ?name ] . }"
             pinameres = c.makeQuery(qstr)
@@ -386,6 +401,7 @@ def getInfoForBibcode(c, solr, bibcode, mission, project):
             
             #print thedict
         obsray.append(thedict)
+        
     result['missions_s']=list(missions)
     paptypes.extend(list(papertypes))
     result['papertype_s']=paptypes
@@ -413,9 +429,14 @@ def putIntoSolr(sesame, solrinstance, bibcode, mission, project):
     solrinstance.add([bibdir], commit=False)
     
     
-    #Issue with loading into sh obsids.sh and all wont we duplicate them if we do stuff separateky for overlaps and stuff. Should we do it just once or check whats been loaded to protect against this BUG
+# Issue with loading into sh obsids.sh and all wont we duplicate them
+# if we do stuff separately for overlaps and stuff. Should we do it
+# just once or check whats been loaded to protect against this BUG
+#
 if __name__=="__main__":
 
+    # to cut down on the screen output you can try"
+    #initialize_logging("rdf2solr5", file=logging.WARNING, screen=logging.WARNING)
     initialize_logging("rdf2solr5")
     debug("Starting:", time.asctime())
     
