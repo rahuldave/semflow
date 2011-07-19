@@ -15,16 +15,18 @@ import logging
 
 logger = None
 
-def initialize_logging(logname):
-    """Sets up console level logging at INFO
-    and file logging at DEBUG level (file output is
-    <logname>.log.
+def initialize_logging(logname, file=logging.INFO, screen=logging.INFO):
+    """Sets up console and file logging. The levels
+    are set by the screen and file arguments which default
+    to logging.INFO for both.
+
+    The file output is <logname>.log.
 
     """
 
     global logger
     
-    logging.basicConfig(level=logging.DEBUG,
+    logging.basicConfig(level=file,
                         format="%(asctime)s %(levelname)-8s %(message)s",
                         filename="{0}.log".format(logname),
                         filemode="w"
@@ -34,7 +36,7 @@ def initialize_logging(logname):
                         
     ch = logging.StreamHandler()
     ch.setFormatter(logging.Formatter('%(message)s'))
-    ch.setLevel(logging.INFO)
+    ch.setLevel(screen)
     logger.addHandler(ch)
 
 def debug(lbl, msg):
@@ -66,8 +68,7 @@ def splitnsmast(theuri, atposition=-3, splitter='/'):
 def rinitem(item):
     return "/".join(item.split('_'))
     
-def getInfoForBibcode(solr, bibcode, mission, project):
-    c=adsrdf.ADSConnection(SESAME, REPOSITORY)
+def getInfoForBibcode(c, solr, bibcode, mission, project):
     bibcodeuri='uri_bib:'+bibcode
     result={}
     iduri=c.getDataBySP(bibcodeuri, 'fabio:isRealizationOf')
@@ -211,7 +212,8 @@ def getInfoForBibcode(solr, bibcode, mission, project):
             thetarget=themission+"/"+title
         else:
             thetarget="None"
-        print "The target", thetarget
+
+        # print "The target", thetarget
         thedict['targets_s']=thetarget
         #print "::::::::::::::::", theobsid, theuri, themission, thevariable
         #thedict['obsids_s']=rinitem(theobsid)
@@ -361,16 +363,6 @@ def getInfoForBibcode(solr, bibcode, mission, project):
             else:
                 thedict['proposaltype_s']='No Info'
 
-            """ Was:
-            elist=c.getDataBySP('uri_prop:'+proptail, 'adsbase:principalInvestigator')
-            #print "PI", e
-            if len(elist)>0:
-                e=elist[0]
-                thedict['proposalpi']=unquote(e.split('/')[-2]).replace('_',' ')
-            else:
-                thedict['proposalpi']='No Info'
-            """
-
             qstr = "SELECT ?name WHERE { <" + propuri + "> adsbase:principalInvestigator [ agent:fullName ?name ] . }"
             pinameres = c.makeQuery(qstr)
             nres = len(pinameres)
@@ -380,6 +372,10 @@ def getInfoForBibcode(solr, bibcode, mission, project):
                 if nres != 1:
                     print("DBG: found {0} proposal pis for {1}, using first from {2}".format(nres, propuri, pinameres))
                 piname = pinameres[0]["name"]["value"]
+                # the following should not occur but just in case
+                if piname.strip() == "":
+                    logger.debug("PINAME: found ' ' so converting to 'No Info'; should not happen")
+                    piname = "No Info"
 
             thedict['proposalpi'] = piname
             thedict['proposalpi_s']=thedict['proposalpi']
@@ -408,8 +404,8 @@ def getInfoForBibcode(solr, bibcode, mission, project):
     return result
 
 
-def putIntoSolr(solrinstance, bibcode, mission, project):
-    bibdir=getInfoForBibcode(solrinstance, bibcode, mission, project)
+def putIntoSolr(sesame, solrinstance, bibcode, mission, project):
+    bibdir=getInfoForBibcode(sesame, solrinstance, bibcode, mission, project)
     #print '===================================='
     #print bibdir
     #print '===================================='
@@ -437,9 +433,11 @@ if __name__=="__main__":
     biblist=sys.argv[3]
     mission=sys.argv[1]
     project=sys.argv[2]
+
+    info("Mission:", mission)
     
-    c=adsrdf.ADSConnection(SESAME, REPOSITORY)
-    info("Sesame connection:", c)
+    sesame = adsrdf.ADSConnection(SESAME, REPOSITORY)
+    info("Sesame connection:", sesame)
 
     researchpapers=[ele.strip() for ele in open(biblist).readlines()]
     debug("Research papers:", researchpapers)
@@ -449,8 +447,8 @@ if __name__=="__main__":
 
     for ele in researchpapers:
         info("Indexing:", ele)
-        putIntoSolr(solr, ele, mission, project)
+        putIntoSolr(sesame, solr, ele, mission, project)
         logger.info("-------------")
-        
+
     solr.commit()
     debug("Finished:", time.asctime())
