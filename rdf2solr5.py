@@ -81,7 +81,14 @@ def getInfoForBibcode(c, solr, bibcode, mission, project):
     debug("IDURI", "{0} {1}".format(iduri, result['id']))
         
     result['bibcode']=bibcode
-    result['keywords']=[e.split('#')[1].replace('_',' ') for e in c.getDataBySP(iduri, 'adsbib:keywordConcept')]
+
+    # Should get the rdf:label for the concept (caching it)
+    # rather than decoding the URI, but needs the label added to the
+    # store. Note that we unquote the fragment to ensure %3B and
+    # other keywords are displayed sensibly.
+    # 
+    result['keywords']=[unquote(e.split('#')[1]).replace('_',' ') for e in c.getDataBySP(iduri, 'adsbib:keywordConcept')]
+    
     result['title']=c.getDataBySP(iduri, 'adsbase:title')[0].decode("utf-8") # DJB added decode statement as I think we want to send across a unicode string
     pquery0="""
         SELECT ?atext WHERE {
