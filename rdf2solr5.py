@@ -75,6 +75,9 @@ def getInfoForBibcode(c, solr, bibcode, mission, project):
     debug("returned", "{0} {1}".format(iduri, bibcodeuri))
     iduri=iduri[0]
 
+    # we use the original URI when accessing the author names
+    idurifull = iduri
+    
     result['id']=iduri.split('#')[1]
     theid=result['id']
     iduri='uri_bib:'+result['id']
@@ -120,10 +123,44 @@ def getInfoForBibcode(c, solr, bibcode, mission, project):
     #be doing None/Something overlap but i do this as just Something should be fine
     #Itake the position that "None", if you want to institutionalize it, should be put in the rdf    
     #print "PAPERTYPE", result['papertype_s']
+
+    # TODO:
+    #
+    # We also want to store an "author list" as well as the individual
+    # authors, so that we can get the ordering correct, but we do not
+    # have that information in the RDF store at present. Storing the
+    # author list should remove the issue we have when a paper has the
+    # same author name appear more than once. Storing an author list
+    # is neat, but then how can we have a "only display the first n
+    # authors"?  One option would be to create two versions: the full
+    # list and a short form, but this is a bit messy.
+
+    # NOTE:
+    #
+    # Since each author name is stored with a UUID at the end, and
+    # will be added multiple times to a paper, if the paper uses data
+    # from multiple missions, then we get multiple copies of an
+    # author. So we go to the effort of decoding the authors to get a
+    # unique set, which means that if an authorname is repeated twice
+    # - e.g. Terlevich and Terlevich - then we will lose information
+    # if the names match completely. Also, we now query the RDF store
+    # for the agents:normName field for each author rather than decode
+    # from the URI, although this may slow things down.
+    """
     authoren=c.getDataBySP(iduri, 'pav:authoredBy')
     #print authoren
     #BUG: one slash too many in authors you think?
     result['author']=[unquote(e.split('/')[-2]).replace('_',' ') for e in authoren]
+    """
+
+    aqstr = "SELECT ?name {{ <{0}> <http://swan.mindinformatics.org/ontologies/1.2/pav/authoredBy> [ <http://swan.mindinformatics.org/ontologies/1.2/agents/normName> ?name ].}}".format(idurifull)
+    authoren = c.makeQuery(aqstr)
+    authorlist = set()
+    for au in authoren:
+        authorlist.add(au["name"]["value"])
+        
+    result['author'] = list(authorlist)
+    
     #print result['author']
     result['keywords_s']=result['keywords']
     result['author_s']=result['author']
