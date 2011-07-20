@@ -37,8 +37,8 @@ echo "# Starting script: `date`" >> $LOGFILE
 
 runStage "adsrdf a"     adsclassic2rdf.py $RDFSTORE ${BIBLISTA}
 runStage "adsrdf b"     adsclassic2rdf.py $RDFSTORE ${BIBLISTB}
-runStage "simbadrdf a"  ${MISSIONSTORE}/sherry.p.a.simbad.dict $RDFSTORE
-runstage "simbadrdf b"  ${MISSIONSTORE}/hutoverlap.simbad.dict $RDFSTORE
+runStage "simbadrdf a"  simbad2rdf.py ${MISSIONSTORE}/sherry.p.a.simbad.dict $RDFSTORE
+runstage "simbadrdf b"  simbad2rdf.py ${MISSIONSTORE}/hutoverlap.simbad.dict $RDFSTORE
 runStage "pubrdf a"     chandra/genrdf.py pub ${MISSIONSTORE}/sherry.p.a.linkedpubs.txt $RDFSTORE/
 runStage "pubrdf b"     chandra/genrdf.py pub ${MISSIONSTORE}/hutoverlap.linkedpubs.txt $RDFSTORE/
 runStage "obsvrdf"      chandra/genrdf.py obsv ${MISSIONSTORE}/global.obsids.txt $RDFSTORE/
