@@ -67,7 +67,12 @@ def splitnsmast(theuri, atposition=-3, splitter='/'):
         
 def rinitem(item):
     return "/".join(item.split('_'))
-    
+
+# TODO:
+#   Could amalgamate some of the queries since many access the
+#   same URI (although may not be worth it since spo-style queries
+#   should be optimised wrt general SPAQRL queries).
+#
 def getInfoForBibcode(c, solr, bibcode, mission, project):
     bibcodeuri='uri_bib:'+bibcode
     result={}
@@ -95,11 +100,10 @@ def getInfoForBibcode(c, solr, bibcode, mission, project):
     result['title']=c.getDataBySP(iduri, 'adsbase:title')[0].decode("utf-8") # DJB added decode statement as I think we want to send across a unicode string
     pquery0="""
         SELECT ?atext WHERE {
-            uri_bib:%s adsbib:hasAbstract ?anode.
-            ?anode adsbib:abstractText ?atext.            
+            uri_bib:%s adsbib:hasAbstract [ adsbib:abstractText ?atext ] .            
         }
      """ % (result['id'])
-        
+
     #print pquery0
     res1=c.makeQuery(pquery0)
     #print res1[0]
@@ -174,8 +178,11 @@ def getInfoForBibcode(c, solr, bibcode, mission, project):
         odata=c.getDataBySP('uri_source:'+theobj.split('/')[-1], 'adsbase:hasMetadataString')
         #print "theobj", theobj, odata
         if len(odata)>0:
-            odict=eval(odata[0])
+            odict=eval(odata[0]) # why does this need to be an eval? aha, because we are storing a Python dictionary in the string!
             oid=odict['id']
+            # Strip out the leading 'NAME ' from object identifiers
+            if oid.startswith("NAME "):
+                oid = oid[5:]
             otype=odict['otype']
             ouri=theobj
             objectlist.append({'oid':oid, 'otype':otype, 'ouri':ouri})
