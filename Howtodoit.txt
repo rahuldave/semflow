@@ -153,6 +153,13 @@ which is achieved with the solrclear.py script:
   cd semflow
   python solrclear.py
 
+There is also
+
+  python solropt.py
+
+which optimizes the Solr database; this is mainly useful to reduce the number of open
+files (so allowing more data to be added) but it may improve search times somewhat.
+
 *) SETUP FOR DATA INSTALL:
 
 Depending on if u r on a mac or nor , the directory will be Chandra or CHANDRA. Make sure one is
