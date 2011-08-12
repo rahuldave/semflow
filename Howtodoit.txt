@@ -3,9 +3,10 @@
 python2.6
 python modules:
 	lxml
-	mx.DateTime
+	mx.DateTime or egenix_mx_base
 	rdflib 3
 	pysolr
+	simplejson
 
 (Use pip or easy_install)
 
@@ -17,7 +18,7 @@ rsync -avz ~/Dropbox/AstroExplorer .
 
 If Installing AppSem:
 Install node.js 0.4.8
-install modules using npm:
+install modules using npm (which therefore also needs to be installed):
 	connect connect-redis hiredis mime mustache redis qs
 	
 git clone git@github.com:rahuldave/appsem.git
@@ -30,7 +31,8 @@ In appsem run node server.js and point at
 
 or open
    appsem/static/ajax-solr/publications.html
-in your browser
+in your browser (this will only work if you have the webapp up and
+running on port 8983, as shown below).
 
 *) VENDOR INSTALLS:
 
