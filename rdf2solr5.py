@@ -282,15 +282,22 @@ def getInfoForBibcode(c, solr, bibcode, mission, project):
                 thedict['obsvtypes_s']=theproject+"/Unspecified"
             else:
                 thedict['obsvtypes_s']=themission+"/"+theproject+"/Unspecified"
-        #Hut dosent have obsvtypes. Caal it MAST_HUT/None
-        debug("???", "{0} {1}".format(c.getDataBySP('uri_obs:'+uritail, 'adsobsv:tExptime'),
-                                      c.getDataBySP('uri_obs:'+uritail, 'adsobsv:tExpTime')))
+                
+        #Hut dosent have obsvtypes. Call it MAST_HUT/None
 
-        # this indicates a bug in the ingest code that should be cleaned up 
-        try:
-            thedict['exptime_f']=float(c.getDataBySP('uri_obs:'+uritail, 'adsobsv:tExpTime')[0])
-        except:
-            thedict['exptime_f']=float(c.getDataBySP('uri_obs:'+uritail, 'adsobsv:tExptime')[0])
+        # Chandra data was being created using adsobsv:tExpTime when it should have been
+        # adsobsv:tExptime. This should now be fixed but this check is left in to catch
+        # any oddities.
+        #
+        tvals = c.getDataBySP('uri_obs:'+uritail, 'adsobsv:tExptime')
+        if len(tvals) == 0:
+            raise IOError("Unable to find adsobsv:tExptime for uri_obs:{0}".format(uritail))
+
+        else:
+            if len(tvals) > 1:
+                debug("MULTI-EXP", "uri_obs:{0} has adsobsv:tExptime={1}".format(uritail, tvals))
+
+            thedict['exptime_f'] = float(vals[0])
             
         tdt=c.getDataBySP('uri_obs:'+uritail, 'adsbase:atTime')[0]
         #print "TDT", tdt

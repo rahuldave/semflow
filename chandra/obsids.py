@@ -151,7 +151,7 @@ def getObsFile(fname):
     addVals(g, obsuri, [
             adsbase.atTime, trec['date'], asDateTime('%b %d %Y %H:%M%p'),
             adsobsv.observedTime, float(trec['time'])*1000, asDuration,
-            adsobsv.tExpTime, float(trec['time'])*1000, asDouble,
+            adsobsv.tExptime, float(trec['time'])*1000, asDouble,
             adsobsv.wavelengthStart, emmin, asDouble,
             adsobsv.wavelengthEnd, emmax, asDouble,
         ]
