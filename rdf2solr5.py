@@ -297,7 +297,7 @@ def getInfoForBibcode(c, solr, bibcode, mission, project):
             if len(tvals) > 1:
                 debug("MULTI-EXP", "uri_obs:{0} has adsobsv:tExptime={1}".format(uritail, tvals))
 
-            thedict['exptime_f'] = float(vals[0])
+            thedict['exptime_f'] = float(tvals[0])
             
         tdt=c.getDataBySP('uri_obs:'+uritail, 'adsbase:atTime')[0]
         #print "TDT", tdt
