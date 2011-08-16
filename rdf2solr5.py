@@ -112,25 +112,48 @@ def getInfoForBibcode(c, solr, bibcode, mission, project):
     debug("TITLE", result['title'].encode("ascii", "replace")) ## can contain UTF-8
     citationcount=len(c.getDataBySP(iduri, 'cito:cites'))
     result['citationcount_i']=citationcount
-    #this is the first thing that can have multiple stuff from chandra, hut and other
-    #we still dont handle this
+
+    # Paper type handling:
+    # 
+    # The adsbib:paperType is currently only added for Chandra data, but
+    # this means that papers with data from Chandra + MAST missions will
+    # have this setting. Since the predicate does not indicate which mission
+    # catagorised the paper as "science", we have to either guess, leave
+    # as "science" (i.e. with no mission attribution), or ignore.
+    # Doug has elected to go for the ignore route since it doesn't seem
+    # to be useful at the present time.
+    """
     ptray=c.getDataBySP(bibcodeuri, 'adsbib:paperType')
-    ######FLAG
+
+    The following is broken since a Chandra paper with MAST/euve data
+    will lose the "chandra/science" setting if the Chandra data is added
+    to Solr before EUVE.
+
     if len(ptray)>0:
-        paptypes=[mission+"/"+ele for ele in ptray]
+        # DJB:
+        #   for papers with Chandra and MAST data will have
+        #   a paper type of "science", which results in an
+        #   entry of mission+"/science" -> "MAST/science"
+        #   as well as (added later on) project+"/Regular"
+        #
+        #   We switch to using project rather than mission here,
+        #   so get "chandra/science", "iue/science", ...
+        #   although the MAST ones will get re-added later on
+        #   (but duplication left in since not all MAST missions
+        #   will have an entry added here).
+        #
+        #paptypes=[mission+"/"+ele for ele in ptray]
+        paptypes=[project+"/"+ele for ele in ptray]
         debug("PTYPE", "{0} {1}".format(bibcode, ptray))
     else:
         paptypes=[]
         debug("PTYPE", "{0} {1}".format(bibcode, "NONE"))
-    
-    #Above is only accurate when we dont do overlaps. For HUT/Chandra overlap, we should
-    #be doing None/Something overlap but i do this as just Something should be fine
-    #Itake the position that "None", if you want to institutionalize it, should be put in the rdf    
-    #print "PAPERTYPE", result['papertype_s']
 
+    """    
+    
     # TODO:
     #
-    # We also want to store an "author list" as well as the individual
+    # We want to store an "author list" as well as the individual
     # authors, so that we can get the ordering correct, but we do not
     # have that information in the RDF store at present. Storing the
     # author list should remove the issue we have when a paper has the
@@ -224,15 +247,32 @@ def getInfoForBibcode(c, solr, bibcode, mission, project):
             themission, theproject,thevariable, theobsid=splitns(theuri, atposition=-3)
             uritail=themission+"/"+theproject+"/"+thevariable+"/"+theobsid
             #thedict['missions_s']=themission+"/"+theproject
-            papertypes.add(theproject+"/Regular")
+
+            """ For now Doug is excluding the paper type facet
+
+            # See the discussion for the creation of paptypes above
+            # since there is some awkwardness here (some MAST papers
+            # end up having an adsbib:paperType value since they also
+            # contain Chandra data).
+            #
+            # papertypes.add(theproject+"/Regular")
+            papertypes.add(theproject+"/science")
+            """
+
             missions.add(themission+"/"+theproject)
+
         elif is_chandra:
             themission, thevariable, theobsid=splitns(theuri)
             theproject=themission#like Chandra/Chandra
             uritail=themission+"/"+thevariable+"/"+theobsid
             #thedict['missions_s']=themission # this should be in RDF!!
-            #chandra already has papertypes thanks to sherry so dont do anything
-            #perhaps papertypes should be handled at the pubrdf level
+
+            """ Paper type handling is currently removed
+
+            # this is needed to handle papers with multiple missions
+            papertypes.add(theproject+"/science")
+            """
+
             missions.add(theproject)
         else:
             raise ValueError("Unable to decode URI for mission: " + theuri)
@@ -468,8 +508,16 @@ def getInfoForBibcode(c, solr, bibcode, mission, project):
         obsray.append(thedict)
         
     result['missions_s']=list(missions)
+
+    """ paper types are currently removed
+
     paptypes.extend(list(papertypes))
+    if len(paptypes) == 0:
+        debug("PTYPE", "bibcode={0} has no paper type!".format(bibcode))
+
     result['papertype_s']=paptypes
+    """
+
     #print "OBSRAY", obsray
     if len(obsray)>0:
         for tkey in daprops:
