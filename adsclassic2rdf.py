@@ -361,8 +361,10 @@ def record_as_graph_from_xml(bibcode, incuuid, node, baseUrl=None, thegraph=None
 
 
 def record_as_rdf(datapath, bibcodefile, format='xml', baseUrl=None):
-    if not os.path.isdir(datapath+"/data/rdf"):
-            os.makedirs(datapath+"/data/rdf")
+
+    odir = datapath + "/data/rdf"
+    if not os.path.isdir(odir):
+            os.makedirs(odir)
    
     xmlfile=bibcodefile.replace('biblist.txt', 'bibcodes.xml')
     yhash=getuuid4bibcode.storeYears(SORTEDYEARLIST)
@@ -384,8 +386,7 @@ def record_as_rdf(datapath, bibcodefile, format='xml', baseUrl=None):
             dformat='xml'
         serializedstuff=graph.serialize(format=format)
         #print serializedstuff
-        #path and data/rdf path must be made first
-        fd=open(datapath+"/data/rdf/"+quote_plus(bibcode)+"."+dformat, "w")
+        fd=open(odir+"/"+quote_plus(bibcode)+"."+dformat, "w")
         fd.write(serializedstuff)
         fd.close()
         print "-----------------------------------------------"
