@@ -86,7 +86,7 @@ def getObsFile(fname):
     trec['obsvtype']=xobj.type
     trec['time']=xobj.observed_time
     trec['created_time']=xobj.public_avail
-    #Bug: in some of Sheery's stuff this is null
+    #Bug: in some of Sherry's stuff this is null
     #print "Created",trec['created_time']
     trec['date']=xobj.start_date
     trec['ra']=xobj.ra
@@ -193,6 +193,13 @@ def getObsFile(fname):
     return serializedstuff
     
 def getPubFile(fname):
+
+    # Do we really need to create one per file? Could be
+    # cached/made global but leave that for later if it
+    # ever is determined to be a problem.
+    #
+    hparser = HTMLParser.HTMLParser()
+    
     g = ConjunctiveGraph(identifier=URIRef(ads_baseurl))
     bindgraph(g)
     recordstree=ElementTree.parse(fname)
@@ -200,6 +207,27 @@ def getPubFile(fname):
     xobj=XMLObj(recordstree)
     trec={}
     trec['bibcode']=xobj.bibcode
+
+    # Change by Doug:
+    # It looks like the bibcode elements have been percent encoded
+    # in the input XML files - e.g.
+    #
+    #cat ../chandradata/Publications/2000A%26A...359..489C.xml
+    # <paper>
+    #  <bibcode>2000A%26A...359..489C</bibcode>
+    #  <classified_by>CDA</classified_by>
+    #  <paper_type>science</paper_type>
+    #  <flags>
+    #      <data_use>indirect</data_use>
+    #      <multi_observatory />
+    #      <followup />
+    #  </flags>
+    # </paper>
+    #
+    # so we have to decode it here.
+    #
+    trec['bibcode'] = hparser.unescape(trec['bibcode'])
+    
     trec['classified_by']=xobj.classified_by
     #this above coild also be figured by bibgroup
     #shouldnt this be a curated statement. But what is the curation. Not a source curation
@@ -241,6 +269,8 @@ def getObsIdsForPubs(fname):
     xobj=XMLObj(recordstree)
     trec={}
     trec['bibcode']=xobj.bibcode
+    raise NotImplementedError("Unsure whether bibcode={0} needs to be HTML unescaped here so exiting.".format(xobj.bibcode))
+
     #print trec['bibcode']
     
     if len(xobj.rec.findall('data'))> 0:
