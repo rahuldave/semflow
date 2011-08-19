@@ -378,6 +378,12 @@ def record_as_rdf(datapath, bibcodefile, format='xml', baseUrl=None):
         print "BIBCODE", bibcode
         h= HTMLParser.HTMLParser()
         bibcode=h.unescape(bibcode)
+
+        # Doug has added this as a safety check (the publications
+        # data for Chandra uses %26 rather than &amp; for the bibcode).
+        if bibcode.find('%') != -1:
+            raise ValueError("bibcode={0} contains a % character".format(bibcode))
+        
         incuuid=dbhash[bibcode]
         node.bibcode=bibcode
         graph = record_as_graph_from_xml(bibcode, incuuid, node, baseUrl)
