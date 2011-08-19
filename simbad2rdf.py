@@ -49,11 +49,14 @@ else:
 #Issue, some sources will come again and again and have multiple metadata strings. I think this is fine
 #as the triplestore will kill repeated triples. But what if they come in different contexts. Wont we #have multiple statements then. I think we can deal with that but it is something to remember.
 
+odir = DATA + "/data/rdf"
+if not os.path.isdir(odir):
+    os.makedirs(odir)
+
 for bibcode in simbad.keys():
-    listOfObjectsForBibcode=simbad[bibcode]
     g = ConjunctiveGraph(identifier=URIRef(None))
     bindgraph(g)
-    for aobject in listOfObjectsForBibcode:
+    for aobject in simbad[bibcode]:
         #print bibcode, aobject['id']
         euri=uri_bib[bibcode]
         eleid=quote_plus("_".join(aobject['id'].split()))
@@ -66,7 +69,7 @@ for bibcode in simbad.keys():
     serializedstuff=g.serialize()
     if not os.path.isdir(DATA+"/data/rdf"):
             os.makedirs(DATA+"/data/rdf")
-    fd=open(DATA+"/data/rdf/simbad."+quote_plus(bibcode)+".rdf", "w")
+    fd=open(odir+"/simbad."+quote_plus(bibcode)+".rdf", "w")
     fd.write(serializedstuff)
     fd.close()
 
