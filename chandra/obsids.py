@@ -206,7 +206,6 @@ def getPubFile(fname):
     rootnode=recordstree.getroot()
     xobj=XMLObj(recordstree)
     trec={}
-    trec['bibcode']=xobj.bibcode
 
     # Change by Doug:
     # It looks like the bibcode elements have been percent encoded
@@ -226,8 +225,16 @@ def getPubFile(fname):
     #
     # so we have to decode it here.
     #
-    trec['bibcode'] = hparser.unescape(trec['bibcode'])
-    
+    # For now we *only* replace %26 by & but add a check
+    # to fail if a % is found as a safety check.
+    # I include the HTML unescape routine in case upstream
+    # changes its format.
+    #
+    trec['bibcode'] = hparser.unescape(xobj.bibcode)
+    trec['bibcode'] = trec['bibcode'].replace('%26', '&')
+    if trec['bibcode'].find('%') != -1:
+        raise ValueError("Problem cleaning bibcode: original='{0}' after='{1}'".format(xobj.bibcode, trec['bibcode']))
+
     trec['classified_by']=xobj.classified_by
     #this above coild also be figured by bibgroup
     #shouldnt this be a curated statement. But what is the curation. Not a source curation
