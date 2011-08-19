@@ -2,7 +2,9 @@ import gzip
 import sys
 SORTEDYEARLIST='sortedyearlist.txt'
 DEFAULTPATH='../AstroExplorer/filebibs/'
-from sets import Set
+
+# as we are assuming python 2.6 we can use set() rather than Set()
+# from sets import Set
 
 
 def setupAlts(defaultpath,altfile):
@@ -34,7 +36,7 @@ def setsFromBibcodes(bibcodefile, yearhash):
     #dh=setupAlts(DEFAULTPATH,'bmap.txt')
     dbhash={}
     bibcodehash={}
-    fileset=Set()
+    fileset=set()
     bibcodesiwant=[]
     for line in open(bibcodefile):
         bibcode = line.strip()
