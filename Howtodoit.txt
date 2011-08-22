@@ -65,6 +65,8 @@ popd
 cd container
 #Now back in container directory
 java -jar start.jar
+#With more memory for heap
+-Xmx4g
 
 Solr admin is at:
 http://localhost:8983/solr/admin/
