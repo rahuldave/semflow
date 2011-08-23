@@ -1,5 +1,6 @@
 #v2: This contains the connected stuff
 #rdf2solr
+import nose
 import adsrdf
 import pysolr
 from urllib import unquote, quote_plus
@@ -264,16 +265,16 @@ def getInfoForObsuri(c, solr, obsuri, mission, project, othersbool=None):
         return thedict
     propkeylist=['propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
     bibkeylist=['id', 'bibcode', 'title']#FIXME
-    if othersbool['prop']==True:
+    if othersbool.has_key('prop') and othersbool['prop']==True:
         props=c.getDataBySP('uri_obs:'+uritail, 'adsbase:asAResultOfProposal')
         debug("PROPS", props)
         propray=[]
         for propuri in props:
             propdict=getInfoForPropuri(c, solr, propuri, mission, project, othersbool)
             propray.append(propdict)
-        doAugment(keylist, thedict, propray)
-        return thedict
-    if othersbool['bib']==True:
+        doAugment(propkeylist, thedict, propray)
+        #return thedict
+    if othersbool.has_key('bib') and othersbool['bib']==True:
         #get papers
         papersray=[]
         #for each paper get dict
@@ -289,7 +290,8 @@ def getInfoForObsuri(c, solr, obsuri, mission, project, othersbool=None):
         #do an augment
         doAugment(bibkeylist, thedict, papersray)
         #retufn the dict
-        return thedict
+        #return thedict
+    return thedict
     #BUG: again assuming only one proposal here. When we get paper proposals this will
     #Not be true any more. We should also disambiguate observational from paper proposals.
     #though paper proposals will be assoced with papers, not here, so this should be obsvprop
@@ -366,14 +368,14 @@ def getInfoForPropuri(c, solr, propuri, mission, project, othersbool=None):
 #   same URI (although may not be worth it since spo-style queries
 #   should be optimised wrt general SPAQRL queries).
 #
-def iduriForBibcode(bibcode):
+def iduriForBibcode(bibcode, c):
     bibcodeuri='uri_bib:'+bibcode
     iduri=c.getDataBySP(bibcodeuri, 'fabio:isRealizationOf')
     debug("returned", "{0} {1}".format(iduri, bibcodeuri))
     iduri=iduri[0]
     return iduri
 
-def biburiForId(idee):
+def biburiForId(idee, c):
     iduri='uri_bib:'+idee
     biburi=c.getDataBySP(iduri, 'adsbib:defaultRealizedThrough')
     debug("returned", "{0} {1}".format(iduri, biburi))
@@ -383,7 +385,8 @@ def biburiForId(idee):
 
 def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None):
     result={}
-    iduri=iduriForBibcode(bibcode)
+    bibcodeuri='uri_bib:'+bibcode
+    iduri=iduriForBibcode(bibcode, c)
 
     # we use the original URI when accessing the author names
     idurifull = iduri
@@ -529,19 +532,19 @@ def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None):
     #theobsids=[rinitem(splitns(e)) for e in c.getDataBySP(bibcodeuri, 'adsbase:aboutScienceProduct')]
     
     if not othersbool:
-        return True
-    if othersbool['obsv']==True:
+        return result
+    if othersbool.has_key('obsv') and othersbool['obsv']==True:
         theobsiduris=c.getDataBySP(bibcodeuri, 'adsbase:aboutScienceProcess')
         obsray=[]
         daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s','propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
-    
+        #daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s']
         debug("THEOBSIDURIS", theobsiduris)
         datatypes=[]
     #olddict=solr.search('id:'+theid)
         missions=set()
         papertypes=set()
         for theuri in theobsiduris:
-            thedict=getInfoForObsuri(c, solr, obsuri, mission, project, othersbool)
+            thedict=getInfoForObsuri(c, solr, theuri, mission, project, othersbool)
             obsray.append(thedict)
         doAugment(daprops, result, obsray)
         return result
@@ -576,9 +579,11 @@ def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None):
 #Bug must expand something thats list of lists like proposals.
 #Actually no by calling it twice stuff is flattented out: denormalized for proposals
 def doAugment(keylist, incdict, dictray):
+    print keylist
+    print dictray
     if len(dictray)>0:
         for tkey in keylist:
-            #print "tkey is ", tkey
+            print "tkey is ", tkey
             temptkey=[e[tkey] for e in dictray if e.has_key(tkey)]
             #print "temptkey", temptkey
             temp2=[item if hasattr(item,'__iter__') else [item] for item in temptkey]
@@ -588,6 +593,31 @@ def doAugment(keylist, incdict, dictray):
             else:
                 incdict[tkey]=[]
 
+import pprint
+class TestClass:
+    def setUp(self):
+        print "Setting up"
+        initialize_logging("rdf2solr5")
+        debug("Starting:", time.asctime())
+        confname="./default.conf"
+        PORT=8984
+        SESAME='http://localhost:'+str(PORT)+'/openrdf-sesame/'
+        REPOSITORY='testads8'
+        self.sesame = adsrdf.ADSConnection(SESAME, REPOSITORY)
+
+    def tearDown(self):
+        print "Tearing Down"
+
+    def test_getInfoForBibcode(self):
+        bcode='1991ApJ...379L..33B'
+        bcode='1978A&A....70L..53S'
+        obool={
+           'obsv':True,
+           'prop':True
+        }
+        bibdir=getInfoForBibcode(self.sesame, None, bcode, 'MAST','hut', obool)
+        pprint.pprint(bibdir)
+    
 def putIntoSolr(sesame, solrinstance, bibcode, mission, project, othersbool):
     bibdir=getInfoForBibcode(sesame, solrinstance, bibcode, mission, project, othersbool)
     #print '===================================='
