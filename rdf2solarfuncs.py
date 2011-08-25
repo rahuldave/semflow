@@ -16,9 +16,14 @@ import logging
 
 logger = None
 
-DAPROPSBIB=['id','bibcode','title', 'author']
+DAPROPSBIB=['id','bibcode','title', 'author_s','keywords_s', 'pubyear_i']
+#Notice only faceted versions above. Think this through.
+#dont include abstract here as you wont facet on it. Only primary keys and facetable
+#quantities need apply. We'll have to reflect this in our solr architecture. Right now put all.'
 DAPROPSPROP=['propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
 DAPROPSOBSV=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s']
+#And in above we might want to have more properties than those we facet upon, like the relation #to datasets
+#Finally how do we want to deal with objects.
 
 def initialize_logging(logname, file=logging.INFO, screen=logging.INFO):
     """Sets up console and file logging. The levels
@@ -671,45 +676,62 @@ def putIntoSolr(sesame, solrinstance, bibcode, mission, project, othersbool):
 # just once or check whats been loaded to protect against this BUG
 #
 if __name__=="__main__":
-    othersbool={
-        'obsv':True,
-        'prop':True
-    }
+
     # to cut down on the screen output you can try"
     #initialize_logging("rdf2solr5", file=logging.WARNING, screen=logging.WARNING)
-    initialize_logging("rdf2solr5")
+    initialize_logging("rdf2solarfuncs")
     debug("Starting:", time.asctime())
     
-    if len(sys.argv)==4:
+    if len(sys.argv)==5:
         confname = "./default.conf"
-    elif len(sys.argv)==5:
-        confname = sys.argv[4]
+    elif len(sys.argv)==6:
+        confname = sys.argv[5]
     else:
-        print "Usage: python rdf2solr4.py MISSION(CAPS) project(small) biblistfile [conffile]"
+        print "Usage: python rdf2solarfuncs.py MISSION(CAPS) project(small) type typefile [conffile]"
         sys.exit(-1)
 
     debug("Execing:", confname)
     execfile(confname)
 
-    biblist=sys.argv[3]
+    dafile=sys.argv[4]
+    datype=sys.argv[3]
     mission=sys.argv[1]
     project=sys.argv[2]
 
     info("Mission:", mission)
-    
+    info("Project:", project)
     sesame = adsrdf.ADSConnection(SESAME, REPOSITORY)
     info("Sesame connection:", sesame)
 
-    researchpapers=[ele.strip() for ele in open(biblist).readlines()]
-    debug("Research papers:", researchpapers)
-    
     solr=pysolr.Solr(SOLR)
     info("Solr connection:", solr)
-
-    for ele in researchpapers:
-        info("Indexing:", ele)
-        putIntoSolr(sesame, solr, ele, mission, project, othersbool)
-        logger.info("-------------")
+    
+    if datype=='bib':
+        othersbool={
+            'obsv':True,
+            'prop':True
+        }
+        researchpapers=[ele.strip() for ele in open(dafile).readlines()]
+        debug("Research papers:", researchpapers)
+        for ele in researchpapers:
+            info("Indexing:", ele)
+            bibdir=getInfoForBibcode(sesame, solr, ele, mission, project, othersbool)
+            solrinstance.add([bibdir], commit=False)
+            logger.info("-------------")
+    elif datype=='obsv':
+        othersbool={
+            'prop':True,
+            'bib':True
+        }
+        obsuris=[ele.strip() for ele in open(dafile).readlines()]
+        debug("Observations:", robsuris)
+        for ele in obsuris:
+            info("Indexing:", ele)
+            obsvdir=getInfoForObsuri(sesame, solr, ele, mission, project, othersbool)
+            solrinstance.add([obsvdir], commit=False)
+            logger.info("-------------")
+            
+        
 
     solr.commit()
     debug("Finished:", time.asctime())
