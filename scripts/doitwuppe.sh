@@ -2,7 +2,7 @@
 
 PARENT=MAST
 MISSION=wuppe
-LOGFILE=${MISSION}.log
+LOGFILE=../${MISSION}.log
 RDFSTORE=../mast-rdf
 MISSIONSTORE=../AstroExplorer/Missions/${PARENT}/${MISSION}
 BIBLIST=${MISSIONSTORE}/${MISSION}.biblist.txt

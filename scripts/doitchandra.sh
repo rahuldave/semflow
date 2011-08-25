@@ -2,7 +2,7 @@
 
 PARENT=Chandra
 MISSION=chandra
-LOGFILE=${MISSION}.log
+LOGFILE=../${MISSION}.log
 RDFSTORE=../chandra-rdf
 MISSIONSTORE=../AstroExplorer/Missions/${PARENT}/${MISSION}
 BIBLISTA=${MISSIONSTORE}/sherry.p.a.biblist.txt

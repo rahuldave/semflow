@@ -16,6 +16,10 @@ import logging
 
 logger = None
 
+DAPROPSBIB=['id','bibcode','title', 'author']
+DAPROPSPROP=['propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
+DAPROPSOBSV=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s']
+
 def initialize_logging(logname, file=logging.INFO, screen=logging.INFO):
     """Sets up console and file logging. The levels
     are set by the screen and file arguments which default
@@ -70,9 +74,10 @@ def rinitem(item):
     return "/".join(item.split('_'))
 
 
-def getInfoForObsuri(c, solr, obsuri, mission, project, othersbool=None):
+def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None):
+    daprops=[]
     thedict={}
-    theuri=obsuri
+    print "OBSURI", theuri
     # There must be better ways to do this
     if mission==project:
         #theuri="http://www.ads.org/sem/"+project+"/obsv/"+obsid
@@ -263,41 +268,54 @@ def getInfoForObsuri(c, solr, obsuri, mission, project, othersbool=None):
     #Now iterate over proposals and get proposal info, then merge in.
     if not othersbool:
         return thedict
-    propkeylist=['propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
-    bibkeylist=['id', 'bibcode', 'title']#FIXME
     if othersbool.has_key('prop') and othersbool['prop']==True:
+        daprops.extend(DAPROPSPROP)
+        #print ';;;;;;',daprops
         props=c.getDataBySP('uri_obs:'+uritail, 'adsbase:asAResultOfProposal')
         debug("PROPS", props)
         propray=[]
         for propuri in props:
             propdict=getInfoForPropuri(c, solr, propuri, mission, project, othersbool)
             propray.append(propdict)
-        doAugment(propkeylist, thedict, propray)
+        #print "???????????", thedict, propray
+        doAugment(daprops, thedict, propray)
         #return thedict
+    #print thedict
     if othersbool.has_key('bib') and othersbool['bib']==True:
+        print ';;;;;;',daprops
+        daprops.extend(DAPROPSBIB)
+        print ';;;;;;',daprops
         #get papers
         papersray=[]
         #for each paper get dict
-        aqstr = "SELECT ?pap {{ ?pap adabase:aboutScienceProcess <{0}>.}}".format(obsuri)
+        aqstr = "SELECT ?pap {{ ?pap adsbase:aboutScienceProcess <{0}>.}}".format(theuri)
+        #print "QUERY", aqstr
         papersen = c.makeQuery(aqstr)
+        #print "PAPERSEN", papersen
         papers = set()
         for pa in papersen:
-            papers.add(pa["name"]["value"])
+            papers.add(pa["pap"]["value"])
         for papuri in papers:
-            bibcode=papuri#FIXME (also worry abbout bibcode, id match)
+            bibcode=papuri.split('#')[-1]
+            #print "bibcode", bibcode, papuri
             papdict=getInfoForBibcode(c, solr, bibcode, mission, project, othersbool)
+            #print "PAPDICT", papdict
             papersray.append(papdict)
         #do an augment
-        doAugment(bibkeylist, thedict, papersray)
+        #print "+++++", thedict
+        #print '=====', daprops
+        doAugment(daprops, thedict, papersray)
         #retufn the dict
         #return thedict
+    #print thedict    
     return thedict
     #BUG: again assuming only one proposal here. When we get paper proposals this will
     #Not be true any more. We should also disambiguate observational from paper proposals.
     #though paper proposals will be assoced with papers, not here, so this should be obsvprop
     #only
     #what happens when like in 2002ApJ...573..157N, this shows up for multiple missions
-def getInfoForPropuri(c, solr, propuri, mission, project, othersbool=None):    
+def getInfoForPropuri(c, solr, propuri, mission, project, othersbool=None):
+    daprops=[]   
     thedict={}
     debug("PROPURI", propuri)
     if propuri.find('MAST')!=-1:
@@ -347,13 +365,17 @@ def getInfoForPropuri(c, solr, propuri, mission, project, othersbool=None):
     else:
         if nres != 1:
             print("DBG: found {0} proposal pis for {1}, using first from {2}".format(nres, propuri, pinameres))
-        piname = pinameres[0]["name"]["value"]
+        pilist=set()    
+        for pival in pinameres:
+            piname = pival["name"]["value"]
+            if piname.strip() == "":
+                logger.debug("PINAME: found ' ' so converting to 'No Info'; should not happen")
+                piname = "No Info"
+            pilist.add(piname)
         # the following should not occur but just in case
-        if piname.strip() == "":
-            logger.debug("PINAME: found ' ' so converting to 'No Info'; should not happen")
-            piname = "No Info"
+        
 
-    thedict['proposalpi'] = piname
+    thedict['proposalpi'] = list(pilist)#piname
     thedict['proposalpi_s']=thedict['proposalpi']
         
     #BUG: SHOULD we have something like this associating None's where there is no proposal?????'    
@@ -384,6 +406,7 @@ def biburiForId(idee, c):
 #THE REVERSE IS NOT UNIQUE. WE NEED SOME WAY OF IDENTIFYING THE LATEST
 
 def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None):
+    daprops=[]
     result={}
     bibcodeuri='uri_bib:'+bibcode
     iduri=iduriForBibcode(bibcode, c)
@@ -534,9 +557,11 @@ def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None):
     if not othersbool:
         return result
     if othersbool.has_key('obsv') and othersbool['obsv']==True:
+        daprops.extend(DAPROPSOBSV)
+        print "============",daprops
         theobsiduris=c.getDataBySP(bibcodeuri, 'adsbase:aboutScienceProcess')
         obsray=[]
-        daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s','propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
+        
         #daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s']
         debug("THEOBSIDURIS", theobsiduris)
         datatypes=[]
@@ -545,13 +570,16 @@ def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None):
         papertypes=set()
         for theuri in theobsiduris:
             thedict=getInfoForObsuri(c, solr, theuri, mission, project, othersbool)
+	    #print "THEDICT",thedict
             obsray.append(thedict)
+	if othersbool.has_key('prop') and othersbool['prop']==True:
+	    daprops.extend(DAPROPSPROP)
         doAugment(daprops, result, obsray)
         return result
         # There must be better ways to do this
         
         
-        
+    return result
     #result['missions_s']=list(missions)
 
     """ paper types are currently removed
@@ -579,11 +607,11 @@ def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None):
 #Bug must expand something thats list of lists like proposals.
 #Actually no by calling it twice stuff is flattented out: denormalized for proposals
 def doAugment(keylist, incdict, dictray):
-    print keylist
-    print dictray
+    print "KEYLIST", keylist
+    #print dictray
     if len(dictray)>0:
         for tkey in keylist:
-            print "tkey is ", tkey
+            #print "tkey is ", tkey
             temptkey=[e[tkey] for e in dictray if e.has_key(tkey)]
             #print "temptkey", temptkey
             temp2=[item if hasattr(item,'__iter__') else [item] for item in temptkey]
@@ -591,12 +619,14 @@ def doAugment(keylist, incdict, dictray):
             if len(temp2) >0:
                 incdict[tkey]=reduce(lambda x,y: x+y, temp2)
             else:
-                incdict[tkey]=[]
+		if not incdict.has_key(tkey):
+                    incdict[tkey]=[]
 
 import pprint
 class TestClass:
     def setUp(self):
         print "Setting up"
+        
         initialize_logging("rdf2solr5")
         debug("Starting:", time.asctime())
         confname="./default.conf"
@@ -615,8 +645,17 @@ class TestClass:
            'obsv':True,
            'prop':True
         }
-        bibdir=getInfoForBibcode(self.sesame, None, bcode, 'MAST','hut', obool)
+        bibdir=getInfoForBibcode(self.sesame, None, bcode, 'MAST','iue', obool)
         pprint.pprint(bibdir)
+        
+    def test_getInfoForObsuri(self):
+        obsuri="http://ads.harvard.edu/sem/obsv/observation/MAST/iue/obsid/swp03726mxlo"
+        obool={
+            'prop':True,
+            'bib':True
+        }
+        obsdir=getInfoForObsuri(self.sesame, None, obsuri, 'MAST', 'iue', obool)
+        pprint.pprint(obsdir)
     
 def putIntoSolr(sesame, solrinstance, bibcode, mission, project, othersbool):
     bibdir=getInfoForBibcode(sesame, solrinstance, bibcode, mission, project, othersbool)
