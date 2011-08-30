@@ -425,16 +425,15 @@
      default: a value that should be used if no value is specified
        when adding a document.
    -->
-   <field name="missions_s" type="string" indexed="true" stored="true" multiValued="true"/>
-   
+
+   <field name="id" type="string" indexed="true" stored="true" required="true" /> 
+   <field name="bibcode" type="string" indexed="true" stored="true" required="true" /> 
 
    <!-- Common metadata fields, named specifically to match up with
      SolrCell metadata when parsing rich documents such as Word, PDF.
      Some fields are multiValued only because Tika currently may return
      multiple values for them.
    -->
-   <field name="id" type="string" indexed="true" stored="true" required="true" /> 
-   <field name="bibcode" type="string" indexed="true" stored="true" required="true" /> 
    <field name="title" type="text" indexed="true" stored="true"/>
    <field name="pubyear_i" type="tint" indexed="true" stored="true"/>
    <field name="citationcount_i" type="tint" indexed="true" stored="true"/>
@@ -443,12 +442,10 @@
    <field name="author_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="keywords" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="keywords_s" type="string" indexed="true" stored="true" multiValued="true"/>
-   
    <field name="objectnames" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="objectnames_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="objecttypes" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="objecttypes_s" type="string" indexed="true" stored="true" multiValued="true"/>
-   
    <field name="obsids_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="obsvtime_d" type="tdate" indexed="true" stored="true" multiValued="true"/>
    <field name="exptime_f" type="tfloat" indexed="true" stored="true" multiValued="true"/>
@@ -459,7 +456,8 @@
    <field name="instruments_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="telescopes_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="emdomains_s" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="targets_s" type="string" indexed="true" stored="true" multiValued="true"/>   
+   <field name="targets_s" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="missions_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="datatypes_s" type="string" indexed="true" stored="true" multiValued="true"/>
 
    <field name="propids_s" type="string" indexed="true" stored="true" multiValued="true"/>

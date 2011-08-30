@@ -13,15 +13,19 @@ from namespaces import n3encode
 
 import time
 import logging
-
+import re
 logger = None
 
-DAPROPSBIB=['id','bibcode','title', 'author_s','keywords_s', 'pubyear_i']
+DAPROPSBIB=['id','bibcode','title', 'author', 'author_s','keywords','keywords_s', 'pubyear_i', 'objectnames', 'objectnames_s', 'objecttypes', 'objecttypes_s']
+PRIMPROPSBIBONLY=['abstract', 'citationcount_i']
 #Notice only faceted versions above. Think this through.
 #dont include abstract here as you wont facet on it. Only primary keys and facetable
 #quantities need apply. We'll have to reflect this in our solr architecture. Right now put all.'
-DAPROPSPROP=['propids_s', 'proposaltitle', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
+DAPROPSPROP=['propids_s', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
+PRIMPROPSPROPONLY=['proposaltitle']
+
 DAPROPSOBSV=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s']
+PRIMPROPSOBSVONLY=['access_url_s', 'access_format_s', 'calib_level_i', 'datacollection_s', 'resolution_d', 't_resolution_d', 'fov_d', 'title']
 #And in above we might want to have more properties than those we facet upon, like the relation #to datasets
 #Finally how do we want to deal with objects.
 
@@ -78,20 +82,49 @@ def splitnsmast(theuri, atposition=-3, splitter='/'):
 def rinitem(item):
     return "/".join(item.split('_'))
 
+c2u = lambda st: re.sub('(((?<=[a-z])[A-Z])|([A-Z](?![A-Z]|$)))', '_\\1', st).lower().strip('_')
 
-def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None):
+def doSPQuerySingle(result, c, theuri, thepred, thekey=None):
+    ans=c.getDataBySP(theuri, thepred)
+    if not thekey:
+        thekey=c2u(thepred.split(':')[-1])
+    if len(ans)>0:
+        result[thekey]=ans[0]
+        
+def doSPQueryMultiple(result, c, theuri, thepred, thekey=None):
+    ans=c.getDataBySP(theuri, thepred)
+    if not thekey:
+        thekey=c2u(thepred.split(':')[-1])
+    if len(ans)>0:
+        result[thekey]=ans   
+
+def getTailFromSplit(mission, project, theuri, thetype='OBSV'):
+    thedataid=None
+    if mission==project:
+        #theuri="http://www.ads.org/sem/"+project+"/obsv/"+obsid
+        if thetype=='OBSV':
+            themission, thevariable, theobsid=splitns(theuri)
+            uritail=themission+"/"+thevariable+"/"+theobsid
+        else:
+            themission, thevariable, theobsid, thedataid=splitns(theuri, atposition=-3)
+            uritail=themission+"/"+thevariable+"/"+theobsid+"/"+thedataid
+    else:
+        #theuri="http://www.ads.org/sem/"+mission+"/"+project+"/obsv/"+obsid
+        if thetype=='OBSV':
+            themission, theproject,thevariable, theobsid=splitns(theuri, atposition=-3)
+            uritail=themission+"/"+theproject+"/"+thevariable+"/"+theobsid
+        else:
+            themission, theproject,thevariable, theobsid, thedataid=splitns(theuri, atposition=-4)
+            uritail=themission+"/"+theproject+"/"+thevariable+"/"+theobsid+"/"+thedataid
+        
+    return themission, theproject, theobsid, thedataid, uritail
+
+def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None, entrybool=False):
     daprops=[]
     thedict={}
     print "OBSURI", theuri
     # There must be better ways to do this
-    if mission==project:
-        #theuri="http://www.ads.org/sem/"+project+"/obsv/"+obsid
-        themission, thevariable, theobsid=splitns(theuri)
-        uritail=themission+"/"+thevariable+"/"+theobsid
-    else:
-        #theuri="http://www.ads.org/sem/"+mission+"/"+project+"/obsv/"+obsid
-        themission, theproject,thevariable, theobsid=splitns(theuri, atposition=-3)
-        uritail=themission+"/"+theproject+"/"+thevariable+"/"+theobsid
+    themission, theproject, theobsid, junkdataid, uritail=getTailFromSplit(mission, project, theuri)
     is_mast = theuri.find('MAST') != -1
     is_chandra = theuri.find('CHANDRA') != -1
     #For this to work chandra URI's now become CHANDRA/chandra'
@@ -178,30 +211,47 @@ def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None):
     
     #hasDatum is a subset of hasDataProduct. How do we get sparql to fo up inhertitance hierarchy
     #Currently we have no way of knowing as the owl file hasnt been loaded in
+#    pquery="""
+#        SELECT ?dtype WHERE {
+#        {%s adsobsv:hasDataProduct ?daturi.} UNION {%s adsobsv:hasDatum ?daturi.}
+#        ?daturi adsbase:dataType ?dtype.
+#        }
+#    """ % (n3encode('uri_obs:'+uritail),n3encode('uri_obs:'+uritail) )
+#    res=c.makeQuery(pquery)
+#    #print "RES", res, pquery
+#    tempdt={}
+#    if len(res)>0:
+#        for ele in res:
+#            tkey=ele['dtype']['value']
+#            if tempdt.has_key('tkey'):
+#                tempdt[tkey]+=1
+#            else:
+#                tempdt[tkey]=1
+#        thedict['datatypes_s']=tempdt.keys()
+#    else:
+#        thedict['datatypes_s']=[]
+    
     pquery="""
-        SELECT ?dtype WHERE {
+        SELECT ?daturi WHERE {
         {%s adsobsv:hasDataProduct ?daturi.} UNION {%s adsobsv:hasDatum ?daturi.}
-        ?daturi adsbase:dataType ?dtype.
         }
     """ % (n3encode('uri_obs:'+uritail),n3encode('uri_obs:'+uritail) )
     res=c.makeQuery(pquery)
-    #print "RES", res, pquery
-    tempdt={}
-    if len(res)>0:
-        for ele in res:
-            tkey=ele['dtype']['value']
-            if tempdt.has_key('tkey'):
-                tempdt[tkey]+=1
-            else:
-                tempdt[tkey]=1
-        thedict['datatypes_s']=tempdt.keys()
-    else:
-        thedict['datatypes_s']=[]
-
+    dtypes=set()
+    duriset=set()
+    for ele in res:
+        thedatauri=ele['daturi']['value']
+        #print "THEDATAURI", thedatauri
+        datauritail=getTailFromSplit(mission, project, thedatauri,'DATA')[-1]
+        dtype=c.getDataBySP('uri_dat:'+datauritail, 'adsbase:dataType')[0]
+        dtypes.add(dtype)
+        duriset.add(datauritail)
     #BUG: Still assume one istrument. This will change, point is how? There will be both
     #multiple stuff for non-simple obs and hierarchical stuff for simple obs like gratings
     #how will we model this?
+    thedict['datatypes_s']=list(dtypes)
     debug("DATATYPES", thedict['datatypes_s'])
+    
     #Assumes observation has instrument specified. Or we will fail
     #What if an observation used multiple instruments. Like Chandra image and spectrum.
     #BUG: What do we currently do for Chandra. And how do we organize instruments?
@@ -270,6 +320,22 @@ def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None):
     #Stuff below in a separate func for props    
     #proposal stuff...not searching abstracts yet
     
+    if entrybool==True:
+        #(Get the other properties relevant for observations)
+        #PRIMPROPSOBSVONLY=['access_url_s', 'access_format_s', 'calib_level_i', 'datacollection_s', 'res_d', 'tres_d', 'fov_d', 'title', 'emmin', 'emmax'
+        #first start with obsv, not data
+        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:wavelengthStart')
+        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:wavelengthEnd')
+        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:resolution')
+        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:tResolution')
+        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:title', 'obsv_title')
+        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:fov')
+        for dtail in duriset:
+            thedict['data_id']=dtail
+            doSPQueryMultiple(thedict, c, 'uri_dat:'+dtail, 'adsobsv:dataProductId')
+            doSPQueryMultiple(thedict, c, 'uri_dat:'+dtail, 'adsobsv:dataFormat')
+            doSPQueryMultiple(thedict, c, 'uri_dat:'+dtail, 'adsobsv:calibLevel')
+            doSPQueryMultiple(thedict, c, 'uri_dat:'+dtail, 'adsobsv:dataURL')
     #Now iterate over proposals and get proposal info, then merge in.
     if not othersbool:
         return thedict
@@ -319,7 +385,7 @@ def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None):
     #though paper proposals will be assoced with papers, not here, so this should be obsvprop
     #only
     #what happens when like in 2002ApJ...573..157N, this shows up for multiple missions
-def getInfoForPropuri(c, solr, propuri, mission, project, othersbool=None):
+def getInfoForPropuri(c, solr, propuri, mission, project, othersbool=None, entrybool=False):
     daprops=[]   
     thedict={}
     debug("PROPURI", propuri)
@@ -410,7 +476,7 @@ def biburiForId(idee, c):
     return biburi
 #THE REVERSE IS NOT UNIQUE. WE NEED SOME WAY OF IDENTIFYING THE LATEST
 
-def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None):
+def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None, entrybool=False):
     daprops=[]
     result={}
     bibcodeuri='uri_bib:'+bibcode
@@ -432,22 +498,25 @@ def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None):
     # other keywords are displayed sensibly.
     # 
     result['keywords']=[unquote(e.split('#')[1]).replace('_',' ') for e in c.getDataBySP(iduri, 'adsbib:keywordConcept')]
-    
+    result['keywords_s']=result['keywords']
     result['title']=c.getDataBySP(iduri, 'adsbase:title')[0].decode("utf-8") # DJB added decode statement as I think we want to send across a unicode string
-    pquery0="""
-        SELECT ?atext WHERE {
-            uri_bib:%s adsbib:hasAbstract [ adsbib:abstractText ?atext ] .            
-        }
-     """ % (result['id'])
+    if entrybool==True:
+        pquery0="""
+            SELECT ?atext WHERE {
+                uri_bib:%s adsbib:hasAbstract [ adsbib:abstractText ?atext ] .            
+            }
+        """ % (result['id'])
 
-    #print pquery0
-    res1=c.makeQuery(pquery0)
-    #print res1[0]
-    result['abstract']=res1[0]['atext']['value']
+        #print pquery0
+        res1=c.makeQuery(pquery0)
+        #print res1[0]
+        result['abstract']=res1[0]['atext']['value']
 
     debug("TITLE", result['title'].encode("ascii", "replace")) ## can contain UTF-8
-    citationcount=len(c.getDataBySP(iduri, 'cito:cites'))
-    result['citationcount_i']=citationcount
+    
+    if entrybool==True:
+        citationcount=len(c.getDataBySP(iduri, 'cito:cites'))
+        result['citationcount_i']=citationcount
 
     # Paper type handling:
     # 
@@ -522,11 +591,11 @@ def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None):
     for au in authoren:
         authorlist.add(au["name"]["value"])
         
-    result['author'] = list(authorlist)
+    result['author_s'] = list(authorlist)
     
     #print result['author']
-    result['keywords_s']=result['keywords']
-    result['author_s']=result['author']
+    
+    result['author']=result['author_s']
     #get the publication uri
     result['pubyear_i']=int(c.getDataBySP(bibcodeuri, 'adsbib:pubDate')[0].split()[1])
     theobjects=c.getDataBySP(bibcodeuri, 'adsbase:hasAstronomicalSource')
@@ -558,7 +627,8 @@ def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None):
     #    result['missions_s']=mission+"/"+project
     #print result['objectnames']
     #theobsids=[rinitem(splitns(e)) for e in c.getDataBySP(bibcodeuri, 'adsbase:aboutScienceProduct')]
-    
+
+        
     if not othersbool:
         return result
     if othersbool.has_key('obsv') and othersbool['obsv']==True:
@@ -650,7 +720,7 @@ class TestClass:
            'obsv':True,
            'prop':True
         }
-        bibdir=getInfoForBibcode(self.sesame, None, bcode, 'MAST','iue', obool)
+        bibdir=getInfoForBibcode(self.sesame, None, bcode, 'MAST','iue', obool, True)
         pprint.pprint(bibdir)
         
     def test_getInfoForObsuri(self):
@@ -659,11 +729,11 @@ class TestClass:
             'prop':True,
             'bib':True
         }
-        obsdir=getInfoForObsuri(self.sesame, None, obsuri, 'MAST', 'iue', obool)
+        obsdir=getInfoForObsuri(self.sesame, None, obsuri, 'MAST', 'iue', obool, True)
         pprint.pprint(obsdir)
     
 def putIntoSolr(sesame, solrinstance, bibcode, mission, project, othersbool):
-    bibdir=getInfoForBibcode(sesame, solrinstance, bibcode, mission, project, othersbool)
+    bibdir=getInfoForBibcode(sesame, solrinstance, bibcode, mission, project, othersbool, True)
     #print '===================================='
     #print bibdir
     #print '===================================='
@@ -715,7 +785,7 @@ if __name__=="__main__":
         debug("Research papers:", researchpapers)
         for ele in researchpapers:
             info("Indexing:", ele)
-            bibdir=getInfoForBibcode(sesame, solr, ele, mission, project, othersbool)
+            bibdir=getInfoForBibcode(sesame, solr, ele, mission, project, othersbool, True)
             solrinstance.add([bibdir], commit=False)
             logger.info("-------------")
     elif datype=='obsv':
@@ -727,7 +797,7 @@ if __name__=="__main__":
         debug("Observations:", robsuris)
         for ele in obsuris:
             info("Indexing:", ele)
-            obsvdir=getInfoForObsuri(sesame, solr, ele, mission, project, othersbool)
+            obsvdir=getInfoForObsuri(sesame, solr, ele, mission, project, othersbool,True)
             solrinstance.add([obsvdir], commit=False)
             logger.info("-------------")
             
