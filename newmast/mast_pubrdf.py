@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-Read in the HUT bibliographic data; we also require the obscore table
+Read in the MAST bibliographic data; we also require the obscore table
 to support mapping between the records.
 
 """
@@ -21,7 +21,10 @@ import rdflib
 from mast_utils import *
 
 def getBibliography(fname):
-    """Extract the <bibcode obsid> values from fname."""
+    """Extract the <bibcode obsid> values from fname.
+
+    Any obsid remapping stored in fname+'.rename' will be applied.
+    """
 
     fh = open(fname, "r")
     out = {}
@@ -46,8 +49,53 @@ def getBibliography(fname):
                 out[obsid] = [(bibcode, program)]
 
     fh.close()
+
+    adjustBibliographyMap(out, fname)
     return out
 
+def adjustBibliographyMap(bmap, fname):
+    """Given the output of getBibliography, apply any obsid changes
+    in the mapping file fname + '.rename'. If the file does not exist
+    then do nothing.
+    """
+
+    try:
+        fh = open(fname + '.rename', 'r')
+
+    except IOError:
+        return
+
+    for l in fh.readlines():
+        l = l.strip()
+        if l == '' or l[0] == '#':
+            continue
+
+        args = l.split()
+        if len(args) != 2:
+            print("WARNING: skipping obsid rename line '{0}'".format(l))
+            continue
+
+        # NOTE: have to lower-case all obsid values
+        old = args[0].lower()
+        new = args[1].lower()
+
+        try:
+            m = bmap[old]
+
+        except KeyError:
+            print("WARNING: obsid from rename file not in bibliographic map: {0}".format(old))
+            continue
+
+        del bmap[old]
+            
+        try:
+            bmap[new].extend(m)
+
+        except KeyError:
+            bmap[new] = m
+
+    fh.close()
+    
 def writeBibliographyFile(fname, ohead, bibcodes, format="n3"):
     """Write out bibliographic records using the obscore table in fname.
 
@@ -168,6 +216,7 @@ if __name__=="__main__":
         else:
             execfile("./mast/default.conf")
         bibcodes = getBibliography(bname)
+
         ofname="map."+mastmission
         writeBibliographyFile2(mastmission, DATA+"/"+oname,
                               DATA+"/" + mastmission+"/"+ofname,

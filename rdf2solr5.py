@@ -582,7 +582,7 @@ if __name__=="__main__":
     for ele in researchpapers:
         info("Indexing:", ele)
         putIntoSolr(sesame, solr, ele, mission, project)
-        logger.info("-------------")
+        #logger.info("-------------")
 
     solr.commit()
-    debug("Finished:", time.asctime())
+    info("Finished:", time.asctime())
