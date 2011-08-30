@@ -25,7 +25,7 @@ DAPROPSPROP=['propids_s', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
 PRIMPROPSPROPONLY=['proposaltitle']
 
 DAPROPSOBSV=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s']
-PRIMPROPSOBSVONLY=['access_url_s', 'access_format_s', 'calib_level_i', 'datacollection_s', 'resolution_d', 't_resolution_d', 'fov_d', 'title']
+PRIMPROPSOBSVONLY=['access_url_s', 'data_format_s', 'calib_level_i', 'datacollection_s', 'resolution_d', 't_resolution_d', 'fov_d', 'title']
 #And in above we might want to have more properties than those we facet upon, like the relation #to datasets
 #Finally how do we want to deal with objects.
 
@@ -84,17 +84,19 @@ def rinitem(item):
 
 c2u = lambda st: re.sub('(((?<=[a-z])[A-Z])|([A-Z](?![A-Z]|$)))', '_\\1', st).lower().strip('_')
 
-def doSPQuerySingle(result, c, theuri, thepred, thekey=None):
+def doSPQuerySingle(result, c, theuri, thepred, name=None, vtype='s'):
     ans=c.getDataBySP(theuri, thepred)
-    if not thekey:
-        thekey=c2u(thepred.split(':')[-1])
+    thekey=name
+    if not name:
+        thekey=c2u(thepred.split(':')[-1])+vtype
     if len(ans)>0:
         result[thekey]=ans[0]
         
-def doSPQueryMultiple(result, c, theuri, thepred, thekey=None):
+def doSPQueryMultiple(result, c, theuri, thepred, name=None, vtype='s'):
     ans=c.getDataBySP(theuri, thepred)
+    thekey=name
     if not thekey:
-        thekey=c2u(thepred.split(':')[-1])
+        thekey=c2u(thepred.split(':')[-1])+vtype
     if len(ans)>0:
         result[thekey]=ans   
 
@@ -324,17 +326,17 @@ def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None, entrybo
         #(Get the other properties relevant for observations)
         #PRIMPROPSOBSVONLY=['access_url_s', 'access_format_s', 'calib_level_i', 'datacollection_s', 'res_d', 'tres_d', 'fov_d', 'title', 'emmin', 'emmax'
         #first start with obsv, not data
-        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:wavelengthStart')
-        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:wavelengthEnd')
-        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:resolution')
-        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:tResolution')
-        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:title', 'obsv_title')
-        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:fov')
+        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:wavelengthStart', vtype='d')
+        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:wavelengthEnd', vtype='d')
+        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:resolution', vtype='d')
+        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:tResolution', vtype='d')
+        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:title', name='obsv_title')
+        doSPQuerySingle(thedict, c, 'uri_obs:'+uritail, 'adsobsv:fov', vtype='d')
         for dtail in duriset:
             thedict['data_id']=dtail
             doSPQueryMultiple(thedict, c, 'uri_dat:'+dtail, 'adsobsv:dataProductId')
             doSPQueryMultiple(thedict, c, 'uri_dat:'+dtail, 'adsobsv:dataFormat')
-            doSPQueryMultiple(thedict, c, 'uri_dat:'+dtail, 'adsobsv:calibLevel')
+            doSPQueryMultiple(thedict, c, 'uri_dat:'+dtail, 'adsobsv:calibLevel', vtype='i')
             doSPQueryMultiple(thedict, c, 'uri_dat:'+dtail, 'adsobsv:dataURL')
     #Now iterate over proposals and get proposal info, then merge in.
     if not othersbool:
