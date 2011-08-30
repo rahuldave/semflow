@@ -425,7 +425,7 @@
      default: a value that should be used if no value is specified
        when adding a document.
    -->
-   <field name="missions_s" type="string" indexed="true" stored="true" multiValued="true"/>
+
    
 
    <!-- Common metadata fields, named specifically to match up with
@@ -449,6 +449,7 @@
    <field name="objecttypes" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="objecttypes_s" type="string" indexed="true" stored="true" multiValued="true"/>
    
+   <field name="obsv_mission_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="obsids_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="obsvtime_d" type="tdate" indexed="true" stored="true" multiValued="true"/>
    <field name="exptime_f" type="tfloat" indexed="true" stored="true" multiValued="true"/>
