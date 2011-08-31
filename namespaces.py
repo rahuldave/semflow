@@ -327,9 +327,20 @@ def cleanFragment(frag):
 
 def addFragment(base, fragment):
     """Create a URI by combining base with fragment, after
-    cleaning the fragment. base should be a namespace object."""
+    cleaning the LAST SEGMENT of fragment (this is a change to
+    earlier behavior which would 'clean' all of the fragment,
+    but as this means conversion to upper case it could be
+    confusing.
 
-    return base[cleanFragment(fragment)]
+    base should be a namespace object."""
+
+    (l, s, r) = fragment.rpartition('/')
+
+    # safety check on l due to change in behavior
+    if ' ' in l:
+        raise ValueError("text before / contains a space in fragment='" + fragment + "'")
+    
+    return base[l + s + cleanFragment(r)]
 
 def cleanURIelement(txt):
     """convert unwanted characters in txt so that we can use this
