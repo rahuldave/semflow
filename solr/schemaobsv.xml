@@ -425,20 +425,62 @@
      default: a value that should be used if no value is specified
        when adding a document.
    -->
+<!--
+DAPROPSBIB=['id','bibcode','title', 'author', 'author_s','keywords','keywords_s', 'pubyear_i', 'objectnames', 'objectnames_s', 'objecttypes', 'objecttypes_s']
+PRIMPROPSBIBONLY=['abstract', 'citationcount_i']
+#Notice only faceted versions above. Think this through.
+#dont include abstract here as you wont facet on it. Only primary keys and facetable
+#quantities need apply. We'll have to reflect this in our solr architecture. Right now put all.'
+DAPROPSPROP=['propids_s', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
+PRIMPROPSPROPONLY=['proposaltitle']
 
-   <field name="id" type="string" indexed="true" stored="true" required="true" /> 
-   <field name="bibcode" type="string" indexed="true" stored="true" required="true" /> 
+DAPROPSOBSV=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s']
+PRIMPROPSOBSVONLY=['data_url_s', 'data_format_s', 'calib_level_i', 'data_collection_s', 'resolution_d', 't_resolution_d', 'fov_d', 'obsv_title', 'data_id_s', 'data_product_id_s', 'wavelength_start_d', 'wavelength_end_d']
+-->
+   <field name="obsids_s" type="string" indexed="true" stored="true"/>
+   
+   <field name="obsv_mission_s" type="string" indexed="true" stored="true"/>
+   <field name="obsv_title" type="text" indexed="true" stored="true"/>
+   <field name="obsvtime_d" type="tdate" indexed="true" stored="true"/>
+   <field name="exptime_f" type="tfloat" indexed="true" stored="true"/>
+   <field name="ra_f" type="tfloat" indexed="true" stored="true"/>
+   <field name="dec_f" type="tfloat" indexed="true" stored="true"/>
+   <field name="wavelength_start_f" type="tfloat" indexed="true" stored="true"/>
+   <field name="wavelength_end_f" type="tfloat" indexed="true" stored="true"/>
+   <field name="targets_s" type="string" indexed="true" stored="true"/>
+   <field name="telescopes_s" type="string" indexed="true" stored="true"/>
+   <field name="obsvtypes_s" type="string" indexed="true" stored="true"/>
 
+<!-- THESE ARE MULTYIVALUED BUT OBSV PROPERTIES -->
+
+   <field name="emdomains_s" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="instruments_s" type="string" indexed="true" stored="true" multiValued="true"/>
+
+<!--DATASET PROPERTIES. CAN BE MULTIVALUED-->
+   <field name="data_url_s" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="data_format_s" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="data_collection_s" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="data_id_s" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="data_product_id_s" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="resolution_f" type="tfloat" indexed="true" stored="true" multivalued="true"/>
+   <field name="t_resolution_f" type="tfloat" indexed="true" stored="true" multivalued="true"/>
+   <field name="fov_f" type="tfloat" indexed="true" stored="true" multivalued="true"/>
+   <field name="calib_level_i" type="tint" indexed="true" stored="true" multivalued="true"/>
+   <field name="datatypes_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <!-- Common metadata fields, named specifically to match up with
      SolrCell metadata when parsing rich documents such as Word, PDF.
      Some fields are multiValued only because Tika currently may return
      multiple values for them.
    -->
-   <field name="title" type="text" indexed="true" stored="true"/>
-   <field name="pubyear_i" type="tint" indexed="true" stored="true"/>
-   <field name="citationcount_i" type="tint" indexed="true" stored="true"/>
+   
+   <!--EVERYTHING ABOUT PAPERS NOW BECOMES MULTIVALUED BECAUSE MULTIPLE PAPERS COULD HAVE COME FROM
+   ONE OBSERVATION-->
+   <field name="id" type="string" indexed="true" stored="true" required="true"  multiValued="true"/> 
+   <field name="bibcode" type="string" indexed="true" stored="true" required="true"  multiValued="true"/>
+   <field name="papertype_s" type="string" indexed="true" stored="true" multiValued="true"/> 
+   <field name="title" type="text" indexed="true" stored="true" multiValued="true"/>
+   <field name="pubyear_i" type="tint" indexed="true" stored="true" multiValued="true"/>
    <field name="author" type="text" indexed="true" stored="true" multiValued="true"/>
-   <field name="abstract" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="author_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="keywords" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="keywords_s" type="string" indexed="true" stored="true" multiValued="true"/>
@@ -446,19 +488,7 @@
    <field name="objectnames_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="objecttypes" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="objecttypes_s" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="obsids_s" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="obsvtime_d" type="tdate" indexed="true" stored="true" multiValued="true"/>
-   <field name="exptime_f" type="tfloat" indexed="true" stored="true" multiValued="true"/>
-   <field name="ra_f" type="tfloat" indexed="true" stored="true" multiValued="true"/>
-   <field name="dec_f" type="tfloat" indexed="true" stored="true" multiValued="true"/>
-   <field name="obsvtypes_s" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="papertype_s" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="instruments_s" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="telescopes_s" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="emdomains_s" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="targets_s" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="missions_s" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="datatypes_s" type="string" indexed="true" stored="true" multiValued="true"/>
+   
 
    <field name="propids_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="proposaltitle" type="text" indexed="true" stored="true" multiValued="true"/>
@@ -475,7 +505,7 @@
  <!-- Field to use to determine and enforce document uniqueness. 
       Unless this field is marked with required="false", it will be a required field
    -->
- <uniqueKey>id</uniqueKey>
+ <uniqueKey>obsids_s</uniqueKey>
 
  <!-- field for the QueryParser to use when an explicit fieldname is absent -->
  <defaultSearchField>text</defaultSearchField>

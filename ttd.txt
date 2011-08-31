@@ -4,3 +4,16 @@ o datetime in pub rdf
 o skosify our keywords
 o for objecttypes should we skos or use simbad vocab?
 o there is no check if stuff already loaded into solr is loaded again. And now, when we load for HUT, what happens as we have more statements that link paper to text. Our design should be as uncoupled as rdf is, even in solr, so in solr we should add to our defensive programming by programming as if things are being added to the arrays in solr. How to we do this and keep the order? Or do we just redo solr
+
+====================================================================================================
+
+Should we store psv line in rdf so we can faithfully reproduce obscore? Or get core obscore from solr?
+Leaning to latter
+
+What if we have a complex observation with complex data. Simulated Stuff. There may be multiple telescopes or instruments, or none. How would we model this combination in there? Solution is to
+save a complex under multiple instruments or telescopes. And have a Dataset type which is simple or complex. When we do things like collections and Datasets this will become important.
+
+Chandra has spectra and image. We model as 2 datasets currently, taken from same observation. But what
+happens with instruments then? ACIS vs HRC? Thus an observation may have multiple instruments, something we dont seem to have considered in our rdf modelling, for Chaandra. We have considered it for MAST. But whose property should it be. Dataset? Or Observation?
+
+So do: complex datasets and collections for everything. Try and get complex datasets.
