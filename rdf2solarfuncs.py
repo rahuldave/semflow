@@ -7,6 +7,7 @@ from urllib import unquote, quote_plus
 import uuid, sys
 import HTMLParser, datetime, calendar
 from namespaces import n3encode
+import rdflib
 
 # as we are assuming python 2.6 we can use set() rather than Set()
 # from sets import Set
@@ -16,7 +17,7 @@ import logging
 import re
 logger = None
 
-DAPROPSBIB=['id','bibcode','title', 'author', 'author_s','keywords','keywords_s', 'pubyear_i', 'objectnames', 'objectnames_s', 'objecttypes', 'objecttypes_s']
+DAPROPSBIB=['id', 'bibcode','title', 'author', 'author_s','keywords','keywords_s', 'pubyear_i', 'objectnames', 'objectnames_s', 'objecttypes', 'objecttypes_s']
 PRIMPROPSBIBONLY=['abstract', 'citationcount_i']
 #Notice only faceted versions above. Think this through.
 #dont include abstract here as you wont facet on it. Only primary keys and facetable
@@ -24,7 +25,7 @@ PRIMPROPSBIBONLY=['abstract', 'citationcount_i']
 DAPROPSPROP=['propids_s', 'proposalpi', 'proposalpi_s', 'proposaltype_s']
 PRIMPROPSPROPONLY=['proposaltitle']
 
-DAPROPSOBSV=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s', 'obsv_missions_s']
+DAPROPSOBSV=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s', 'obsv_mission_s']
 PRIMPROPSOBSVONLY=['data_url_s', 'data_format_s', 'calib_level_i', 'data_collection_s', 'resolution_f', 't_resolution_f', 'fov_f', 'obsv_title', 'data_id_s', 'data_product_id_s', 'wavelength_start_d', 'wavelength_end_d']
 #And in above we might want to have more properties than those we facet upon, like the relation #to datasets
 #Finally how do we want to deal with objects.
@@ -170,9 +171,9 @@ def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None, entrybo
     #thedict['obsids_s']=rinitem(theobsid)
     thedict['obsids_s']=theproject+"/"+theobsid
     if theproject==themission:
-            thedict['obsv_mission_s']=theproject
-        else:
-            thedict['obsv_mission_s']=themission+"/"+theproject
+        thedict['obsv_mission_s']=theproject
+    else:
+        thedict['obsv_mission_s']=themission+"/"+theproject
     #print theobsid, c.getDataBySP('uri_obs:'+uritail, 'adsobsv:observationType')
     obstypes=c.getDataBySP('uri_obs:'+uritail, 'adsobsv:observationType')
     if len(obstypes)>0:
@@ -360,6 +361,7 @@ def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None, entrybo
                 thedict['data_collection_s'].append('Unspecified')
     #Now iterate over proposals and get proposal info, then merge in.
     #print "thedict now is", thedict
+    
     if not othersbool:
         return thedict
     if othersbool.has_key('prop') and othersbool['prop']==True:
@@ -374,9 +376,9 @@ def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None, entrybo
         #print "???????????", thedict, propray
         doAugment(daprops, thedict, propray)
         #return thedict
-    #print thedict
+    #print 'post propping',thedict
     if othersbool.has_key('bib') and othersbool['bib']==True:
-        print ';;;;;;',daprops
+        #print ';;;;;;',daprops
         daprops.extend(DAPROPSBIB)
         print ';;;;;;',daprops
         #get papers
@@ -385,7 +387,8 @@ def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None, entrybo
         aqstr = "SELECT ?pap {{ ?pap adsbase:aboutScienceProcess <{0}>.}}".format(theuri)
         #print "QUERY", aqstr
         papersen = c.makeQuery(aqstr)
-        #print "PAPERSEN", papersen
+        print "PAPERSEN", papersen
+        #BUG: it seems there can be observations with no papers. should we have some default stuff?
         papers = set()
         for pa in papersen:
             papers.add(pa["pap"]["value"])
@@ -401,7 +404,7 @@ def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None, entrybo
         doAugment(daprops, thedict, papersray)
         #retufn the dict
         #return thedict
-    #print thedict    
+    print "at end", thedict    
     return thedict
     #BUG: again assuming only one proposal here. When we get paper proposals this will
     #Not be true any more. We should also disambiguate observational from paper proposals.
@@ -454,12 +457,13 @@ def getInfoForPropuri(c, solr, propuri, mission, project, othersbool=None, entry
     qstr = "SELECT ?name WHERE { <" + propuri + "> adsbase:principalInvestigator [ agent:fullName ?name ] . }"
     pinameres = c.makeQuery(qstr)
     nres = len(pinameres)
+    pilist=set() 
     if nres == 0:
         piname = 'No Info'
+        pilist.add(piname)
     else:
         if nres != 1:
-            print("DBG: found {0} proposal pis for {1}, using first from {2}".format(nres, propuri, pinameres))
-        pilist=set()    
+            print("DBG: found {0} proposal pis for {1}, using first from {2}".format(nres, propuri, pinameres))   
         for pival in pinameres:
             piname = pival["name"]["value"]
             if piname.strip() == "":
@@ -470,6 +474,7 @@ def getInfoForPropuri(c, solr, propuri, mission, project, othersbool=None, entry
         
 
     thedict['proposalpi'] = list(pilist)#piname
+    print "PIS",thedict['proposalpi']
     thedict['proposalpi_s']=thedict['proposalpi']
         
     #BUG: SHOULD we have something like this associating None's where there is no proposal?????'    
@@ -705,7 +710,7 @@ def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None, entry
 #Bug must expand something thats list of lists like proposals.
 #Actually no by calling it twice stuff is flattented out: denormalized for proposals
 def doAugment(keylist, incdict, dictray):
-    print "KEYLIST", keylist
+    #print "KEYLIST", keylist
     #print dictray
     if len(dictray)>0:
         for tkey in keylist:
@@ -774,9 +779,15 @@ if __name__=="__main__":
     #initialize_logging("rdf2solr5", file=logging.WARNING, screen=logging.WARNING)
     initialize_logging("rdf2solarfuncs")
     debug("Starting:", time.asctime())
-    
+    dafile=sys.argv[4]
+    datype=sys.argv[3]
+    mission=sys.argv[1]
+    project=sys.argv[2]
     if len(sys.argv)==5:
-        confname = "./default.conf"
+        if datype=='bib':
+            confname = "./default.conf"
+        elif datype=='obsv':
+            confname='./default3.conf'
     elif len(sys.argv)==6:
         confname = sys.argv[5]
     else:
@@ -786,10 +797,7 @@ if __name__=="__main__":
     debug("Execing:", confname)
     execfile(confname)
 
-    dafile=sys.argv[4]
-    datype=sys.argv[3]
-    mission=sys.argv[1]
-    project=sys.argv[2]
+    
 
     info("Mission:", mission)
     info("Project:", project)
@@ -809,7 +817,7 @@ if __name__=="__main__":
         for ele in researchpapers:
             info("Indexing:", ele)
             bibdir=getInfoForBibcode(sesame, solr, ele, mission, project, othersbool, True)
-            solrinstance.add([bibdir], commit=False)
+            solr.add([bibdir], commit=False)
             logger.info("-------------")
     elif datype=='obsv':
         othersbool={
@@ -818,12 +826,12 @@ if __name__=="__main__":
         }
         #obsuris=[ele.strip() for ele in open(dafile).readlines()]
         obsmap=eval(open(dafile).read())
-        obsuris=[str(e) for e in obsmal.keys()]
+        obsuris=[str(e) for e in obsmap.keys()]
         debug("Observations:", obsuris)
         for ele in obsuris:
             info("Indexing:", ele)
             obsvdir=getInfoForObsuri(sesame, solr, ele, mission, project, othersbool,True)
-            solrinstance.add([obsvdir], commit=False)
+            solr.add([obsvdir], commit=False)
             logger.info("-------------")
             
         
