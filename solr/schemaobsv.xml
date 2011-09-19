@@ -437,7 +437,7 @@ PRIMPROPSPROPONLY=['proposaltitle']
 DAPROPSOBSV=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s']
 PRIMPROPSOBSVONLY=['data_url_s', 'data_format_s', 'calib_level_i', 'data_collection_s', 'resolution_d', 't_resolution_d', 'fov_d', 'obsv_title', 'data_id_s', 'data_product_id_s', 'wavelength_start_d', 'wavelength_end_d']
 -->
-   <field name="obsids_s" type="string" indexed="true" stored="true"/>
+   <field name="obsids_s" type="string" indexed="true" required="true" stored="true"/>
    
    <field name="obsv_mission_s" type="string" indexed="true" stored="true"/>
    <field name="obsv_title" type="text" indexed="true" stored="true"/>
@@ -475,8 +475,8 @@ PRIMPROPSOBSVONLY=['data_url_s', 'data_format_s', 'calib_level_i', 'data_collect
    
    <!--EVERYTHING ABOUT PAPERS NOW BECOMES MULTIVALUED BECAUSE MULTIPLE PAPERS COULD HAVE COME FROM
    ONE OBSERVATION-->
-   <field name="id" type="string" indexed="true" stored="true" required="true"  multiValued="true"/> 
-   <field name="bibcode" type="string" indexed="true" stored="true" required="true"  multiValued="true"/>
+   <field name="id" type="string" indexed="true" stored="true"  multiValued="true"/> 
+   <field name="bibcode" type="string" indexed="true" stored="true"  multiValued="true"/>
    <field name="papertype_s" type="string" indexed="true" stored="true" multiValued="true"/> 
    <field name="title" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="pubyear_i" type="tint" indexed="true" stored="true" multiValued="true"/>
