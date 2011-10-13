@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PARENT=MAST
-MISSION=wuppe
+MISSION=iue
 LOGFILE=../${MISSION}.log
 RDFSTORE=../mast-rdf
 MISSIONSTORE=../AstroExplorer/Missions/${PARENT}/${MISSION}
@@ -39,12 +39,13 @@ runStage "adsrdf"     adsclassic2rdf.py $RDFSTORE $BIBLIST
 runStage "simbadrdf"  simbad2rdf.py ${MISSIONSTORE}/${MISSION}.simbad.dict $RDFSTORE
 runStage "obsvrdf"    newmast/mast_obsvrdf.py $MISSION ${MISSIONSTORE}/obscore.${MISSION}.psv 	
 runStage "pubrdf"     newmast/mast_pubrdf.py $MISSION ${MISSIONSTORE}/map.${MISSION}.txt
-# runStage "proprdf"   
+runStage "proprdf"    newmast/mast_proprdf.py $MISSION ${MISSIONSTORE}/${MISSION}_program.list
 runStage "adsload"    loadfiles.py $BIBLIST $CONF
 runStage "simbadload" loadfiles-simbad.py $BIBLIST $CONF
 runStage "obsvload"   newmast/mast_obsvload.py $MISSION
 runStage "pubload"    newmast/mast_pubload.py $MISSION
-# runStage "propload"
+runStage "propload"   newmast/mast_propload.py $MISSION
+#runStage "pubsolr"    rdf2solr5.py $PARENT $MISSION $BIBLIST
 runStage "pubsolr"    rdf2solarfuncs.py $PARENT $MISSION bib $BIBLIST
 runStage "obsvsolr"   rdf2solarfuncs.py $PARENT $MISSION obsv ${RDFSTORE}/${MISSION}/obsdatahash.map
 

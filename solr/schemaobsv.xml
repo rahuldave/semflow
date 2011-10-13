@@ -462,10 +462,10 @@ PRIMPROPSOBSVONLY=['data_url_s', 'data_format_s', 'calib_level_i', 'data_collect
    <field name="data_collection_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="data_id_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="data_product_id_s" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="resolution_f" type="tfloat" indexed="true" stored="true" multivalued="true"/>
-   <field name="t_resolution_f" type="tfloat" indexed="true" stored="true" multivalued="true"/>
-   <field name="fov_f" type="tfloat" indexed="true" stored="true" multivalued="true"/>
-   <field name="calib_level_i" type="tint" indexed="true" stored="true" multivalued="true"/>
+   <field name="resolution_f" type="tfloat" indexed="true" stored="true" multiValued="true"/>
+   <field name="t_resolution_f" type="tfloat" indexed="true" stored="true" multiValued="true"/>
+   <field name="fov_f" type="tfloat" indexed="true" stored="true" multiValued="true"/>
+   <field name="calib_level_i" type="tint" indexed="true" stored="true" multiValued="true"/>
    <field name="datatypes_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <!-- Common metadata fields, named specifically to match up with
      SolrCell metadata when parsing rich documents such as Word, PDF.

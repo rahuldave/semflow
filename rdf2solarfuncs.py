@@ -105,16 +105,21 @@ def doSPQueryMultiple(result, c, theuri, thepred, name=None, vtype='s'):
 
 def getTailFromSplit(mission, project, theuri, thetype='OBSV'):
     thedataid=None
-    if mission==project:
+    #if mission.lower()==project.lower():
+    if theuri.find('CHANDRA')!=-1:
+        #print "CHANDRA"
         #theuri="http://www.ads.org/sem/"+project+"/obsv/"+obsid
         if thetype=='OBSV':
             themission, thevariable, theobsid=splitns(theuri)
+            theproject=themission
             uritail=themission+"/"+thevariable+"/"+theobsid
         else:
             themission, thevariable, theobsid, thedataid=splitns(theuri, atposition=-3)
+            theproject=themission
             uritail=themission+"/"+thevariable+"/"+theobsid+"/"+thedataid
     else:
         #theuri="http://www.ads.org/sem/"+mission+"/"+project+"/obsv/"+obsid
+        #print "MP", mission, project
         if thetype=='OBSV':
             themission, theproject,thevariable, theobsid=splitns(theuri, atposition=-3)
             uritail=themission+"/"+theproject+"/"+thevariable+"/"+theobsid
@@ -156,6 +161,7 @@ def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None, entrybo
         thetarget=themission+"/"+target
     elif is_chandra:
         titleray=c.getDataBySP('uri_obs:'+uritail, 'adsbase:title')
+        print "titleray", titleray
         if len(titleray)==0:
             title="Unspecified"
         else:
@@ -176,6 +182,7 @@ def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None, entrybo
         thedict['obsv_mission_s']=themission+"/"+theproject
     #print theobsid, c.getDataBySP('uri_obs:'+uritail, 'adsobsv:observationType')
     obstypes=c.getDataBySP('uri_obs:'+uritail, 'adsobsv:observationType')
+    #print obstypes, ":::"
     if len(obstypes)>0:
         if theproject==themission:
             thedict['obsvtypes_s']=theproject+"/"+obstypes[0]
@@ -193,7 +200,10 @@ def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None, entrybo
     # adsobsv:tExptime. This should now be fixed but this check is left in to catch
     # any oddities.
     #
+    theinstruments=c.getDataBySP('uri_obs:'+uritail, 'adsbase:usingInstrument')
+    #print "DAIN", theinstruments
     tvals = c.getDataBySP('uri_obs:'+uritail, 'adsobsv:tExptime')
+    #print "UTITAIL", uritail, tvals
     if len(tvals) == 0:
         raise IOError("Unable to find adsobsv:tExptime for uri_obs:{0}".format(uritail))
 
@@ -394,10 +404,12 @@ def getInfoForObsuri(c, solr, theuri, mission, project, othersbool=None, entrybo
             papers.add(pa["pap"]["value"])
         for papuri in papers:
             bibcode=papuri.split('#')[-1]
-            #print "bibcode", bibcode, papuri
+            print "bibcode", bibcode, papuri
             papdict=getInfoForBibcode(c, solr, bibcode, mission, project, othersbool)
             #print "PAPDICT", papdict
-            papersray.append(papdict)
+            #Following guards against 0 entries which happens with bibcodes with tmp in them
+            if len(papdict.keys())>0:
+                papersray.append(papdict)
         #do an augment
         #print "+++++", thedict
         #print '=====', daprops
@@ -493,7 +505,10 @@ def iduriForBibcode(bibcode, c):
     bibcodeuri='uri_bib:'+bibcode
     iduri=c.getDataBySP(bibcodeuri, 'fabio:isRealizationOf')
     debug("returned", "{0} {1}".format(iduri, bibcodeuri))
-    iduri=iduri[0]
+    if len(iduri)>0:
+        iduri=iduri[0]
+    else:
+        iduri=-1
     return iduri
 
 def biburiForId(idee, c):
@@ -509,7 +524,8 @@ def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None, entry
     result={}
     bibcodeuri='uri_bib:'+bibcode
     iduri=iduriForBibcode(bibcode, c)
-
+    if iduri==-1:
+        return {}
     # we use the original URI when accessing the author names
     idurifull = iduri
     
@@ -667,6 +683,7 @@ def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None, entry
         
         #daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s']
         debug("THEOBSIDURIS", theobsiduris)
+        print "THEOBSIDURIS", theobsiduris
         datatypes=[]
     #olddict=solr.search('id:'+theid)
         missions=set()
@@ -825,9 +842,18 @@ if __name__=="__main__":
             'bib':True
         }
         #obsuris=[ele.strip() for ele in open(dafile).readlines()]
-        obsmap=eval(open(dafile).read())
-        obsuris=[str(e) for e in obsmap.keys()]
+        
+        if mission.lower()=='chandra':
+            print "For Chandra"
+            prelim='http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/'
+            obsuris=[prelim+ele.strip() for ele in open(dafile).readlines()]
+        else:
+            obsmap=eval(open(dafile).read())
+            obsuris=[str(e) for e in obsmap.keys()]
         debug("Observations:", obsuris)
+        #obsuris=['http://ads.harvard.edu/sem/obsv/observation/MAST/fuse/obsid/b054090100000nvo4histfcal']
+        #there is a bug with tmp bibcodes in maps in ADS. Solution is to remove those directly in the map files
+        #tempfix is to guard against 0 results in all queries
         for ele in obsuris:
             info("Indexing:", ele)
             obsvdir=getInfoForObsuri(sesame, solr, ele, mission, project, othersbool,True)

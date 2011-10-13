@@ -46,5 +46,6 @@ runStage "obsvload"   newmast/mast_obsvload.py $MISSION
 runStage "pubload"    newmast/mast_pubload.py $MISSION
 runStage "propload"   newmast/mast_propload.py $MISSION
 runStage "pubsolr"    rdf2solarfuncs.py $PARENT $MISSION bib $BIBLIST
+runStage "obsvsolr"   rdf2solarfuncs.py $PARENT $MISSION obsv ${RDFSTORE}/${MISSION}/obsdatahash.map
 
 echo "# Ending script: `date`" >> $LOGFILE
