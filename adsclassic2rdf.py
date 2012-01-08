@@ -272,7 +272,10 @@ def do_authors(g, record, theuuid):
     bibcode_uri = uri_bib[record.bibcode]
     work_uri=uri_bib[theuuid]
     acount=1
+    authorlist=[]
     for author in record.getauthors():
+        nr=int(author.attrib['nr'])
+        print "NR=", nr
         authnamenode=author.findall('name')[0]
         auth_fname=authnamenode.findall('western')[0].text
         auth_name=authnamenode.findall('normalized')[0].text
@@ -282,6 +285,7 @@ def do_authors(g, record, theuuid):
         gadd(g, auth_uri, agent.fullName, Literal(auth_fname))
         gadd(g, auth_uri, agent.normName, Literal(auth_name))
         gadd(g, work_uri, pav.authoredBy, auth_uri)
+        authorlist.append((nr,auth_name))
         afils=record.getaffiliations(author)
         emails=record.getemails(author)
         #must match afilliations to URI's by an inverse lookup later'
@@ -295,6 +299,11 @@ def do_authors(g, record, theuuid):
         for ele in emails:
             gadd(g, auth_uri, foaf.mbox, URIRef('mailto:'+ele))        
         acount=acount+1
+    theauthorlist=['' for i in range(len(authorlist))]
+    for ituple in authorlist:
+        theauthorlist[ituple[0]-1]=ituple[1]
+    print "THEAUTORLIST", theauthorlist
+    gadd(g, work_uri, adsbib.orderedAuthorString, Literal(str(theauthorlist)))
 
 def do_references(g, record, theuuid):
     bibcode_uri = uri_bib[record.bibcode]

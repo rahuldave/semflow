@@ -7,6 +7,7 @@ python modules:
 	rdflib 3
 	pysolr
 	simplejson
+	nose
 
 (Use pip or easy_install)
 
@@ -42,6 +43,7 @@ cd ads-stuff/vendor
 (a) Install Solr
 tar zxvf ../AstroExplorer/vendor/apache-solr-3.2.0.tgz
 cp -a apache-solr-3.2.0/example container
+cp -a apache-solr-3.2.0/example solr-data
 
 (b) Install Sesame
 tar zxvf ../AstroExplorer/vendor/openrdf-sesame-2.4.0-sdk.tar.gz
@@ -54,7 +56,7 @@ make; sudo make install
 /usr/local/bin/redis-server (if installed)
 redis-cli can be used to check it
 
-(d) Start Sesame and Solr on port 8983:
+(d) Start Sesame and Solr on port 8984:
 pushd container/solr/conf
 mv solrconfig.xml solrconfig.xml.bak
 mv schema.xml schema.xml.bak
@@ -62,11 +64,24 @@ mv schema.xml schema.xml.bak
 ln -s ../../../../semflow/solr/schema.xml .
 ln -s ../../../../semflow/solr/solrconfig.xml .
 popd
+
+pushd solr-data/solr/conf
+mv schema.xml schema.xml.bak
+ln -s ../../../../semflow/solr/schemaobsv.xml schema.xml
+popd
+
+#edit etc/jetty.xml to be on 8984
 cd container
 #Now back in container directory
 java -jar start.jar
 #With more memory for heap
 -Xmx4g
+cd ..
+
+#edit etc/jetty.xml to be on 8982
+cd solr-data
+java -jar start.jar
+cd ..
 
 Solr admin is at:
 http://localhost:8983/solr/admin/
@@ -86,7 +101,7 @@ SET UP FOR DATA INSTALL step below.
 
 This can be created (or deleted and then created) using either the
 Sesame workbench interface at
-  http://localhost:8983/openrdf-workbench/
+  http://localhost:8984/openrdf-workbench/
 
 or using the console.sh script at
   vendor/openrdf-sesame-2.4.0/bin/console.sh
@@ -188,6 +203,74 @@ To do everything (there are also scripts for the other missions but
 these are not included in this document); the scripts log information
 about each stage to <mission>.log (to make it easier to see how long
 stages are taking and to see if any fail).
+
+Chandra Maps Needed and done in transferdata
+
+pubsak
+2010ApJ...716..758L 2010ApJ...716..758H
+
+pubsah
+2007JATP...69..179B 2007JASTP..69..179B
+
+pubsag
+2006xru..conf..675S 2006ESASP.604..675S
+2006xru..conf..681Z 2006ESASP.604..681Z
+2006xru..conf..699P 2006ESASP.604..699P
+2006xru..conf..705S 2006ESASP.604..705S
+2006xru..conf..711E 2006ESASP.604..711E
+2006xru..conf..717G 2006ESASP.604..717G
+2006xru..conf..723M 2006ESASP.604..723M
+2006xru..conf..735C 2006ESASP.604..735C
+2006xru..conf..743G 2006ESASP.604..743G
+2006xru..conf..745K 2006ESASP.604..745K
+2006xru..conf..747L 2006ESASP.604..747L
+2006xru..conf..751S 2006ESASP.604..751S
+2006xru..conf..757Z 2006ESASP.604..757Z
+2006xru..conf..763U 2006ESASP.604..763U
+2006xru..conf..771T 2006ESASP.604..771T
+2006xru..conf..783D 2006ESASP.604..783D
+2006xru..conf..789B 2006ESASP.604..789B
+2006xru..conf..795S 2006ESASP.604..795S
+2006xru..conf..801M 2006ESASP.604..801M
+2006xru..conf..807P 2006ESASP.604..807P
+2006xru..conf..813G 2006ESASP.604..813G
+2006xru..conf..829E 2006ESASP.604..829E
+2006xru..conf..831G 2006ESASP.604..831G
+2006xru..conf..841S 2006ESASP.604..841S
+2006xru..conf..845T 2006ESASP.604..845T
+2006xru..conf..849V 2006ESASP.604..849V
+2006xru..conf..865T 2006ESASP.604..865T
+2006xru..conf..877B 2006ESASP.604..877B
+2006xru..conf..949Y 2006ESASP.604..949Y
+
+See Notes in chndra subdir for copying the filenames over
+
+Chandra problems (ie no listing found, or bmap)
+pubsah
+diff the files
+
+additionally
+2007Msngr.129...45T xml was edited to remove for wierd blank authors
+we learnt fro it that xml file and biblist file must be kept in sync!
+
+I took out in pubsaj
+2008mqw..conf....9C
+
+it should be added back in after redoing the xml as confE...9C
+2008ATel.1794....1B.xml was edited to remove empty fourth author
+2008PASJ...60..237N was edited to remove blank last author
+2008PASJ...60..345O ditto
+2008PASJ...60..387T ditto
+2008PASJ...60..527T ditto
+2009ATel.1910....1N ditto
+2009ATel.2287....1P
+2009ATel.2356....1H
+2010ATel.2418....1N
+2010ATel.2495....1G
+2010PASJ...62.1249M
+2010PASJ...62.1301S
+
+
 
 % ./scripts/doitchandra.sh
 

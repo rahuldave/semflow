@@ -17,6 +17,8 @@ import logging
 import re
 logger = None
 
+#BUG; observations seem to have only inverse lookups in sesame, and are very slow to get. fix this by addition to ontology
+
 DAPROPSBIB=['id', 'bibcode','title', 'author', 'author_s','keywords','keywords_s', 'pubyear_i', 'objectnames', 'objectnames_s', 'objecttypes', 'objecttypes_s']
 PRIMPROPSBIBONLY=['abstract', 'citationcount_i']
 #Notice only faceted versions above. Think this through.
@@ -628,14 +630,21 @@ def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None, entry
     #BUG: one slash too many in authors you think?
     result['author']=[unquote(e.split('/')[-2]).replace('_',' ') for e in authoren]
     """
-
+    orderedAuthorsString=c.getDataBySP(iduri, 'adsbib:orderedAuthorString')[0]
+    orderedAuthors=eval(orderedAuthorsString)
+    print 'orderedAuthors',orderedAuthors
     aqstr = "SELECT ?name {{ <{0}> <http://swan.mindinformatics.org/ontologies/1.2/pav/authoredBy> [ <http://swan.mindinformatics.org/ontologies/1.2/agents/normName> ?name ].}}".format(idurifull)
     authoren = c.makeQuery(aqstr)
     authorlist = set()
     for au in authoren:
         authorlist.add(au["name"]["value"])
-        
-    result['author_s'] = list(authorlist)
+    listfromauthorset=list(authorlist)
+    orderedauthorlist=[]
+    for author in orderedAuthors:
+        if author in listfromauthorset:
+            orderedauthorlist.append(author)
+    print 'orderedauthorlist',orderedauthorlist
+    result['author_s'] = orderedauthorlist
     
     #print result['author']
     
@@ -671,7 +680,7 @@ def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None, entry
     #    result['missions_s']=mission+"/"+project
     #print result['objectnames']
     #theobsids=[rinitem(splitns(e)) for e in c.getDataBySP(bibcodeuri, 'adsbase:aboutScienceProduct')]
-
+    
         
     if not othersbool:
         return result
@@ -684,6 +693,15 @@ def getInfoForBibcode(c, solr, bibcode, mission, project, othersbool=None, entry
         #daprops=['obsids_s','obsvtypes_s','exptime_f','obsvtime_d','instruments_s', 'telescopes_s', 'emdomains_s',  'targets_s', 'ra_f','dec_f', 'datatypes_s']
         debug("THEOBSIDURIS", theobsiduris)
         print "THEOBSIDURIS", theobsiduris
+        #BUGFIX: filter down the obsiduris for Chandra mistakes
+        chandramalfeasants=[12, 1310, 1755, 1756, 1757, 1758, 1759, 1760, 1761, 189, 202, 2729, 2968360, 39, 585, 6243, 62433, 62568, 7674, 9818, 9819, 9820, 9821, 9822, 9888]
+        cmfuris=['http://ads.harvard.edu/sem/obsv/observation/CHANDRA/obsid/'+str(ele) for ele in chandramalfeasants]
+        newobsiduris=[]
+        for ele in theobsiduris:
+            if ele not in cmfuris:
+                newobsiduris.append(ele)
+        theobsiduris=newobsiduris
+        print "THEOBSIDURIS-NEW", theobsiduris
         datatypes=[]
     #olddict=solr.search('id:'+theid)
         missions=set()
